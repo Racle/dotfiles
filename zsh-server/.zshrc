@@ -44,6 +44,9 @@ plugins=(
   extract
   zsh-autosuggestions
   zsh-syntax-highlighting
+  fzf-zsh
+  zsh-better-npm-completion
+  autoupdate
 )
 
 source $ZSH/oh-my-zsh.sh
