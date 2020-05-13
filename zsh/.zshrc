@@ -74,10 +74,14 @@ alias set_screen_color="export TERM=\"screen-256color\""
 alias gitmergedevtomaster="git checkout develop && git pull && git push && git checkout master && git pull && git merge develop && git pull && git push && git checkout develop && git pull"
 alias spacesniffer="ncdu"
 alias df='df -x"squashfs"'
-
+alias tm='tmux new-session -A -s main'
+alias vim-rio='tmux split-window -v && tmux split-window -h && tmux resize-pane -Z -t 1 && vim'
+alias vim-php='tmux split-window -v && tmux resize-pane -Z -t 1 && vim'
 # stop screen freezing
 stty stop undef
 stty start undef
+
+export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules --ignore vendor -g ""' 
 
 [ -f ~/.docker_aliases ] && source ~/.docker_aliases
 
