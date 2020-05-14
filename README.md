@@ -15,13 +15,13 @@ sudo apt-get install stow
 
 #### remove old files
 ```
-rm ~/.zshrc ~/.p10k.zsh ~/.tmux.conf ~/.docker_aliases ~/.config/albert/albert.conf ~/.watchers.xml ~/.config/nvim/init.vim
+rm ~/.zshrc ~/.p10k.zsh ~/.tmux.conf ~/.docker_aliases ~/.config/albert/albert.conf ~/.watchers.xml ~/.config/nvim/init.vim ~/.config/ranger/rc.conf
 ```
 
 #### symlink dotfiles
 ```
 cd ~/.dotfiles
-stow default zsh albert phpstorm tmux neovim
+stow default zsh albert phpstorm tmux neovim ranger
 ```
 On server, use 
 ```

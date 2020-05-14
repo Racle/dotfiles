@@ -75,8 +75,8 @@ alias gitmergedevtomaster="git checkout develop && git pull && git push && git c
 alias spacesniffer="ncdu"
 alias df='df -x"squashfs"'
 alias tm='tmux new-session -A -s main'
-alias vim-rio='tmux split-window -v && tmux split-window -h && tmux resize-pane -Z -t 1 && vim'
-alias vim-php='tmux split-window -v && tmux resize-pane -Z -t 1 && vim'
+alias vim-rio='tmux split-window -v && tmux split-window -h && tmux resize-pane -t 2 -y 20 && tmux resize-pane -Z -t 1 && vim'
+alias vim-php='tmux split-window -v && tmux resize-pane -t 2 -y 20 && tmux resize-pane -Z -t 1 && vim'
 # stop screen freezing
 stty stop undef
 stty start undef
