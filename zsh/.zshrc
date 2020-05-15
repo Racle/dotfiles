@@ -82,8 +82,7 @@ alias r='ranger'
 stty stop undef
 stty start undef
 
-export FZF_DEFAULT_COMMAND='ag --hidden --nocolor --ignore node_modules --ignore vendor --ignore .git --ignore .idea --ignore .vscode --ignore .history -g ""' 
-
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!{.git,node_modules,.idea,.vscode,.history}'" 
 
 [ -f ~/.docker_aliases ] && source ~/.docker_aliases
 
