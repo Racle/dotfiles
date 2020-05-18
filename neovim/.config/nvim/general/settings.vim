@@ -8,9 +8,6 @@ set mouse+=a
 set ignorecase
 set smartcase
 
-" Enable clipboard
-set clipboard+=unnamedplus
-
 " Set relative number
 set nu rnu
 
@@ -59,3 +56,11 @@ set undodir=~/.config/nvim/undo/
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
+set updatetime=300                      " Faster completion
+set timeoutlen=100                      " By default timeoutlen is 1000 ms
+set clipboard=unnamedplus               " Copy paste between vim and everything else
+set autoindent                          " Good auto indent
+set smartindent                         " Makes indenting smart
+set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
+set t_Co=256                            " Support 256 colors
+set conceallevel=0                      " So that I can see `` in markdown files

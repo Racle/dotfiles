@@ -30,9 +30,6 @@ nnoremap <Leader>rc :%s///gc<Left><Left><Left>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
-" Change buffer
-map <Leader>b <Esc><Esc>:b 
-
 " The backspace key has slightly unintuitive behavior by default. For example,
 " by default, you can't backspace before the insertion point set with 'i'.
 " This configuration makes backspace behave more reasonably, in that you can
@@ -46,8 +43,6 @@ map <Leader>f <Esc><Esc>:Files<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" open Nerdtree
-nnoremap <silent> <expr> <Leader>n g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 " Close NERDTree if it's last tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 

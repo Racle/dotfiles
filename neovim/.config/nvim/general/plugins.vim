@@ -4,6 +4,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'scrooloose/nerdtree'
   " Coc.nvim
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc-tsserver', {'do': 'npm install --frozen-lockfile'}
   " Automatic surround
   Plug 'tpope/vim-surround'
   " Gruvbox theme
@@ -27,4 +28,13 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'mattn/emmet-vim'
   " vim-prettier
   Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+  " tagalong (tag autochange)
+  Plug 'andrewradev/tagalong.vim'
+  Plug 'tpope/vim-repeat'
+  " tmux navigator
+  Plug 'christoomey/vim-tmux-navigator'
+  " Show keybindings
+  Plug 'liuchengxu/vim-which-key'
+  " floatterm
+  Plug 'voldikss/vim-floaterm'
 call plug#end()	
