@@ -37,4 +37,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'liuchengxu/vim-which-key'
   " floatterm
   Plug 'voldikss/vim-floaterm'
+  " vim lessc
+  Plug 'vitalk/vim-lesscss'
 call plug#end()	
