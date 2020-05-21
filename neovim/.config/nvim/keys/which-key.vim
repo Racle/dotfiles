@@ -25,9 +25,9 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-let g:which_key_map['n'] = [ ':NERDTreeToggle', 'Nerdtree']
-
-
+let g:which_key_map['f'] = [ ':NERDTreeToggle', 'Nerdtree']
+let g:which_key_map['n'] = [ ':Files', 'Search files']
+let g:which_key_map['F'] = [ ':Rg', 'Search text']
 " Group mappings
 
 " a is for actions
@@ -155,6 +155,7 @@ let g:which_key_map['t'] = {
       \ 'name' : '+terminal' ,
       \ 'g' : [':FloatermNew lazygit'                           , 'git'],
       \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
+      \ 't' : [':FloatermToggle'         , 'terminal'],
       \ }
 
 

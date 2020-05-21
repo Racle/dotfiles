@@ -23,8 +23,8 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
 " shortcut to replace command
-nnoremap <Leader>r :%s///g<Left><Left>
-nnoremap <Leader>rc :%s///gc<Left><Left><Left>
+nnoremap <Leader>r :%s///g<Left><Left><Left>
+nnoremap <Leader>R :%s///gc<Left><Left><Left><Left>
 
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
@@ -36,9 +36,6 @@ nnoremap <Leader>O O<Esc>
 " backspace over anything.
 set backspace=indent,eol,start
 
-" Alternative
-map <Leader>f <Esc><Esc>:Files<CR>
-
 "keep in visual mode after shifting
 vnoremap < <gv
 vnoremap > >gv
@@ -48,3 +45,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Close buffer
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+
+" open files with ctrl+n
+" map <C-S-n> <Esc><Esc>:Files<CR>
+
+" esc to close terminal
+tnoremap <Esc> <C-\><C-n>
