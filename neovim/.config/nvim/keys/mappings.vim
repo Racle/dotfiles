@@ -51,3 +51,11 @@ map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " esc to close terminal
 tnoremap <Esc> <C-\><C-n>
+
+" ctrl+s => save
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+
+" Q == q
+command Q q

@@ -4,7 +4,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'scrooloose/nerdtree'
   " Coc.nvim
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'neoclide/coc-tsserver', {'do': 'npm install --frozen-lockfile'}
+  " Plug 'neoclide/coc-tsserver', {'do': 'npm install --frozen-lockfile'}
   " Automatic surround
   Plug 'tpope/vim-surround'
   " Gruvbox theme
