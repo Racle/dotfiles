@@ -1,0 +1,3 @@
+#for server
+export TERM="xterm-256color"
+ZLE_RPROMPT_INDENT=1

@@ -39,4 +39,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'voldikss/vim-floaterm'
   " vim lessc
   Plug 'vitalk/vim-lesscss'
+  " remote yank
+  Plug 'fcpg/vim-osc52'
 call plug#end()	

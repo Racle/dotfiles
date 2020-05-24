@@ -25,9 +25,9 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-let g:which_key_map['f'] = [ ':NERDTreeToggle', 'Nerdtree']
+let g:which_key_map['e'] = [ ':NERDTreeToggle', 'Nerdtree']
 let g:which_key_map['n'] = [ ':Files', 'Search files']
-let g:which_key_map['F'] = [ ':Rg', 'Search text']
+let g:which_key_map['f'] = [ ':Rg', 'Search text']
 " Group mappings
 
 " a is for actions
@@ -40,6 +40,7 @@ let g:which_key_map.a = {
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'v' : [':Vista!!'                , 'tag viewer'],
+      \ 'y' : [':call SendViaOSC52(getreg("))'                , 'remote yank'],
       \ }
 
 " b is for buffer
