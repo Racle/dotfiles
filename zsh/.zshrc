@@ -80,6 +80,7 @@ up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }
 # stop screen freezing
 stty stop undef
 stty start undef
+stty -ixon
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!{.git,node_modules,.idea,.vscode,.history}'" 
 

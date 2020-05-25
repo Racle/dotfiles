@@ -43,4 +43,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'jiangmiao/auto-pairs'
   " tagbar (function name on vim-airline)
   Plug 'majutsushi/tagbar'
+  " Quickscope
+  Plug 'unblevable/quick-scope'
 call plug#end()	
