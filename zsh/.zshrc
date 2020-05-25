@@ -72,6 +72,7 @@ alias gitmergedevtomaster="git checkout develop && git pull && git push && git c
 alias spacesniffer="ncdu"
 alias df='df -x"squashfs"'
 alias tm='tmux new-session -A -s Racle'
+alias tm2='tmux new-session -A -s Lonkero'
 alias vim-rio='tmux split-window -v && tmux split-window -h && tmux resize-pane -t 2 -y 20 && tmux resize-pane -Z -t 1 && vim'
 alias vim-php='tmux split-window -v && tmux resize-pane -t 2 -y 20 && tmux resize-pane -Z -t 1 && vim'
 alias r='ranger'
