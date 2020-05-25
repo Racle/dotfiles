@@ -7,3 +7,5 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
+" Just show the file name
+let g:airline#extensions#tabline#fnamemod = ':t'

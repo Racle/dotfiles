@@ -1,6 +1,5 @@
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
-set mouse+=a
 
 " This setting makes search case-insensitive when all characters in the string
 " being searched are lowercase. However, the search becomes case-sensitive if
@@ -26,19 +25,9 @@ set wildmenu
 set completeopt=menuone,preview
 
 filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=2
-" when indenting with '>', use 4 spaces width
-set shiftwidth=2
-" On pressing tab, insert 4 spaces
-set expandtab
 
-" Give more space for displaying messages.
-set cmdheight=2
 
 set history=1000
-
-set hidden
 
 if has("vms")
 	set nobackup		" do not keep a backup file, use versions instead
@@ -56,13 +45,26 @@ set undodir=~/.config/nvim/undo/
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
+set mouse+=a                            " Enable mouse
+syntax enable                           " Enables syntax highlighing
+set cmdheight=2                         " Give more space for displaying messages.
+set hidden                              " Required to keep multiple buffers open multiple buffers
+set nowrap                              " Display long lines as just one line
+set encoding=utf-8                      " The encoding displayed
+set fileencoding=utf-8                  " The encoding written to file
+set ruler              			            " Show the cursor position all the time
 set updatetime=300                      " Faster completion
 set timeoutlen=100                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set autoindent                          " Good auto indent
 set smartindent                         " Makes indenting smart
 set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
+set expandtab                           " Converts tabs to spaces
+set tabstop=2                           " show existing tab with 4 spaces width
+set shiftwidth=2                        " when indenting with '>', use 4 spaces width
 set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
 set splitbelow                          " Horizontal splits will automatically be below
 set splitright                          " Vertical splits will automatically be to the right
+set cursorline                          " Enable highlighting of the current line
+set incsearch
