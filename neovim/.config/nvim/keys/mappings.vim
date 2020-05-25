@@ -36,8 +36,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Change tabs 
 nnoremap th :tabnext<CR>
 nnoremap tl :tabprev<CR>
-inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-inoremap <C-tab>   <Esc>:tabnext<CR>i
+" inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+" inoremap <C-tab>   <Esc>:tabnext<CR>i
 
 " Terminal go back to normal mode
 tnoremap <Esc> <C-\><C-n>
