@@ -1,0 +1,4 @@
+{
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
+  "explorer.icon.enableNerdfont": true
+}

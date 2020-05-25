@@ -25,7 +25,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-let g:which_key_map['e'] = [ ':NERDTreeToggle', 'Nerdtree']
+let g:which_key_map['e'] = [ ':CocCommand explorer', 'Explorer']
 let g:which_key_map['n'] = [ ':Files', 'Search files']
 let g:which_key_map['f'] = [ ':Rg', 'Search text']
 " Group mappings
@@ -95,7 +95,7 @@ let g:which_key_map.g = {
       \ 'B' : [':GBrowse'                          , 'browse'],
       \ 'c' : [':Git commit'                       , 'commit'],
       \ 'd' : [':Git diff'                         , 'diff'],
-      \ 'D' : [':Gdiffsplit'                       , 'diff split'],
+      \ 'D' : [':Gdiffsplit!'                       , 'diff split'],
       \ 'g' : [':GGrep'                            , 'git grep'],
       \ 'G' : [':Gstatus'                          , 'status'],
       \ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
@@ -103,14 +103,16 @@ let g:which_key_map.g = {
       \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
       \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
       \ 'l' : [':Git log'                          , 'log'],
-      \ 'p' : [':Git push'                         , 'push'],
-      \ 'P' : [':Git pull'                         , 'pull'],
+      \ 'P' : [':Git push'                         , 'push'],
+      \ 'p' : [':Git pull'                         , 'pull'],
       \ 'r' : [':GRemove'                          , 'remove'],
       \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
       \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
       \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
       \ 'v' : [':GV'                               , 'view commits'],
       \ 'V' : [':GV!'                              , 'view buffer commits'],
+      \ '>' : [':diffget //2'                      , 'diffget from left'],
+      \ '<' : [':diffget //3'                      , 'diffget from rigth'],
       \ }
 
 " l is for language server protocol
