@@ -45,4 +45,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'majutsushi/tagbar'
   " Quickscope
   Plug 'unblevable/quick-scope'
-call plug#end()	
+  " multiple cursor
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  " yank highlight
+  Plug 'machakann/vim-highlightedyank'
+call plug#end()

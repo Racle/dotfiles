@@ -1,19 +1,3 @@
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
-
-" This setting makes search case-insensitive when all characters in the string
-" being searched are lowercase. However, the search becomes case-sensitive if
-" it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
-
-" Set relative number
-set nu rnu
-
-" Disable the default Vim startup message.
-set shortmess+=I
-
-set nocompatible
 
 " Gruvbox setting
 color gruvbox
@@ -50,11 +34,14 @@ syntax enable                           " Enables syntax highlighing
 set cmdheight=2                         " Give more space for displaying messages.
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
+set list                                " required for listchars
+set listchars=extends:>,precedes:<      " show character on longer line
+"set showbreak=…                         " linebreak character
 set encoding=utf-8                      " The encoding displayed
 set fileencoding=utf-8                  " The encoding written to file
 set ruler              			            " Show the cursor position all the time
 set updatetime=300                      " Faster completion
-set timeoutlen=100                      " By default timeoutlen is 1000 ms
+set timeoutlen=300                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set autoindent                          " Good auto indent
 set smartindent                         " Makes indenting smart
@@ -68,3 +55,9 @@ set splitbelow                          " Horizontal splits will automatically b
 set splitright                          " Vertical splits will automatically be to the right
 set cursorline                          " Enable highlighting of the current line
 set incsearch
+set ignorecase                          " incase sensitive search
+set smartcase                           " smarcase search 
+set nu rnu                              " set relative number
+set shortmess+=I                        " Disable the default Vim startup message.
+set nocompatible                        " ignored in nvim
+set inccommand=nosplit                  " realtime substitute s/search/replace/g 

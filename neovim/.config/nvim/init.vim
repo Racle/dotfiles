@@ -18,3 +18,4 @@ source ~/.config/nvim/plug-config/tagalong.vim
 source ~/.config/nvim/plug-config/floatterm.vim
 source ~/.config/nvim/plug-config/vimlesscss.vim
 source ~/.config/nvim/plug-config/quickscope.vim
+source ~/.config/nvim/plug-config/highlightedyank.vim
