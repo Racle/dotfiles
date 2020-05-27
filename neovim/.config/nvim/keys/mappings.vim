@@ -88,7 +88,5 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 " Q == q
 command Q q
 
-" Fugitive Conflict Resolution
-nmap <C-g> <nop>
-nnoremap <C-g>l :diffget //2<CR>
-nnoremap <C-g>h :diffget //3<CR>
+" Map Ctrl-Backspace to delete the previous word in insert mode.
+imap <C-BS> <C-W>

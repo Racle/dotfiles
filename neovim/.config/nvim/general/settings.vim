@@ -14,10 +14,10 @@ filetype plugin indent on
 set history=1000
 
 if has("vms")
-	set nobackup		" do not keep a backup file, use versions instead
+  set nobackup                            " do not keep a backup file, use versions instead
 else
-	set backup		" keep a backup file (restore to previous version)
-	set undofile		" keep an undo file (undo changes after closing)
+  set backup                              " keep a backup file (restore to previous version)
+  set undofile                            " keep an undo file (undo changes after closing)
 endif
 
 silent !mkdir ~/.config/nvim/{backup,swap,undo} > /dev/null 2>&1
@@ -39,7 +39,7 @@ set listchars=extends:>,precedes:<      " show character on longer line
 "set showbreak=…                         " linebreak character
 set encoding=utf-8                      " The encoding displayed
 set fileencoding=utf-8                  " The encoding written to file
-set ruler              			            " Show the cursor position all the time
+set ruler                               " Show the cursor position all the time
 set updatetime=300                      " Faster completion
 set timeoutlen=300                      " By default timeoutlen is 1000 ms
 set clipboard=unnamedplus               " Copy paste between vim and everything else
@@ -60,4 +60,11 @@ set smartcase                           " smarcase search
 set nu rnu                              " set relative number
 set shortmess+=I                        " Disable the default Vim startup message.
 set nocompatible                        " ignored in nvim
-set inccommand=nosplit                  " realtime substitute s/search/replace/g 
+set inccommand=nosplit                   " realtime substitute s/search/replace/g 
+
+" trigger `autoread` when files changes on disk
+  set autoread
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" notification after file change
+  autocmd FileChangedShellPost *
+    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
