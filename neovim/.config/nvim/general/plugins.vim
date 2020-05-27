@@ -19,7 +19,10 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'vim-airline/vim-airline-themes'
   " Git plugin
   Plug 'tpope/vim-fugitive'
+  Plug 'tommcdo/vim-fubitive'
   Plug 'tpope/vim-rhubarb'
+  Plug 'junegunn/gv.vim'
+  Plug 'mhinz/vim-signify'
   " emmet-vim (html autogenerate, C-y , to use ex. html:5<C-y>,)
   Plug 'mattn/emmet-vim'
   " vim-prettier
