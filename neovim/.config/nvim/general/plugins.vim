@@ -44,8 +44,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'honza/vim-snippets'
   " auto-pairs
   Plug 'jiangmiao/auto-pairs'
-  " tagbar (function name on vim-airline)
-  Plug 'majutsushi/tagbar'
+  " tagbar (current function name on vim-airline)
+  Plug 'majutsushi/tagbar', { 'do': 'npm install -g git+https://github.com/ramitos/jsctags.git' }
   " Quickscope
   Plug 'unblevable/quick-scope'
   " multiple cursor

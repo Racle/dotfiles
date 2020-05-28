@@ -9,6 +9,11 @@ export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH:$GOBIN
 export ANSIBLE_INVENTORY=~/.ansible-hosts
+# install npm packages globally without sudo
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
 #export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
@@ -76,6 +81,7 @@ alias tm2='tmux new-session -A -s Lonkero'
 alias vim-rio='tmux split-window -v && tmux split-window -h && tmux resize-pane -t 2 -y 20 && tmux resize-pane -Z -t 1 && vim'
 alias vim-php='tmux split-window -v && tmux resize-pane -t 2 -y 20 && tmux resize-pane -Z -t 1 && vim'
 alias r='ranger'
+alias _kill-tmux='kill -9 $(pidof tmux)'
 up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }
 
 # stop screen freezing
