@@ -86,6 +86,15 @@ let g:which_key_map.s = {
       \ 'z' : [':FZF'          , 'FZF'],
       \ }
 
+let g:which_key_map.G = {
+      \ 'name' : '+git diff' ,
+      \ 'D' : [':Gdiffsplit!'            , 'diff split'],
+      \ 'H' : [':diffget //2'            , 'diffget from right'],
+      \ 'L' : [':diffget //3'            , 'diffget from left'],
+      \ 'J' : [']c'                      , 'prev change'],
+      \ 'K' : ['[c'                      , 'next change'],
+      \ }
+
 " g is for git
 let g:which_key_map.g = {
       \ 'name' : '+git' ,
@@ -112,7 +121,7 @@ let g:which_key_map.g = {
       \ 'v' : [':GV'                               , 'view commits'],
       \ 'V' : [':GV!'                              , 'view buffer commits'],
       \ '>' : [':diffget //2'                      , 'diffget from left'],
-      \ '<' : [':diffget //3'                      , 'diffget from rigth'],
+      \ '<' : [':diffget //3'                      , 'diffget from right'],
       \ }
 
 " l is for language server protocol
