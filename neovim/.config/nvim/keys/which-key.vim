@@ -38,6 +38,7 @@ let g:which_key_map.a = {
       \ 'n' : [':set nonumber!'          , 'line-numbers'],
       \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
+      \ 'S' : [':setlocal spell! spelllang=en_us'            , 'toggle spellchecking'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'v' : [':Vista!!'                , 'tag viewer'],
       \ 'y' : [':call SendViaOSC52(getreg("))'                , 'remote yank'],

@@ -1,4 +1,8 @@
 {
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
-  "explorer.icon.enableNerdfont": true
+  "explorer.icon.enableNerdfont": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/ansible-stable-2.9": "**/*.ans.yml",
+    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v2.0.json": "**/docker-compose*.yml"
+  }
 }
