@@ -7,6 +7,7 @@ noremap § <Esc>
 tmap § <C-c>
 nmap § <C-c>
 imap § <C-c>
+xmap § <C-c>
 
 " ctrl+hjkl change window (better window navigation)
 imap <C-h> <C-w>h
