@@ -3,6 +3,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " Automatic surround
   Plug 'tpope/vim-surround'
+  " commenting
+  Plug 'tpope/vim-commentary'
   " Gruvbox theme
   Plug 'morhetz/gruvbox'
   " fzf
@@ -53,5 +55,5 @@ call plug#begin(stdpath('data') . '/plugged')
   " yank highlight
   Plug 'machakann/vim-highlightedyank'
   " undootree
-  Plug 'mbbill/undotree' 
+  Plug 'mbbill/undotree'
 call plug#end()
