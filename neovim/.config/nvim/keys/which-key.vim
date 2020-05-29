@@ -40,6 +40,7 @@ let g:which_key_map.a = {
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
       \ 'S' : [':setlocal spell! spelllang=en_us'            , 'toggle spellchecking'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
+      \ 'u' : [':UndotreeToggle | UndotreeFocus'         , 'Undotree'],
       \ 'v' : [':Vista!!'                , 'tag viewer'],
       \ 'y' : [':call SendViaOSC52(getreg("))'                , 'remote yank'],
       \ }

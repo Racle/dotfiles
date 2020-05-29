@@ -20,3 +20,4 @@ source ~/.config/nvim/plug-config/vimlesscss.vim
 source ~/.config/nvim/plug-config/quickscope.vim
 source ~/.config/nvim/plug-config/highlightedyank.vim
 source ~/.config/nvim/plug-config/signify.vim
+source ~/.config/nvim/plug-config/visual-multi.vim

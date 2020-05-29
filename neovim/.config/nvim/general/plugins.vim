@@ -52,4 +52,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   " yank highlight
   Plug 'machakann/vim-highlightedyank'
+  " undootree
+  Plug 'mbbill/undotree' 
 call plug#end()

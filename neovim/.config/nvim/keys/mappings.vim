@@ -2,6 +2,12 @@
 let mapleader=" "
 let maplocalleader=" "
 
+" Map § to esc
+noremap § <Esc>
+tmap § <C-c>
+nmap § <C-c>
+imap § <C-c>
+
 " ctrl+hjkl change window (better window navigation)
 imap <C-h> <C-w>h
 imap <C-j> <C-w>j
