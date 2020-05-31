@@ -41,7 +41,7 @@ let g:which_key_map.a = {
       \ 'S' : [':setlocal spell! spelllang=en_us'            , 'toggle spellchecking'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'u' : [':UndotreeToggle | UndotreeFocus'         , 'Undotree'],
-      \ 'v' : [':Vista!!'                , 'tag viewer'],
+      \ 'v' : [':VCoolor'                , 'vcoolor picker'],
       \ 'y' : [':call SendViaOSC52(getreg("))'                , 'remote yank'],
       \ }
 

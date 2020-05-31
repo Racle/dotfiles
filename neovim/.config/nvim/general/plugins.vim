@@ -6,7 +6,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " commenting
   Plug 'tpope/vim-commentary'
   " Gruvbox theme
-  Plug 'morhetz/gruvbox'
+  Plug 'gruvbox-community/gruvbox'
   " fzf
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -56,4 +56,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'machakann/vim-highlightedyank'
   " undootree
   Plug 'mbbill/undotree'
+  " colors / colorpicker
+  Plug 'ap/vim-css-color'
+  Plug 'KabbAmine/vCoolor.vim'
 call plug#end()

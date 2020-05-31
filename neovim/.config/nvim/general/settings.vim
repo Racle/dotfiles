@@ -61,6 +61,7 @@ set nu rnu                              " set relative number
 set shortmess+=I                        " Disable the default Vim startup message.
 set nocompatible                        " ignored in nvim
 set inccommand=nosplit                   " realtime substitute s/search/replace/g 
+set termguicolors                       " Gruvbox recommended
 
 " trigger `autoread` when files changes on disk
   set autoread
@@ -68,3 +69,7 @@ set inccommand=nosplit                   " realtime substitute s/search/replace/
 " notification after file change
   autocmd FileChangedShellPost *
     \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+" The 'nested' before call allows nested autocmds, important for
+" syntax detection etc.
+autocmd VimEnter * nested call MyVimEnter()
