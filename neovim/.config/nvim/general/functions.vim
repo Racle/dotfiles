@@ -9,10 +9,12 @@ function MyVimEnter()
     return
   endif
 
-  if exists("v:oldfiles[0]") && filereadable(expand(v:oldfiles[0]))
-    execute "e " . v:oldfiles[0]
-  else
-    execute ":Files"
-  endif
+  execute ":Files"
+
+  " if exists("v:oldfiles[0]") && filereadable(expand(v:oldfiles[0]))
+  "   execute "e " . v:oldfiles[0]
+  " else
+  "   execute ":Files"
+  " endif
 
 endfunction

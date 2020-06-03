@@ -60,7 +60,7 @@ set smartcase                           " smarcase search
 set nu rnu                              " set relative number
 set shortmess+=I                        " Disable the default Vim startup message.
 set nocompatible                        " ignored in nvim
-set inccommand=nosplit                   " realtime substitute s/search/replace/g 
+set inccommand=nosplit                  " realtime substitute s/search/replace/g 
 set termguicolors                       " Gruvbox recommended
 
 " trigger `autoread` when files changes on disk
