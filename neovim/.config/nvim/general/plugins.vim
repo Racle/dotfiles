@@ -13,7 +13,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'airblade/vim-rooter'
   " Zoom in and out of a specific split pane (similar to tmux).
   Plug 'dhruvasagar/vim-zoom'
-
   " Pass focus events from tmux to Vim (useful for autoread and linting tools).
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'tmux-plugins/vim-tmux'
@@ -59,4 +58,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " colors / colorpicker
   Plug 'ap/vim-css-color'
   Plug 'KabbAmine/vCoolor.vim'
+  " Toggle marks
+  Plug 'kshenoy/vim-signature'
 call plug#end()

@@ -39,6 +39,8 @@ let g:which_key_map.a = {
       \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
       \ 'S' : [':setlocal spell! spelllang=en_us'            , 'toggle spellchecking'],
+      \ 'M' : [':SignatureToggleSigns'            , 'toggle mark sings'],
+      \ 'G' : [':SignifyToggle'            , 'toggle git sings'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'u' : [':UndotreeToggle | UndotreeFocus'         , 'Undotree'],
       \ 'v' : [':VCoolor'                , 'vcoolor picker'],
