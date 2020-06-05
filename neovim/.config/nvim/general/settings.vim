@@ -29,38 +29,38 @@ set undodir=~/.config/nvim/undo/
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
-set mouse+=a                        " Enable mouse
-syntax enable                       " Enables syntax highlighing
-set cmdheight=2                     " Give more space for displaying messages.
-set hidden                          " Required to keep multiple buffers open multiple buffers
-set nowrap                          " Display long lines as just one line
-set list                            " required for listchars
-set listchars=extends:>,precedes:<  " show character on longer line
-set encoding=utf-8                  " The encoding displayed
-set fileencoding=utf-8              " The encoding written to file
-set ruler                           " Show the cursor position all the time
-set updatetime=300                  " Faster completion
-set timeoutlen=300                  " By default timeoutlen is 1000 ms
-set clipboard=unnamedplus           " Copy paste between vim and everything else
-set autoindent                      " Good auto indent
-set smartindent                     " Makes indenting smart
-set smarttab                        " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                       " Converts tabs to spaces
-set tabstop=2                       " show existing tab with 4 spaces width
-set shiftwidth=2                    " when indenting with '>', use 4 spaces width
-set t_Co=256                        " Support 256 colors
-set conceallevel=0                  " So that I can see `` in markdown files
-set splitbelow                      " Horizontal splits will automatically be below
-set splitright                      " Vertical splits will automatically be to the right
-set cursorline                      " Enable highlighting of the current line
-set incsearch                       " jump to next match when searching
-set ignorecase                      " incase sensitive search
-set smartcase                       " smarcase search
-set nu rnu                          " set relative number
-set shortmess+=I                    " Disable the default Vim startup message.
-set nocompatible                    " ignored in nvim
-set inccommand=nosplit              " realtime substitute s/search/replace/g
-set termguicolors                   " Gruvbox recommended
+set mouse+=a                " Enable mouse
+syntax enable               " Enables syntax highlighing
+set cmdheight=2             " Give more space for displaying messages.
+set hidden                  " Required to keep multiple buffers open multiple buffers
+set nowrap                  " Display long lines as just one line
+set list                    " required for listchars
+set encoding=utf-8          " The encoding displayed
+set fileencoding=utf-8      " The encoding written to file
+set ruler                   " Show the cursor position all the time
+set updatetime=300          " Faster completion
+set timeoutlen=300          " By default timeoutlen is 1000 ms
+set clipboard=unnamedplus   " Copy paste between vim and everything else
+set autoindent              " Good auto indent
+set smartindent             " Makes indenting smart
+set smarttab                " Makes tabbing smarter will realize you have 2 vs 4
+set expandtab               " Converts tabs to spaces
+set tabstop=2               " show existing tab with 4 spaces width
+set shiftwidth=2            " when indenting with '>', use 4 spaces width
+set t_Co=256                " Support 256 colors
+set conceallevel=0          " So that I can see `` in markdown files
+set splitbelow              " Horizontal splits will automatically be below
+set splitright              " Vertical splits will automatically be to the right
+set cursorline              " Enable highlighting of the current line
+set incsearch               " incremental search, automatically go to next search
+set ignorecase              " incase sensitive search
+set smartcase               " smarcase search
+set nu rnu                  " set relative number
+set shortmess+=I            " Disable the default Vim startup message.
+set nocompatible            " ignored in nvim
+set inccommand=nosplit      " realtime substitute s/search/replace/g
+set termguicolors           " Gruvbox recommended
+set listchars=extends:>,precedes:<,tab:\ \ , " show character on longer line
 
 " trigger `autoread` when files changes on disk
   set autoread

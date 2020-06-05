@@ -1,6 +1,8 @@
 call plug#begin(stdpath('data') . '/plugged')
   " Coc.nvim
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " vim-go
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   " Automatic surround
   Plug 'tpope/vim-surround'
   " commenting
