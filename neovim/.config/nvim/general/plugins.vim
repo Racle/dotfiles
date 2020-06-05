@@ -58,4 +58,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'KabbAmine/vCoolor.vim'
   " Toggle marks / show marks
   Plug 'kshenoy/vim-signature'
+  " Align (:Tab /<regexp>)
+  Plug 'godlygeek/tabular'
 call plug#end()
