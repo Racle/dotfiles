@@ -75,6 +75,9 @@ fi
 # vi mode
 bindkey -v
 source "$HOME/.fzf.zsh"
+bindkey "^P" up-line-or-history
+bindkey "^N" down-line-or-history
+
 
 alias set_xterm_color="export TERM=\"xterm-256color\""
 alias set_screen_color="export TERM=\"screen-256color\""
