@@ -1,7 +1,7 @@
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   !sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 
   autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim 
-  autocmd VimEnter * CocInstall coc-phpls coc-json coc-css coc-html coc-go coc-snippets coc-explorer coc-docker coc-yaml coc-xml coc-homeassistant coc-gitignore coc-sql
+  autocmd VimEnter * CocInstall coc-phpls coc-json coc-css coc-html coc-go coc-snippets coc-explorer coc-docker coc-yaml coc-xml coc-homeassistant coc-gitignore coc-spell-checker
 endif
 
 source ~/.config/nvim/general/plugins.vim

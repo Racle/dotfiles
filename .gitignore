@@ -1,6 +1,7 @@
 .vscode
 .history
 .idea
+.vim
 albert/.config/albert/core.db
 albert/.config/albert/last_used_version
 albert/.local/share/albert/org.albert.extension.python/modules/__pycache__/

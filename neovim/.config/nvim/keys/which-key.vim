@@ -38,13 +38,14 @@ let g:which_key_map.a = {
       \ 'n' : [':set nonumber!'          , 'line-numbers'],
       \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
-      \ 'S' : [':setlocal spell! spelllang=en_us'            , 'toggle spellchecking'],
+      \ 'S' : [':CocCommand cSpell.toggleEnableSpellChecker'            , 'toggle spellchecking'],
       \ 'M' : [':SignatureToggleSigns'            , 'toggle mark sings'],
       \ 'G' : [':SignifyToggle'            , 'toggle git sings'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
       \ 'u' : [':UndotreeToggle | UndotreeFocus'         , 'Undotree'],
       \ 'v' : [':VCoolor'                , 'vcoolor picker'],
       \ 'y' : [':call SendViaOSC52(getreg("))'                , 'remote yank'],
+      \ 'w' : ['<Plug>(coc-codeaction-selected)w'                , 'spell check word'],
       \ }
 
 " b is for buffer
@@ -52,13 +53,14 @@ let g:which_key_map.b = {
       \ 'name' : '+buffer' ,
       \ '1' : ['b1'        , 'buffer 1']        ,
       \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
       \ 'f' : ['bfirst'    , 'first-buffer']    ,
-      \ 'h' : ['Startify'  , 'home-buffer']     ,
       \ 'l' : ['blast'     , 'last-buffer']     ,
-      \ 'n' : ['bnext'     , 'next-buffer']     ,
-      \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
+      \ 'n' : [':enew'     , 'new buffer']     ,
+      \ 'v' : [':vnew'     , 'new vertical buffer']     ,
+      \ 'h' : [':new'     , 'new horizontal buffer']     ,
+      \ 'w' : ['Buffers'   , 'fzf-buffer']      ,
+      \ 'q' : ['bd'        , 'close-buffer']   ,
+      \ 'Q' : ['bd!'        , 'close-buffer!']   ,
       \ }
 
 " s is for search

@@ -63,11 +63,12 @@ set termguicolors           " Gruvbox recommended
 set listchars=extends:>,precedes:<,tab:\ \ , " show character on longer line
 
 " trigger `autoread` when files changes on disk
-  set autoread
-  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+set autoread
+" autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+autocmd! FocusGained,BufEnter,CursorHold,CursorHoldI * checktime 
 " notification after file change
-  autocmd FileChangedShellPost *
-    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " The 'nested' before call allows nested autocmds, important for
 " syntax detection etc.
