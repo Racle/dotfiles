@@ -30,7 +30,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   " tagalong (tag autochange)
   Plug 'andrewradev/tagalong.vim'
-  Plug 'tpope/vim-repeat'
   " tmux navigator
   Plug 'christoomey/vim-tmux-navigator'
   " Show keybindings
@@ -62,4 +61,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'kshenoy/vim-signature'
   " Align (:Tab /<regexp>)
   Plug 'godlygeek/tabular'
+  " Enables repeat in other plugins
+  Plug 'tpope/vim-repeat'
 call plug#end()
