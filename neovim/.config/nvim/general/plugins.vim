@@ -63,4 +63,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'godlygeek/tabular'
   " Enables repeat in other plugins
   Plug 'tpope/vim-repeat'
+  " Quick peek for Ctrl+R and @ 
+  Plug 'junegunn/vim-peekaboo'
+  " nice interface for vim-fugitive
+  Plug 'idanarye/vim-merginal'
 call plug#end()

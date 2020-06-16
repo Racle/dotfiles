@@ -5,7 +5,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 source ~/.config/nvim/general/plugins.vim
-source ~/.config/nvim/general/settings.vim
 source ~/.config/nvim/general/functions.vim
 source ~/.config/nvim/keys/mappings.vim
 source ~/.config/nvim/keys/which-key.vim
@@ -22,6 +21,9 @@ source ~/.config/nvim/plug-config/quickscope.vim
 source ~/.config/nvim/plug-config/highlightedyank.vim
 source ~/.config/nvim/plug-config/signify.vim
 source ~/.config/nvim/plug-config/visual-multi.vim
+
+" settings
+source ~/.config/nvim/general/settings.vim
 
 " server settings
 call SourceIfExists('~/.config/nvim/server-init.vim')
