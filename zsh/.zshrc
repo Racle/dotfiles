@@ -73,15 +73,15 @@ fi
 
 
 # vi mode
-bindkey -v
-source "$HOME/.fzf.zsh"
-export KEYTIMEOUT=1
-# add ctrl+p/n support
-bindkey "^P" up-line-or-history
-bindkey "^N" down-line-or-history
-# fix home/end keys
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+  # bindkey -v
+  # source "$HOME/.fzf.zsh"
+  # export KEYTIMEOUT=1
+  # # add ctrl+p/n support
+  # bindkey "^P" up-line-or-history
+  # bindkey "^N" down-line-or-history
+  # # fix home/end keys
+  # bindkey "^[[H" beginning-of-line
+  # bindkey "^[[F" end-of-line
 
 alias set_xterm_color="export TERM=\"xterm-256color\""
 alias set_screen_color="export TERM=\"screen-256color\""
