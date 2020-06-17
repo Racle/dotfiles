@@ -8,3 +8,4 @@ albert/.local/share/albert/org.albert.extension.python/modules/__pycache__/
 neovim/.config/nvim/backup/
 neovim/.config/nvim/undo/
 neovim/.config/nvim/swap/
+ranger/.config/ranger/plugins/
