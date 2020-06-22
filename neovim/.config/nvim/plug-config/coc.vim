@@ -3,8 +3,17 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> ög <Plug>(coc-diagnostic-prev)
-nmap <silent> äg <Plug>(coc-diagnostic-next)
+nmap <silent> gö <Plug>(coc-diagnostic-prev)
+nmap <silent> gä <Plug>(coc-diagnostic-next)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<C-M-J>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<C-M-K>'
+
+" run goimports on save
+let g:go_fmt_command = "goimports"
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>

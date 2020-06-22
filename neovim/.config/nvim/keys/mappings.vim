@@ -97,10 +97,3 @@ imap <C-BS> <C-W>
 " Swap , and ;
 nnoremap , ;
 nnoremap ; ,
-
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<C-M-J>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<C-M-K>'
