@@ -39,6 +39,8 @@ let g:which_key_map.a = {
       \ 'r' : [':set norelativenumber!'  , 'relative line nums'],
       \ 's' : [':let @/ = ""'            , 'remove search highlight'],
       \ 'S' : [':CocCommand cSpell.toggleEnableSpellChecker'            , 'toggle spellchecking'],
+      \ 'L' : 'Toggle lesscss',
+      \ 'm' : ['<Plug>MarkdownPreviewToggle'            , 'toggle markdown preview'],
       \ 'M' : [':SignatureToggleSigns'            , 'toggle mark sings'],
       \ 'G' : [':SignifyToggle'            , 'toggle git sings'],
       \ 't' : [':FloatermToggle'         , 'terminal'],

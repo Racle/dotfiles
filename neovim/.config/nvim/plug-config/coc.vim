@@ -1,3 +1,19 @@
+let g:coc_global_extensions = [
+  \ 'coc-phpls',
+  \ 'coc-json',
+  \ 'coc-css',
+  \ 'coc-html',
+  \ 'coc-go',
+  \ 'coc-snippets',
+  \ 'coc-explorer',
+  \ 'coc-docker',
+  \ 'coc-yaml',
+  \ 'coc-homeassistant',
+  \ 'coc-gitignore',
+  \ 'coc-spell-checker',
+  \ 'coc-pairs'
+  \ ]
+
 " coc settings
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)

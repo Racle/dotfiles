@@ -1,4 +1,5 @@
 {
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
   "explorer.icon.enableNerdfont": true,
   "yaml.schemas": {

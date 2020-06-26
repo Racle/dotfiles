@@ -43,7 +43,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " snippets
   Plug 'honza/vim-snippets'
   " auto-pairs
-  Plug 'jiangmiao/auto-pairs'
+  " Plug 'jiangmiao/auto-pairs'
   " tagbar (current function name on vim-airline)
   Plug 'majutsushi/tagbar', { 'do': 'npm install -g git+https://github.com/ramitos/jsctags.git' }
   " Quickscope
@@ -67,4 +67,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'junegunn/vim-peekaboo'
   " nice interface for vim-fugitive
   Plug 'idanarye/vim-merginal'
+  " markdown preview
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
+  " closetags
+  Plug 'alvan/vim-closetag'
 call plug#end()
