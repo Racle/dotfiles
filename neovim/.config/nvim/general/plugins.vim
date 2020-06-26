@@ -71,4 +71,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
   " closetags
   Plug 'alvan/vim-closetag'
+  " nginx support
+  Plug 'chr4/nginx.vim'
 call plug#end()
