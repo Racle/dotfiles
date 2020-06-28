@@ -9,6 +9,8 @@ set completeopt=menuone,preview
 
 filetype plugin indent on
 
+" remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
 
 set history=1000
 
@@ -64,7 +66,7 @@ set listchars=extends:>,precedes:<,tab:\ \ , " show character on longer line
 " trigger `autoread` when files changes on disk
 set autoread
 " autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-autocmd! FocusGained,BufEnter,CursorHold,CursorHoldI * silent! checktime 
+autocmd! FocusGained,BufEnter,CursorHold,CursorHoldI * silent! checktime
 " notification after file change
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
