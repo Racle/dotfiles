@@ -12,6 +12,10 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
   \   <bang>0)
 
+
+" Make Ripgrep search with custom glob (ex. *.md for md files)
+command! -bang -nargs=* RgFileExt call fzf#vim#grep("rg --column --line-number --hidden --smart-case --no-heading --color=always --glob '!**/{.git,node_modules,.idea,.vscode,.history}/**' -g '" . <q-args> . "' ''", 1, <bang>0)
+
 " Ripgrep advanced, show all files
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'

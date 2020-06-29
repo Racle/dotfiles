@@ -18,7 +18,7 @@ imap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l 
+nnoremap <C-l> <C-w>l
 
 " Terminal window navigation
 tnoremap <C-h> <C-\><C-N><C-w>h
@@ -36,7 +36,7 @@ nnoremap <silent> <M-l>    :vertical resize +2<CR>
 " Auto completion with tab + enter
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Change tabs 
+" Change tabs
 nnoremap th :tabnext<CR>
 nnoremap tl :tabprev<CR>
 " inoremap <C-S-tab> <Esc>:tabprevious<CR>i
@@ -60,6 +60,9 @@ nnoremap <Leader>R :%s///gc<Left><Left><Left><Left>
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
+
+"  shortcut to ripgrep advanced
+nnoremap <Leader>F :RgFileExt *.
 
 " The backspace key has slightly unintuitive behavior by default. For example,
 " by default, you can't backspace before the insertion point set with 'i'.

@@ -46,6 +46,9 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
+" use <c-space> to show function parameters
+nmap <silent><c-space> :call CocActionAsync('showSignatureHelp')<CR>
+
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if exists('*complete_info')
