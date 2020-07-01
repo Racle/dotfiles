@@ -29,6 +29,12 @@ let g:which_key_map['e'] = [ ':CocCommand explorer', 'Explorer']
 let g:which_key_map['n'] = [ ':Files', 'Search files']
 let g:which_key_map['f'] = [ ':Rg', 'Search text']
 let g:which_key_map['F'] = 'Search text with ext'
+let g:which_key_map['p'] = 'Prettier'
+let g:which_key_map['r'] = 'replace'
+let g:which_key_map['R'] = 'replace (confirm)'
+let g:which_key_map['q'] = 'close buffer (:bd)'
+let g:which_key_map['o'] = 'new line down'
+let g:which_key_map['O'] = 'new line up'
 " Group mappings
 
 " a is for actions

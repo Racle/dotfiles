@@ -27,7 +27,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " emmet-vim (html autogenerate, C-y , to use ex. html:5<C-y>,)
   Plug 'mattn/emmet-vim'
   " vim-prettier
-  Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+  Plug 'prettier/vim-prettier', { 'do': 'npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php' }
   " tagalong (tag autochange)
   Plug 'andrewradev/tagalong.vim'
   " tmux navigator
@@ -63,7 +63,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'godlygeek/tabular'
   " Enables repeat in other plugins
   Plug 'tpope/vim-repeat'
-  " Quick peek for Ctrl+R and @ 
+  " Quick peek for Ctrl+R and @
   Plug 'junegunn/vim-peekaboo'
   " nice interface for vim-fugitive
   Plug 'idanarye/vim-merginal'
