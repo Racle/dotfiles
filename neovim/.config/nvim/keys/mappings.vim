@@ -78,7 +78,7 @@ vnoremap > >gv
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Close buffer
-map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+" map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " open files with ctrl+n
 " map <C-S-n> <Esc><Esc>:Files<CR>

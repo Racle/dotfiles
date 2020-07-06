@@ -35,6 +35,8 @@ let g:which_key_map['R'] = 'replace (confirm)'
 let g:which_key_map['q'] = 'close buffer (:bd)'
 let g:which_key_map['o'] = 'new line down'
 let g:which_key_map['O'] = 'new line up'
+let g:which_key_map['q'] = [ ':Bdelete this', 'close-buffer']
+let g:which_key_map['Q'] = [ ':Bdelete! this', 'close-buffer!']
 " Group mappings
 
 " a is for actions
@@ -64,13 +66,16 @@ let g:which_key_map.b = {
       \ '2' : ['b2'        , 'buffer 2']        ,
       \ 'f' : ['bfirst'    , 'first-buffer']    ,
       \ 'l' : ['blast'     , 'last-buffer']     ,
+      \ 'o' : [':Bdelete other'     , 'close other buffers']     ,
+      \ 'd' : [':Bdelete menu'     , 'close menu']     ,
       \ 'n' : [':enew'     , 'new buffer']     ,
       \ 'v' : [':vnew'     , 'new vertical buffer']     ,
       \ 'h' : [':new'     , 'new horizontal buffer']     ,
       \ 'w' : ['Buffers'   , 'fzf-buffer']      ,
-      \ 'q' : ['bd'        , 'close-buffer']   ,
-      \ 'Q' : ['bd!'        , 'close-buffer!']   ,
+      \ 'q' : [':Bdelete this'        , 'close-buffer']   ,
+      \ 'Q' : [':Bdelete! this'        , 'close-buffer!']   ,
       \ }
+" custom mappings
 
 " s is for search
 let g:which_key_map.s = {

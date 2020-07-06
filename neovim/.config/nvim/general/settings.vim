@@ -30,6 +30,7 @@ set undodir=~/.config/nvim/undo/
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
+set confirm                 " Set confirm when closing buffer
 set mouse+=a                " Enable mouse
 syntax enable               " Enables syntax highlighing
 set cmdheight=2             " Give more space for displaying messages.

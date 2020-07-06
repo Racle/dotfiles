@@ -73,4 +73,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'alvan/vim-closetag'
   " nginx support
   Plug 'chr4/nginx.vim'
+  " close-buffers
+  Plug 'Asheq/close-buffers.vim'
 call plug#end()
