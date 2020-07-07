@@ -174,7 +174,8 @@ let g:which_key_map.l = {
       \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
       \ 'r' : ['<Plug>(coc-rename)'                  , 'rename'],
       \ 'R' : ['<Plug>(coc-references)'              , 'references'],
-      \ 's' : [':CocList -I symbols'                 , 'references'],
+      \ 's' : 'search',
+      \ 'S' : 'search word',
       \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
       \ 'u' : [':CocListResume'                      , 'resume list'],
       \ 'U' : [':CocUpdate'                          , 'update CoC'],
@@ -182,6 +183,9 @@ let g:which_key_map.l = {
       \ 'z' : [':CocDisable'                         , 'disable CoC'],
       \ 'Z' : [':CocEnable'                          , 'enable CoC'],
       \ }
+"custom commands
+nmap <leader>ls :CocSearch <left><right>
+nmap <leader>lS :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " t is for terminal
 let g:which_key_map['t'] = {

@@ -1,6 +1,11 @@
 " Gruvbox setting
 color gruvbox
 set background=dark
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_sign_column ='dark0'
+let g:gruvbox_invert_selection='0'
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Wildmenu
 set wildignorecase
@@ -75,4 +80,3 @@ autocmd FileChangedShellPost *
 " The 'nested' before call allows nested autocmds, important for
 " syntax detection etc.
 autocmd VimEnter * nested call MyVimEnter()
-
