@@ -100,3 +100,6 @@ imap <C-BS> <C-W>
 " Swap , and ;
 nnoremap , ;
 nnoremap ; ,
+
+" Change word under cursor
+nnoremap c. :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
