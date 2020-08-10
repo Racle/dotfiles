@@ -75,4 +75,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'chr4/nginx.vim'
   " close-buffers
   Plug 'Asheq/close-buffers.vim'
+  " GitMessenger
+  Plug 'rhysd/git-messenger.vim'
 call plug#end()
