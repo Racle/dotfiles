@@ -95,13 +95,16 @@ alias vim-php='tmux split-window -v && tmux resize-pane -t 2 -y 20 && tmux resiz
 alias r='ranger'
 alias _kill-tmux='kill -9 $(pidof tmux)'
 up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }
+# = <laskukaava>
+function = { echo "$@" | bc -l }
+alias calc="="
 
 # stop screen freezing
 stty stop undef
 stty start undef
 stty -ixon
 
-export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!{.git,node_modules,.idea,.vscode,.history}'" 
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!{.git,node_modules,.idea,.vscode,.history}'"
 
 [ -f ~/.docker_aliases ] && source ~/.docker_aliases
 
@@ -109,8 +112,8 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!{.git,node_modules,.ide
 #[ -f ~/.p10k-server.zsh ] && source ~/.p10k-server.zsh || [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
 if [ -f ~/.p10k-server.zsh ]; then
-  source ~/.p10k-server.zsh 
-else 
+  source ~/.p10k-server.zsh
+else
   [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 fi
 
