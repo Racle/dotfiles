@@ -81,7 +81,7 @@ let g:which_key_map.S = {
       \ 'name' : '+sessions' ,
       \ 's' : {
               \ 'name': '+save',
-              \ 's': ["SaveVimSession(0)"     , 'save 1'],
+              \ 's': ["SaveVimSession(1)"     , 'save 1'],
               \ '1': ['SaveVimSession(1)'     , 'save 1'],
               \ '2': ['SaveVimSession(2)'     , 'save 2'],
               \ '3': ['SaveVimSession(3)'     , 'save 3'],
