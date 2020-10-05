@@ -1,5 +1,5 @@
-function! SourceIfExists(file) 
-  if filereadable(expand(a:file)) 
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
     exe 'source' a:file
   endif
 endfunction
@@ -17,4 +17,15 @@ function MyVimEnter()
   "   execute ":Files"
   " endif
 
+endfunction
+
+function SaveVimSession(session)
+  !mkdir -p .vim/sessions
+  exe 'mksession! .vim/sessions/vim.session.' . a:session
+  echo 'mksession! .vim/sessions/vim.session.' . a:session
+endfunction
+
+
+function! LoadVimSession(session)
+  exe 'source .vim/sessions/vim.session.' . a:session
 endfunction

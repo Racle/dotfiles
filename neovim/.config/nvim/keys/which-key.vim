@@ -77,6 +77,38 @@ let g:which_key_map.b = {
       \ }
 " custom mappings
 
+let g:which_key_map.S = {
+      \ 'name' : '+sessions' ,
+      \ 's' : {
+              \ 'name': '+save',
+              \ 's': ["SaveVimSession(0)"     , 'save 1'],
+              \ '1': ['SaveVimSession(1)'     , 'save 1'],
+              \ '2': ['SaveVimSession(2)'     , 'save 2'],
+              \ '3': ['SaveVimSession(3)'     , 'save 3'],
+              \ '4': ['SaveVimSession(4)'     , 'save 4'],
+              \ '5': ['SaveVimSession(5)'     , 'save 5'],
+              \ '6': ['SaveVimSession(6)'     , 'save 6'],
+              \ '7': ['SaveVimSession(7)'     , 'save 7'],
+              \ '8': ['SaveVimSession(8)'     , 'save 8'],
+              \ '9': ['SaveVimSession(9)'     , 'save 9'],
+              \ '0': ['SaveVimSession(0)'     , 'save 0'],
+              \ },
+      \ 'l' : {
+              \ 'name': '+load',
+              \ 'l': ['LoadVimSession(1)'     , 'load 1'],
+              \ '1': ['LoadVimSession(1)'     , 'load 1'],
+              \ '2': ['LoadVimSession(2)'     , 'load 2'],
+              \ '3': ['LoadVimSession(3)'     , 'load 3'],
+              \ '4': ['LoadVimSession(4)'     , 'load 4'],
+              \ '5': ['LoadVimSession(5)'     , 'load 5'],
+              \ '6': ['LoadVimSession(6)'     , 'load 6'],
+              \ '7': ['LoadVimSession(7)'     , 'load 7'],
+              \ '8': ['LoadVimSession(8)'     , 'load 8'],
+              \ '9': ['LoadVimSession(9)'     , 'load 9'],
+              \ '0': ['LoadVimSession(0)'     , 'load 0'],
+              \ },
+      \ }
+
 " s is for search
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
