@@ -9,9 +9,12 @@ function MyVimEnter()
     return
   endif
 
-  execute ":Files"
+  if filereadable('.vim/sessions/vim.session.1')
+    exec LoadVimSession("1")
+  else
+    execute ":Files"
+  endif
 
-  " if exists("v:oldfiles[0]") && filereadable(expand(v:oldfiles[0]))
   "   execute "e " . v:oldfiles[0]
   " else
   "   execute ":Files"
@@ -28,4 +31,13 @@ endfunction
 
 function! LoadVimSession(session)
   exe 'source .vim/sessions/vim.session.' . a:session
+endfunction
+
+
+function! RemoveAllVimSessions()
+  exe 'rm -f .vim/sessions/vim.session.*'
+endfunction
+
+function! RemoveVimSession(session)
+  exe 'rm -f .vim/sessions/vim.session.' . a:session
 endfunction

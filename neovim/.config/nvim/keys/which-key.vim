@@ -77,6 +77,7 @@ let g:which_key_map.b = {
       \ }
 " custom mappings
 
+" vim sessions
 let g:which_key_map.S = {
       \ 'name' : '+sessions' ,
       \ 's' : {
@@ -106,6 +107,20 @@ let g:which_key_map.S = {
               \ '8': ['LoadVimSession(8)'     , 'load 8'],
               \ '9': ['LoadVimSession(9)'     , 'load 9'],
               \ '0': ['LoadVimSession(0)'     , 'load 0'],
+              \ },
+      \ 'd' : {
+              \ 'name': '+delete',
+              \ 'a': ['DeleteAllVimSessions()'     , 'delete all'],
+              \ '1': ['DeleteVimSession(1)'     , 'delete 1'],
+              \ '2': ['DeleteVimSession(2)'     , 'delete 2'],
+              \ '3': ['DeleteVimSession(3)'     , 'delete 3'],
+              \ '4': ['DeleteVimSession(4)'     , 'delete 4'],
+              \ '5': ['DeleteVimSession(5)'     , 'delete 5'],
+              \ '6': ['DeleteVimSession(6)'     , 'delete 6'],
+              \ '7': ['DeleteVimSession(7)'     , 'delete 7'],
+              \ '8': ['DeleteVimSession(8)'     , 'delete 8'],
+              \ '9': ['DeleteVimSession(9)'     , 'delete 9'],
+              \ '0': ['DeleteVimSession(0)'     , 'delete 0'],
               \ },
       \ }
 
