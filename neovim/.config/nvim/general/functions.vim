@@ -41,3 +41,17 @@ endfunction
 function! RemoveVimSession(session)
   exe 'rm -f .vim/sessions/vim.session.' . a:session
 endfunction
+
+
+" A global variable that contains the size of which a file is considered
+" large.  In this case, it is 10 megabytes.
+let g:large_file = 1024 * 1024 * 10
+
+" This autocmd runs before reading the file into the buffer.  It
+" gets the file that the autocmd is running on by running expand on
+" <afile>, which is short for the path to the file that the autocmd
+" is running on.  Then, it gets the size of the file running
+" getfsize on the file and sees if it is larger than the size
+" specified in g:large_file.  If it is, it disables the swap file.
+autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f)
+            \ > g:large_file | set noswapfile | endif
