@@ -25,21 +25,18 @@ endfunction
 function SaveVimSession(session)
   !mkdir -p .vim/sessions
   exe 'mksession! .vim/sessions/vim.session.' . a:session
-  echo 'mksession! .vim/sessions/vim.session.' . a:session
 endfunction
-
 
 function! LoadVimSession(session)
   exe 'source .vim/sessions/vim.session.' . a:session
 endfunction
 
-
-function! RemoveAllVimSessions()
-  exe 'rm -f .vim/sessions/vim.session.*'
+function DeleteAllVimSessions()
+  exe '!rm -f .vim/sessions/vim.session.*'
 endfunction
 
-function! RemoveVimSession(session)
-  exe 'rm -f .vim/sessions/vim.session.' . a:session
+function DeleteVimSession(session)
+  exe '!rm -f .vim/sessions/vim.session.' . a:session
 endfunction
 
 
