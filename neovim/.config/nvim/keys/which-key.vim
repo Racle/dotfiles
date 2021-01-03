@@ -42,6 +42,8 @@ let g:which_key_map['Q'] = [ ':Bdelete! this', 'close-buffer!']
 " a is for actions
 let g:which_key_map.a = {
       \ 'name' : '+actions' ,
+      \ 'b' : [':set clipboard=unnamedplus'        , 'normal clipboard'],
+      \ 'B' : [':set clipboard='        , 'blockpaste clipboard'],
       \ 'c' : [':ColorizerToggle'        , 'colorizer'],
       \ 'e' : [':CocCommand explorer'    , 'explorer'],
       \ 'n' : [':set nonumber!'          , 'line-numbers'],
