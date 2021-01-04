@@ -9,3 +9,4 @@ neovim/.config/nvim/backup/
 neovim/.config/nvim/undo/
 neovim/.config/nvim/swap/
 ranger/.config/ranger/plugins/
+neovim/.config/nvim/.netrwhist
