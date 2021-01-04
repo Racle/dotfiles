@@ -84,3 +84,7 @@ autocmd VimEnter * nested call MyVimEnter()
 " disable first click when gaining back focus
 autocmd FocusGained * set mouse+=a
 autocmd FocusLost * set mouse=
+
+" golang indent fix. exec for fixing automatic trailing whitespace removing
+exec 'set lcs=tab:\┊\ '
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']

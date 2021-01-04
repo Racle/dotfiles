@@ -79,4 +79,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'rhysd/git-messenger.vim'
   " mini-yank (fixes clipboard=unnamedplus block paste issue)
   Plug 'bfredl/nvim-miniyank'
+  " identLine, | between multiline {}
+  Plug 'Yggdroot/indentLine'
 call plug#end()
