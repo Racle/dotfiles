@@ -1,3 +1,12 @@
+function PlugCocUpdate()
+  set nomore
+  PlugUpgrade
+  PlugUpdate
+  CocUpdate
+endfunction
+
+command! PlugCocUpdate call PlugCocUpdate()
+
 function! SourceIfExists(file)
   if filereadable(expand(a:file))
     exe 'source' a:file
