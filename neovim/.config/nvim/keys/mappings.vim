@@ -107,3 +107,6 @@ nnoremap c. :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 " fixes clipboard=unnamedplus block copy/paste issue
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
+
+" show documentation with gh
+nmap <silent> gh :call ShowDocumentation()<CR>

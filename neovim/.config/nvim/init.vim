@@ -24,6 +24,7 @@ source ~/.config/nvim/plug-config/visual-multi.vim
 source ~/.config/nvim/plug-config/closetag.vim
 source ~/.config/nvim/plug-config/tmux-navigator.vim
 source ~/.config/nvim/plug-config/git-messenger.vim
+source ~/.config/nvim/plug-config/go.vim
 
 " settings
 source ~/.config/nvim/general/settings.vim

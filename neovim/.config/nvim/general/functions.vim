@@ -61,3 +61,20 @@ let g:large_file = 1024 * 1024 * 10
 " specified in g:large_file.  If it is, it disables the swap file.
 autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f)
             \ > g:large_file | set noswapfile | endif
+
+" Documentation on hover
+augroup hover
+    autocmd!
+    " autocmd CursorHold * silent if ! coc#float#has_float()
+    "     \| call CocAction('doHover')
+    " \| endif
+    " autocmd CursorHoldI * silent call CocAction('showSignatureHelp')
+augroup end
+
+function ShowDocumentation()
+
+    if ! coc#float#has_float()
+       call CocAction('doHover')
+    endif
+
+endfunction

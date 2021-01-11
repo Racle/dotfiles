@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
   \ 'coc-homeassistant',
   \ 'coc-gitignore',
   \ 'coc-spell-checker',
+  \ 'coc-tsserver',
   \ 'coc-pairs'
   \ ]
 
