@@ -65,8 +65,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-repeat'
   " Quick peek for Ctrl+R and @
   Plug 'junegunn/vim-peekaboo'
-  " nice interface for vim-fugitive
-  Plug 'idanarye/vim-merginal'
   " markdown preview
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
   " closetags

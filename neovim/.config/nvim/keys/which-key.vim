@@ -154,12 +154,13 @@ let g:which_key_map.s = {
       \ }
 
 let g:which_key_map.G = {
-      \ 'name' : '+git diff' ,
-      \ 'D' : [':Gdiffsplit!'            , 'diff split'],
-      \ 'H' : [':diffget //2'            , 'diffget from right'],
-      \ 'L' : [':diffget //3'            , 'diffget from left'],
-      \ 'J' : [']c'                      , 'prev change'],
-      \ 'K' : ['[c'                      , 'next change'],
+      \ 'name' : '+git diff'  ,
+      \ 'D' : [':Gdiffsplit!' , 'diff split'],
+      \ 'H' : [':diffget //2' , 'diffget from right'],
+      \ 'L' : [':diffget //3' , 'diffget from left'],
+      \ 'J' : [']c'           , 'prev change'],
+      \ 'K' : ['[c'           , 'next change'],
+      \ 'm' : [':!meld . &'   , 'open meld mergetool'],
       \ }
 
 " g is for git
@@ -180,7 +181,7 @@ let g:which_key_map.g = {
       \ 'k' : ['<Plug>(signify-prev-hunk)'      , 'prev hunk'],
       \ 'l' : [':Git log'                       , 'log'],
       \ 'm' : 'git messenger',
-      \ 'M' : [':MerginalToggle'                , 'Merginal'],
+      \ 'M' : [':!meld . &'                     , 'open meld mergetool'],
       \ 'P' : [':Git push'                      , 'push'],
       \ 'p' : [':Git pull'                      , 'pull'],
       \ 'r' : [':GRemove'                       , 'remove'],
