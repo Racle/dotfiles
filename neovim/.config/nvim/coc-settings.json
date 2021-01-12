@@ -4,7 +4,7 @@
   "explorer.icon.enableNerdfont": true,
   "yaml.schemas": {
     "https://json.schemastore.org/ansible-stable-2.9": "**/*.ans.yml",
-    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_compose_spec.json": "**/docker-compose*.yml"
+    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "**/docker-compose*.yml"
   },
   "cSpell.enabled": false,
   "cSpell.userWords": ["Dotfiles"]
