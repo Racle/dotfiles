@@ -232,12 +232,21 @@ let g:which_key_map.l = {
       \ 'z' : [':CocDisable'                         , 'disable CoC'],
       \ 'Z' : [':CocEnable'                          , 'enable CoC'],
       \ }
+
+" a is for actions
+let g:which_key_map.T = {
+      \ 'name' : '+Tabularize' ,
+      \ '=' : [':Tabularize /='                          , '='],
+      \ ':' : [':Tabularize /:\zs'                          , ':'],
+      \ ',' : [':Tabularize /,\zs'                          , ','],
+      \ }
+
 "custom commands
 nmap <leader>ls :CocSearch <left><right>
 nmap <leader>lS :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 " t is for terminal
-let g:which_key_map['t'] = {
+let g:which_key_map.t = {
       \ 'name' : '+terminal' ,
       \ 'g' : [':FloatermNew lazygit'                           , 'git'],
       \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
