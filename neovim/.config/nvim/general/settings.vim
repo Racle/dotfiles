@@ -90,4 +90,4 @@ exec 'set lcs=tab:\┊\ '
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " identLine fix for json files and missing "
-autocmd Filetype json let g:indentLine_setConceal = 0
+autocmd Filetype json :IndentLinesDisable
