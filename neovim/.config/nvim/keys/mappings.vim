@@ -110,3 +110,6 @@ map P <Plug>(miniyank-autoPut)
 
 " show documentation with gh
 nmap <silent> gh :call ShowDocumentation()<CR>
+
+" exit terminal mode with esc
+tnoremap <Esc> <C-\><C-n>
