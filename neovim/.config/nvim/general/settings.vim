@@ -86,7 +86,8 @@ autocmd FocusGained * set mouse+=a
 autocmd FocusLost * set mouse=
 
 " golang indent fix. exec for fixing automatic trailing whitespace removing
-exec 'set lcs=tab:\┊\ '
+autocmd Filetype go :exec 'setlocal lcs=tab:\┊\ '
+
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " identLine fix for json files and missing "

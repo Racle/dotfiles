@@ -69,6 +69,8 @@ let g:which_key_map.b = {
       \ 'o' : [':Bdelete other'     , 'close other buffers']     ,
       \ 'd' : [':Bdelete menu'     , 'close menu']     ,
       \ 'n' : [':enew'     , 'new buffer']     ,
+      \ 'V' : [':vsp'     , 'new vertical split']     ,
+      \ 'H' : [':sp'     , 'new horizontal split']     ,
       \ 'v' : [':vnew'     , 'new vertical buffer']     ,
       \ 'h' : [':new'     , 'new horizontal buffer']     ,
       \ 'w' : ['Buffers'   , 'fzf-buffer']      ,
