@@ -24,10 +24,10 @@ nmap <silent> gö <Plug>(coc-diagnostic-prev)
 nmap <silent> gä <Plug>(coc-diagnostic-next)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<C-M-J>'
+let g:coc_snippet_next = '<C-j>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<C-M-K>'
+let g:coc_snippet_prev = '<C-k>'
 
 " run goimports on save
 let g:go_fmt_command = "goimports"
