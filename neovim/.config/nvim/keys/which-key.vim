@@ -256,5 +256,18 @@ let g:which_key_map.t = {
       \ }
 
 
+" VimWiki bindings
+let g:which_key_map.w = {
+      \ 'name' : '+VimWiki'  ,
+      \ 'w' : 'Open wiki',
+      \ 't' : 'Open wiki (tab)',
+      \ 's' : 'Select and open wiki',
+      \ 'd' : 'Delete wiki',
+      \ 'r' : 'Rename wiki',
+      \ }
+
+
+
+
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

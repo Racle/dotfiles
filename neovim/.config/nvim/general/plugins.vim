@@ -79,4 +79,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'bfredl/nvim-miniyank'
   " identLine, | between multiline {}
   Plug 'Yggdroot/indentLine'
+  " VimWiki
+  Plug 'vimwiki/vimwiki'
+  Plug 'michal-h21/vimwiki-sync'
 call plug#end()

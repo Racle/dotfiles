@@ -92,3 +92,4 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " identLine fix for json files and missing "
 autocmd Filetype json :IndentLinesDisable
+autocmd Filetype vimwiki :IndentLinesDisable
