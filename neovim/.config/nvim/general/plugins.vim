@@ -80,4 +80,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " identLine, | between multiline {}
   Plug 'Yggdroot/indentLine'
   " Plug 'glepnir/indent-guides.nvim'
+  " VimWiki
+  Plug 'vimwiki/vimwiki'
+  Plug 'michal-h21/vimwiki-sync'
 call plug#end()

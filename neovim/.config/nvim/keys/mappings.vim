@@ -9,11 +9,14 @@ nmap § <C-c>
 imap § <C-c>
 xmap § <C-c>
 
+" disable digraph hotkey, works better with coc-snippets
+imap <C-k> <NOP>
+
 " ctrl+hjkl change window (better window navigation)
-imap <C-h> <C-w>h
-imap <C-j> <C-w>j
-imap <C-k> <C-w>k
-imap <C-l> <C-w>l
+" imap <C-h> <C-w>h
+" imap <C-j> <C-w>j
+" imap <C-k> <C-w>k
+" imap <C-l> <C-w>l
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
