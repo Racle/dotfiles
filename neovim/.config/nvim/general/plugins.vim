@@ -79,4 +79,5 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'bfredl/nvim-miniyank'
   " identLine, | between multiline {}
   Plug 'Yggdroot/indentLine'
+  " Plug 'glepnir/indent-guides.nvim'
 call plug#end()
