@@ -116,3 +116,11 @@ nmap <silent> gh :call ShowDocumentation()<CR>
 
 " exit terminal mode with esc
 tnoremap <Esc> <C-\><C-n>
+
+" map öä {} ÖÄ []
+" Bug: ubuntu outputs :/' when usint with ctrl
+set langmap=öäÖÄ;{}[]
+
+nmap [Ö [[
+nmap ]Ä ]]
+map Ä ]
