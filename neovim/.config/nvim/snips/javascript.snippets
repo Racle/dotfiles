@@ -27,3 +27,8 @@
 snippet cll "console.log" b
 console.log( { $0 } )
 endsnippet
+
+
+snippet immutable "immutable.fromJS.toJS" b
+let ${1:var} = Immutable.fromJS(${2:var}).toJS()
+endsnippet

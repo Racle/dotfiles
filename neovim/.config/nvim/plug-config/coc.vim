@@ -25,7 +25,6 @@ nmap <silent> gä <Plug>(coc-diagnostic-next)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<C-j>'
-
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<C-k>'
 

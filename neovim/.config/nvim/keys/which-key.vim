@@ -77,7 +77,13 @@ let g:which_key_map.b = {
       \ 'q' : [':Bdelete this'        , 'close-buffer']   ,
       \ 'Q' : [':Bdelete! this'        , 'close-buffer!']   ,
       \ }
-" custom mappings
+
+" c is for coc actions
+let g:which_key_map.c = {
+      \ 'name' : '+coc' ,
+      \ 'c' : [':CocCommand', 'command list'],
+      \ 's' : [':CocCommand snippets.editSnippets', 'edit snippets'],
+      \ }
 
 " vim sessions
 let g:which_key_map.S = {
