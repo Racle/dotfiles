@@ -26,6 +26,7 @@ source ~/.config/nvim/plug-config/tmux-navigator.vim
 source ~/.config/nvim/plug-config/git-messenger.vim
 source ~/.config/nvim/plug-config/go.vim
 source ~/.config/nvim/plug-config/vimwiki.vim
+source ~/.config/nvim/plug-config/ultisnips.vim
 
 " settings
 source ~/.config/nvim/general/settings.vim

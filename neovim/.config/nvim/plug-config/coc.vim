@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-go',
   \ 'coc-snippets',
+  \ 'coc-ultisnips',
   \ 'coc-explorer',
   \ 'coc-docker',
   \ 'coc-yaml',
