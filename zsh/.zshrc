@@ -100,6 +100,8 @@ up() { local x='';for i in $(seq ${1:-1});do x="$x../"; done;cd $x; }
 # = <laskukaava>
 function = { echo "$@" | bc -l }
 alias calc="="
+alias gp="git pull"
+alias gP="git push"
 
 # stop screen freezing
 stty stop undef
