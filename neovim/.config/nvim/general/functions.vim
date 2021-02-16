@@ -1,4 +1,5 @@
 function PlugCocUpdate()
+  set shortmess=a
   set nomore
   PlugUpgrade
   PlugUpdate
