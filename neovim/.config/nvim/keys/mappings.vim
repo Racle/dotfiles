@@ -114,8 +114,9 @@ map P <Plug>(miniyank-autoPut)
 " show documentation with gh
 nmap <silent> gh :call ShowDocumentation()<CR>
 
-" exit terminal mode with esc
-tnoremap <Esc> <C-\><C-n>
+" exit terminal mode with Esc, change to insert mode with §
+tnoremap <Esc> <Esc>
+tnoremap § <C-\><C-n>
 
 " map öä {} ÖÄ []
 " Bug: ubuntu outputs :/' when usint with ctrl
