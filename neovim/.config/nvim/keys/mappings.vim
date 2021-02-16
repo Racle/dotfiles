@@ -28,7 +28,12 @@ tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
-tnoremap <Esc> <C-\><C-n>
+
+" Terminal go back to normal mode
+tnoremap :q! <C-\><C-n>:q!<CR>
+
+" Change to insert mode with § in terminal
+tnoremap § <C-\><C-n>
 
 " Use alt + hjkl to resize windows
 nnoremap <silent> <M-j>    :resize -2<CR>
@@ -45,9 +50,6 @@ nnoremap tl :tabprev<CR>
 " inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 " inoremap <C-tab>   <Esc>:tabnext<CR>i
 
-" Terminal go back to normal mode
-tnoremap <Esc> <C-\><C-n>
-tnoremap :q! <C-\><C-n>:q!<CR>
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
@@ -86,9 +88,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " open files with ctrl+n
 " map <C-S-n> <Esc><Esc>:Files<CR>
 
-" esc to close terminal
-tnoremap <Esc> <C-\><C-n>
-
 " ctrl+s => save
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
@@ -113,10 +112,6 @@ map P <Plug>(miniyank-autoPut)
 
 " show documentation with gh
 nmap <silent> gh :call ShowDocumentation()<CR>
-
-" exit terminal mode with Esc, change to insert mode with §
-tnoremap <Esc> <Esc>
-tnoremap § <C-\><C-n>
 
 " map öä {} ÖÄ []
 " Bug: ubuntu outputs :/' when usint with ctrl
