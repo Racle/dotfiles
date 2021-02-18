@@ -41,8 +41,9 @@ nnoremap <silent> <M-k>    :resize +2<CR>
 nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
-" Auto completion with tab + enter
+" Auto completion with tab + enter in insert mode and command mode
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+cnoremap <expr> <CR> pumvisible() ? "\<C-e>" : "\<CR>"
 
 " Change tabs
 nnoremap th :tabnext<CR>
