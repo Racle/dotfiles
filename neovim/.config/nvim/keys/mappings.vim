@@ -44,6 +44,8 @@ nnoremap <silent> <M-l>    :vertical resize +2<CR>
 " Auto completion with tab + enter in insert mode and command mode
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 cnoremap <expr> <CR> pumvisible() ? "\<C-e>" : "\<CR>"
+" nvim 0.5 uses this
+" cnoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Change tabs
 nnoremap th :tabnext<CR>
@@ -121,3 +123,6 @@ set langmap=öäÖÄ;{}[]
 nmap [Ö [[
 nmap ]Ä ]]
 map Ä ]
+
+" fix for highlightedyank if needed
+" map y <Plug>(highlightedyank)

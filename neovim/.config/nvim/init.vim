@@ -27,6 +27,8 @@ source ~/.config/nvim/plug-config/git-messenger.vim
 source ~/.config/nvim/plug-config/go.vim
 source ~/.config/nvim/plug-config/vimwiki.vim
 source ~/.config/nvim/plug-config/ultisnips.vim
+" for nvim 0.5
+" source ~/.config/nvim/plug-config/indent-blankline.vim
 
 " settings
 source ~/.config/nvim/general/settings.vim
