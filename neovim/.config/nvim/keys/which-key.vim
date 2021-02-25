@@ -267,7 +267,7 @@ let g:which_key_map.w = {
       \ 'name' : '+VimWiki'  ,
       \ 'w' : 'Open wiki',
       \ 't' : 'Open wiki (tab)',
-      \ 's' : 'Select and open wiki',
+      \ 's' : [':!sh -c "cd ~/vimwiki && git push"', 'Save wiki'],
       \ 'd' : 'Delete wiki',
       \ 'r' : 'Rename wiki',
       \ }
