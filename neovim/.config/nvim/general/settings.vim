@@ -79,7 +79,7 @@ autocmd FileChangedShellPost *
 
 " The 'nested' before call allows nested autocmds, important for
 " syntax detection etc.
-autocmd VimEnter * nested call MyVimEnter()
+autocmd! VimEnter * nested call MyVimEnter()
 
 " disable first click when gaining back focus
 autocmd FocusGained * set mouse+=a

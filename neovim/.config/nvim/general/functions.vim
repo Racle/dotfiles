@@ -20,7 +20,7 @@ function MyVimEnter()
   endif
 
   if filereadable('.vim/sessions/vim.session.1')
-    exec LoadVimSession("1")
+    call LoadVimSession("1")
   else
     execute ":Files"
   endif
