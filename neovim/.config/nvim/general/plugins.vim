@@ -85,4 +85,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " VimWiki
   Plug 'vimwiki/vimwiki'
   Plug 'michal-h21/vimwiki-sync'
+  " restore cursor position on file open
+  Plug 'farmergreg/vim-lastplace'
 call plug#end()
