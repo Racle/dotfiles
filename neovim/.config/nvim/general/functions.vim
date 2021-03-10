@@ -79,3 +79,7 @@ function ShowDocumentation()
     endif
 
 endfunction
+
+function FloatermOpenCheat()
+  exe ':FloatermNew expect-spawn-zsh cheat ' . &ft
+endfunction

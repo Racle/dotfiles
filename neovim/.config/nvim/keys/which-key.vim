@@ -259,6 +259,7 @@ let g:which_key_map.t = {
       \ 'g' : [':FloatermNew lazygit'                           , 'git'],
       \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
       \ 't' : [':FloatermToggle'         , 'terminal'],
+      \ 'c' : [':call FloatermOpenCheat()'         , 'cheat'],
       \ }
 
 
