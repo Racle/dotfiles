@@ -18,6 +18,10 @@ imap <C-k> <NOP>
 " imap <C-k> <C-w>k
 " imap <C-l> <C-w>l
 
+" Navigate quickfix list
+nmap <M-K> :cp<CR>
+nmap <M-J> :cn<CR>
+
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k

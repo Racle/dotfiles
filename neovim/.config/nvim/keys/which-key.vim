@@ -36,7 +36,7 @@ let g:which_key_map['q'] = 'close buffer (:bd)'
 let g:which_key_map['o'] = 'new line down'
 let g:which_key_map['O'] = 'new line up'
 let g:which_key_map['q'] = [ ':Bdelete this', 'close-buffer']
-let g:which_key_map['Q'] = [ ':Bdelete! this', 'close-buffer!']
+let g:which_key_map['Q'] = [ ':ccl', 'close quickfix']
 " Group mappings
 
 " a is for actions
