@@ -87,4 +87,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'michal-h21/vimwiki-sync'
   " restore cursor position on file open
   Plug 'farmergreg/vim-lastplace'
+  " :bnext / :bprev motion support
+  Plug 'tpope/vim-unimpaired'
 call plug#end()

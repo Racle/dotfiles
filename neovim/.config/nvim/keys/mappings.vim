@@ -57,6 +57,11 @@ nnoremap tl :tabprev<CR>
 " inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 " inoremap <C-tab>   <Esc>:tabnext<CR>i
 
+" Change buffers (vim-unimpaired with motion support)
+nmap <Tab> ]b
+nmap <S-Tab> [b
+
+
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
