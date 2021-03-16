@@ -1,4 +1,7 @@
 " https://github.com/ChristianChiarulli/nvim/blob/master/keys/which-key.vim
+" to prettify, use <leader>T,
+" to fix commas before tabularize, %s/,\s*'/,'/g
+
 " Map leader to which_key
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
@@ -246,7 +249,7 @@ let g:which_key_map.T = {
       \ 'name' : '+Tabularize',
       \ '=' : [':Tabularize /=',     '='],
       \ ':' : [':Tabularize /:\zs',  ':'],
-      \ ',                           ' : [':Tabularize /,  \zs',  ',  '],
+      \ ',' : [':Tabularize /,  \zs',  ',  '],
       \ }
 
 "custom commands
