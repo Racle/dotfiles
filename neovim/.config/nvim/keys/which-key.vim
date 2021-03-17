@@ -249,7 +249,7 @@ let g:which_key_map.T = {
       \ 'name' : '+Tabularize',
       \ '=' : [':Tabularize /=',     '='],
       \ ':' : [':Tabularize /:\zs',  ':'],
-      \ ',' : [':Tabularize /,  \zs',  ',  '],
+      \ ',' : [':Tabularize /,\zs',  ','],
       \ }
 
 "custom commands
