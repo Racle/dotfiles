@@ -83,3 +83,16 @@ endfunction
 function FloatermOpenCheat()
   exe ':FloatermNew expect-spawn-zsh cheat ' . &ft
 endfunction
+
+function! CleanEmptyBuffers()
+    " let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
+    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && !getbufvar(v:val, "&mod")')
+    if !empty(buffers)
+        exe 'bw ' . join(buffers, ' ')
+    endif
+endfunction
+
+function! CloseThisBuffer()
+  exe 'Bdelete this'
+  call CleanEmptyBuffers()
+endfunction

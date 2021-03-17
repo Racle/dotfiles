@@ -38,7 +38,7 @@ let g:which_key_map['R'] = 'replace (confirm)'
 let g:which_key_map['q'] = 'close buffer (:bd)'
 let g:which_key_map['o'] = 'new line down'
 let g:which_key_map['O'] = 'new line up'
-let g:which_key_map['q'] = [ ':Bdelete this','close-buffer']
+let g:which_key_map['q'] = [ ':call CloseThisBuffer()', 'close-buffer']
 let g:which_key_map['Q'] = [ ':ccl','close quickfix']
 " Group mappings
 
@@ -72,10 +72,10 @@ let g:which_key_map.b = {
       \ 'o' : [':Bdelete other',  'close other buffers'],
       \ 'd' : [':Bdelete menu',   'close menu'],
       \ 'n' : [':enew',           'new buffer'],
-      \ 'V' : [':vsp',            'new vertical split'],
-      \ 'H' : [':sp',             'new horizontal split'],
-      \ 'v' : [':vnew',           'new vertical buffer'],
-      \ 'h' : [':new',            'new horizontal buffer'],
+      \ 'v' : [':vsp',            'new vertical split'],
+      \ 'h' : [':sp',             'new horizontal split'],
+      \ 'V' : [':vnew',           'new vertical buffer'],
+      \ 'H' : [':new',            'new horizontal buffer'],
       \ 'w' : ['Buffers',         'fzf-buffer'],
       \ 'q' : [':Bdelete this',   'close-buffer'],
       \ 'Q' : [':Bdelete! this',  'close-buffer!'],
