@@ -61,7 +61,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY=None
 POWERLEVEL9K_STATUS_CROSS=true
-alias o=xdg-open
 
 #Disable bracketed paste (ctrl+v => ctrl+shift+v = \e[200~
 unset zle_bracketed_paste
@@ -84,6 +83,7 @@ fi
   # bindkey "^[[H" beginning-of-line
   # bindkey "^[[F" end-of-line
 
+alias o=xdg-open
 alias set_xterm_color="export TERM=\"xterm-256color\""
 alias set_screen_color="export TERM=\"screen-256color\""
 alias gitmergedevtomaster="git checkout develop && git pull && git push && git checkout master && git pull && git merge develop && git pull && git push && git checkout develop && git pull"
@@ -104,6 +104,7 @@ function = { echo "$@" | bc -l }
 alias calc="="
 alias gp="git pull"
 alias gP="git push"
+alias lg="lazygit"
 
 # stop screen freezing
 stty stop undef
