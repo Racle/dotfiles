@@ -79,14 +79,21 @@ call plug#begin(stdpath('data') . '/plugged')
   " mini-yank (fixes clipboard=unnamedplus block paste issue)
   Plug 'bfredl/nvim-miniyank'
   " identLine, | between multiline {}
-  " Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
-  Plug 'Yggdroot/indentLine'
+  Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+  " Plug 'Yggdroot/indentLine'
   " Plug 'glepnir/indent-guides.nvim'
   " VimWiki
   Plug 'vimwiki/vimwiki'
   Plug 'michal-h21/vimwiki-sync'
   " restore cursor position on file open
   Plug 'farmergreg/vim-lastplace'
-  " :bnext / :bprev motion support
-  Plug 'tpope/vim-unimpaired'
+  " lualine (tabs)
+  Plug 'akinsho/nvim-bufferline.lua'
+  " icons
+  Plug 'kyazdani42/nvim-web-devicons'
+  " nvim-telescope (fzf replacement, leaving for future)
+  " Plug 'nvim-lua/popup.nvim'
+  " Plug 'nvim-lua/plenary.nvim'
+  " Plug 'nvim-telescope/telescope.nvim'
+  " Plug 'nvim-telescope/telescope-media-files.nvim'
 call plug#end()

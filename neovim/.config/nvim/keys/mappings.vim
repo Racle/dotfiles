@@ -47,9 +47,9 @@ nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Auto completion with tab + enter in insert mode and command mode
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-cnoremap <expr> <CR> pumvisible() ? "\<C-e>" : "\<CR>"
+" cnoremap <expr> <CR> pumvisible() ? "\<C-e>" : "\<CR>"
 " nvim 0.5 uses this
-" cnoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+cnoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Change tabs
 nnoremap th :tabnext<CR>
@@ -57,9 +57,9 @@ nnoremap tl :tabprev<CR>
 " inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 " inoremap <C-tab>   <Esc>:tabnext<CR>i
 
-" Change buffers (vim-unimpaired with motion support)
-nmap <Tab> ]b
-nmap <S-Tab> [b
+" Change buffers
+nmap <Tab> [b
+nmap <S-Tab> b]
 
 
 

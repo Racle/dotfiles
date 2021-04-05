@@ -88,6 +88,17 @@ let g:which_key_map.c = {
       \ 's' : [':CocCommand snippets.editSnippets','edit snippets'],
       \ }
 
+" nvim telescope find
+" let g:which_key_map.f = {
+"       \ 'name' : '+find',
+"       \ 'b' : 'buffers',
+"       \ 'p' : 'preview media',
+"       \ 'f' : 'files',
+"       \ 'g' : 'grep files',
+"       \ 'o' : 'recently opened',
+"       \ 'h' : 'help'
+"       \ }
+
 " vim sessions
 let g:which_key_map.S = {
       \ 'name' : '+sessions',
