@@ -84,10 +84,3 @@ autocmd! VimEnter * nested call MyVimEnter()
 " disable first click when gaining back focus
 autocmd FocusGained * set mouse+=a
 autocmd FocusLost * set mouse=
-
-" golang indent fix. exec for fixing automatic trailing whitespace removing
-" autocmd Filetype go :exec 'setlocal lcs=tab:\┊\ '
-
-" identLine fix for json files and missing "
-autocmd Filetype json :IndentLinesDisable
-autocmd Filetype vimwiki :IndentLinesDisable

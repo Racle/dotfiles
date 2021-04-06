@@ -1,7 +1,7 @@
 vim.o.termguicolors = true
 
 require "bufferline".setup {
-    highlights = {,
+    highlights = {
         fill = {
             guibg = "#282828"
         },
@@ -13,7 +13,7 @@ require "bufferline".setup {
         },
         separator = {
             guifg = "#282828"
-        },
+        }
     },
     options = {
         modified_icon = "●",

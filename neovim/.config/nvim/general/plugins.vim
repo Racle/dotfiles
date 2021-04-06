@@ -3,12 +3,16 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " vim-go
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  " Automatic surround
+  " Automatic surround / pairs
   Plug 'tpope/vim-surround'
   " commenting
   Plug 'tpope/vim-commentary'
   " Gruvbox theme
   Plug 'gruvbox-community/gruvbox'
+  " airline + tagbar (current function name on vim-airline)
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'preservim/tagbar', { 'do': 'npm install -g git+https://github.com/ramitos/jsctags.git' }
   " fzf
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -16,8 +20,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " Pass focus events from tmux to Vim (useful for autoread and linting tools).
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'tmux-plugins/vim-tmux'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   " Git plugin
   Plug 'tpope/vim-fugitive'
   Plug 'tommcdo/vim-fubitive'
@@ -43,10 +45,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " ultisnips and snippets
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-  " auto-pairs
-  " Plug 'jiangmiao/auto-pairs'
-  " tagbar (current function name on vim-airline)
-  Plug 'majutsushi/tagbar', { 'do': 'npm install -g git+https://github.com/ramitos/jsctags.git' }
   " Quickscope
   Plug 'unblevable/quick-scope'
   " multiple cursor
@@ -78,25 +76,25 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'rhysd/git-messenger.vim'
   " mini-yank (fixes clipboard=unnamedplus block paste issue)
   Plug 'bfredl/nvim-miniyank'
-  " identLine, | between multiline {}
+  " blankline, | between multiline {}
   Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
-  " Plug 'Yggdroot/indentLine'
-  " Plug 'glepnir/indent-guides.nvim'
   " VimWiki
   Plug 'vimwiki/vimwiki'
   Plug 'michal-h21/vimwiki-sync'
   " restore cursor position on file open
   Plug 'farmergreg/vim-lastplace'
-  " lualine (tabs)
+  " bufferline (tabs)
   Plug 'akinsho/nvim-bufferline.lua'
   " icons
   Plug 'kyazdani42/nvim-web-devicons'
-  " nvim-telescope (fzf replacement, leaving for future)
-  " Plug 'nvim-lua/popup.nvim'
-  " Plug 'nvim-lua/plenary.nvim'
-  " Plug 'nvim-telescope/telescope.nvim'
-  " Plug 'nvim-telescope/telescope-media-files.nvim'
   " formatting
   Plug 'sbdchd/neoformat', {'do': 'npm install -g lua-fmt'}
 call plug#end()
 
+
+" for future
+" nvim-telescope (fzf replacement, leaving for future)
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope-media-files.nvim'

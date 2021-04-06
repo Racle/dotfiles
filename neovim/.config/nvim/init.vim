@@ -27,7 +27,6 @@ source ~/.config/nvim/plug-config/git-messenger.vim
 source ~/.config/nvim/plug-config/go.vim
 source ~/.config/nvim/plug-config/vimwiki.vim
 source ~/.config/nvim/plug-config/ultisnips.vim
-" source ~/.config/nvim/plug-config/indent-blankline.vim
 
 " Lua config
 luafile ~/.config/nvim/lua/plug-config/bufferline.lua
