@@ -96,4 +96,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Plug 'nvim-lua/plenary.nvim'
   " Plug 'nvim-telescope/telescope.nvim'
   " Plug 'nvim-telescope/telescope-media-files.nvim'
+  " formatting
+  Plug 'sbdchd/neoformat', {'do': 'npm install -g lua-fmt'}
 call plug#end()
+

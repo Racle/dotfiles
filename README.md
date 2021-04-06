@@ -24,7 +24,7 @@ rm ~/.zshrc ~/.p10k.zsh ~/.tmux.conf ~/.docker_aliases ~/.config/albert/albert.c
 
 ```
 cd ~/.dotfiles
-stow default zsh albert phpstorm tmux neovim ranger
+stow default zsh albert tmux neovim ranger
 ```
 
 On server, use

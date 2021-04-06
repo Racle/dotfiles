@@ -1,26 +1,35 @@
 vim.o.termguicolors = true
 
--- colors for active , inactive buffer tabs
 require "bufferline".setup {
+    highlights = {,
+        fill = {
+            guibg = "#282828"
+        },
+        separator_selected = {
+            guifg = "#282828"
+        },
+        separator_visible = {
+            guifg = "#282828"
+        },
+        separator = {
+            guifg = "#282828"
+        },
+    },
     options = {
-        buffer_close_icon = "",
         modified_icon = "●",
-        close_icon = "",
         left_trunc_marker = "",
         right_trunc_marker = "",
         max_name_length = 25,
         max_prefix_length = 25,
-        -- tab_size = 28,
         enforce_regular_tabs = false,
         view = "multiwindow",
         show_buffer_close_icons = false,
-        separator_style = "slant",
-        show_close_icon = false
+        show_close_icon = false,
+        separator_style = "slant"
     }
 }
 
 local opt = {silent = true}
-
 
 -- move buffers
 vim.api.nvim_set_keymap("n", "<M-S-L>", [[<Cmd>BufferLineMoveNext<CR>]], opt)
