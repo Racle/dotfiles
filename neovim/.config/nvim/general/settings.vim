@@ -68,6 +68,7 @@ set nocompatible            " ignored in nvim
 set inccommand=nosplit      " realtime substitute s/search/replace/g
 set termguicolors           " Gruvbox recommended
 set listchars=extends:>,precedes:<,tab:\ \ , " show character on longer line
+set colorcolumn=99999       " https://github.com/lukas-reineke/indent-blankline.nvim/issues/59#issuecomment-806374954
 
 " trigger `autoread` when files changes on disk
 set autoread
@@ -84,3 +85,12 @@ autocmd! VimEnter * nested call MyVimEnter()
 " disable first click when gaining back focus
 autocmd FocusGained * set mouse+=a
 autocmd FocusLost * set mouse=
+
+" autoide fzf on lost focus
+autocmd WinLeave * exe AutohideFzf()
+
+" when leaving out from floaterm, hide it so that it doesn't cover other windows
+" found in functions.vim
+
+" fix for IndentBlankline on golang files
+autocmd FileType go autocmd BufWritePost * exe ":IndentBlanklineRefresh"
