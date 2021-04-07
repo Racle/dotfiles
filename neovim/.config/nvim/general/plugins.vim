@@ -42,8 +42,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'vitalk/vim-lesscss'
   " remote yank
   Plug 'fcpg/vim-osc52'
-  " ultisnips and snippets
-  Plug 'SirVer/ultisnips'
+  " Snippets
   Plug 'honza/vim-snippets'
   " Quickscope
   Plug 'unblevable/quick-scope'
