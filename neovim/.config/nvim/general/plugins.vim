@@ -84,6 +84,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'kyazdani42/nvim-web-devicons'
   " formatting
   Plug 'sbdchd/neoformat', {'do': 'npm install -g lua-fmt nginxbeautifier'}
+  " Scrollbar
+  Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 call plug#end()
 
 
