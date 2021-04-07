@@ -1,4 +1,4 @@
-vim.o.termguicolors = true
+-- vim.o.termguicolors = true
 
 require "bufferline".setup {
     highlights = {
