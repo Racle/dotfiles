@@ -1,3 +1,5 @@
+vim.o.termguicolors = true
+
 require "bufferline".setup {
     highlights = {
         fill = {
@@ -23,6 +25,6 @@ require "bufferline".setup {
         view = "multiwindow",
         show_buffer_close_icons = false,
         show_close_icon = false,
-        separator_style = "thick",
+        separator_style = "thin",
     }
 }
