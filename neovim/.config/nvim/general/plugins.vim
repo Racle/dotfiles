@@ -26,8 +26,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'
   Plug 'mhinz/vim-signify'
-  " emmet-vim (html autogenerate, C-y , to use ex. html:5<C-y>,)
-  Plug 'mattn/emmet-vim'
   " vim-prettier
   Plug 'prettier/vim-prettier', { 'do': 'npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php' }
   " tagalong (tag autochange)
