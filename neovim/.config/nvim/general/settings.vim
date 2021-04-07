@@ -86,11 +86,7 @@ autocmd! VimEnter * nested call MyVimEnter()
 autocmd FocusGained * set mouse+=a
 autocmd FocusLost * set mouse=
 
-" autoide fzf on lost focus
-autocmd WinLeave * exe AutohideFzf()
-
-" when leaving out from floaterm, hide it so that it doesn't cover other windows
-" found in functions.vim
+" autoide fzf and floaterm on lost focus and configs found in functions.vim
 
 " fix for IndentBlankline on golang files
 autocmd FileType go autocmd BufWritePost * exe ":IndentBlanklineRefresh"

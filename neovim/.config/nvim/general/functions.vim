@@ -123,5 +123,8 @@ function! s:autohide_floaterm() abort
   endif
 endfunction
 
+" autoide fzf on lost focus
+autocmd Filetype fzf autocmd WinLeave * exe AutohideFzf()
+
 " when leaving out from floaterm, hide it so that it doesn't cover other windows
 autocmd BufLeave floaterm://*,term://*   call <SID>autohide_floaterm()

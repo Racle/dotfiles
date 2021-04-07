@@ -53,8 +53,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " colors / colorpicker
   Plug 'ap/vim-css-color'
   Plug 'KabbAmine/vCoolor.vim'
-  " Toggle marks / show marks
-  Plug 'kshenoy/vim-signature'
   " Align (:Tab /<regexp>)
   Plug 'godlygeek/tabular'
   " Enables repeat in other plugins
