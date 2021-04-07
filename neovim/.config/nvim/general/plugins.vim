@@ -83,7 +83,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " icons
   Plug 'kyazdani42/nvim-web-devicons'
   " formatting
-  Plug 'sbdchd/neoformat', {'do': 'npm install -g lua-fmt'}
+  Plug 'sbdchd/neoformat', {'do': 'npm install -g lua-fmt nginxbeautifier'}
 call plug#end()
 
 
