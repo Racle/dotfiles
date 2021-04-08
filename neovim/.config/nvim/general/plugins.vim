@@ -9,10 +9,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-commentary'
   " Gruvbox theme
   Plug 'gruvbox-community/gruvbox'
-  " airline + tagbar (current function name on vim-airline)
+  " airline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'preservim/tagbar', { 'do': 'npm install -g git+https://github.com/ramitos/jsctags.git' }
   " fzf
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'

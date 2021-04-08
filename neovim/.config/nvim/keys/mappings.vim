@@ -4,10 +4,10 @@ let maplocalleader=" "
 
 " Map § to esc
 noremap § <Esc>
-tmap § <C-c>
-nmap § <C-c>
-imap § <C-c>
-xmap § <C-c>
+tnoremap § <Esc>
+nnoremap § <Esc>
+inoremap § <Esc>
+xnoremap § <Esc>
 
 " disable digraph hotkey, works better with coc-snippets
 imap <C-k> <NOP>
@@ -91,15 +91,6 @@ set backspace=indent,eol,start
 vnoremap < <gv
 vnoremap > >gv
 
-" Close NERDTree if it's last tab
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Close buffer
-" map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
-
-" open files with ctrl+n
-" map <C-S-n> <Esc><Esc>:Files<CR>
-
 " ctrl+s => save
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
@@ -123,7 +114,16 @@ map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 
 " show documentation with gh
-nmap <silent> gh :call ShowDocumentation()<CR>
+nmap <silent> gh :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 " map öä {} ÖÄ []
 " Bug: ubuntu outputs :/' when usint with ctrl

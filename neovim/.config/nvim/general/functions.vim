@@ -73,7 +73,6 @@ augroup hover
 augroup end
 
 function ShowDocumentation()
-
     if ! coc#float#has_float()
        call CocAction('doHover')
     endif

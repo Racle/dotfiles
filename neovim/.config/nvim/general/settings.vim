@@ -73,7 +73,7 @@ set colorcolumn=99999       " https://github.com/lukas-reineke/indent-blankline.
 " trigger `autoread` when files changes on disk
 set autoread
 " autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-autocmd! FocusGained,BufEnter,CursorHold,CursorHoldI * silent! checktime
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * silent! checktime
 " notification after file change
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
