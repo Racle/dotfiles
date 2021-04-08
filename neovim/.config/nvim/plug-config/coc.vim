@@ -14,7 +14,6 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-pairs'
   \ ]
-  " \ 'coc-ultisnips',
 
 " coc settings
 nmap <silent> gd <Plug>(coc-definition)
