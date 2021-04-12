@@ -19,6 +19,10 @@ function MyVimEnter()
     return
   endif
 
+  if &ft == 'man'
+    return
+  endif
+
   if filereadable('.vim/sessions/vim.session.1')
     call LoadVimSession("1")
   else

@@ -14,6 +14,7 @@ export ANSIBLE_INVENTORY=~/.ansible-hosts
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+export MANPAGER='nvim +Man!'
 
 #export TERM="xterm-256color"
 
