@@ -277,17 +277,15 @@ let g:which_key_map.t = {
       \ }
 
 
-" VimWiki bindings
+" VimWiki bindings (jobstart for async operation)
 let g:which_key_map.w = {
       \ 'name' : '+VimWiki',
       \ 'w' : 'Open wiki',
       \ 't' : 'Open wiki (tab)',
-      \ 's' : [':!sh -c "cd ~/vimwiki && git push"',  'Save wiki'],
+      \ 's' : [':call jobstart(''sh -c "cd ~/vimwiki && git push"'')',  'Save wiki'],
       \ 'd' : 'Delete wiki',
       \ 'r' : 'Rename wiki',
       \ }
-
-
 
 
 " Register which key map
