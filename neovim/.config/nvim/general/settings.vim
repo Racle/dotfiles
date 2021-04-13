@@ -89,4 +89,4 @@ autocmd FocusLost * set mouse=
 " autoide fzf and floaterm on lost focus and configs found in functions.vim
 
 " fix for IndentBlankline on golang files
-autocmd FileType go autocmd BufWritePost * exe ":IndentBlanklineRefresh"
+autocmd FileType go autocmd BufWritePost,TextChanged * exe ":IndentBlanklineRefresh"
