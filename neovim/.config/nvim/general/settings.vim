@@ -69,6 +69,9 @@ set inccommand=nosplit      " realtime substitute s/search/replace/g
 set termguicolors           " Gruvbox recommended
 set listchars=extends:>,precedes:<,tab:\ \ , " show character on longer line
 set colorcolumn=99999       " https://github.com/lukas-reineke/indent-blankline.nvim/issues/59#issuecomment-806374954
+set foldmethod=expr         " set default foldmethod
+set foldexpr=nvim_treesitter#foldexpr()  " make treesitter handle folding
+set foldlevel=99            " disable folds when starting vim
 
 " trigger `autoread` when files changes on disk
 set autoread
@@ -89,4 +92,4 @@ autocmd FocusLost * set mouse=
 " autoide fzf and floaterm on lost focus and configs found in functions.vim
 
 " fix for IndentBlankline on golang files
-autocmd FileType go autocmd BufWritePost,TextChanged * exe ":IndentBlanklineRefresh"
+autocmd FileType go autocmd BufWritePost * exe ":IndentBlanklineRefresh"

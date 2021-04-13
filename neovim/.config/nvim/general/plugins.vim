@@ -85,8 +85,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'sbdchd/neoformat', {'do': 'npm install -g lua-fmt nginxbeautifier'}
   " Scrollbar
   Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
-  " treesitter for highlighting
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 
