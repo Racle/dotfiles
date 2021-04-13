@@ -41,7 +41,7 @@ syntax enable               " Enables syntax highlighing
 set cmdheight=2             " Give more space for displaying messages.
 set hidden                  " Required to keep multiple buffers open multiple buffers
 set nowrap                  " Display long lines as just one line
-set list                    " required for listchars
+set list                    " Required for listchars
 set encoding=utf-8          " The encoding displayed
 set fileencoding=utf-8      " The encoding written to file
 set ruler                   " Show the cursor position all the time
@@ -52,26 +52,26 @@ set autoindent              " Good auto indent
 set smartindent             " Makes indenting smart
 set smarttab                " Makes tabbing smarter will realize you have 2 vs 4
 set expandtab               " Converts tabs to spaces
-set tabstop=2               " show existing tab with 4 spaces width
-set shiftwidth=2            " when indenting with '>', use 4 spaces width
+set tabstop=2               " Show existing tab with 4 spaces width
+set shiftwidth=2            " When indenting with '>', use 4 spaces width
 set t_Co=256                " Support 256 colors
 set conceallevel=0          " So that I can see `` in markdown files
 set splitbelow              " Horizontal splits will automatically be below
 set splitright              " Vertical splits will automatically be to the right
 set cursorline              " Enable highlighting of the current line
-set incsearch               " incremental search, automatically go to next search
-set ignorecase              " incase sensitive search
-set smartcase               " smarcase search
-set nu rnu                  " set relative number
+set incsearch               " Incremental search, automatically go to next search
+set ignorecase              " Incase sensitive search
+set smartcase               " Smarcase search
+set nu rnu                  " Set relative number
 set shortmess+=I            " Disable the default Vim startup message.
-set nocompatible            " ignored in nvim
-set inccommand=nosplit      " realtime substitute s/search/replace/g
+set nocompatible            " Ignored in nvim
+set inccommand=nosplit      " Realtime substitute s/search/replace/g
 set termguicolors           " Gruvbox recommended
 set listchars=extends:>,precedes:<,tab:\ \ , " show character on longer line
 set colorcolumn=99999       " https://github.com/lukas-reineke/indent-blankline.nvim/issues/59#issuecomment-806374954
-set foldmethod=expr         " set default foldmethod
-set foldexpr=nvim_treesitter#foldexpr()  " make treesitter handle folding
-set foldlevel=99            " disable folds when starting vim
+set sessionoptions-=buffers " Don't save hidden and unloaded buffers in sessions.
+set sessionoptions-=options " Don't persist options and mappings because it can corrupt sessions.
+set sessionoptions-=blank   " Remove blank buffers/windows in sessions.
 
 " trigger `autoread` when files changes on disk
 set autoread
