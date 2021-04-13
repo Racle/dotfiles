@@ -86,7 +86,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Scrollbar
   Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
   " treesitter for highlighting
-  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 
