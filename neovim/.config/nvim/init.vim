@@ -31,6 +31,7 @@ source ~/.config/nvim/plug-config/vimwiki.vim
 luafile ~/.config/nvim/lua/plug-config/bufferline.lua
 luafile ~/.config/nvim/lua/plug-config/blankline.lua
 luafile ~/.config/nvim/lua/plug-config/scrollview.lua
+luafile ~/.config/nvim/lua/plug-config/treesitter.lua
 " luafile ~/.config/nvim/lua/plug-config/telescope.lua
 
 " settings
