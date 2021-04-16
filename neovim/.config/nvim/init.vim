@@ -38,3 +38,4 @@ luafile ~/.config/nvim/lua/plug-config/scrollview.lua
 luafile ~/.config/nvim/lua/plug-config/treesitter.lua
 " luafile ~/.config/nvim/lua/plug-config/telescope.lua
 luafile ~/.config/nvim/lua/plug-config/gitsigns.lua
+luafile ~/.config/nvim/lua/plug-config/nvim-ts-context-commentstring.lua

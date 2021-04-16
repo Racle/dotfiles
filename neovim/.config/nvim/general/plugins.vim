@@ -89,6 +89,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
   " treesitter for highlighting
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " javascript context commenting (different commenting to html tags and js parts on same file)
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 call plug#end()
 
 
