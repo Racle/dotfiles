@@ -74,10 +74,10 @@ vim.g.mapleader = " "
 vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>n", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
 vim.api.nvim_set_keymap(
-"n",
-"<Leader>fp",
-[[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]],
-opt
+  "n",
+  "<Leader>fp",
+  [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]],
+  opt
 )
 
 vim.api.nvim_set_keymap("n", "<Leader>fq", [[<Cmd>lua require('telescope.builtin').quickfix()<CR>]], opt)
