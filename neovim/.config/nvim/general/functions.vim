@@ -65,21 +65,21 @@ let g:large_file = 1024 * 1024 * 10
 " getfsize on the file and sees if it is larger than the size
 " specified in g:large_file.  If it is, it disables the swap file.
 autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f)
-            \ > g:large_file | set noswapfile | endif
+      \ > g:large_file | set noswapfile | endif
 
 " Documentation on hover
 augroup hover
-    autocmd!
-    " autocmd CursorHold * silent if ! coc#float#has_float()
-    "     \| call CocAction('doHover')
-    " \| endif
-    " autocmd CursorHoldI * silent call CocAction('showSignatureHelp')
+  autocmd!
+  " autocmd CursorHold * silent if ! coc#float#has_float()
+  "     \| call CocAction('doHover')
+  " \| endif
+  " autocmd CursorHoldI * silent call CocAction('showSignatureHelp')
 augroup end
 
 function ShowDocumentation()
-    if ! coc#float#has_float()
-       call CocAction('doHover')
-    endif
+  if ! coc#float#has_float()
+    call CocAction('doHover')
+  endif
 
 endfunction
 
@@ -88,11 +88,11 @@ function FloatermOpenCheat()
 endfunction
 
 function! CleanEmptyBuffers()
-    " let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
-    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && !getbufvar(v:val, "&mod")')
-    if !empty(buffers)
-        exe 'bw ' . join(buffers, ' ')
-    endif
+  " let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
+  let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && !getbufvar(v:val, "&mod")')
+  if !empty(buffers)
+    exe 'bw ' . join(buffers, ' ')
+  endif
 endfunction
 
 function! CloseThisBuffer()
