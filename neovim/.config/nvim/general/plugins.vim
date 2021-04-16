@@ -19,12 +19,14 @@ call plug#begin(stdpath('data') . '/plugged')
   " Pass focus events from tmux to Vim (useful for autoread and linting tools).
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'tmux-plugins/vim-tmux'
+  " Neovim library plugin
+  Plug 'nvim-lua/plenary.nvim'
   " Git plugin
   Plug 'tpope/vim-fugitive'
   Plug 'tommcdo/vim-fubitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'
-  Plug 'mhinz/vim-signify'
+  Plug 'lewis6991/gitsigns.nvim'
   " vim-prettier
   Plug 'prettier/vim-prettier', { 'do': 'npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php' }
   " tagalong (tag autochange)

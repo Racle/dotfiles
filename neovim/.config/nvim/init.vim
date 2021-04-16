@@ -9,6 +9,10 @@ source ~/.config/nvim/general/functions.vim
 source ~/.config/nvim/keys/mappings.vim
 source ~/.config/nvim/keys/which-key.vim
 
+source ~/.config/nvim/general/settings.vim
+" server settings
+call SourceIfExists('~/.config/nvim/server-init.vim')
+
 " Plugins
 source ~/.config/nvim/plug-config/fzf.vim
 source ~/.config/nvim/plug-config/airline.vim
@@ -33,9 +37,4 @@ luafile ~/.config/nvim/lua/plug-config/blankline.lua
 luafile ~/.config/nvim/lua/plug-config/scrollview.lua
 luafile ~/.config/nvim/lua/plug-config/treesitter.lua
 " luafile ~/.config/nvim/lua/plug-config/telescope.lua
-
-" settings
-source ~/.config/nvim/general/settings.vim
-
-" server settings
-call SourceIfExists('~/.config/nvim/server-init.vim')
+luafile ~/.config/nvim/lua/plug-config/gitsigns.lua
