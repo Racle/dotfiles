@@ -11,6 +11,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set wildignorecase
 set wildmenu
 set completeopt=menuone,preview
+set wildmode=longest:full,full  " autocomplete like bash/zsh
 
 filetype plugin indent on
 
