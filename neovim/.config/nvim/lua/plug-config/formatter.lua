@@ -8,6 +8,17 @@ augroup END
   true
 )
 
+local prettier = {
+  -- prettier
+  function()
+    return {
+      exe = "prettier",
+      args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+      stdin = true
+    }
+  end
+}
+
 require("formatter").setup(
   {
     logging = false,
@@ -22,146 +33,20 @@ require("formatter").setup(
           }
         end
       },
-      vue = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      graphql = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      css = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      scss = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      less = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      php = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      xml = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      html = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      yaml = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      markdown = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      typescript = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      javascriptreact = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      javascript = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      json = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
+      vue = prettier,
+      graphql = prettier,
+      css = prettier,
+      scss = prettier,
+      less = prettier,
+      php = prettier,
+      xml = prettier,
+      html = prettier,
+      yaml = prettier,
+      markdown = prettier,
+      typescript = prettier,
+      javascriptreact = prettier,
+      javascript = prettier,
+      json = prettier,
       rust = {
         -- Rustfmt
         function()
