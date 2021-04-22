@@ -27,7 +27,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-rhubarb'
   Plug 'junegunn/gv.vim'
   Plug 'lewis6991/gitsigns.nvim'
-  " vim-prettier
+  " Formatting / prettier
+  Plug 'mhartington/formatter.nvim', {'do': 'npm install -g lua-fmt nginxbeautifier prettier @prettier/plugin-xml @prettier/plugin-php'}
   Plug 'prettier/vim-prettier', { 'do': 'npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php' }
   " tagalong (tag autochange)
   Plug 'andrewradev/tagalong.vim'
@@ -60,8 +61,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-repeat'
   " Quick peek for Ctrl+R and @
   Plug 'junegunn/vim-peekaboo'
-  " markdown preview
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
   " closetags
   Plug 'alvan/vim-closetag'
   " nginx support
@@ -83,8 +82,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'akinsho/nvim-bufferline.lua'
   " icons
   Plug 'kyazdani42/nvim-web-devicons'
-  " formatting
-  Plug 'sbdchd/neoformat', {'do': 'npm install -g lua-fmt nginxbeautifier'}
   " Scrollbar
   Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
   " treesitter for highlighting
