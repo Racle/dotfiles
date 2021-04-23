@@ -2,7 +2,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.xml,*.php,*.lua,*.rs,*.conf  FormatWrite
+  autocmd BufWritePost *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.xml,*.php,*.lua,*.rs,*.conf FormatWrite
 augroup END
 ]],
   true
@@ -23,30 +23,30 @@ require("formatter").setup(
   {
     logging = false,
     filetype = {
-      nginx = {
-        -- nginxbeautifier
+      javascript = prettier,
+      javascriptreact = prettier,
+      typescript = prettier,
+      css = prettier,
+      less = prettier,
+      scss = prettier,
+      json = prettier,
+      vue = prettier,
+      markdown = prettier,
+      graphql = prettier,
+      yaml = prettier,
+      html = prettier,
+      xml = prettier,
+      php = prettier,
+      lua = {
+        -- luafmt
         function()
           return {
-            exe = "nginxbeautifier",
-            args = {"-i", vim.api.nvim_buf_get_name(0)},
-            stdin = false
+            exe = "luafmt",
+            args = {"--indent-count", 2, "--stdin"},
+            stdin = true
           }
         end
       },
-      vue = prettier,
-      graphql = prettier,
-      css = prettier,
-      scss = prettier,
-      less = prettier,
-      php = prettier,
-      xml = prettier,
-      html = prettier,
-      yaml = prettier,
-      markdown = prettier,
-      typescript = prettier,
-      javascriptreact = prettier,
-      javascript = prettier,
-      json = prettier,
       rust = {
         -- Rustfmt
         function()
@@ -57,13 +57,13 @@ require("formatter").setup(
           }
         end
       },
-      lua = {
-        -- luafmt
+      nginx = {
+        -- nginxbeautifier
         function()
           return {
-            exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin"},
-            stdin = true
+            exe = "nginxbeautifier",
+            args = {"-i", vim.api.nvim_buf_get_name(0)},
+            stdin = false
           }
         end
       }
