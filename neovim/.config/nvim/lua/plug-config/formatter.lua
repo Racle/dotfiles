@@ -32,7 +32,6 @@ require("formatter").setup(
       json = prettier,
       vue = prettier,
       markdown = prettier,
-      vimwiki = prettier,
       graphql = prettier,
       yaml = prettier,
       html = prettier,
