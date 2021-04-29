@@ -287,5 +287,24 @@ let g:which_key_map.w = {
       \ }
 
 
+" custom debug menu for golang
+function WhichKeyDebug()
+  " dbc => debugBreakPoint
+  let g:which_key_map.d = {
+        \ 'name' : '+Debug',
+        \ 'd' : [':GoDebugStart', "GoDebugStart"],
+        \ 'j' : [':GoDebugStep', "GoDebugStep"],
+        \ 'l' : [':GoDebugStepOut', "GoDebugStepOut"],
+        \ 'b' : {
+        \ 'p' : [':GoDebugBreakpoint', "GoDebugBreakpoint"],
+        \ },
+        \ 'r' : [':GoDebugRestart', "GoDebugRestart"],
+        \ '_' : [':GoDebugStop', "GoDebugStop"],
+        \ }
+  call which_key#register('<Space>', "g:which_key_map")
+endfunction
+
+autocmd FileType go call WhichKeyDebug()
+
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
