@@ -39,7 +39,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " floatterm
   Plug 'voldikss/vim-floaterm'
   " vim lessc
-  Plug 'vitalk/vim-lesscss'
+  Plug 'vitalk/vim-lesscss', { 'do': 'npm install -g less minify'}
   " remote yank
   Plug 'fcpg/vim-osc52'
   " Snippets

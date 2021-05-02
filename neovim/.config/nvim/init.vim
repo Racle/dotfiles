@@ -10,8 +10,6 @@ source ~/.config/nvim/keys/mappings.vim
 source ~/.config/nvim/keys/which-key.vim
 
 source ~/.config/nvim/general/settings.vim
-" server settings
-call SourceIfExists('~/.config/nvim/server-init.vim')
 
 " Plugins
 source ~/.config/nvim/plug-config/fzf.vim
@@ -40,3 +38,6 @@ luafile ~/.config/nvim/lua/plug-config/treesitter.lua
 luafile ~/.config/nvim/lua/plug-config/gitsigns.lua
 luafile ~/.config/nvim/lua/plug-config/nvim-ts-context-commentstring.lua
 luafile ~/.config/nvim/lua/plug-config/formatter.lua
+
+" server settings
+call SourceIfExists('~/.config/nvim/server-init.vim')
