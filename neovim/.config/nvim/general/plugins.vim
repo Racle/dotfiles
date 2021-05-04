@@ -88,6 +88,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   " javascript context commenting (different commenting to html tags and js parts on same file)
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+  " better text object support while using ex. ci"
+  Plug 'wellle/targets.vim'
 call plug#end()
 
 
