@@ -19,7 +19,7 @@ function MyVimEnter()
     return
   endif
 
-  if &ft == 'man'
+  if &ft == 'man' || &ft == 'vimwiki'
     return
   endif
 
@@ -85,6 +85,10 @@ endfunction
 
 function FloatermOpenCheat()
   exe ':FloatermNew expect-spawn-zsh cheat ' . &ft
+endfunction
+
+function FloatermOpenVimwiki()
+  exe ':FloatermNew nvim +VimwikiIndex'
 endfunction
 
 function! CleanEmptyBuffers()
