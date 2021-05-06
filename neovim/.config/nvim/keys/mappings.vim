@@ -57,10 +57,12 @@ nnoremap tl :tabprev<CR>
 " inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 " inoremap <C-tab>   <Esc>:tabnext<CR>i
 
+" change jumplist forward to <c-p>
+nnoremap <C-P> <Tab>
+
 " Change buffers
 nmap <Tab> [b
 nmap <S-Tab> b]
-
 
 
 " Unbind some useless/annoying default key bindings.
