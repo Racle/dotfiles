@@ -5,3 +5,5 @@ endif
 
 " Just show the file name
 let g:airline#extensions#tabline#fnamemod = ':t'
+" disable scrollbar
+let g:airline#extensions#scrollbar#enabled = 0

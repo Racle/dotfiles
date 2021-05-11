@@ -18,6 +18,8 @@ vim.g.indent_blankline_context_patterns = {
   "^for",
   "^object",
   "^table",
+  "^type",
+  "^import",
   "block",
   "arguments"
 }

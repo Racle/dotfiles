@@ -70,7 +70,7 @@ set inccommand=nosplit      " Realtime substitute s/search/replace/g
 set termguicolors           " Gruvbox recommended
 set listchars=extends:>,precedes:<,tab:\ \ , " show character on longer line
 set colorcolumn=99999       " https://github.com/lukas-reineke/indent-blankline.nvim/issues/59#issuecomment-806374954
-set sessionoptions-=buffers " Don't save hidden and unloaded buffers in sessions.
+" set sessionoptions-=buffers " Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=options " Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=blank   " Remove blank buffers/windows in sessions.
 
