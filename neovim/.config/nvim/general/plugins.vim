@@ -9,9 +9,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-commentary'
   " Gruvbox theme
   Plug 'gruvbox-community/gruvbox'
-  " airline
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
   " fzf
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -80,6 +77,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'farmergreg/vim-lastplace'
   " bufferline (tabs)
   Plug 'akinsho/nvim-bufferline.lua'
+  " lualine, airline replacement
+  Plug 'hoob3rt/lualine.nvim'
   " icons
   Plug 'kyazdani42/nvim-web-devicons'
   " Scrollbar
@@ -90,6 +89,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   " better text object support while using ex. ci"
   Plug 'wellle/targets.vim'
+  " Markdown preview
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 call plug#end()
 
 

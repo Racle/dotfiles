@@ -13,7 +13,6 @@ source ~/.config/nvim/general/settings.vim
 
 " Plugins
 source ~/.config/nvim/plug-config/fzf.vim
-source ~/.config/nvim/plug-config/airline.vim
 source ~/.config/nvim/plug-config/prettier.vim
 source ~/.config/nvim/plug-config/coc.vim
 source ~/.config/nvim/plug-config/tagalong.vim
@@ -38,6 +37,7 @@ luafile ~/.config/nvim/lua/plug-config/treesitter.lua
 luafile ~/.config/nvim/lua/plug-config/gitsigns.lua
 luafile ~/.config/nvim/lua/plug-config/nvim-ts-context-commentstring.lua
 luafile ~/.config/nvim/lua/plug-config/formatter.lua
+luafile ~/.config/nvim/lua/plug-config/lualine.lua
 
 " server settings
 call SourceIfExists('~/.config/nvim/server-init.vim')
