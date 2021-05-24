@@ -157,10 +157,12 @@ function! MacroModeToggle()
   if !exists('b:coc_pairs_disabled')
     let b:coc_pairs_disabled = ["(", "[", "{", "<", "'", "\"", "`"]
     TSBufDisable intend
+    set lazyredraw
     echomsg "MacroMode on"
   else
     unlet b:coc_pairs_disabled
     TSBufEnable intend
+    set nolazyredraw
     echomsg "MacroMode off"
   endif
 endfunction
