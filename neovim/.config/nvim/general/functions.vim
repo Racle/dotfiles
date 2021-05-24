@@ -149,3 +149,20 @@ function! SpellCheck(...)
   augroup END
   return a:0 ? a:1 : ''
 endfunction
+
+" disable functions when creating macro
+" - coc-pairs
+" - treesitter intend
+function! MacroModeToggle()
+  if !exists('b:coc_pairs_disabled')
+    let b:coc_pairs_disabled = ["(", "[", "{", "<", "'", "\"", "`"]
+    TSBufDisable intend
+    echomsg "MacroMode on"
+  else
+    unlet b:coc_pairs_disabled
+    TSBufEnable intend
+    echomsg "MacroMode off"
+  endif
+endfunction
+
+command! MacroModeToggle call MacroModeToggle()
