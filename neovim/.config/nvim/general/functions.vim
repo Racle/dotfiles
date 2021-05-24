@@ -135,3 +135,17 @@ autocmd Filetype fzf autocmd WinLeave * call AutohideFzf()
 
 " when leaving out from floaterm, hide it so that it doesn't cover other windows
 autocmd BufLeave floaterm://*,term://*   call <SID>autohide_floaterm()
+
+" enable spell for one time when using spell checking shortcuts
+inoremap <expr> <c-x><c-k> SpellCheck("\<c-x>\<c-k>")
+inoremap <expr> <c-x><c-s> SpellCheck("\<c-x>\<c-s>")
+nnoremap z= :<c-u>call SpellCheck()<cr>z=
+function! SpellCheck(...)
+  let s:spell_restore = &spell
+  set spell
+  augroup restore_spell_option
+    autocmd!
+    autocmd CursorMoved,CompleteDone <buffer> let &spell = s:spell_restore | autocmd! restore_spell_option
+  augroup END
+  return a:0 ? a:1 : ''
+endfunction
