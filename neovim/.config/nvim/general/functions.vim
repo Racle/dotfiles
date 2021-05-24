@@ -154,16 +154,16 @@ endfunction
 " - coc-pairs
 " - treesitter intend
 function! MacroModeToggle()
-  if !exists('b:coc_pairs_disabled')
+  if !exists('b:macromode')
+    let b:macromode = "true"
     let b:coc_pairs_disabled = ["(", "[", "{", "<", "'", "\"", "`"]
     TSBufDisable intend
     set lazyredraw
-    echomsg "MacroMode on"
   else
+    unlet b:macromode
     unlet b:coc_pairs_disabled
     TSBufEnable intend
     set nolazyredraw
-    echomsg "MacroMode off"
   endif
 endfunction
 
