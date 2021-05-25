@@ -85,6 +85,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
   " treesitter for highlighting
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   " javascript context commenting (different commenting to html tags and js parts on same file)
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   " better text object support while using ex. ci"
