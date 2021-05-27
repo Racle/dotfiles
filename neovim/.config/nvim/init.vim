@@ -6,12 +6,11 @@ endif
 
 source ~/.config/nvim/general/plugins.vim
 source ~/.config/nvim/general/functions.vim
-source ~/.config/nvim/keys/mappings.vim
-source ~/.config/nvim/keys/which-key.vim
-
+source ~/.config/nvim/general/mappings.vim
 source ~/.config/nvim/general/settings.vim
 
 " Plugins
+source ~/.config/nvim/plug-config/which-key.vim
 source ~/.config/nvim/plug-config/fzf.vim
 source ~/.config/nvim/plug-config/prettier.vim
 source ~/.config/nvim/plug-config/coc.vim
@@ -29,6 +28,7 @@ source ~/.config/nvim/plug-config/go.vim
 source ~/.config/nvim/plug-config/vimwiki.vim
 
 " Lua config
+luafile ~/.config/nvim/lua/general/mappings.lua
 luafile ~/.config/nvim/lua/plug-config/bufferline.lua
 luafile ~/.config/nvim/lua/plug-config/blankline.lua
 luafile ~/.config/nvim/lua/plug-config/scrollview.lua
