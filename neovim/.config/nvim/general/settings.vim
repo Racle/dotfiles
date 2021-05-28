@@ -88,7 +88,7 @@ autocmd! VimEnter * nested call MyVimEnter()
 
 " disable first click when gaining back focus with 100ms delay
 autocmd FocusGained *  call timer_start(100, { tid -> execute('set mouse+=a')})
-autocmd FocusLost * set mouse= | echomsg  "testiii"
+autocmd FocusLost * set mouse=
 
 " autoide fzf and floaterm on lost focus and configs found in functions.vim
 

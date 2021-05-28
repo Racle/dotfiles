@@ -92,6 +92,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'wellle/targets.vim'
   " Markdown preview
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
+  " add sudo permission to write/read operations
+  Plug 'lambdalisue/suda.vim'
 call plug#end()
 
 

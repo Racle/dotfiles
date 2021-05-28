@@ -69,8 +69,11 @@ nmap <S-Tab> b]
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 
 " Toggle paste mode
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+nnoremap <F9> :set invpaste paste?<CR>
+set pastetoggle=<F9>
+
+" Toggle custom MacroMode
+nnoremap <F10> :MacroMode<CR>
 
 " shortcut to replace command
 nnoremap <Leader>r :%s///g<Left><Left><Left>

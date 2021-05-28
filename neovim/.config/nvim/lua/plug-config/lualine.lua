@@ -1,10 +1,17 @@
 local function customModes()
+  local modes = {}
   if vim.b.macromode then
-    return [[MacroMode]]
-  elseif vim.o.paste == true then
-    return [[PASTE]]
-  else
+    table.insert(modes, "MacroMode")
+  end
+  if vim.o.paste == true then
+    table.insert(modes, "PASTE")
+  end
+
+  -- check if any custom modes has set
+  if #modes == 0 then
     return nil
+  else
+    return table.concat(modes, " | ")
   end
 end
 
