@@ -140,3 +140,7 @@ map Ä ]
 
 " fix for highlightedyank if needed
 " map y <Plug>(highlightedyank)
+
+
+" do not copy text in register when using ex. ciw
+nnoremap c "_c
