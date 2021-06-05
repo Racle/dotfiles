@@ -78,7 +78,9 @@ let g:which_key_map.b = {
       \ 'w' : ['Buffers',         'fzf-buffer'],
       \ 'q' : [':Bdelete this',   'close-buffer'],
       \ 'Q' : [':Bdelete! this',  'close-buffer!'],
+      \ 's' : [':BufferLinePick',  'switch buffer'],
       \ }
+" BufferLinePick => gb also works
 
 " c is for coc actions
 let g:which_key_map.c = {

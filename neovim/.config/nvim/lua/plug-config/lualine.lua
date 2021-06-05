@@ -15,8 +15,18 @@ local function customModes()
   end
 end
 
+local function filetree()
+  return [[coc-explorer]]
+end
+
+local my_extension = {
+  sections = {lualine_c = {filetree}},
+  filetypes = {"coc-explorer"}
+}
+
 require "lualine".setup {
   options = {theme = "gruvbox"},
+  extensions = {my_extension},
   sections = {
     lualine_a = {customModes, "mode"},
     lualine_b = {"branch", "diff"},
