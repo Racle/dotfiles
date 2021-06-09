@@ -1,3 +1,9 @@
+" Other mappings locations:
+" plug-config/which-key.vim
+" lua/general/mappings.lua
+" lua/plug-config/bufferline.lua
+" lua/plug-config/telescope.lua
+
 " Map leader to space
 let mapleader=" "
 let maplocalleader=" "
