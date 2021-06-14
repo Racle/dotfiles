@@ -1,5 +1,8 @@
 vim.o.termguicolors = true
 
+-- tilix fix for https://github.com/akinsho/nvim-bufferline.lua/issues/125 / https://github.com/akinsho/nvim-bufferline.lua/commit/54576f262e4ef5ea7a31d88b2d1399f637e338d2
+vim.api.nvim_exec([[let $KITTY_WINDOW_ID=0]], true)
+
 require "bufferline".setup {
   highlights = {
     fill = {
