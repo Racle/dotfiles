@@ -94,3 +94,6 @@ autocmd FocusLost * set mouse=
 
 " fix for IndentBlankline on golang files
 autocmd FileType go autocmd BufWritePost,TextChanged * exe ":IndentBlanklineRefresh"
+
+" fix vimscript highlighting
+au Syntax vim syn match vimUsrCmd '^\s*\zs\u\%(\w*\)\@>(\@!'
