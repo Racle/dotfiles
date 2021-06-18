@@ -45,11 +45,11 @@ tnoremap :q! <C-\><C-n>:q!<CR>
 " Change to insert mode with § in terminal
 tnoremap § <C-\><C-n>
 
-" Use alt + hjkl to resize windows
-nnoremap <silent> <M-j>    :resize -2<CR>
-nnoremap <silent> <M-k>    :resize +2<CR>
-nnoremap <silent> <M-h>    :vertical resize -2<CR>
-nnoremap <silent> <M-l>    :vertical resize +2<CR>
+" Use alt + hjkl to resize windows (moved to mappings.lua)
+" nnoremap <silent> <M-j>    :resize -2<CR>
+" nnoremap <silent> <M-k>    :resize +2<CR>
+" nnoremap <silent> <M-h>    :vertical resize -2<CR>
+" nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " Auto completion with tab + enter in insert mode and command mode
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
