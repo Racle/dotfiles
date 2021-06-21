@@ -67,8 +67,9 @@ nnoremap tl :tabprev<CR>
 nnoremap <C-P> <Tab>
 
 " Change buffers
-nmap <Tab> [b
-nmap <S-Tab> b]
+" Changed to bufferline.lua
+" nmap <Tab> [b
+" nmap <S-Tab> b]
 
 
 " Unbind some useless/annoying default key bindings.
