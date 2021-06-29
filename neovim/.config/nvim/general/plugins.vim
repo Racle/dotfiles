@@ -94,6 +94,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
   " add sudo permission to write/read operations
   Plug 'lambdalisue/suda.vim'
+  " vim inside browser
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 
 

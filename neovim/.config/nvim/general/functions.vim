@@ -15,6 +15,10 @@ function! SourceIfExists(file)
 endfunction
 
 function MyVimEnter()
+  if exists('g:started_by_firenvim')
+    return
+  endif
+
   if argc() != 0
     return
   endif

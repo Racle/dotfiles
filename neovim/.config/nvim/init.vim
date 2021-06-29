@@ -42,3 +42,8 @@ luafile ~/.config/nvim/lua/plug-config/lualine.lua
 
 " server settings
 call SourceIfExists('~/.config/nvim/server-init.vim')
+
+" firenvim config
+if exists('g:started_by_firenvim')
+  source ~/.config/nvim/plug-config/firenvim.vim
+endif
