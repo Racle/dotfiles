@@ -1,49 +1,53 @@
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   !sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
+  autocmd VimEnter * PlugInstall --sync | source $NVIMPATH/init.vim
   autocmd VimEnter * CocInstall
 endif
 
-source ~/.config/nvim/general/plugins.vim
-source ~/.config/nvim/general/functions.vim
-source ~/.config/nvim/general/mappings.vim
-source ~/.config/nvim/general/settings.vim
+" nvim config path to variable for windows support
+let $NVIMPATH = fnamemodify($MYVIMRC, ':p:h')
+
+source $NVIMPATH/general/plugins.vim
+source $NVIMPATH/general/plugins.vim
+source $NVIMPATH/general/functions.vim
+source $NVIMPATH/general/mappings.vim
+source $NVIMPATH/general/settings.vim
 
 " Plugins
-source ~/.config/nvim/plug-config/which-key.vim
-source ~/.config/nvim/plug-config/fzf.vim
-source ~/.config/nvim/plug-config/prettier.vim
-source ~/.config/nvim/plug-config/coc.vim
-source ~/.config/nvim/plug-config/tagalong.vim
-source ~/.config/nvim/plug-config/floatterm.vim
-source ~/.config/nvim/plug-config/vimlesscss.vim
-source ~/.config/nvim/plug-config/quickscope.vim
-source ~/.config/nvim/plug-config/highlightedyank.vim
-source ~/.config/nvim/plug-config/signify.vim
-source ~/.config/nvim/plug-config/visual-multi.vim
-source ~/.config/nvim/plug-config/closetag.vim
-source ~/.config/nvim/plug-config/tmux-navigator.vim
-source ~/.config/nvim/plug-config/git-messenger.vim
-source ~/.config/nvim/plug-config/go.vim
-source ~/.config/nvim/plug-config/vimwiki.vim
-source ~/.config/nvim/plug-config/suda.vim
+source $NVIMPATH/plug-config/which-key.vim
+source $NVIMPATH/plug-config/fzf.vim
+source $NVIMPATH/plug-config/prettier.vim
+source $NVIMPATH/plug-config/coc.vim
+source $NVIMPATH/plug-config/tagalong.vim
+source $NVIMPATH/plug-config/floatterm.vim
+source $NVIMPATH/plug-config/vimlesscss.vim
+source $NVIMPATH/plug-config/quickscope.vim
+source $NVIMPATH/plug-config/highlightedyank.vim
+source $NVIMPATH/plug-config/signify.vim
+source $NVIMPATH/plug-config/visual-multi.vim
+source $NVIMPATH/plug-config/closetag.vim
+source $NVIMPATH/plug-config/tmux-navigator.vim
+source $NVIMPATH/plug-config/git-messenger.vim
+source $NVIMPATH/plug-config/go.vim
+source $NVIMPATH/plug-config/vimwiki.vim
+source $NVIMPATH/plug-config/suda.vim
 
 " Lua config
-luafile ~/.config/nvim/lua/general/mappings.lua
-luafile ~/.config/nvim/lua/plug-config/bufferline.lua
-luafile ~/.config/nvim/lua/plug-config/blankline.lua
-luafile ~/.config/nvim/lua/plug-config/scrollview.lua
-luafile ~/.config/nvim/lua/plug-config/treesitter.lua
-" luafile ~/.config/nvim/lua/plug-config/telescope.lua
-luafile ~/.config/nvim/lua/plug-config/gitsigns.lua
-luafile ~/.config/nvim/lua/plug-config/nvim-ts-context-commentstring.lua
-luafile ~/.config/nvim/lua/plug-config/formatter.lua
-luafile ~/.config/nvim/lua/plug-config/lualine.lua
+luafile $NVIMPATH/lua/general/mappings.lua
+luafile $NVIMPATH/lua/plug-config/bufferline.lua
+luafile $NVIMPATH/lua/plug-config/blankline.lua
+luafile $NVIMPATH/lua/plug-config/scrollview.lua
+luafile $NVIMPATH/lua/plug-config/treesitter.lua
+" luafile $NVIMPATH/lua/plug-config/telescope.lua
+luafile $NVIMPATH/lua/plug-config/gitsigns.lua
+luafile $NVIMPATH/lua/plug-config/nvim-ts-context-commentstring.lua
+luafile $NVIMPATH/lua/plug-config/formatter.lua
+luafile $NVIMPATH/lua/plug-config/lualine.lua
 
 " server settings
-call SourceIfExists('~/.config/nvim/server-init.vim')
+call SourceIfExists('$NVIMPATH/server-init.vim')
 
 " firenvim config
 if exists('g:started_by_firenvim')
-  source ~/.config/nvim/plug-config/firenvim.vim
+  source $NVIMPATH/plug-config/firenvim.vim
 endif

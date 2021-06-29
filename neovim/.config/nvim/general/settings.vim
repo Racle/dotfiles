@@ -27,10 +27,10 @@ else
   set undofile                            " keep an undo file (undo changes after closing)
 endif
 
-silent !mkdir ~/.config/nvim/{backup,swap,undo} > /dev/null 2>&1
-set backupdir=~/.config/nvim/backup/
-set directory=~/.config/nvim/swap/
-set undodir=~/.config/nvim/undo/
+silent !mkdir $NVIMPATH/{backup,swap,undo} > /dev/null 2>&1
+set backupdir=$NVIMPATH/backup/
+set directory=$NVIMPATH/swap/
+set undodir=$NVIMPATH/undo/
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
