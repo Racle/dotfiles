@@ -6,6 +6,7 @@ export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/isl@0.18/include"
 export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
 export PATH="$HOME/scripts/:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.dotnet:$PATH"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH:$GOBIN
