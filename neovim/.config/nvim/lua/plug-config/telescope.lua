@@ -71,17 +71,17 @@ local opt = {noremap = true, silent = true}
 vim.g.mapleader = " "
 
 -- mappings
-vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>n", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<leader>n", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
 vim.api.nvim_set_keymap(
   "n",
-  "<Leader>fp",
+  "<leader>fp",
   [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]],
   opt
 )
 
-vim.api.nvim_set_keymap("n", "<Leader>fq", [[<Cmd>lua require('telescope.builtin').quickfix()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fg", [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fb", [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<Leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<leader>fq", [[<Cmd>lua require('telescope.builtin').quickfix()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<leader>fg", [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<leader>fb", [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)

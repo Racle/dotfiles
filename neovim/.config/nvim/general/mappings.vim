@@ -83,15 +83,15 @@ set pastetoggle=<F9>
 nnoremap <F10> :MacroMode<CR>
 
 " shortcut to replace command
-nnoremap <Leader>r :%s///g<Left><Left><Left>
-nnoremap <Leader>R :%s///gc<Left><Left><Left><Left>
+nnoremap <leader>r :%s///g<Left><Left><Left>
+nnoremap <leader>R :%s///gc<Left><Left><Left><Left>
 
 " Quickly insert an empty new line without entering insert mode
-nnoremap <Leader>o o<Esc>
-nnoremap <Leader>O O<Esc>
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
 
 "  shortcut to ripgrep advanced
-nnoremap <Leader>F :RgFileExt *.
+nnoremap <leader>fF :RgFileExt *.
 
 " The backspace key has slightly unintuitive behavior by default. For example,
 " by default, you can't backspace before the insertion point set with 'i'.

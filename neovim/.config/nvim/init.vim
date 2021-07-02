@@ -31,6 +31,7 @@ source $NVIMPATH/plug-config/git-messenger.vim
 source $NVIMPATH/plug-config/go.vim
 source $NVIMPATH/plug-config/vimwiki.vim
 source $NVIMPATH/plug-config/suda.vim
+source $NVIMPATH/plug-config/vista.vim
 
 " Lua config
 luafile $NVIMPATH/lua/general/mappings.lua

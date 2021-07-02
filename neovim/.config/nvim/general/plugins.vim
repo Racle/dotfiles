@@ -96,6 +96,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'lambdalisue/suda.vim'
   " vim inside browser
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+  " Show functions/methods <leader>lv
+  Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 
