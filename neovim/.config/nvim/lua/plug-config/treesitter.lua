@@ -4,6 +4,15 @@ require("nvim-treesitter.configs").setup {
     enable = true,
     use_languagetree = true
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<M-w>",
+      node_incremental = "<M-w>",
+      scope_incremental = "<M-C-w>",
+      node_decremental = "<M-e>"
+    }
+  },
   indent = {
     enable = true
   },

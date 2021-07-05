@@ -69,7 +69,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " mini-yank (fixes clipboard=unnamedplus block paste issue)
   Plug 'bfredl/nvim-miniyank'
   " blankline, | between multiline {}
-  Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+  Plug 'lukas-reineke/indent-blankline.nvim'
   " VimWiki
   Plug 'vimwiki/vimwiki'
   Plug 'michal-h21/vimwiki-sync'
