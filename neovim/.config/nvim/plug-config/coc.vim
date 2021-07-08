@@ -13,7 +13,8 @@ let g:coc_global_extensions = [
   \ 'coc-spell-checker',
   \ 'coc-tsserver',
   \ 'coc-lua',
-  \ 'coc-pairs'
+  \ 'coc-pairs',
+  \ 'coc-calc'
   \ ]
 
 " coc settings
