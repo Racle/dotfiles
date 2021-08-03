@@ -1,18 +1,34 @@
 # Dotfiles
 
-## clone repo
+## Clone repo
 
 ```
 git clone https://github.com/Racle/dotfiles.git ~/.dotfiles
 ```
 
-## usage
+## Usage
 
-#### Install stow
+### Install stow
 
 ```
 sudo apt-get install stow
 ```
+
+### Stow files
+
+This will remove old files and symlink new ones
+
+```
+make stow
+```
+
+For server, use
+
+```
+make stow-server
+```
+
+## Manual usage
 
 #### remove old files
 
