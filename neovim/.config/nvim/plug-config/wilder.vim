@@ -5,6 +5,9 @@ cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
 " only / and ? are enabled by default
 call wilder#set_option('modes', ['/', '?', ':'])
+" Disable search due to https://github.com/gelguy/wilder.nvim/issues/30 and
+" scrollbar plugin
+" call wilder#set_option('modes', [':'])
 
 call wilder#set_option('pipeline', [
       \   wilder#branch(
@@ -23,6 +26,13 @@ let s:highlighters = [
       \ ]
       " \ wilder#pcre2_highlighter(),
       " \ wilder#lua_fzy_highlighter(),
+      "
+" Use a statusline renderer due to https://github.com/gelguy/wilder.nvim/issues/30
+let s:search_renderer = wilder#wildmenu_renderer({
+    \ 'highlighter': s:highlighters,
+    \ 'mode': 'statusline',
+    \ 'right': [' ', wilder#wildmenu_index()]
+    \ })
 
 call wilder#set_option('renderer', wilder#renderer_mux({
       \ ':': wilder#popupmenu_renderer({
@@ -35,7 +45,6 @@ call wilder#set_option('renderer', wilder#renderer_mux({
       \     wilder#popupmenu_scrollbar(),
       \   ],
       \ }),
-      \ '/': wilder#wildmenu_renderer({
-      \   'highlighter': s:highlighters,
-      \ }),
+      \ '/': s:search_renderer,
+      \ '?': s:search_renderer
       \ }))

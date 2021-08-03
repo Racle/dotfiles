@@ -1,7 +1,7 @@
 let g:firenvim_config = {
     \ 'localSettings': {
         \ 'https://github\.com/': {
-            \ 'takeover': 'always',
+            \ 'takeover': 'never',
         \ },
         \ '.*': {
             \ 'takeover': 'never',
