@@ -98,6 +98,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
   " Show functions/methods <leader>lv
   Plug 'liuchengxu/vista.vim'
+  " Better wildmenu
+  Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 

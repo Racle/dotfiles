@@ -8,7 +8,6 @@ endif
 let $NVIMPATH = fnamemodify($MYVIMRC, ':p:h')
 
 source $NVIMPATH/general/plugins.vim
-source $NVIMPATH/general/plugins.vim
 source $NVIMPATH/general/functions.vim
 source $NVIMPATH/general/mappings.vim
 source $NVIMPATH/general/settings.vim
@@ -33,6 +32,7 @@ source $NVIMPATH/plug-config/vimwiki.vim
 source $NVIMPATH/plug-config/suda.vim
 source $NVIMPATH/plug-config/vista.vim
 source $NVIMPATH/plug-config/vcoolor.vim
+source $NVIMPATH/plug-config/wilder.vim
 
 " Lua config
 luafile $NVIMPATH/lua/general/mappings.lua
