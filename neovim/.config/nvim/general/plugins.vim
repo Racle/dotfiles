@@ -100,6 +100,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'liuchengxu/vista.vim'
   " Better wildmenu
   Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+  " package.json version info
+  Plug 'vuki656/package-info.nvim'
 call plug#end()
 
 
