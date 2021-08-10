@@ -12,7 +12,7 @@ let g:coc_global_extensions = [
   \ 'coc-gitignore',
   \ 'coc-spell-checker',
   \ 'coc-tsserver',
-  \ 'coc-lua',
+  \ 'coc-sumneko-lua',
   \ 'coc-pairs',
   \ 'coc-calc'
   \ ]
