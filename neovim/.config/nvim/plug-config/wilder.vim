@@ -7,7 +7,8 @@ cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 " call wilder#set_option('modes', ['/', '?', ':'])
 " Disable search due to https://github.com/gelguy/wilder.nvim/issues/30 and
 " scrollbar plugin
-call wilder#set_option('modes', [':'])
+" call wilder#set_option('modes', [':'])
+call wilder#set_option('modes', ['/', '?', ':'])
 
 call wilder#set_option('pipeline', [
       \   wilder#branch(
@@ -48,3 +49,15 @@ call wilder#set_option('renderer', wilder#renderer_mux({
       \ '/': s:search_renderer,
       \ '?': s:search_renderer
       \ }))
+
+" Quick hack around scrollview issue
+nnoremap / :call WilderStart("/")<CR>
+nnoremap ? :call WilderStart("?")<CR>
+
+function! WilderStart(key)
+  call wilder#start_from_normal_mode()
+  ScrollViewDisable
+  call feedkeys(a:key, 'n')
+endfunction
+
+autocmd CmdlineLeave * ScrollViewEnable
