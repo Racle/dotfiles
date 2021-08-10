@@ -3,11 +3,7 @@ set wildcharm=<Tab>
 cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
 cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 
-" only / and ? are enabled by default
-" call wilder#set_option('modes', ['/', '?', ':'])
-" Disable search due to https://github.com/gelguy/wilder.nvim/issues/30 and
-" scrollbar plugin
-call wilder#set_option('modes', [':'])
+call wilder#set_option('modes', ['/', '?', ':'])
 
 call wilder#set_option('pipeline', [
       \   wilder#branch(
@@ -27,7 +23,6 @@ let s:highlighters = [
       " \ wilder#pcre2_highlighter(),
       " \ wilder#lua_fzy_highlighter(),
       "
-" Use a statusline renderer due to https://github.com/gelguy/wilder.nvim/issues/30
 let s:search_renderer = wilder#wildmenu_renderer({
     \ 'highlighter': s:highlighters,
     \ 'mode': 'statusline',
