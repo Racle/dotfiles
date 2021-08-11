@@ -33,6 +33,7 @@ source $NVIMPATH/plug-config/suda.vim
 source $NVIMPATH/plug-config/vista.vim
 source $NVIMPATH/plug-config/vcoolor.vim
 source $NVIMPATH/plug-config/wilder.vim
+source $NVIMPATH/plug-config/rooter.vim
 
 " Lua config
 luafile $NVIMPATH/lua/general/mappings.lua
