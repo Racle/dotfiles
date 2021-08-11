@@ -12,7 +12,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " fzf
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'airblade/vim-rooter'
+  " Plug 'airblade/vim-rooter'
   " Pass focus events from tmux to Vim (useful for autoread and linting tools).
   Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'tmux-plugins/vim-tmux'
