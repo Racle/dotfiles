@@ -45,8 +45,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'unblevable/quick-scope'
   " multiple cursor
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-  " yank highlight
-  Plug 'machakann/vim-highlightedyank'
   " undootree
   Plug 'mbbill/undotree'
   " colors / colorpicker

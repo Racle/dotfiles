@@ -97,3 +97,6 @@ autocmd FileType go autocmd BufWritePost,TextChanged * exe ":IndentBlanklineRefr
 
 " fix vimscript highlighting
 au Syntax vim syn match vimUsrCmd '^\s*\zs\u\%(\w*\)\@>(\@!'
+
+" Highlighted yank
+au TextYankPost * silent! lua vim.highlight.on_yank{timeout=250}
