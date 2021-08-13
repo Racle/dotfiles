@@ -67,7 +67,7 @@ POWERLEVEL9K_SHORTEN_STRATEGY=None
 POWERLEVEL9K_STATUS_CROSS=true
 
 #Disable bracketed paste (ctrl+v => ctrl+shift+v = \e[200~
-unset zle_bracketed_paste
+# unset zle_bracketed_paste
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
