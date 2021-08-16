@@ -171,4 +171,14 @@ function! MacroModeToggle()
   endif
 endfunction
 
+" kitty+zsh cleaning buffferhistory
+function! KittyBufferHistoryClean()
+  set modifiable
+  set noconfirm
+  %s/\s*$//
+  let @/ = ""
+  set nomodifiable
+endfunction
+command! KittyBufferHistoryClean call KittyBufferHistoryClean()
+
 command! MacroModeToggle call MacroModeToggle()
