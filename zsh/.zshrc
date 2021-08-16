@@ -22,10 +22,11 @@ export VISUAL="nvim"
 #export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 ZSH_DISABLE_COMPFIX=true
 ZLE_RPROMPT_INDENT=0
+DISABLE_MAGIC_FUNCTIONS=true
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
