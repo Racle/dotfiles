@@ -110,6 +110,8 @@ alias calc="="
 alias gp="git pull"
 alias gP="git push"
 alias lg="lazygit"
+# hax fix for https://github.com/kovidgoyal/kitty/issues/1139
+alias ssh="TERM=xterm-256color ssh"
 
 # stop screen freezing
 stty stop undef
