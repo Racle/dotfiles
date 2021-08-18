@@ -189,5 +189,5 @@ function! DisableHighlight()
   IndentBlanklineDisable
 endfunction
 
-" disable highlighting on large files
+" disable treesitter highlight + blankline on large files
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | call DisableHighlight() | endif
