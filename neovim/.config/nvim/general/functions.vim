@@ -182,3 +182,12 @@ endfunction
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 
 command! MacroModeToggle call MacroModeToggle()
+
+
+function! DisableHighlight()
+  TSBufDisable highlight
+  IndentBlanklineDisable
+endfunction
+
+" disable highlighting on large files
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | call DisableHighlight() | endif
