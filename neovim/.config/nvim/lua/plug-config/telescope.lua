@@ -19,6 +19,16 @@ end
 
 require("telescope").setup {
   defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--hidden",
+      "--smart-case"
+    },
     selection_strategy = "follow",
     sorting_strategy = "ascending",
     file_ignore_patterns = {
@@ -33,7 +43,7 @@ require("telescope").setup {
       vertical = {
         mirror = true
       },
-      width = 0.9,
+      width = 0.93,
       prompt_position = "top"
     },
     mappings = {

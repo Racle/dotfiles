@@ -47,7 +47,7 @@ let g:which_key_map['Q'] = [ ':ccl', 'close quickfix']
 let g:which_key_map.f = {
       \ 'name' : '+find',
       \ 'o' : [':Telescope oldfiles hidden=true',                  'Search oldfiles'],
-      \ 'f' : [':Rg', 'Search files'],
+      \ 'f' : [':Telescope live_grep', 'Search files'],
       \ 'F' : 'Search test with ext',
       \ 'b' : [':Telescope buffers',                  'Search buffers'],
       \ 'q' : [':Telescope quickfix',                  'Search quickfix'],
