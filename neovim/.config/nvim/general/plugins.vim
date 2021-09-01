@@ -100,6 +100,11 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
   " package.json version info
   Plug 'vuki656/package-info.nvim'
+  " Telescope
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-telescope/telescope-media-files.nvim'
 call plug#end()
 
 

@@ -30,7 +30,10 @@ function MyVimEnter()
   if filereadable('.vim/sessions/vim.session.1')
     call LoadVimSession("1")
   else
-    execute ":Files"
+    " fzf
+    " execute ":Files"
+    " Telescope
+    execute ":Telescope find_files hidden=true"
   endif
 
   "   execute "e " . v:oldfiles[0]

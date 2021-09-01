@@ -41,7 +41,7 @@ luafile $NVIMPATH/lua/plug-config/bufferline.lua
 luafile $NVIMPATH/lua/plug-config/blankline.lua
 luafile $NVIMPATH/lua/plug-config/scrollview.lua
 luafile $NVIMPATH/lua/plug-config/treesitter.lua
-" luafile $NVIMPATH/lua/plug-config/telescope.lua
+luafile $NVIMPATH/lua/plug-config/telescope.lua
 luafile $NVIMPATH/lua/plug-config/gitsigns.lua
 luafile $NVIMPATH/lua/plug-config/nvim-ts-context-commentstring.lua
 luafile $NVIMPATH/lua/plug-config/formatter.lua

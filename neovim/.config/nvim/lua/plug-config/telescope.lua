@@ -1,63 +1,60 @@
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+local custom_actions = {}
+
+function custom_actions.fzf_multi_select(prompt_bufnr)
+  local picker = action_state.get_current_picker(prompt_bufnr)
+  local num_selections = table.getn(picker:get_multi_selection())
+
+  if num_selections > 1 then
+    -- actions.file_edit throws - context of picker seems to change
+    --actions.file_edit(prompt_bufnr)
+    actions.send_selected_to_qflist(prompt_bufnr)
+    actions.open_qflist()
+  else
+    actions.file_edit(prompt_bufnr)
+  end
+end
 
 require("telescope").setup {
   defaults = {
-    mappings = {
-      n = {
-        ["<C-q>"] = send_selected_to_qflist
-      },
-      i = {
-        ["<C-q>"] = send_selected_to_qflist
-      }
+    selection_strategy = "follow",
+    sorting_strategy = "ascending",
+    file_ignore_patterns = {
+      "%.git/.*",
+      "%.vim/.*",
+      "%.node_modules/.*",
+      "%.idea/.*",
+      "%.vscode/.*",
+      "%.history/.*"
     },
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case"
-    },
-    prompt_position = "bottom",
-    prompt_prefix = " ",
-    selection_caret = " ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_defaults = {
-      horizontal = {
-        mirror = false,
-        preview_width = 0.5
-      },
+    layout_config = {
       vertical = {
-        mirror = false
-      }
+        mirror = true
+      },
+      width = 0.9,
+      prompt_position = "top"
     },
-    file_sorter = require "telescope.sorters".get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-    shorten_path = true,
-    winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
-    border = {},
-    borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-    color_devicons = true,
-    use_less = true,
-    set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-    file_previewer = require "telescope.previewers".vim_buffer_cat.new,
-    grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-    qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
+    mappings = {
+      i = {
+        -- close on escape
+        ["<esc>"] = actions.close,
+        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+        ["<cr>"] = custom_actions.fzf_multi_select
+      },
+      n = {
+        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+        ["<cr>"] = custom_actions.fzf_multi_select
+      }
+    }
   },
   extensions = {
     media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
       filetypes = {"png", "webp", "jpg", "jpeg", "pdf"},
       find_cmd = "rg" -- find command (defaults to `fd`)
     }
@@ -65,23 +62,3 @@ require("telescope").setup {
 }
 
 require("telescope").load_extension("media_files")
-
-local opt = {noremap = true, silent = true}
-
-vim.g.mapleader = " "
-
--- mappings
-vim.api.nvim_set_keymap("n", "<leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<leader>n", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>fp",
-  [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]],
-  opt
-)
-
-vim.api.nvim_set_keymap("n", "<leader>fq", [[<Cmd>lua require('telescope.builtin').quickfix()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<leader>fg", [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<leader>fb", [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
