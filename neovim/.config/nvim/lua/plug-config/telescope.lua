@@ -29,15 +29,15 @@ require("telescope").setup {
       "--hidden",
       "--smart-case"
     },
-    selection_strategy = "follow",
+    selection_strategy = "reset",
     sorting_strategy = "ascending",
     file_ignore_patterns = {
-      "%.git/.*",
-      "%.vim/.*",
-      "%.node_modules/.*",
-      "%.idea/.*",
-      "%.vscode/.*",
-      "%.history/.*"
+      "%.git",
+      "%.vim",
+      "node_modules/.*",
+      "%.idea",
+      "%.vscode",
+      "%.history"
     },
     layout_config = {
       vertical = {
