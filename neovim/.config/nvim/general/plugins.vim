@@ -104,7 +104,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-telescope/telescope-media-files.nvim' { 'do' : 'pip3 install --upgrade ueberzug'}
+  Plug 'nvim-telescope/telescope-media-files.nvim', { 'do': 'pip3 install --upgrade ueberzug' }
 call plug#end()
 
 
