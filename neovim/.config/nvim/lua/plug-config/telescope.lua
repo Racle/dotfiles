@@ -32,12 +32,12 @@ require("telescope").setup {
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     file_ignore_patterns = {
-      "%.git",
-      "%.vim",
+      "%.git/.*",
+      "%.vim/.*",
       "node_modules/.*",
-      "%.idea",
-      "%.vscode",
-      "%.history"
+      "%.idea/.*",
+      "%.vscode/.*",
+      "%.history/.*"
     },
     layout_config = {
       vertical = {

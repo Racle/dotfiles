@@ -55,6 +55,14 @@ let g:which_key_map.f = {
       \ 'n' : [':Telescope find_files hidden=true',                  'Search files'],
       \ 'm' : [':Telescope media_files',                  'Search media files'],
       \ 'v' : [':Vista finder coc',    'Search functions'],
+      \ 'g' : {
+              \ 'name': '+git',
+              \ 'c' : [':Telescope git_commits', 'Search commits'],
+              \ 'b' : [':Telescope git_bcommits', 'Search buffer commits'],
+              \ 'B' : [':Telescope git_branches', 'Search branches'],
+              \ 's' : [':Telescope git_status', 'Search git status'],
+              \ 'S' : [':Telescope git_stash', 'Search git stash'],
+              \ },
       \ }
 
 " a is for actions
