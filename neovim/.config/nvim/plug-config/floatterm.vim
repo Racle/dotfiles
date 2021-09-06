@@ -15,6 +15,11 @@ let g:floaterm_wintitle=1
 let g:floaterm_autoclose=2
 let g:floaterm_winblend=5
 
+" make floaterm look like telescope
+let g:floaterm_borderchars='─│─│╭╮╯╰'
+let g:floaterm_title ='─floaterm: $1/$2'
+hi FloatermBorder guibg=bg
+
 " fixes neovim floaterm toggle problem with floaterm
 " https://github.com/neovim/neovim/issues/14524
 " https://github.com/asvetliakov/vscode-neovim/issues/632#issuecomment-837201224
