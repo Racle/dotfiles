@@ -48,6 +48,7 @@ let g:which_key_map.f = {
       \ 'name' : '+find',
       \ 'o' : [':Telescope oldfiles hidden=true',                  'Search oldfiles'],
       \ 'f' : [':Telescope live_grep', 'Search files'],
+      \ 'r' : [':Rg', 'Search files (rg)'],
       \ 'F' : 'Search test with ext',
       \ 'b' : [':Telescope buffers',                  'Search buffers'],
       \ 'q' : [':Telescope quickfix',                  'Search quickfix'],
