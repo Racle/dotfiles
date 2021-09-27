@@ -178,9 +178,13 @@ endfunction
 function! KittyBufferHistoryClean()
   set modifiable
   set noconfirm
-  %s/\s*$//
+  " clean ascii/ansi code  (starts with ^[)
+  silent! %s/\e\[[0-9:;]*m//g
+  silent! %s/[^[:alnum:][:punct:][:space:]]//g
+  silent! %s/\e\[[^\s]*\s//g
+  " remove empty spaces from end
+  silent! %s/\s*$//
   let @/ = ""
-  set nomodifiable
 endfunction
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 

@@ -33,6 +33,7 @@ call wilder#set_option('renderer', wilder#renderer_mux({
       \ ':': wilder#popupmenu_renderer({
       \   'highlighter': s:highlighters,
       \   'left': [
+      \ ' ' ,
       \     wilder#popupmenu_devicons(),
       \   ],
       \   'right': [

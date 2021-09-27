@@ -20,6 +20,17 @@ local prettier = {
   end
 }
 
+local nop = {
+  -- prettier
+  function()
+    return {
+      exe = "exit 0",
+      stdin = false,
+      ignore_exitcode = true
+    }
+  end
+}
+
 require("formatter").setup(
   {
     logging = false,
@@ -33,7 +44,7 @@ require("formatter").setup(
       json = prettier,
       vue = prettier,
       markdown = prettier,
-      vimwiki = prettier,
+      vimwiki = nop,
       graphql = prettier,
       yaml = prettier,
       html = prettier,
