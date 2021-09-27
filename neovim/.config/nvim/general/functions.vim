@@ -185,6 +185,7 @@ function! KittyBufferHistoryClean()
   " remove empty spaces from end
   silent! %s/\s*$//
   let @/ = ""
+  set rnu
 endfunction
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 
