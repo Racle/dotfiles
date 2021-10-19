@@ -313,6 +313,23 @@ let g:which_key_map.w = {
       \ 'r' : 'Rename wiki',
       \ }
 
+" custom menu after opening package.json
+function WhichKeyPackageInfo()
+  if(expand('%:t') != "package.json")
+    return
+  endif
+
+  nmap <leader>Pi :lua require('package-info').install()<CR>
+  nmap <leader>Pd :lua require('package-info').delete()<CR>
+  nmap <leader>Pc :lua require('package-info').change_version()<CR>
+  let g:which_key_map.P = {
+        \ 'name' : '+Package',
+        \ 'i' : 'Install',
+        \ 'd' : 'Delete',
+        \ 'c' : 'Change version',
+        \ }
+  call which_key#register('<Space>', "g:which_key_map")
+endfunction
 
 " custom debug menu for golang
 function WhichKeyDebug()
@@ -332,6 +349,7 @@ function WhichKeyDebug()
 endfunction
 
 autocmd FileType go call WhichKeyDebug()
+autocmd FileType json call WhichKeyPackageInfo()
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
