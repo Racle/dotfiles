@@ -14,7 +14,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'airblade/vim-rooter'
   " Pass focus events from tmux to Vim (useful for autoread and linting tools).
-  Plug 'tmux-plugins/vim-tmux-focus-events'
   Plug 'tmux-plugins/vim-tmux'
   " Neovim library plugin
   Plug 'nvim-lua/plenary.nvim'
