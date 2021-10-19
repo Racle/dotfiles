@@ -33,6 +33,6 @@ require "lualine".setup {
     lualine_c = {{"diagnostics", sources = {"coc"}}, "filename", "b:coc_current_function"},
     lualine_x = {"encoding", "fileformat"},
     lualine_y = {"filetype"},
-    lualine_z = {"location"}
+    lualine_z = {"location", "progress"}
   }
 }

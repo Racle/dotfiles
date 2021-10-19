@@ -77,7 +77,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " icons
   Plug 'kyazdani42/nvim-web-devicons'
   " Scrollbar
-  Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
+  " Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
   " treesitter for highlighting
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
