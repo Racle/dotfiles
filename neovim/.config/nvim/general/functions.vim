@@ -8,9 +8,9 @@ endfunction
 
 command! PlugCocUpdate call PlugCocUpdate()
 
-function! SourceIfExists(file)
-  if filereadable(expand(a:file))
-    exe 'source' a:file
+function! ServerfixCommandIfFileExists()
+  if filereadable(expand('$NVIMPATH/server-init.vim'))
+    nmap <leader>ä :source $NVIMPATH/server-init.vim<CR>
   endif
 endfunction
 

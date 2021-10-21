@@ -5,4 +5,5 @@ set notermguicolors
 " Plug 'vim-airline/vim-airline', { 'on': [] }
 " Plug 'vim-airline/vim-airline-themes', { 'on': [] }
 luafile $NVIMPATH/lua/plug-config/bufferline-server.lua
+luafile $NVIMPATH/lua/plug-config/lualine.lua
 set notermguicolors

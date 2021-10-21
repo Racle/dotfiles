@@ -49,7 +49,7 @@ luafile $NVIMPATH/lua/plug-config/lualine.lua
 luafile $NVIMPATH/lua/plug-config/package-info.lua
 
 " server settings
-call SourceIfExists('$NVIMPATH/server-init.vim')
+call ServerfixCommandIfFileExists()
 
 " firenvim config
 if exists('g:started_by_firenvim')
