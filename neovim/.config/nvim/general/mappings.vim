@@ -71,10 +71,6 @@ nnoremap <C-P> <Tab>
 " nmap <Tab> [b
 " nmap <S-Tab> b]
 
-
-" Unbind some useless/annoying default key bindings.
-nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
-
 " Toggle paste mode
 nnoremap <F9> :set invpaste paste?<CR>
 set pastetoggle=<F9>
