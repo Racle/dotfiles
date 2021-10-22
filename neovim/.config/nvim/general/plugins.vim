@@ -73,7 +73,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " bufferline (tabs)
   Plug 'akinsho/nvim-bufferline.lua'
   " lualine, airline replacement
-  Plug 'hoob3rt/lualine.nvim'
+  Plug 'nvim-lualine/lualine.nvim'
   " icons
   Plug 'kyazdani42/nvim-web-devicons'
   " Scrollbar

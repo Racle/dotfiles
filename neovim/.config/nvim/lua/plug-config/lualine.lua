@@ -9,7 +9,7 @@ local function customModes()
 
   -- check if any custom modes has set
   if #modes == 0 then
-    return nil
+    return ""
   else
     return table.concat(modes, " | ")
   end
