@@ -44,8 +44,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   " undootree
   Plug 'mbbill/undotree'
-  " colors / colorpicker
-  Plug 'ap/vim-css-color'
+  " colorpicker
+  " Plug 'ap/vim-css-color' coc-css does same thing
   Plug 'KabbAmine/vCoolor.vim'
   " Align (:Tab /<regexp>)
   Plug 'godlygeek/tabular'
