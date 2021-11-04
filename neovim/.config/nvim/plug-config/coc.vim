@@ -13,9 +13,9 @@ let g:coc_global_extensions = [
   \ 'coc-spell-checker',
   \ 'coc-tsserver',
   \ 'coc-sumneko-lua',
-  \ 'coc-pairs',
   \ 'coc-calc'
   \ ]
+  " \ 'coc-pairs',
 
 " coc settings
 nmap <silent> gd <Plug>(coc-definition)
@@ -46,6 +46,12 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" close autocomplete menu and return to insert mode
+" Github copilot doesn't work if autocomplete menu is showing
+inoremap <silent><expr> §
+     \ pumvisible() ? "\<ESC>a" :
+     \ "\<ESC>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()

@@ -12,8 +12,8 @@ let maplocalleader=" "
 noremap § <Esc>
 tnoremap § <Esc>
 nnoremap § <Esc>
-inoremap § <Esc>
 xnoremap § <Esc>
+" inoremap § <Esc> " mapped in coc.vim
 
 " disable digraph hotkey, works better with coc-snippets
 imap <C-k> <NOP>
