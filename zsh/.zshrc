@@ -21,6 +21,11 @@ export VISUAL="nvim"
 
 #export TERM="xterm-256color"
 
+
+# Automatically update zsh every 60 days
+DISABLE_UPDATE_PROMPT=true
+UPDATE_ZSH_DAYS=60
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
