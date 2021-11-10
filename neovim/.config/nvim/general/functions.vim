@@ -186,6 +186,8 @@ function! KittyBufferHistoryClean()
   silent! %s/\s*$//
   let @/ = ""
   set rnu
+  " map q to force quit
+  cnoremap q q!
 endfunction
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 
