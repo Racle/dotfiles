@@ -106,6 +106,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   " Github copilot
   Plug 'github/copilot.vim'
+  " lightspeed s/S shortcut
+  Plug 'ggandor/lightspeed.nvim'
+
 call plug#end()
 
 
