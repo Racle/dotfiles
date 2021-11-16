@@ -5,7 +5,6 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-go',
   \ 'coc-snippets',
-  \ 'coc-explorer',
   \ 'coc-docker',
   \ 'coc-yaml',
   \ 'coc-homeassistant',

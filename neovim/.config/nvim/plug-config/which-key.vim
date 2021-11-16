@@ -28,7 +28,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 
 " Single mappings
-let g:which_key_map['e'] = [ ':CocCommand explorer', 'Explorer']
+let g:which_key_map['e'] = [ ':NvimTreeFindFileToggle', 'Explorer']
 " let g:which_key_map['n'] = [ ':Files', 'Search files']
 let g:which_key_map['n'] = [ ':Telescope find_files hidden=true', 'Search files']
 " let g:which_key_map['f'] = [ ':Rg', 'Search text']

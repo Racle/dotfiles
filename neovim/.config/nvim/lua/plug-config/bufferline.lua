@@ -28,7 +28,7 @@ require "bufferline".setup {
     separator_style = "slant",
     offsets = {
       {
-        filetype = "coc-explorer",
+        filetype = "NvimTree",
         text = "File Explorer",
         highlight = "Directory",
         text_align = "center"
