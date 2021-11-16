@@ -48,6 +48,7 @@ luafile $NVIMPATH/lua/plug-config/nvim-ts-context-commentstring.lua
 luafile $NVIMPATH/lua/plug-config/formatter.lua
 luafile $NVIMPATH/lua/plug-config/lualine.lua
 luafile $NVIMPATH/lua/plug-config/package-info.lua
+luafile $NVIMPATH/lua/plug-config/lightspeed.lua
 
 " server settings
 call ServerfixCommandIfFileExists()
@@ -56,3 +57,5 @@ call ServerfixCommandIfFileExists()
 if exists('g:started_by_firenvim')
   source $NVIMPATH/plug-config/firenvim.vim
 endif
+
+
