@@ -12,3 +12,4 @@ neovim/.config/nvim/swap/
 ranger/.config/ranger/plugins/
 neovim/.config/nvim/.netrwhist
 neovim/.config/nvim/coc-settings.json
+sumneko-lua*
