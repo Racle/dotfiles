@@ -3,18 +3,52 @@ local action_state = require("telescope.actions.state")
 
 local custom_actions = {}
 
-function custom_actions.fzf_multi_select(prompt_bufnr)
+--function custom_actions.fzf_multi_select(prompt_bufnr)
+--  local picker = action_state.get_current_picker(prompt_bufnr)
+--  local num_selections = table.getn(picker:get_multi_selection())
+
+--  if num_selections > 1 then
+--    -- actions.file_edit throws - context of picker seems to change
+--    --actions.file_edit(prompt_bufnr)
+--    actions.send_selected_to_qflist(prompt_bufnr)
+--    actions.open_qflist()
+--  else
+--    actions.file_edit(prompt_bufnr)
+--  end
+--end
+-- https://github.com/nvim-telescope/telescope.nvim/issues/1048#issuecomment-981991170
+
+function custom_actions._multiopen(prompt_bufnr, open_cmd)
   local picker = action_state.get_current_picker(prompt_bufnr)
   local num_selections = table.getn(picker:get_multi_selection())
-
   if num_selections > 1 then
-    -- actions.file_edit throws - context of picker seems to change
-    --actions.file_edit(prompt_bufnr)
-    actions.send_selected_to_qflist(prompt_bufnr)
-    actions.open_qflist()
+    local picker = action_state.get_current_picker(prompt_bufnr)
+    vim.cmd("bw!") -- wipe the prompt buffer
+    for _, entry in ipairs(picker:get_multi_selection()) do
+      vim.cmd(string.format("%s %s", open_cmd, entry.value))
+    end
+    vim.cmd("stopinsert")
   else
-    actions.file_edit(prompt_bufnr)
+    if open_cmd == "vsplit" then
+      actions.file_vsplit(prompt_bufnr)
+    elseif open_cmd == "split" then
+      actions.file_split(prompt_bufnr)
+    elseif open_cmd == "tabe" then
+      actions.file_tab(prompt_bufnr)
+    else
+      actions.file_edit(prompt_bufnr)
+    end
   end
+end
+
+function custom_actions.multi_selection_open_vsplit(prompt_bufnr)
+  custom_actions._multiopen(prompt_bufnr, "vsplit")
+end
+function custom_actions.multi_selection_open_split(prompt_bufnr)
+  custom_actions._multiopen(prompt_bufnr, "split")
+end
+function custom_actions.multi_selection_open(prompt_bufnr)
+  custom_actions._multiopen(prompt_bufnr, "edit")
 end
 
 require("telescope").setup {
@@ -52,12 +86,18 @@ require("telescope").setup {
         ["<esc>"] = actions.close,
         ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
         ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-        ["<cr>"] = custom_actions.fzf_multi_select
+        -- ["<cr>"] = custom_actions.fzf_multi_select,
+        ["<cr>"] = custom_actions.multi_selection_open,
+        ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+        ["<c-s>"] = custom_actions.multi_selection_open_split
       },
       n = {
         ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
         ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-        ["<cr>"] = custom_actions.fzf_multi_select
+        -- ["<cr>"] = custom_actions.fzf_multi_select
+        ["<cr>"] = custom_actions.multi_selection_open,
+        ["<c-v>"] = custom_actions.multi_selection_open_vsplit,
+        ["<c-s>"] = custom_actions.multi_selection_open_split
       }
     }
   },
