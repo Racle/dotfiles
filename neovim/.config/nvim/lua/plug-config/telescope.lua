@@ -3,29 +3,19 @@ local action_state = require("telescope.actions.state")
 
 local custom_actions = {}
 
---function custom_actions.fzf_multi_select(prompt_bufnr)
---  local picker = action_state.get_current_picker(prompt_bufnr)
---  local num_selections = table.getn(picker:get_multi_selection())
-
---  if num_selections > 1 then
---    -- actions.file_edit throws - context of picker seems to change
---    --actions.file_edit(prompt_bufnr)
---    actions.send_selected_to_qflist(prompt_bufnr)
---    actions.open_qflist()
---  else
---    actions.file_edit(prompt_bufnr)
---  end
---end
--- https://github.com/nvim-telescope/telescope.nvim/issues/1048#issuecomment-981991170
-
 function custom_actions._multiopen(prompt_bufnr, open_cmd)
   local picker = action_state.get_current_picker(prompt_bufnr)
-  local num_selections = table.getn(picker:get_multi_selection())
+  local num_selections = #picker:get_multi_selection()
   if num_selections > 1 then
-    local picker = action_state.get_current_picker(prompt_bufnr)
+    local cwd = picker.cwd
+    if cwd == nil then
+      cwd = ""
+    else
+      cwd = string.format("%s/", cwd)
+    end
     vim.cmd("bw!") -- wipe the prompt buffer
     for _, entry in ipairs(picker:get_multi_selection()) do
-      vim.cmd(string.format("%s %s", open_cmd, entry.value))
+      vim.cmd(string.format("%s %s%s", open_cmd, cwd, entry.value))
     end
     vim.cmd("stopinsert")
   else
