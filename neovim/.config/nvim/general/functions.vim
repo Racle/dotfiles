@@ -33,7 +33,7 @@ function MyVimEnter()
     " fzf
     " execute ":Files"
     " Telescope
-    execute ":Telescope find_files hidden=true"
+    " execute ":Telescope find_files hidden=true"
   endif
 
   "   execute "e " . v:oldfiles[0]
