@@ -9,7 +9,7 @@ rm:
 	echo "this might delete files from this repository also"
 
 link-root:
-	sudo rm /root/.oh-my-zsh /root/.zshrc /root/.p10k.zsh /root/.docker_aliases
+	sudo rm -rf /root/.oh-my-zsh /root/.zshrc /root/.p10k.zsh /root/.docker_aliases
 	sudo ln -s ${HOME}/.oh-my-zsh /root/
 	sudo ln -s ${HOME}/.zshrc /root/
 	sudo ln -s ${HOME}/.p10k.zsh /root/
