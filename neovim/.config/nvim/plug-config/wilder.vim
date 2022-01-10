@@ -24,10 +24,10 @@ let s:highlighters = [
       "
 let s:search_renderer = wilder#wildmenu_renderer({
     \ 'highlighter': s:highlighters,
-    \ 'mode': 'statusline',
     \ 'right': [' ', wilder#wildmenu_index()],
     \ 'apply_incsearch_fix': v:true,
     \ })
+    " \ 'mode': 'statusline',
 
 call wilder#set_option('renderer', wilder#renderer_mux({
       \ ':': wilder#popupmenu_renderer({
