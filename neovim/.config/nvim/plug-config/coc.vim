@@ -12,7 +12,8 @@ let g:coc_global_extensions = [
   \ 'coc-spell-checker',
   \ 'coc-tsserver',
   \ 'coc-sumneko-lua',
-  \ 'coc-calc'
+  \ 'coc-calc',
+  \ 'coc-pyright'
   \ ]
   " \ 'coc-pairs',
 
