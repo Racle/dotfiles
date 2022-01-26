@@ -11,7 +11,7 @@ let g:coc_global_extensions = [
   \ 'coc-gitignore',
   \ 'coc-spell-checker',
   \ 'coc-tsserver',
-  \ 'coc-sumneko-lua',
+  \ 'coc-lua',
   \ 'coc-calc',
   \ 'coc-pyright'
   \ ]
