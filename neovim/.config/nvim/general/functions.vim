@@ -201,3 +201,11 @@ endfunction
 
 " disable treesitter highlight + blankline on large files
 autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | call DisableHighlight() | endif
+
+" execute macro normally over visual range
+function!  ExecuteMacroOverVisualRange()
+ echo  "@".getcmdline()
+ execute  ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
