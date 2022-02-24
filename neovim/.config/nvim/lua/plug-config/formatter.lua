@@ -48,6 +48,7 @@ require("formatter").setup(
       graphql = prettier,
       yaml = prettier,
       html = prettier,
+      xhtml = prettier,
       xml = prettier,
       php = prettier,
       lua = {

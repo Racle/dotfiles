@@ -121,8 +121,13 @@ nnoremap ; ,
 nnoremap c. :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 " fixes clipboard=unnamedplus block copy/paste issue
-map p <Plug>(miniyank-autoput)
-map P <Plug>(miniyank-autoPut)
+vmap p <Plug>(miniyank-autoput)
+vmap P <Plug>(miniyank-autoPut)
+nmap p <Plug>(miniyank-autoput)
+nmap P <Plug>(miniyank-autoPut)
+
+" github copilot mappings in copilot.vim
+
 
 " show documentation with gh
 nmap <silent> gh :call <SID>show_documentation()<CR>
