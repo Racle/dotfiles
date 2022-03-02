@@ -1,4 +1,4 @@
 require("package-info").setup {
-  autostart = true,
+  autostart = false,
   package_manager = "npm"
 }
