@@ -58,6 +58,7 @@ require("telescope").setup {
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     file_ignore_patterns = {
+      "dist/.*",
       "%.git/.*",
       "%.vim/.*",
       "node_modules/.*",
