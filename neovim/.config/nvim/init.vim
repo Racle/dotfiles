@@ -36,6 +36,10 @@ source $NVIMPATH/plug-config/wilder.vim
 source $NVIMPATH/plug-config/rooter.vim
 source $NVIMPATH/plug-config/copilot.vim
 
+if exists('$NVIMPATH/dadbod.vim')
+  source $NVIMPATH/dadbod.vim
+endif
+
 " Lua config
 luafile $NVIMPATH/lua/general/mappings.lua
 luafile $NVIMPATH/lua/plug-config/bufferline.lua
@@ -57,5 +61,3 @@ call ServerfixCommandIfFileExists()
 if exists('g:started_by_firenvim')
   source $NVIMPATH/plug-config/firenvim.vim
 endif
-
-

@@ -108,6 +108,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'github/copilot.vim'
   " File explorer
   Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'tpope/vim-dadbod'
+  Plug 'kristijanhusak/vim-dadbod-ui'
 call plug#end()
 
 
