@@ -12,6 +12,11 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
   end
   actions.send_selected_to_qflist(prompt_bufnr)
   vim.cmd("cfdo " .. open_cmd)
+
+  -- open the quickfix list if there is more than one opened with enter key
+  if open_cmd == "edit" and num_selections > 1 then
+    vim.cmd("copen")
+  end
 end
 function custom_actions.multi_selection_open_vsplit(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "vsplit")
@@ -21,16 +26,6 @@ function custom_actions.multi_selection_open_split(prompt_bufnr)
 end
 function custom_actions.multi_selection_open_tab(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "tabe")
-end
-function custom_actions.multi_selection_open(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "edit")
-end
-
-function custom_actions.multi_selection_open_vsplit(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "vsplit")
-end
-function custom_actions.multi_selection_open_split(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "split")
 end
 function custom_actions.multi_selection_open(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "edit")
