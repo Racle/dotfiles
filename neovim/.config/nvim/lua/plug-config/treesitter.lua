@@ -92,5 +92,9 @@ require("nvim-treesitter.configs").setup {
         ["[]"] = "@class.outer"
       }
     }
+  },
+  matchup = {
+    enable = true, -- mandatory, false will disable the whole extension
+    disable = {"c", "ruby"} -- optional, list of language that will be disabled
   }
 }

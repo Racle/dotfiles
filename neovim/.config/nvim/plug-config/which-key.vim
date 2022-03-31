@@ -298,7 +298,7 @@ let g:which_key_map.t = {
       \ 'name' : '+terminal',
       \ 'g' : [':FloatermNew lazygit',         'git'],
       \ 'r' : [':FloatermNew ranger',          'ranger'],
-      \ 't' : [':FloatermToggle',              'terminal'],
+      \ 't' : [':FloatermNew',                 'terminal'],
       \ 'c' : [':call FloatermOpenCheat()',    'cheat'],
       \ 'w' : [':call FloatermOpenVimwiki()',  'vimwiki'],
       \ }
