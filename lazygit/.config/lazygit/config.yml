@@ -3,4 +3,4 @@ os:
 git:
   paging:
     colorArg: never
-    pager: delta --dark --paging=never
+    pager: delta --dark --paging=never --syntax-theme=gruvbox-dark
