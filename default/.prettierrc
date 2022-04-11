@@ -1,5 +1,6 @@
 {
   "jsxBracketSameLine": true,
+  "bracketSameLine": true,
   "tabWidth": 2,
   "singleQuote": true,
   "trailingComma": "es5",
@@ -9,5 +10,5 @@
   "useTabs": false,
   "jsxSingleQuote": true,
   "bracketSpacing": true,
-  "arrowParens": "avoid",
+  "arrowParens": "avoid"
 }
