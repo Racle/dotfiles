@@ -13,10 +13,14 @@ require "nvim-tree".setup {
     enable = true
   },
   view = {
-    auto_resize = true,
     width = 40,
     mappings = {
       list = list
+    }
+  },
+  actions = {
+    open_file = {
+      resize_window = true
     }
   }
 }
