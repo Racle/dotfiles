@@ -6,3 +6,5 @@ let g:go_list_type='quickfix'
 let g:go_metalinter_autosave=1
 " let g:go_metalinter_autosave_enabled=['golint', 'govet']
 let g:go_metalinter_autosave_enabled=['govet']
+
+let g:go_code_completion_enabled = 0
