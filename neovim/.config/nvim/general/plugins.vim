@@ -35,7 +35,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " vim lessc
   Plug 'vitalk/vim-lesscss', { 'do': 'npm install -g less minify'}
   " remote yank
-  Plug 'fcpg/vim-osc52'
+  Plug 'ojroques/vim-oscyank', {'branch': 'main'}
   " Snippets
   Plug 'honza/vim-snippets'
   " Quickscope

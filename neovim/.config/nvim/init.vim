@@ -35,6 +35,7 @@ source $NVIMPATH/plug-config/vcoolor.vim
 source $NVIMPATH/plug-config/wilder.vim
 source $NVIMPATH/plug-config/rooter.vim
 source $NVIMPATH/plug-config/copilot.vim
+source $NVIMPATH/plug-config/vim-oscyank.vim
 
 if exists('$NVIMPATH/dadbod.vim')
   source $NVIMPATH/dadbod.vim
