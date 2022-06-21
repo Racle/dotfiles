@@ -112,6 +112,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'kristijanhusak/vim-dadbod-ui'
   " % matches to functions etc
   Plug 'andymass/vim-matchup'
+  " Quick jumping around
+  Plug 'ggandor/lightspeed.nvim'
 call plug#end()
 
 

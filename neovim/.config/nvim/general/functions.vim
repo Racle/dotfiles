@@ -209,3 +209,11 @@ function!  ExecuteMacroOverVisualRange()
 endfunction
 
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+
+function PrettierJSON()
+  set ft=json
+  Prettier
+endfunction
+
+command! PrettierJSON call PrettierJSON()
