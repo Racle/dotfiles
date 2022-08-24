@@ -3,16 +3,16 @@ vim.o.termguicolors = true
 require "bufferline".setup {
   highlights = {
     fill = {
-      guibg = "#313131"
+      bg = "#313131"
     },
     separator_selected = {
-      guifg = "#313131"
+      fg = "#313131"
     },
     separator_visible = {
-      guifg = "#313131"
+      fg = "#313131"
     },
     separator = {
-      guifg = "#313131"
+      fg = "#313131"
     }
   },
   options = {

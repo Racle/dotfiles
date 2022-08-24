@@ -1,16 +1,16 @@
 require "bufferline".setup {
   highlights = {
     fill = {
-      guibg = "#282828"
+      bg = "#282828"
     },
     separator_selected = {
-      guifg = "#282828"
+      fg = "#282828"
     },
     separator_visible = {
-      guifg = "#282828"
+      fg = "#282828"
     },
     separator = {
-      guifg = "#282828"
+      fg = "#282828"
     }
   },
   options = {
