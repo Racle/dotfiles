@@ -6,7 +6,6 @@ function PlugCocUpdate()
   CocUpdate
 endfunction
 
-command! PlugCocUpdate call PlugCocUpdate()
 
 function! ServerfixCommandIfFileExists()
   if filereadable(expand('$NVIMPATH/server-init.vim'))
@@ -61,18 +60,6 @@ function DeleteVimSession(session)
 endfunction
 
 
-" A global variable that contains the size of which a file is considered
-" large.  In this case, it is 10 megabytes.
-let g:large_file = 1024 * 1024 * 10
-
-" This autocmd runs before reading the file into the buffer.  It
-" gets the file that the autocmd is running on by running expand on
-" <afile>, which is short for the path to the file that the autocmd
-" is running on.  Then, it gets the size of the file running
-" getfsize on the file and sees if it is larger than the size
-" specified in g:large_file.  If it is, it disables the swap file.
-autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f)
-      \ > g:large_file | set noswapfile | endif
 
 " Documentation on hover
 augroup hover
@@ -137,16 +124,6 @@ function! s:autohide_floaterm() abort
   endif
 endfunction
 
-" autoide fzf on lost focus
-autocmd Filetype fzf autocmd WinLeave * call AutohideFzf()
-
-" when leaving out from floaterm, hide it so that it doesn't cover other windows
-autocmd BufLeave floaterm://*,term://*   call <SID>autohide_floaterm()
-
-" enable spell for one time when using spell checking shortcuts
-inoremap <expr> <c-x><c-k> SpellCheck("\<c-x>\<c-k>")
-inoremap <expr> <c-x><c-s> SpellCheck("\<c-x>\<c-s>")
-nnoremap z= :<c-u>call SpellCheck()<cr>z=
 function! SpellCheck(...)
   let s:spell_restore = &spell
   set spell
@@ -189,9 +166,6 @@ function! KittyBufferHistoryClean()
   " map q to force quit
   cnoremap q q!
 endfunction
-command! KittyBufferHistoryClean call KittyBufferHistoryClean()
-
-command! MacroModeToggle call MacroModeToggle()
 
 
 function! DisableHighlight()
@@ -199,8 +173,6 @@ function! DisableHighlight()
   IndentBlanklineDisable
 endfunction
 
-" disable treesitter highlight + blankline on large files
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | call DisableHighlight() | endif
 
 " execute macro normally over visual range
 function!  ExecuteMacroOverVisualRange()
@@ -208,12 +180,48 @@ function!  ExecuteMacroOverVisualRange()
  execute  ":'<,'>normal @".nr2char(getchar())
 endfunction
 
-xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
-
 
 function PrettierJSON()
   set ft=json
   Prettier
 endfunction
 
+function PlugSnapshotSave()
+  PlugSnapshot $NVIMPATH/general/snapshot.vim
+endfunction
+
+" ####### config / autocmd / remaps / commands #######
+
+" A global variable that contains the size of which a file is considered
+" large.  In this case, it is 10 megabytes.
+let g:large_file = 1024 * 1024 * 10
+
+" This autocmd runs before reading the file into the buffer.  It
+" gets the file that the autocmd is running on by running expand on
+" <afile>, which is short for the path to the file that the autocmd
+" is running on.  Then, it gets the size of the file running
+" getfsize on the file and sees if it is larger than the size
+" specified in g:large_file.  If it is, it disables the swap file.
+autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f)
+      \ > g:large_file | set noswapfile | endif
+
+" autoide fzf on lost focus
+autocmd Filetype fzf autocmd WinLeave * call AutohideFzf()
+
+" when leaving out from floaterm, hide it so that it doesn't cover other windows
+autocmd BufLeave floaterm://*,term://*   call <SID>autohide_floaterm()
+
+" disable treesitter highlight + blankline on large files
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | call DisableHighlight() | endif
+
+" enable spell for one time when using spell checking shortcuts
+inoremap <expr> <c-x><c-k> SpellCheck("\<c-x>\<c-k>")
+inoremap <expr> <c-x><c-s> SpellCheck("\<c-x>\<c-s>")
+nnoremap z= :<c-u>call SpellCheck()<cr>z=
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+command! PlugCocUpdate call PlugCocUpdate()
+command! KittyBufferHistoryClean call KittyBufferHistoryClean()
+command! MacroModeToggle call MacroModeToggle()
 command! PrettierJSON call PrettierJSON()
+command! PlugSnapshotSave call PlugSnapshotSave()
