@@ -190,6 +190,10 @@ function PlugSnapshotSave()
   PlugSnapshot $NVIMPATH/general/snapshot.vim
 endfunction
 
+function PlugSnapshotRestore()
+  so $NVIMPATH/general/snapshot.vim
+endfunction
+
 " ####### config / autocmd / remaps / commands #######
 
 " A global variable that contains the size of which a file is considered
@@ -225,3 +229,4 @@ command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 command! MacroModeToggle call MacroModeToggle()
 command! PrettierJSON call PrettierJSON()
 command! PlugSnapshotSave call PlugSnapshotSave()
+command! PlugSnapshotRestore call PlugSnapshotRestore()
