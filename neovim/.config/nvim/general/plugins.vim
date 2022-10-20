@@ -112,6 +112,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'andymass/vim-matchup'
   " Quick jumping around
   Plug 'ggandor/lightspeed.nvim'
+  " smooth scrolling
+  Plug 'karb94/neoscroll.nvim'
 call plug#end()
 
 

@@ -53,6 +53,7 @@ luafile $NVIMPATH/lua/plug-config/nvim-ts-context-commentstring.lua
 luafile $NVIMPATH/lua/plug-config/formatter.lua
 luafile $NVIMPATH/lua/plug-config/lualine.lua
 luafile $NVIMPATH/lua/plug-config/nvim-tree.lua
+luafile $NVIMPATH/lua/plug-config/neoscroll.lua
 
 " server settings
 call ServerfixCommandIfFileExists()
