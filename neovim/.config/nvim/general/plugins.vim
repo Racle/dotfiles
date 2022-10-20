@@ -114,8 +114,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'ggandor/lightspeed.nvim'
   " smooth scrolling
   Plug 'karb94/neoscroll.nvim'
-  " smooth scrolling
-  Plug 'karb94/neoscroll.nvim'
 call plug#end()
 
 
