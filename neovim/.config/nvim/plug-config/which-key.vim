@@ -332,6 +332,13 @@ function WhichKeyPackageInfo()
   call which_key#register('<Space>', "g:which_key_map")
 endfunction
 
+nmap <leader>mm :lua require('codewindow').toggle_minimap()<CR>
+
+let g:which_key_map.m = {
+      \ 'name' : '+Minimap',
+      \ 'm' : 'Toggle codewindow',
+      \ }
+
 " custom debug menu for golang
 function WhichKeyDebug()
   " dbc => debugBreakPoint

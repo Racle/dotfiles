@@ -114,6 +114,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'ggandor/lightspeed.nvim'
   " smooth scrolling
   Plug 'karb94/neoscroll.nvim'
+  " vscode like minimap/codewindow
+  Plug 'gorbit99/codewindow.nvim'
 call plug#end()
 
 

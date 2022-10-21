@@ -54,6 +54,7 @@ luafile $NVIMPATH/lua/plug-config/formatter.lua
 luafile $NVIMPATH/lua/plug-config/lualine.lua
 luafile $NVIMPATH/lua/plug-config/nvim-tree.lua
 luafile $NVIMPATH/lua/plug-config/neoscroll.lua
+luafile $NVIMPATH/lua/plug-config/codewindow.lua
 
 " server settings
 call ServerfixCommandIfFileExists()
