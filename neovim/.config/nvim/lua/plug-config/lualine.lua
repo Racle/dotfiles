@@ -16,12 +16,12 @@ local function customModes()
 end
 
 local function filetree()
-  return [[NvimTree]]
+  return [[NvimTree,neo-tree]]
 end
 
 local my_extension = {
   sections = {lualine_c = {filetree}},
-  filetypes = {"NvimTree"}
+  filetypes = {"NvimTree","neo-tree"}
 }
 
 require "lualine".setup {
