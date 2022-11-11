@@ -10,9 +10,6 @@ require("neo-tree").setup(
       mappings = {
         ["h"] = "close_node",
         ["l"] = "open",
-        ["<space>"] = "",
-        ["<"] = "",
-        [">"] = "",
         ["a"] = {
           "add",
           -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -26,7 +23,13 @@ require("neo-tree").setup(
           config = {
             show_path = "relative" -- "none", "relative", "absolute"
           }
-        }
+        },
+        ["Z"] = "expand_all_nodes",
+        -- remove keybindings
+        ["<space>"] = "",
+        ["<"] = "",
+        [">"] = "",
+
       }
     },
     filesystem = {
