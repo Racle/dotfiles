@@ -1,10 +1,10 @@
-require("netman")
+-- require("netman")
 require("neo-tree").setup(
   {
     toggle = true,
     sources = {
       "filesystem", -- Neotree filesystem source
-      "netman.ui.neo-tree" -- The one you really care about 😉
+      -- "netman.ui.neo-tree" -- The one you really care about 😉
     },
     window = {
       mappings = {
