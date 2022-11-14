@@ -106,7 +106,8 @@ call plug#begin(stdpath('data') . '/plugged')
   " File explorer
   " Plug 'kyazdani42/nvim-tree.lua'
   Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
-  Plug 'miversen33/netman.nvim', { 'branch': 'v1.1' }
+  " file editing. Does not work with vim-go
+  " Plug 'miversen33/netman.nvim', { 'branch': 'v1.1' } "support for remote
 
   " Database view/explorer
   Plug 'tpope/vim-dadbod'
