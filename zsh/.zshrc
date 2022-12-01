@@ -111,6 +111,7 @@ alias vim-rio='tmux split-window -v && tmux split-window -h && tmux resize-pane 
 alias vim-php='tmux split-window -v && tmux resize-pane -t 2 -y 20 && tmux resize-pane -Z -t 1 && vim'
 alias vim='nvim'
 alias vi='nvim'
+alias VIM='nvim --clean -u NONE -i NONE'
 alias r='ranger'
 alias t='todo-txt'
 alias _kill-tmux='kill -9 $(pidof tmux)'
