@@ -52,7 +52,8 @@ luafile $NVIMPATH/lua/plug-config/gitsigns.lua
 luafile $NVIMPATH/lua/plug-config/nvim-ts-context-commentstring.lua
 luafile $NVIMPATH/lua/plug-config/formatter.lua
 luafile $NVIMPATH/lua/plug-config/lualine.lua
-luafile $NVIMPATH/lua/plug-config/nvim-tree.lua
+" luafile $NVIMPATH/lua/plug-config/nvim-tree.lua
+luafile $NVIMPATH/lua/plug-config/neo-tree.lua
 luafile $NVIMPATH/lua/plug-config/neoscroll.lua
 luafile $NVIMPATH/lua/plug-config/codewindow.lua
 

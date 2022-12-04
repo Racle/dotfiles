@@ -98,6 +98,7 @@ function! CleanEmptyBuffers()
 endfunction
 
 function! CloseThisBuffer()
+  exe 'Neotree close'
   exe 'Bdelete this'
   call CleanEmptyBuffers()
 endfunction
