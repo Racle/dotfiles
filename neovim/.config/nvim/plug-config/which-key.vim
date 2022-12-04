@@ -296,11 +296,12 @@ nmap <leader>lS :CocSearch <C-R>=expand("<cword>")<CR><CR>
 " t is for terminal
 let g:which_key_map.t = {
       \ 'name' : '+terminal',
-      \ 'g' : [':FloatermNew lazygit',         'git'],
-      \ 'r' : [':FloatermNew ranger',          'ranger'],
-      \ 't' : [':FloatermNew',                 'terminal'],
-      \ 'c' : [':call FloatermOpenCheat()',    'cheat'],
-      \ 'w' : [':call FloatermOpenVimwiki()',  'vimwiki'],
+      \ 'g' : [':FloatermNew lazygit',        'git'],
+      \ 's' : [":call FloatermOpenSo()",      'StackOverflow'],
+      \ 'r' : [':FloatermNew ranger',         'ranger'],
+      \ 't' : [':FloatermNew',                'terminal'],
+      \ 'c' : [':call FloatermOpenCheat()',   'cheat'],
+      \ 'w' : [':call FloatermOpenVimwiki()', 'vimwiki'],
       \ }
 
 

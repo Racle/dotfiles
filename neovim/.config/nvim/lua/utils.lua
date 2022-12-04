@@ -31,4 +31,23 @@ utils.resize = function(vertical, margin)
   vim.cmd(cmd)
 end
 
+function utils.so_input()
+  local buf = vim.api.nvim_get_current_buf()
+  file_type = vim.api.nvim_buf_get_option(buf, "filetype")
+  vim.ui.input(
+    {prompt = "StackOverflow input: ", default = file_type .. " "},
+    function(input)
+      local cmd = ""
+      if input == "" or not input then
+        return
+      elseif input == "h" then
+        cmd = "-h"
+      else
+        cmd = input
+      end
+      vim.cmd(":FloatermNew " .. "so --no-lucky " .. cmd)
+    end
+  )
+end
+
 return utils

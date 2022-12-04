@@ -85,6 +85,10 @@ function FloatermOpenVimwiki()
   exe ':FloatermNew nvim +VimwikiIndex'
 endfunction
 
+function FloatermOpenSo()
+  exe ':lua require("utils").so_input()'
+endfunction
+
 function! CleanEmptyBuffers()
   " let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
   let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && !getbufvar(v:val, "&mod")')
