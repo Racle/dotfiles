@@ -1,8 +1,7 @@
-function PlugCocUpdate()
+function! PackerCocSync()
   set shortmess=a
   set nomore
-  PlugUpgrade
-  PlugUpdate
+  PackerSync
   CocUpdate
 endfunction
 
@@ -13,7 +12,7 @@ function! ServerfixCommandIfFileExists()
   endif
 endfunction
 
-function MyVimEnter()
+function! MyVimEnter()
   if exists('g:started_by_firenvim')
     return
   endif
@@ -42,7 +41,7 @@ function MyVimEnter()
 
 endfunction
 
-function SaveVimSession(session)
+function! SaveVimSession(session)
   !mkdir -p .vim/sessions
   exe 'mksession! .vim/sessions/vim.session.' . a:session
 endfunction
@@ -51,11 +50,11 @@ function! LoadVimSession(session)
   exe 'source .vim/sessions/vim.session.' . a:session
 endfunction
 
-function DeleteAllVimSessions()
+function! DeleteAllVimSessions()
   exe '!rm -f .vim/sessions/vim.session.*'
 endfunction
 
-function DeleteVimSession(session)
+function! DeleteVimSession(session)
   exe '!rm -f .vim/sessions/vim.session.' . a:session
 endfunction
 
@@ -70,22 +69,22 @@ augroup hover
   " autocmd CursorHoldI * silent call CocAction('showSignatureHelp')
 augroup end
 
-function ShowDocumentation()
+function! ShowDocumentation()
   if ! coc#float#has_float()
     call CocAction('doHover')
   endif
 
 endfunction
 
-function FloatermOpenCheat()
+function! FloatermOpenCheat()
   exe ':FloatermNew expect-spawn-zsh cheat ' . &ft
 endfunction
 
-function FloatermOpenVimwiki()
+function! FloatermOpenVimwiki()
   exe ':FloatermNew nvim +VimwikiIndex'
 endfunction
 
-function FloatermOpenSo()
+function! FloatermOpenSo()
   exe ':lua require("utils").so_input()'
 endfunction
 
@@ -186,16 +185,16 @@ function!  ExecuteMacroOverVisualRange()
 endfunction
 
 
-function PrettierJSON()
+function! PrettierJSON()
   set ft=json
   Prettier
 endfunction
 
-function PlugSnapshotSave()
+function! PlugSnapshotSave()
   PlugSnapshot $NVIMPATH/general/snapshot.vim
 endfunction
 
-function PlugSnapshotRestore()
+function! PlugSnapshotRestore()
   so $NVIMPATH/general/snapshot.vim
 endfunction
 
@@ -229,7 +228,7 @@ inoremap <expr> <c-x><c-s> SpellCheck("\<c-x>\<c-s>")
 nnoremap z= :<c-u>call SpellCheck()<cr>z=
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
-command! PlugCocUpdate call PlugCocUpdate()
+command! PackerCocSync call PackerCocSync()
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 command! MacroModeToggle call MacroModeToggle()
 command! PrettierJSON call PrettierJSON()
