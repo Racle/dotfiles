@@ -13,6 +13,7 @@ ranger/.config/ranger/plugins/
 neovim/.config/nvim/.netrwhist
 neovim/.config/nvim/coc-settings.json
 neovim/.config/nvim/dadbod.vim
+neovim/.config/nvim/plugin/*
 sumneko-lua*
 lazygit/.config/lazygit/
 !lazygit/.config/lazygit/config.yml

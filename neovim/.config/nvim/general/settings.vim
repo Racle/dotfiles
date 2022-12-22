@@ -58,7 +58,7 @@ set shiftwidth=2            " When indenting with '>', use 4 spaces width
 set t_Co=256                " Support 256 colors
 set conceallevel=0          " So that I can see `` in markdown files
 set splitbelow              " Horizontal splits will automatically be below
-set splitright              " Vertical splits will automatically be to the right
+" set splitright              " Vertical splits will automatically be to the right
 set cursorline              " Enable highlighting of the current line
 set incsearch               " Incremental search, automatically go to next search
 set ignorecase              " Incase sensitive search

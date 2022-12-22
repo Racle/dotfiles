@@ -1,13 +1,10 @@
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  !sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $NVIMPATH/init.vim
-  autocmd VimEnter * CocInstall
-endif
-
 " nvim config path to variable for windows support
 let $NVIMPATH = fnamemodify($MYVIMRC, ':p:h')
 
-source $NVIMPATH/general/plugins.vim
+" lua config
+luafile $NVIMPATH/luainit.lua
+
+" source $NVIMPATH/general/plugins.vim
 source $NVIMPATH/general/functions.vim
 source $NVIMPATH/general/mappings.vim
 source $NVIMPATH/general/settings.vim
@@ -40,22 +37,6 @@ source $NVIMPATH/plug-config/vim-oscyank.vim
 if exists('$NVIMPATH/dadbod.vim')
   source $NVIMPATH/dadbod.vim
 endif
-
-" Lua config
-luafile $NVIMPATH/lua/general/mappings.lua
-luafile $NVIMPATH/lua/plug-config/bufferline.lua
-luafile $NVIMPATH/lua/plug-config/blankline.lua
-luafile $NVIMPATH/lua/plug-config/scrollview.lua
-luafile $NVIMPATH/lua/plug-config/treesitter.lua
-luafile $NVIMPATH/lua/plug-config/telescope.lua
-luafile $NVIMPATH/lua/plug-config/gitsigns.lua
-luafile $NVIMPATH/lua/plug-config/nvim-ts-context-commentstring.lua
-luafile $NVIMPATH/lua/plug-config/formatter.lua
-luafile $NVIMPATH/lua/plug-config/lualine.lua
-" luafile $NVIMPATH/lua/plug-config/nvim-tree.lua
-luafile $NVIMPATH/lua/plug-config/neo-tree.lua
-luafile $NVIMPATH/lua/plug-config/neoscroll.lua
-luafile $NVIMPATH/lua/plug-config/codewindow.lua
 
 " server settings
 call ServerfixCommandIfFileExists()

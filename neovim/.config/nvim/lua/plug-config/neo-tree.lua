@@ -3,7 +3,7 @@ require("neo-tree").setup(
   {
     toggle = true,
     sources = {
-      "filesystem", -- Neotree filesystem source
+      "filesystem" -- Neotree filesystem source
       -- "netman.ui.neo-tree" -- The one you really care about 😉
     },
     window = {
@@ -28,8 +28,7 @@ require("neo-tree").setup(
         -- remove keybindings
         ["<space>"] = "",
         ["<"] = "",
-        [">"] = "",
-
+        [">"] = ""
       }
     },
     filesystem = {
@@ -41,9 +40,9 @@ require("neo-tree").setup(
           -- uses glob style patterns
           ".git",
           ".vim",
-          "node_modules",
-        },
-      },
+          "node_modules"
+        }
+      }
     },
     buffers = {
       follow_current_file = true, -- This will find and focus the file in the active buffer every
