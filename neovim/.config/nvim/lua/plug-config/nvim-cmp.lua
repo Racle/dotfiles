@@ -30,7 +30,6 @@ cmp.setup {
       select = true
     },
     -- https://github.com/zbirenbaum/copilot.lua/issues/91#issuecomment-1345190310
-    -- TODO add next, prev and cancel shortcuts
     ["<Tab>"] = cmp.mapping(
       function(fallback)
         if require("copilot.suggestion").is_visible() then
@@ -54,6 +53,46 @@ cmp.setup {
           cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end,
+      {"i", "s"}
+    ),
+    ["<Esc>"] = cmp.mapping(
+      function(fallback)
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").dismiss()
+        else
+          fallback()
+        end
+      end,
+      {"i", "s"}
+    ),
+    ["<C-c>"] = cmp.mapping(
+      function(fallback)
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").dismiss()
+        else
+          fallback()
+        end
+      end,
+      {"i", "s"}
+    ),
+    ["<C-k>"] = cmp.mapping(
+      function(fallback)
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").prev()
+        else
+          fallback()
+        end
+      end,
+      {"i", "s"}
+    ),
+    ["<C-j>"] = cmp.mapping(
+      function(fallback)
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").next()
         else
           fallback()
         end
