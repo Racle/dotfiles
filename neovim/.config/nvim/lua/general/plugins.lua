@@ -124,9 +124,9 @@ return require("packer").startup(
     use {"dstein64/nvim-scrollview", branch = "main"}
     -- treesitter for highlighting
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use "nvim-treesitter/nvim-treesitter-textobjects"
+    use {"nvim-treesitter/nvim-treesitter-textobjects", requires = {"nvim-treesitter/nvim-treesitter"}}
     -- javascript context commenting (different commenting to html tags and js parts on same file)
-    use "JoosepAlviste/nvim-ts-context-commentstring"
+    use {"JoosepAlviste/nvim-ts-context-commentstring", requires = {"nvim-treesitter/nvim-treesitter"}}
     -- better text object support while using ex. ci"
     use "wellle/targets.vim"
     -- Markdown preview
