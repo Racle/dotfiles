@@ -29,9 +29,13 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     },
+    -- https://github.com/zbirenbaum/copilot.lua/issues/91#issuecomment-1345190310
+    -- TODO add next, prev and cancel shortcuts
     ["<Tab>"] = cmp.mapping(
       function(fallback)
-        if cmp.visible() then
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").accept()
+        elseif cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
@@ -39,7 +43,10 @@ cmp.setup {
           fallback()
         end
       end,
-      {"i", "s"}
+      {
+        "i",
+        "s"
+      }
     ),
     ["<S-Tab>"] = cmp.mapping(
       function(fallback)
@@ -79,3 +86,30 @@ cmp.setup {
     ghost_text = true -- this feature conflict with copilot.vim's preview.
   }
 }
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(
+  {"/", "?"},
+  {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      {name = "buffer"}
+    }
+  }
+)
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(
+  ":",
+  {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources(
+      {
+        {name = "path"}
+      },
+      {
+        {name = "cmdline"}
+      }
+    )
+  }
+)
