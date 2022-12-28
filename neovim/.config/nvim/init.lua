@@ -9,7 +9,7 @@ local func = require("general/functions")
 
 -- vim general config
 vim.cmd("source" .. nvimrc .. "/general/functions.vim")
-vim.cmd("source" .. nvimrc .. "/general/mappings.vim")
+-- vim.cmd("source" .. nvimrc .. "/general/mappings.vim")
 vim.cmd("source" .. nvimrc .. "/general/settings.vim")
 
 -- lsp

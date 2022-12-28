@@ -73,6 +73,7 @@ cmp.setup {
       function(fallback)
         if require("copilot.suggestion").is_visible() then
           require("copilot.suggestion").dismiss()
+          fallback()
         else
           fallback()
         end

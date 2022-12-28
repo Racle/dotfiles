@@ -218,5 +218,3 @@ xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 command! MacroModeToggle call MacroModeToggle()
 command! PrettierJSON call PrettierJSON()
-command! PlugSnapshotSave call PlugSnapshotSave()
-command! PlugSnapshotRestore call PlugSnapshotRestore()

@@ -6,19 +6,20 @@
 -- plug-config/go.vim
 
 -- map helper
-local map = function(type, keys, func, desc, noremap)
+local map = function(type, keys, func, desc, noremap, silent)
   noremap = noremap or false
-  vim.keymap.set(type, keys, func, {noremap = noremap, desc = desc})
+  silent = silent or false
+  vim.keymap.set(type, keys, func, {noremap = noremap, desc = desc, silent = silent})
 end
 
 -- leadermap with CR
-local lmapCR = function(type, keys, func, desc, noremap)
-  map(type, "<leader>" .. keys, func .. "<CR>", desc, noremap)
+local lmapCR = function(type, keys, func, desc, noremap, silent)
+  map(type, "<leader>" .. keys, func .. "<CR>", desc, noremap, silent)
 end
 
 -- leadermap
-local lmap = function(type, keys, func, desc, noremap)
-  map(type, "<leader>" .. keys, func, desc, noremap)
+local lmap = function(type, keys, func, desc, noremap, silent)
+  map(type, "<leader>" .. keys, func, desc, noremap, silent)
 end
 
 vim.g.mapleader = " "
@@ -35,9 +36,57 @@ vim.api.nvim_set_keymap("n", [[<A-j>]], "<cmd>lua require('utils').resize(false,
 
 -- Map § to Esc
 vim.keymap.set("i", "§", "<Esc>", {noremap = true})
-vim.keymap.set("t", "§", "<Esc>", {noremap = true})
 vim.keymap.set("n", "§", "<Esc>", {noremap = true})
 vim.keymap.set("x", "§", "<Esc>", {noremap = true})
+vim.keymap.set("t", "§", "<C-\\><C-n>", {noremap = true})
+
+-- disable digraph hotkey
+vim.keymap.set("i", "<C-k>", "<NOP>")
+
+-- Unbind some useless/annoying default key bindings.
+vim.keymap.set("n", "Q", ':echo "Use gQ to enter Ex mode."<CR>', {noremap = true})
+
+-- Toggle paste mode
+vim.keymap.set("n", "<F9>", ":set invpaste paste?<CR>", {noremap = true})
+
+-- Toggle custom MacroMode
+vim.keymap.set("n", "<F10>", ":MacroMode<CR>", {noremap = true})
+
+-- keep in visual mode after shifting
+vim.keymap.set("v", "<", "<gv", {noremap = true})
+vim.keymap.set("v", ">", ">gv", {noremap = true})
+
+-- ctrl+s => save
+vim.keymap.set("n", "<C-S>", ":update<CR>", {noremap = true, silent = true})
+vim.keymap.set("v", "<C-S>", "<C-C>:update<CR>", {noremap = true, silent = true})
+vim.keymap.set("i", "<C-S>", "<C-O>:update<CR>", {noremap = true, silent = true})
+
+-- Q == q
+vim.api.nvim_create_user_command("Q", "q", {})
+
+-- Swap , and ;
+vim.keymap.set("n", ",", ";", {noremap = true})
+vim.keymap.set("n", ";", ",", {noremap = true})
+
+-- fixes clipboard=unnamedplus block copy/paste issue
+vim.keymap.set("v", "p", "<Plug>(miniyank-autoput)", {noremap = false})
+vim.keymap.set("v", "P", "<Plug>(miniyank-autoPut)", {noremap = false})
+vim.keymap.set("n", "p", "<Plug>(miniyank-autoput)", {noremap = false})
+vim.keymap.set("n", "P", "<Plug>(miniyank-autoPut)", {noremap = false})
+
+-- map öä {} ÖÄ []
+-- Bug: ubuntu outputs :/' when usint with ctrl
+vim.api.nvim_set_option("langmap", "öäÖÄ;{}[]")
+vim.keymap.set("n", "[Ö", "[[", {noremap = true})
+vim.keymap.set("n", "]Ä", "]]", {noremap = true})
+vim.keymap.set("n", "Ä", "]", {noremap = true})
+
+-- do not copy text in register when using ex. ciw
+vim.keymap.set("n", "c", '"_c', {noremap = true})
+
+-- Navigate quickfix list
+vim.keymap.set("n", "<M-K>", ":cp<CR>")
+vim.keymap.set("n", "<M-J>", ":cn<CR>")
 
 -- Quickly insert an empty new line without entering insert mode
 lmap("n", "o", "o<Esc>", "New line down", true)
@@ -54,7 +103,7 @@ lmapCR("n", "p", ":Prettier", "Prettier")
 lmapCR("n", "fo", ":Telescope oldfiles hidden=true", "Search oldfiles")
 lmapCR("n", "ff", ":Telescope live_grep", "Search files")
 lmapCR("n", "fr", ":Rg", "Search files (rg)")
-lmapCR("n", "fF", ":RgFileExt *.", "Search test with ext")
+lmap("n", "fF", ":RgFileExt *.", "Search test with ext")
 lmapCR("n", "fb", ":Telescope buffers", "Search buffers")
 lmapCR("n", "fq", ":Telescope quickfix", "Search quickfix")
 lmapCR("n", "fh", ":Telescope help_tags", "Search help")
@@ -104,42 +153,42 @@ lmapCR("n", "bs", ":BufferLinePick", "switch buffer")
 -- <leader>S vim sessions
 -- save
 
-lmapCR("n", "Sss", ":call SaveVimSession(1)", "save 1")
-lmapCR("n", "Ss1", ":call SaveVimSession(1)", "save 1")
-lmapCR("n", "Ss2", ":call SaveVimSession(2)", "save 2")
-lmapCR("n", "Ss3", ":call SaveVimSession(3)", "save 3")
-lmapCR("n", "Ss4", ":call SaveVimSession(4)", "save 4")
-lmapCR("n", "Ss5", ":call SaveVimSession(5)", "save 5")
-lmapCR("n", "Ss6", ":call SaveVimSession(6)", "save 6")
-lmapCR("n", "Ss7", ":call SaveVimSession(7)", "save 7")
-lmapCR("n", "Ss8", ":call SaveVimSession(8)", "save 8")
-lmapCR("n", "Ss9", ":call SaveVimSession(9)", "save 9")
-lmapCR("n", "Ss0", ":call SaveVimSession(0)", "save 0")
+lmapCR("n", "Sss", ":call SaveVimSession(1)", "save 1", false, true)
+lmapCR("n", "Ss1", ":call SaveVimSession(1)", "save 1", false, true)
+lmapCR("n", "Ss2", ":call SaveVimSession(2)", "save 2", false, true)
+lmapCR("n", "Ss3", ":call SaveVimSession(3)", "save 3", false, true)
+lmapCR("n", "Ss4", ":call SaveVimSession(4)", "save 4", false, true)
+lmapCR("n", "Ss5", ":call SaveVimSession(5)", "save 5", false, true)
+lmapCR("n", "Ss6", ":call SaveVimSession(6)", "save 6", false, true)
+lmapCR("n", "Ss7", ":call SaveVimSession(7)", "save 7", false, true)
+lmapCR("n", "Ss8", ":call SaveVimSession(8)", "save 8", false, true)
+lmapCR("n", "Ss9", ":call SaveVimSession(9)", "save 9", false, true)
+lmapCR("n", "Ss0", ":call SaveVimSession(0)", "save 0", false, true)
 -- load
-lmapCR("n", "Sll", ":call LoadVimSession(1)", "load 1")
-lmapCR("n", "Sl1", ":call LoadVimSession(1)", "load 1")
-lmapCR("n", "Sl2", ":call LoadVimSession(2)", "load 2")
-lmapCR("n", "Sl3", ":call LoadVimSession(3)", "load 3")
-lmapCR("n", "Sl4", ":call LoadVimSession(4)", "load 4")
-lmapCR("n", "Sl5", ":call LoadVimSession(5)", "load 5")
-lmapCR("n", "Sl6", ":call LoadVimSession(6)", "load 6")
-lmapCR("n", "Sl7", ":call LoadVimSession(7)", "load 7")
-lmapCR("n", "Sl8", ":call LoadVimSession(8)", "load 8")
-lmapCR("n", "Sl9", ":call LoadVimSession(9)", "load 9")
-lmapCR("n", "Sl0", ":call LoadVimSession(0)", "load 0")
+lmapCR("n", "Sll", ":call LoadVimSession(1)", "load 1", false, true)
+lmapCR("n", "Sl1", ":call LoadVimSession(1)", "load 1", false, true)
+lmapCR("n", "Sl2", ":call LoadVimSession(2)", "load 2", false, true)
+lmapCR("n", "Sl3", ":call LoadVimSession(3)", "load 3", false, true)
+lmapCR("n", "Sl4", ":call LoadVimSession(4)", "load 4", false, true)
+lmapCR("n", "Sl5", ":call LoadVimSession(5)", "load 5", false, true)
+lmapCR("n", "Sl6", ":call LoadVimSession(6)", "load 6", false, true)
+lmapCR("n", "Sl7", ":call LoadVimSession(7)", "load 7", false, true)
+lmapCR("n", "Sl8", ":call LoadVimSession(8)", "load 8", false, true)
+lmapCR("n", "Sl9", ":call LoadVimSession(9)", "load 9", false, true)
+lmapCR("n", "Sl0", ":call LoadVimSession(0)", "load 0", false, true)
 
 -- delete
-lmapCR("n", "Sda", ":call DeleteAllVimSessions()", "delete all")
-lmapCR("n", "Sd1", ":call DeleteVimSession(1)", "delete 1")
-lmapCR("n", "Sd2", ":call DeleteVimSession(2)", "delete 2")
-lmapCR("n", "Sd3", ":call DeleteVimSession(3)", "delete 3")
-lmapCR("n", "Sd4", ":call DeleteVimSession(4)", "delete 4")
-lmapCR("n", "Sd5", ":call DeleteVimSession(5)", "delete 5")
-lmapCR("n", "Sd6", ":call DeleteVimSession(6)", "delete 6")
-lmapCR("n", "Sd7", ":call DeleteVimSession(7)", "delete 7")
-lmapCR("n", "Sd8", ":call DeleteVimSession(8)", "delete 8")
-lmapCR("n", "Sd9", ":call DeleteVimSession(9)", "delete 9")
-lmapCR("n", "Sd0", ":call DeleteVimSession(0)", "delete 0")
+lmapCR("n", "Sda", ":call DeleteAllVimSessions()", "delete all", false, true)
+lmapCR("n", "Sd1", ":call DeleteVimSession(1)", "delete 1", false, true)
+lmapCR("n", "Sd2", ":call DeleteVimSession(2)", "delete 2", false, true)
+lmapCR("n", "Sd3", ":call DeleteVimSession(3)", "delete 3", false, true)
+lmapCR("n", "Sd4", ":call DeleteVimSession(4)", "delete 4", false, true)
+lmapCR("n", "Sd5", ":call DeleteVimSession(5)", "delete 5", false, true)
+lmapCR("n", "Sd6", ":call DeleteVimSession(6)", "delete 6", false, true)
+lmapCR("n", "Sd7", ":call DeleteVimSession(7)", "delete 7", false, true)
+lmapCR("n", "Sd8", ":call DeleteVimSession(8)", "delete 8", false, true)
+lmapCR("n", "Sd9", ":call DeleteVimSession(9)", "delete 9", false, true)
+lmapCR("n", "Sd0", ":call DeleteVimSession(0)", "delete 0", false, true)
 
 -- <leader>s search
 lmapCR("n", "s/", ":History/", "history")
@@ -215,7 +264,7 @@ lmapCR("n", "tc", ":call FloatermOpenCheat()", "cheat")
 lmapCR("n", "tw", ":call FloatermOpenVimwiki()", "vimwiki")
 
 -- <leader>w VimWiki
-lmapCR("n", "ws", ':call jobstart(\'sh -c "cd ~/vimwiki && git push"\')', "Save wiki")
+lmapCR("n", "ws", ':call jobstart(\'sh -c "cd ~/vimwiki && git push"\')', "Save wiki", false, true)
 
 -- <leader>l LSP
 --      \ 'name' : '+lsp',
