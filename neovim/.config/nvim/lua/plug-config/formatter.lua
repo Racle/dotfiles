@@ -56,7 +56,7 @@ require("formatter").setup(
         function()
           return {
             exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin"},
+            args = {"--indent-count", 2, "--stdin", "--line-width", 200},
             stdin = true
           }
         end

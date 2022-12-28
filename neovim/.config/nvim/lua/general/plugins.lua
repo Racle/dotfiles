@@ -15,7 +15,35 @@ return require("packer").startup(
   function(use)
     use {"wbthomason/packer.nvim"}
 
-    use {"neoclide/coc.nvim", branch = "release"}
+    use {
+      -- LSP Configuration & Plugins
+      "neovim/nvim-lspconfig",
+      requires = {
+        -- Automatically install LSPs to stdpath for neovim
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        -- Useful status updates for LSP
+        "j-hui/fidget.nvim"
+      }
+    }
+
+    -- Autocompletion
+    use {
+      "hrsh7th/nvim-cmp",
+      requires = {"hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip"}
+    }
+
+    -- Show keybindings
+    -- use "liuchengxu/vim-which-key"
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup {}
+      end
+    }
+
+    use "onsails/lspkind.nvim"
+
     -- vim-go
     use {"fatih/vim-go", run = ":GoUpdateBinaries", ft = {"go"}}
     -- Automatic surround
@@ -46,8 +74,6 @@ return require("packer").startup(
     use "andrewradev/tagalong.vim"
     -- tmux navigator
     use "christoomey/vim-tmux-navigator"
-    -- Show keybindings
-    use "liuchengxu/vim-which-key"
     -- floatterm
     use "voldikss/vim-floaterm"
     -- vim lessc
@@ -119,7 +145,32 @@ return require("packer").startup(
     use {"nvim-telescope/telescope-media-files.nvim", run = "pip3 install --upgrade ueberzug"}
     -- use 'nvim-telescope/telescope-fzf-native.nvim', { run= 'make' }
     -- Github copilot
-    use "github/copilot.vim"
+    -- use "github/copilot.vim"
+    use {
+      "zbirenbaum/copilot.lua",
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(
+          function()
+            require("copilot").setup(
+              {
+                suggestion = {
+                  auto_trigger = true
+                }
+              }
+            )
+          end,
+          100
+        )
+      end
+    }
+    use {
+      "zbirenbaum/copilot-cmp",
+      after = {"copilot.lua"},
+      config = function()
+        require("copilot_cmp").setup()
+      end
+    }
     -- File explorer
     -- use 'kyazdani42/nvim-tree.lua'
     use {"nvim-neo-tree/neo-tree.nvim", branch = "v2.x"}

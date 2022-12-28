@@ -9,3 +9,10 @@ let g:go_metalinter_autosave=1
 
 
 let g:go_code_completion_enabled = 0
+
+
+function GoToReferrers()
+  nnoremap gr :GoReferrers<CR>
+endfunction
+
+autocmd FileType go call GoToReferrers()

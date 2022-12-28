@@ -1,16 +1,3 @@
-function! PackerCocSync()
-  set shortmess=a
-  set nomore
-  PackerSync
-  CocUpdate
-endfunction
-
-
-function! ServerfixCommandIfFileExists()
-  if filereadable(expand('$NVIMPATH/server-init.vim'))
-    nmap <leader>ä :source $NVIMPATH/server-init.vim<CR>
-  endif
-endfunction
 
 function! MyVimEnter()
   if exists('g:started_by_firenvim')
@@ -228,7 +215,6 @@ inoremap <expr> <c-x><c-s> SpellCheck("\<c-x>\<c-s>")
 nnoremap z= :<c-u>call SpellCheck()<cr>z=
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
-command! PackerCocSync call PackerCocSync()
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 command! MacroModeToggle call MacroModeToggle()
 command! PrettierJSON call PrettierJSON()

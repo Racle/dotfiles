@@ -75,7 +75,8 @@ nmap <silent><c-space> :call CocActionAsync('showSignatureHelp')<CR>
 "       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" TODO remove this
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Explorer
 let g:coc_explorer_global_presets = {

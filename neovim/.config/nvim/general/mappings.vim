@@ -81,13 +81,6 @@ set pastetoggle=<F9>
 " Toggle custom MacroMode
 nnoremap <F10> :MacroMode<CR>
 
-" shortcut to replace command
-nnoremap <leader>r :%s///g<Left><Left><Left>
-nnoremap <leader>R :%s///gc<Left><Left><Left><Left>
-
-" Quickly insert an empty new line without entering insert mode
-nnoremap <leader>o o<Esc>
-nnoremap <leader>O O<Esc>
 
 "  shortcut to ripgrep advanced
 nnoremap <leader>fF :RgFileExt *.
@@ -130,16 +123,17 @@ nmap P <Plug>(miniyank-autoPut)
 
 
 " show documentation with gh
-nmap <silent> gh :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
+" TODO change to built-in lsp
+" nmap <silent> gh :call <SID>show_documentation()<CR>
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   elseif (coc#rpc#ready())
+"     call CocActionAsync('doHover')
+"   else
+"     execute '!' . &keywordprg . " " . expand('<cword>')
+"   endif
+" endfunction
 
 " map öä {} ÖÄ []
 " Bug: ubuntu outputs :/' when usint with ctrl
