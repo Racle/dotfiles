@@ -38,7 +38,7 @@ return require("packer").startup(
     use {
       "folke/which-key.nvim",
       config = function()
-        require("which-key").setup {}
+        require("which-key").setup({})
       end
     }
 
@@ -51,7 +51,7 @@ return require("packer").startup(
     -- commenting
     use "tpope/vim-commentary"
     -- Gruvbox theme
-    use "gruvbox-community/gruvbox"
+    use "ellisonleao/gruvbox.nvim"
     -- fzf
     use {"junegunn/fzf", run = ":call fzf#install()"}
     use "junegunn/fzf.vim"

@@ -7,6 +7,9 @@ require("general/mappings")
 require("general/plugins")
 local func = require("general/functions")
 
+-- load colorscheme
+require("plug-config/gruvbox")
+
 -- vim general config
 vim.cmd("source" .. nvimrc .. "/general/functions.vim")
 -- vim.cmd("source" .. nvimrc .. "/general/mappings.vim")
@@ -16,7 +19,6 @@ vim.cmd("source" .. nvimrc .. "/general/settings.vim")
 require("plug-config/lspconfig")
 
 require("plug-config/nvim-cmp")
-
 require("plug-config/blankline")
 require("plug-config/bufferline")
 require("plug-config/codewindow")
