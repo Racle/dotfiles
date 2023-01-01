@@ -2,6 +2,9 @@ vim.o.termguicolors = true
 
 require "bufferline".setup {
   highlights = {
+    buffer_selected = {
+      italic = false
+    },
     fill = {
       bg = "#313131"
     },
