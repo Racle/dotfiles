@@ -26,6 +26,9 @@ wk.register(
       w = "[w]orkspace",
       d = "[d]ocument"
     },
+    m = {
+      name = "[m]inimap"
+    },
     s = {
       name = "[s]search"
     },

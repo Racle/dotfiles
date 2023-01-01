@@ -29,10 +29,11 @@ require("plug-config/neoscroll")
 require("plug-config/neo-tree")
 -- require("plug-config/nvim-tree")
 require("plug-config/nvim-ts-context-commentstring")
-require("plug-config/scrollview")
+require("plug-config/scrollbar")
 require("plug-config/telescope")
 require("plug-config/treesitter")
 require("plug-config/which-key")
+require("plug-config/lsp_lines")
 
 -- source $NVIMPATH/general/plugins.vim
 

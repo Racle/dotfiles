@@ -26,12 +26,23 @@ return require("packer").startup(
         "j-hui/fidget.nvim"
       }
     }
+    -- better lsp errors
+    use(
+      {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+          require("lsp_lines").setup()
+        end
+      }
+    )
 
     -- Autocompletion
     use {
       "hrsh7th/nvim-cmp",
       requires = {"hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-buffer"}
     }
+    -- icons
+    use "onsails/lspkind.nvim"
 
     -- Show keybindings
     -- use "liuchengxu/vim-which-key"
@@ -41,8 +52,6 @@ return require("packer").startup(
         require("which-key").setup({})
       end
     }
-
-    use "onsails/lspkind.nvim"
 
     -- vim-go
     use {"fatih/vim-go", run = ":GoUpdateBinaries", ft = {"go"}}
@@ -55,9 +64,8 @@ return require("packer").startup(
     -- fzf
     use {"junegunn/fzf", run = ":call fzf#install()"}
     use "junegunn/fzf.vim"
+    -- set root folder automatically
     use "airblade/vim-rooter"
-    -- Neovim library plugin
-    use "nvim-lua/plenary.nvim"
     -- Git plugin
     use "tpope/vim-fugitive"
     use "tommcdo/vim-fubitive"
@@ -76,14 +84,8 @@ return require("packer").startup(
     use "christoomey/vim-tmux-navigator"
     -- floatterm
     use "voldikss/vim-floaterm"
-    -- vim lessc
-    use {"vitalk/vim-lesscss", run = "npm install -g less minify"}
     -- remote yank
     use {"ojroques/vim-oscyank", branch = "main"}
-    -- Snippets
-    use "honza/vim-snippets"
-    -- Quickscope
-    use "unblevable/quick-scope"
     -- multiple cursor
     use {"mg979/vim-visual-multi", branch = "master"}
     -- undootree
@@ -121,7 +123,7 @@ return require("packer").startup(
     -- icons
     use "kyazdani42/nvim-web-devicons"
     -- Scrollbar
-    use {"dstein64/nvim-scrollview", branch = "main"}
+    use "petertriho/nvim-scrollbar"
     -- treesitter for highlighting
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use {"nvim-treesitter/nvim-treesitter-textobjects", requires = {"nvim-treesitter/nvim-treesitter"}}
@@ -130,16 +132,23 @@ return require("packer").startup(
     -- better text object support while using ex. ci"
     use "wellle/targets.vim"
     -- Markdown preview
-    use {"iamcco/markdown-preview.nvim", run = ":call mkdp#util#install()", ft = {"markdown", "vim-plug"}}
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        vim.fn["mkdp#util#install"]()
+      end,
+      ft = {"markdown", "vim-plug"}
+    }
     -- add sudo permission to write/read operations
     use "lambdalisue/suda.vim"
     -- Show functions/methods <leader>lv
     use "liuchengxu/vista.vim"
-    -- extra library
-    use "MunifTanjim/nui.nvim"
     -- Telescope
-    use "nvim-telescope/telescope.nvim"
-    use "nvim-lua/popup.nvim"
+    use {
+      "nvim-telescope/telescope.nvim",
+      requires = {{"nvim-lua/plenary.nvim"}}
+    }
+    -- use "nvim-lua/popup.nvim"
     use {"nvim-telescope/telescope-media-files.nvim", run = "pip3 install --upgrade ueberzug"}
     -- use 'nvim-telescope/telescope-fzf-native.nvim', { run= 'make' }
     -- Github copilot
@@ -171,13 +180,18 @@ return require("packer").startup(
     }
     -- File explorer
     -- use 'kyazdani42/nvim-tree.lua'
-    use {"nvim-neo-tree/neo-tree.nvim", branch = "v2.x"}
+    use {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v2.x",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim"
+      }
+    }
     -- file editing. Does not work with vim-go
     -- use 'miversen33/netman.nvim', { branch= 'v1.1' } "support for remote
 
-    -- Database view/explorer
-    use "tpope/vim-dadbod"
-    use "kristijanhusak/vim-dadbod-ui"
     -- % matches to functions etc
     use "andymass/vim-matchup"
     -- Quick jumping around

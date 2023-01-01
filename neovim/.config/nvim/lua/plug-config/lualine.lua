@@ -24,13 +24,25 @@ local my_extension = {
   filetypes = {"NvimTree", "neo-tree"}
 }
 
+local treesitter = require("nvim-treesitter")
+local function treelocation()
+  return treesitter.statusline(
+    {
+      indicator_size = 100,
+      type_patterns = {"class", "function", "method"},
+      separator = " -> "
+    }
+  )
+end
+
 require "lualine".setup {
   options = {theme = "gruvbox"},
   extensions = {my_extension},
   sections = {
     lualine_a = {customModes, "mode"},
     lualine_b = {"branch", "diff"},
-    -- lualine_c = {{"diagnostics", sources = {"coc"}}, "filename", "b:coc_current_function"},
+    lualine_c = {{treelocation}},
+    --{{"diagnostics", sources = {"vim_lsp"}}, "filename", "b:coc_current_function"},
     lualine_x = {"encoding", "fileformat"},
     lualine_y = {"filetype"},
     lualine_z = {"location", "progress"}
