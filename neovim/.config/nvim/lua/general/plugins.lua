@@ -166,10 +166,9 @@ return require("packer").startup(
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim",
-      requires = {"nvim-lua/plenary.nvim"}
+      requires = {"nvim-lua/plenary.nvim", {"nvim-telescope/telescope-media-files.nvim", run = "pip3 install --upgrade ueberzug"}}
     }
     -- use "nvim-lua/popup.nvim"
-    use {"nvim-telescope/telescope-media-files.nvim", run = "pip3 install --upgrade ueberzug"}
     -- use 'nvim-telescope/telescope-fzf-native.nvim', { run= 'make' }
     -- Github copilot
     -- use "github/copilot.vim"
