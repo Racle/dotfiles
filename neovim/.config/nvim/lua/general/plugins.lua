@@ -47,10 +47,7 @@ return require("packer").startup(
         "hrsh7th/cmp-buffer",
         {
           "L3MON4D3/LuaSnip",
-          wants = {"friendly-snippets", "vim-snippets"},
-          config = function()
-            require("config.snip").setup()
-          end
+          wants = {"friendly-snippets", "vim-snippets"}
         },
         "rafamadriz/friendly-snippets",
         "honza/vim-snippets"
@@ -169,7 +166,7 @@ return require("packer").startup(
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim",
-      requires = {{"nvim-lua/plenary.nvim"}}
+      requires = {"nvim-lua/plenary.nvim"}
     }
     -- use "nvim-lua/popup.nvim"
     use {"nvim-telescope/telescope-media-files.nvim", run = "pip3 install --upgrade ueberzug"}
