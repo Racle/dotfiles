@@ -120,6 +120,7 @@ local servers = {
   bashls = {},
   ansiblels = {},
   diagnosticls = {},
+  marksman = {},
   sumneko_lua = {
     settings = {
       Lua = {

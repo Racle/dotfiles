@@ -1,0 +1,10 @@
+snippet cll "console.log"
+	console.log( { ${0} } )
+
+
+snippet immutable "immutable.fromJS.toJS"
+	let ${1:var} = Immutable.fromJS(${2:var}).toJS()
+
+
+snippet sleep "sleep with setTimeout"
+	await new Promise(r => setTimeout(r, ${1:var}));
