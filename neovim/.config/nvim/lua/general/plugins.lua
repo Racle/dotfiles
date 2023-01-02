@@ -55,8 +55,16 @@ return require("packer").startup(
 
     -- vim-go
     use {"fatih/vim-go", run = ":GoUpdateBinaries", ft = {"go"}}
-    -- Automatic surround
-    use "tpope/vim-surround"
+    -- change surrounds
+    use(
+      {
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+          require("nvim-surround").setup({})
+        end
+      }
+    )
     -- commenting
     use "tpope/vim-commentary"
     -- Gruvbox theme
