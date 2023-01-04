@@ -299,3 +299,14 @@ lmapCR("n", "lv", ":Vista!!", "tag viewer")
 -- lmapCR("n", "lU", ":CocUpdate", "update CoC")
 -- lmapCR("n", "lz", ":CocDisable", "disable CoC")
 -- lmapCR("n", "lZ", ":CocEnable", "enable CoC")
+
+-- right click men
+vim.cmd.aunmenu {"PopUp.How-to\\ disable\\ mouse"}
+-- vim.cmd.aunmenu {"PopUp.-1-"}
+
+vim.cmd.nmenu {"PopUp.Copy\\ line", "yy"}
+vim.cmd.nmenu {"PopUp.Copy\\ inside\\ quotes", "yiq"}
+vim.cmd.nmenu {"PopUp.Copy\\ around\\ quotes", "yaq"}
+vim.cmd.nmenu {"PopUp.-2-", "<NOP>"}
+vim.cmd.nmenu {"PopUp.Copy\\ inside\\ brackets", "yib"}
+vim.cmd.nmenu {"PopUp.Copy\\ around\\ brackets", "yab"}
