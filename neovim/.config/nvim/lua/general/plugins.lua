@@ -24,7 +24,8 @@ return require("packer").startup(
         "williamboman/mason-lspconfig.nvim",
         -- Useful status updates for LSP
         "j-hui/fidget.nvim"
-      }
+      },
+      run = "pip install ansible-lint"
     }
     -- better lsp errors
     use(

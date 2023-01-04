@@ -155,3 +155,6 @@ mason_lspconfig.setup_handlers {
 }
 
 require("fidget").setup()
+
+-- autocmd to setup filetype
+vim.cmd [[autocmd BufNewFile,BufRead *.ans.yml set ft=yaml.ansible]]
