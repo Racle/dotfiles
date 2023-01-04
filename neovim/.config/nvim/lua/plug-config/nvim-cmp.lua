@@ -27,8 +27,8 @@ cmp.setup {
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true
+      behavior = cmp.ConfirmBehavior.Replace
+      -- select = true
     },
     -- https://github.com/zbirenbaum/copilot.lua/issues/91#issuecomment-1345190310
     ["<Tab>"] = cmp.mapping(
