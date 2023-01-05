@@ -19,6 +19,18 @@ require "bufferline".setup {
     }
   },
   options = {
+    diagnostics = "nvim_lsp",
+    diagnostics_indicator = function(count, level)
+      local icon = level:match("error") and "" or ""
+      return icon .. "" .. count
+    end,
+    -- custom_filter = function(buf_number, buf_numbers)
+    custom_filter = function(buf_number)
+      -- filter out filetypes you don't want to see
+      if vim.bo[buf_number].filetype ~= "qf" then
+        return true
+      end
+    end,
     modified_icon = "●",
     left_trunc_marker = "",
     right_trunc_marker = "",

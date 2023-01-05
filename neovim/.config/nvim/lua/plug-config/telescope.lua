@@ -5,7 +5,7 @@ local custom_actions = {}
 
 function custom_actions._multiopen(prompt_bufnr, open_cmd)
   local picker = action_state.get_current_picker(prompt_bufnr)
-  local selected_entry = action_state.get_selected_entry()
+  -- local selected_entry = action_state.get_selected_entry()
   local num_selections = #picker:get_multi_selection()
   if not num_selections or num_selections <= 1 then
     actions.add_selection(prompt_bufnr)
