@@ -136,7 +136,7 @@ return require("packer").startup(
     -- VimWiki
     use {
       "vimwiki/vimwiki",
-      requres = {"michal-h21/vimwiki-sync"}
+      requires = {"michal-h21/vimwiki-sync"}
     }
     -- restore cursor position on file open
     use "farmergreg/vim-lastplace"
