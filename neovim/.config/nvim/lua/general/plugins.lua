@@ -97,7 +97,7 @@ return require("packer").startup(
     -- Formatting / prettier
     use {
       "mhartington/formatter.nvim",
-      run = "npm install -g lua-fmt nginxbeautifier prettier @prettier/plugin-xml @prettier/plugin-php"
+      run = "npm install -g lua-fmt nginxbeautifier prettier @prettier/plugin-xml @prettier/plugin-php && go install mvdan.cc/sh/v3/cmd/shfmt@latest"
     }
     use {"prettier/vim-prettier", run = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"}
     -- tagalong (tag autochange)
@@ -134,8 +134,10 @@ return require("packer").startup(
     -- blankline, | between multiline {}
     use "lukas-reineke/indent-blankline.nvim"
     -- VimWiki
-    use "vimwiki/vimwiki"
-    use "michal-h21/vimwiki-sync"
+    use {
+      "vimwiki/vimwiki",
+      requres = {"michal-h21/vimwiki-sync"}
+    }
     -- restore cursor position on file open
     use "farmergreg/vim-lastplace"
     -- bufferline (tabs)

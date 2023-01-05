@@ -3,7 +3,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.xml,*.php,*.lua,*.rs FormatWrite
+  autocmd BufWritePost *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.xml,*.php,*.lua,*.rs,*.sh FormatWrite
 augroup END
 ]],
   true
@@ -47,10 +47,14 @@ require("formatter").setup(
       vimwiki = nop,
       graphql = prettier,
       yaml = prettier,
+      ["yaml.ansible"] = prettier,
       html = prettier,
       xhtml = prettier,
       xml = prettier,
       php = prettier,
+      sh = {
+        require("formatter.filetypes.sh").shfmt
+      },
       lua = {
         -- luafmt
         function()
