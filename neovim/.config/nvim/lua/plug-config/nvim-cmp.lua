@@ -110,7 +110,8 @@ cmp.setup {
     -- Other Sources
     {name = "nvim_lsp", group_index = 2},
     {name = "path", group_index = 2},
-    {name = "luasnip"}
+    {name = "luasnip"},
+    {name = "calc"}
   },
   formatting = {
     format = function(entry, vim_item)
