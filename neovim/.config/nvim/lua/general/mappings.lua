@@ -8,7 +8,7 @@
 -- map helper
 local map = function(type, keys, func, desc, noremap, silent)
   noremap = noremap or false
-  silent = silent or false
+  silent = silent or true
   vim.keymap.set(type, keys, func, {noremap = noremap, desc = desc, silent = silent})
 end
 
