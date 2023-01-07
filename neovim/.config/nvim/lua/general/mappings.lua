@@ -40,6 +40,10 @@ vim.keymap.set("n", "§", "<Esc>", {noremap = true})
 vim.keymap.set("x", "§", "<Esc>", {noremap = true})
 vim.keymap.set("t", "§", "<C-\\><C-n>", {noremap = true})
 
+-- change jumplist forward to <c-p>
+-- for some reason must be upper case P
+vim.keymap.set("n", "<C-P>", "<Tab>", {noremap = true})
+
 -- disable digraph hotkey
 vim.keymap.set("i", "<C-k>", "<NOP>")
 
@@ -311,4 +315,3 @@ vim.cmd.nmenu {"PopUp.Copy\\ around\\ quotes", "yaq"}
 vim.cmd.nmenu {"PopUp.-3-", "<NOP>"}
 vim.cmd.nmenu {"PopUp.Copy\\ inside\\ brackets", "yib"}
 vim.cmd.nmenu {"PopUp.Copy\\ around\\ brackets", "yab"}
-
