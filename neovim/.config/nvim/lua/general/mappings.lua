@@ -312,5 +312,3 @@ vim.cmd.nmenu {"PopUp.-3-", "<NOP>"}
 vim.cmd.nmenu {"PopUp.Copy\\ inside\\ brackets", "yib"}
 vim.cmd.nmenu {"PopUp.Copy\\ around\\ brackets", "yab"}
 
--- ts-node-action mapping, quick switch between true|false etc.
-vim.keymap.set({"n"}, "K", require("ts-node-action").node_action, {desc = "Trigger Node Action"})

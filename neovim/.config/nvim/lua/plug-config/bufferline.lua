@@ -26,10 +26,17 @@ require "bufferline".setup {
     end,
     -- custom_filter = function(buf_number, buf_numbers)
     custom_filter = function(buf_number)
+      local ignored_filetypes = {
+        ["qf"] = true,
+        ["dapui_watches"] = true,
+        ["dapui_breakpoints"] = true,
+        ["dapui_scopes"] = true,
+        ["dapui_console"] = true,
+        ["dapui_stacks"] = true,
+        ["dap-repl"] = true
+      }
       -- filter out filetypes you don't want to see
-      if vim.bo[buf_number].filetype ~= "qf" then
-        return true
-      end
+      return not ignored_filetypes[vim.bo[buf_number].filetype]
     end,
     modified_icon = "●",
     left_trunc_marker = "",

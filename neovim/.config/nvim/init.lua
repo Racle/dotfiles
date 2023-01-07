@@ -36,6 +36,8 @@ require("plug-config/treesitter")
 require("plug-config/which-key")
 require("plug-config/lsp_lines")
 require("plug-config/dap")
+require("plug-config/ts-node-action")
+
 
 -- source $NVIMPATH/general/plugins.vim
 
