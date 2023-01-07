@@ -35,6 +35,7 @@ require("plug-config/telescope")
 require("plug-config/treesitter")
 require("plug-config/which-key")
 require("plug-config/lsp_lines")
+require("plug-config/dap")
 
 -- source $NVIMPATH/general/plugins.vim
 

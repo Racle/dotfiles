@@ -58,6 +58,13 @@ require "bufferline".setup {
   }
 }
 
+-- bufferline ignore these
+-- "dapui_watches",
+-- "dapui_breakpoints",
+-- "dapui_scopes",
+-- "dapui_console",
+-- "dapui_stacks",
+-- "dap-repl"
 local opt = {silent = true}
 
 -- move buffers

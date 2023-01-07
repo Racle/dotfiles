@@ -36,6 +36,14 @@ return require("packer").startup(
         end
       }
     )
+    -- Debug Adapter Protocol UI
+    use {
+      "rcarriga/nvim-dap-ui",
+      requires = {"mfussenegger/nvim-dap"},
+      config = function()
+        require("dapui").setup()
+      end
+    }
 
     -- Autocompletion
     use {
@@ -149,10 +157,21 @@ return require("packer").startup(
     -- Scrollbar
     use "petertriho/nvim-scrollbar"
     -- treesitter for highlighting
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use {"nvim-treesitter/nvim-treesitter-textobjects", requires = {"nvim-treesitter/nvim-treesitter"}}
-    -- javascript context commenting (different commenting to html tags and js parts on same file)
-    use {"JoosepAlviste/nvim-ts-context-commentstring", requires = {"nvim-treesitter/nvim-treesitter"}}
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      requires = {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        "JoosepAlviste/nvim-ts-context-commentstring", -- javascript context commenting (different commenting to html tags and js parts on same file)
+        {
+          "CKolkey/ts-node-action",
+          config = function()
+            -- Optional
+            require("ts-node-action").setup({})
+          end
+        }
+      }
+    }
     -- better text object support while using ex. ci"
     use "wellle/targets.vim"
     -- Markdown preview
