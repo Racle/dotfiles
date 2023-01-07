@@ -16,7 +16,7 @@ local function customModes()
 end
 
 local function filetree()
-  return [[NvimTree,neo-tree]]
+  return [[Neo-tree]]
 end
 
 local my_extension = {

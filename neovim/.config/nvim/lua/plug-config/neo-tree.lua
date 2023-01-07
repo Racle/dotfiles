@@ -28,7 +28,28 @@ require("neo-tree").setup(
         -- remove keybindings
         ["<space>"] = "",
         ["<"] = "",
-        [">"] = ""
+        [">"] = "",
+        ["H"] = function(state)
+          state.commands.toggle_hidden(state)
+          print(vim.inspect(state), state.filtered_items.visible)
+
+          -- hack to force following current file after unhiding
+          if (state.filtered_items.visible) then
+            -- change back to current file
+            vim.cmd("wincmd l")
+            -- set 100ms timer to change back to neotree
+            local timer = vim.loop.new_timer()
+            timer:start(
+              100,
+              0,
+              vim.schedule_wrap(
+                function()
+                  vim.cmd("10wincmd h")
+                end
+              )
+            )
+          end
+        end
       }
     },
     filesystem = {
