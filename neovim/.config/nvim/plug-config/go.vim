@@ -7,6 +7,8 @@ let g:go_metalinter_autosave=1
 " let g:go_metalinter_autosave_enabled=['golint', 'govet']
 " let g:go_metalinter_autosave_enabled=['govet']
 
+" disable K mapping
+let g:go_doc_keywordprg_enabled = 0
 
 let g:go_code_completion_enabled = 0
 

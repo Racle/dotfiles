@@ -26,13 +26,19 @@ local my_extension = {
 
 local treesitter = require("nvim-treesitter")
 local function treelocation()
-  return treesitter.statusline(
+  local ret =
+    treesitter.statusline(
     {
       indicator_size = 100,
       type_patterns = {"class", "function", "method"},
       separator = " -> "
     }
   )
+  if ret == nil then
+    return ""
+  else
+    return ret
+  end
 end
 
 require "lualine".setup {
