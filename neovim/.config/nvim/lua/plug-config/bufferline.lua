@@ -60,6 +60,12 @@ require "bufferline".setup {
         text = "File Explorer",
         highlight = "Directory",
         text_align = "center"
+      },
+      {
+        filetype = "dapui_scopes",
+        text = "",
+        highlight = "Directory",
+        text_align = "center"
       }
     }
   }

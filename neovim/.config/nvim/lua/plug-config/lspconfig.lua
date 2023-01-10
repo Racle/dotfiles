@@ -63,14 +63,6 @@ local on_attach = function(_, bufnr)
   if vim.bo.filetype == "go" then
     nmap("gr", ":GoReferrers<CR>", "[G]oto [R]Eferences")
     nmap("gd", ":GoDef<CR>", "[G]oto [D]efinition")
-
-    -- debug bindings
-    vim.keymap.set("n", "<leader>dd", ":GoDebugStart<CR>", {desc = "GoDebugStart"})
-    vim.keymap.set("n", "<leader>dj", ":GoDebugStep<CR>", {desc = "GoDebugStep"})
-    vim.keymap.set("n", "<leader>dl", ":GoDebugStepOut<CR>", {desc = "GoDebugStepOut"})
-    vim.keymap.set("n", "<leader>dbp", ":GoDebugBreakpoint<CR>", {desc = "GoDebugBreakpoint"})
-    vim.keymap.set("n", "<leader>dr", ":GoDebugRestart<CR>", {desc = "GoDebugRestart"})
-    vim.keymap.set("n", "<leader>d_", ":GoDebugStop<CR>", {desc = "GoDebugStop"})
   end
 
   -- custom js
