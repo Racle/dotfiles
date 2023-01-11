@@ -1,8 +1,75 @@
 local dap = require "dap"
+local dapui = require("dapui")
 
-vim.fn.sign_define("DapBreakpoint", {text = "🟥", texthl = "", linehl = "", numhl = ""})
-vim.fn.sign_define("DapBreakpointRejected", {text = "🟦", texthl = "", linehl = "", numhl = ""})
-vim.fn.sign_define("DapStopped", {text = "⭐️", texthl = "", linehl = "", numhl = ""})
+-- open dap ui on debug start
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open({reset = true})
+end
+
+local dap_breakpoint_color = {
+  breakpoint = {
+    ctermbg = 0,
+    fg = "#993939",
+    bg = "#31353f"
+  },
+  logpoing = {
+    ctermbg = 0,
+    fg = "#61afef",
+    bg = "#31353f"
+  },
+  stopped = {
+    ctermbg = 0,
+    fg = "#98c379",
+    bg = "#31353f"
+  }
+}
+
+vim.api.nvim_set_hl(0, "DapBreakpoint", dap_breakpoint_color.breakpoint)
+vim.api.nvim_set_hl(0, "DapLogPoint", dap_breakpoint_color.logpoing)
+vim.api.nvim_set_hl(0, "DapStopped", dap_breakpoint_color.stopped)
+
+local dap_breakpoint = {
+  error = {
+    text = "",
+    texthl = "DapBreakpoint",
+    linehl = "DapBreakpoint",
+    numhl = "DapBreakpoint"
+  },
+  condition = {
+    text = "ﳁ",
+    texthl = "DapBreakpoint",
+    linehl = "DapBreakpoint",
+    numhl = "DapBreakpoint"
+  },
+  rejected = {
+    text = "",
+    texthl = "DapBreakpint",
+    linehl = "DapBreakpoint",
+    numhl = "DapBreakpoint"
+  },
+  logpoint = {
+    text = "",
+    texthl = "DapLogPoint",
+    linehl = "DapLogPoint",
+    numhl = "DapLogPoint"
+  },
+  stopped = {
+    text = "",
+    texthl = "DapStopped",
+    linehl = "DapStopped",
+    numhl = "DapStopped"
+  }
+}
+
+vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
+vim.fn.sign_define("DapBreakpointCondition", dap_breakpoint.condition)
+vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
+vim.fn.sign_define("DapLogPoint", dap_breakpoint.logpoint)
+vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
+
+-- vim.fn.sign_define("DapBreakpoint", {text = "🟥", texthl = "", linehl = "", numhl = ""})
+-- vim.fn.sign_define("DapBreakpointRejected", {text = "🟦", texthl = "", linehl = "", numhl = ""})
+-- vim.fn.sign_define("DapStopped", {text = '', texthl = "", linehl = "", numhl = ""})
 
 -- debug bindings
 vim.api.nvim_create_autocmd(
@@ -12,32 +79,33 @@ vim.api.nvim_create_autocmd(
     callback = function()
       vim.keymap.set(
         "n",
-        "<leader>dd",
+        "<leader>dt",
         function()
           require("dapui").toggle({reset = true})
         end,
-        {desc = "Toggle [D]ebug UI"}
+        {desc = "[T]oggle Debug UI"}
       )
 
-      vim.keymap.set("n", "<leader>dj", ":GoDebugStep<CR>", {desc = "GoDebugStep"})
+      vim.keymap.set("n", "<leader>dd", ":DapContinue<CR>", {desc = "DapContinue"})
+      vim.keymap.set("n", "<leader>dc", ":DapContinue<CR>", {desc = "Dap[C]ontinue"})
+      vim.keymap.set("n", "<leader>dj", ":DapStepOver<CR>", {desc = "DapStepOver"})
       vim.keymap.set("n", "<leader>dl", ":DapSetpOut<CR>", {desc = "DapSetpOut"})
-      vim.keymap.set("n", "<leader>dc", ":DapContinue<cr>", {desc = "Dap[C]ontinue"})
-      vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<cr>", {desc = "DapToggle[B]reakpoint"})
-      vim.keymap.set("n", "<leader>dr", ":DapRestartFrame<cr>", {desc = "Dap[R]estartFrame"})
-      vim.keymap.set("n", "<leader>d_", ":DapTerminate<cr>", {desc = "DapTerminate"})
+      vim.keymap.set("n", "<leader>do", ":DapStepOver<CR>", {desc = "DapStepOver"})
+      vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", {desc = "DapToggle[B]reakpoint"})
+      vim.keymap.set("n", "<leader>dr", ":lua require'dap'.run_last()<CR>", {desc = "Dap[R]estart"})
+      vim.keymap.set("n", "<leader>d_", ":DapTerminate<CR>", {desc = "DapTerminate"})
 
       -- usable mappings
       -- vim.keymap.set("n", "<leader>dj", ":DapStepOut<cr>", {desc = "DapStepOut"})
       -- vim.keymap.set("n", "<leader>dj", ":DapStepInto<cr>", {desc = "DapStepInto"})
-      -- vim.keymap.set("n", "<leader>dj", ":DapStepOver<cr>", {desc = "DapStepOver"})
-      -- vim.keymap.set("n", "<leader>dj", ":DapTerminate<cr>", {desc = "DapTerminate"})
       -- vim.keymap.set("n", "<leader>dj", ":DapToggleRepl<cr>", {desc = "DapToggleRepl"})
       -- vim.keymap.set("n", "<leader>dj", ":DapSetLogLevel<cr>", {desc = "DapSetLogLevel"})
-      -- vim.keymap.set("n", "<leader>dj", ":DapRestartFrame<cr>", {desc = "DapRestartFrame"})
       -- vim.keymap.set("n", "<leader>dj", ":DapLoadLaunchJSON<cr>", {desc = "DapLoadLaunchJSON"})
     end
   }
 )
+
+-- adpater config
 
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 --
@@ -57,26 +125,13 @@ dap.configurations.go = {
     name = "Debug (go.mod)",
     request = "launch",
     program = "./${relativeFileDirname}"
-  },
-  {
-    type = "delve",
-    name = "Debug",
-    request = "launch",
-    program = "${file}"
-  },
-  {
-    type = "delve",
-    name = "Debug test", -- configuration for debugging test files
-    request = "launch",
-    mode = "test",
-    program = "${file}"
-  },
-  -- works with go.mod packages and sub packages
-  {
-    type = "delve",
-    name = "Debug test (go.mod)",
-    request = "launch",
-    mode = "test",
-    program = "./${relativeFileDirname}"
   }
+  -- works with go.mod packages and sub packages
+  -- {
+  --   type = "delve",
+  --   name = "Debug test (go.mod)",
+  --   request = "launch",
+  --   mode = "test",
+  --   program = "./${relativeFileDirname}"
+  -- }
 }

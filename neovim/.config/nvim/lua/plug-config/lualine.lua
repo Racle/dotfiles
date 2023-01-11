@@ -42,24 +42,26 @@ local function treelocation()
 end
 
 require "lualine".setup {
-  options = {theme = "gruvbox"},
+  options = {
+    theme = "gruvbox",
+    disabled_filetypes = {
+      "dapui_watches",
+      "dapui_breakpoints",
+      "dapui_scopes",
+      "dapui_console",
+      "dapui_stacks",
+      "dap-repl"
+    },
+    ignore_focus = {
+      "dapui_watches",
+      "dapui_breakpoints",
+      "dapui_scopes",
+      "dapui_console",
+      "dapui_stacks",
+      "dap-repl"
+    }
+  },
   extensions = {my_extension},
-  disabled_filetypes = {
-    "dapui_watches",
-    "dapui_breakpoints",
-    "dapui_scopes",
-    "dapui_console",
-    "dapui_stacks",
-    "dap-repl"
-  },
-  ignore_focus = {
-    "dapui_watches",
-    "dapui_breakpoints",
-    "dapui_scopes",
-    "dapui_console",
-    "dapui_stacks",
-    "dap-repl"
-  },
   sections = {
     lualine_a = {customModes, "mode"},
     lualine_b = {"branch", "diff"},
