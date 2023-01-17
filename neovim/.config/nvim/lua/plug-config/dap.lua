@@ -67,10 +67,6 @@ vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 vim.fn.sign_define("DapLogPoint", dap_breakpoint.logpoint)
 vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
 
--- vim.fn.sign_define("DapBreakpoint", {text = "🟥", texthl = "", linehl = "", numhl = ""})
--- vim.fn.sign_define("DapBreakpointRejected", {text = "🟦", texthl = "", linehl = "", numhl = ""})
--- vim.fn.sign_define("DapStopped", {text = '', texthl = "", linehl = "", numhl = ""})
-
 -- debug bindings
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -93,7 +89,17 @@ vim.api.nvim_create_autocmd(
       vim.keymap.set("n", "<leader>do", ":DapStepOver<CR>", {desc = "DapStepOver"})
       vim.keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", {desc = "DapToggle[B]reakpoint"})
       vim.keymap.set("n", "<leader>dr", ":lua require'dap'.run_last()<CR>", {desc = "Dap[R]estart"})
-      vim.keymap.set("n", "<leader>d_", ":DapTerminate<CR>", {desc = "DapTerminate"})
+      vim.keymap.set(
+        "n",
+        "<leader>d_",
+        function()
+          -- terminate dap, clear breakpoints, close dap ui
+          vim.cmd(":DapTerminate")
+          require("dap").clear_breakpoints()
+          require("dapui").close()
+        end,
+        {desc = "DapTerminate"}
+      )
 
       -- usable mappings
       -- vim.keymap.set("n", "<leader>dj", ":DapStepOut<cr>", {desc = "DapStepOut"})
