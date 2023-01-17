@@ -60,6 +60,18 @@ cmp.setup {
       end,
       {"i", "s"}
     ),
+    ["§"] = cmp.mapping(
+      function(fallback)
+        if cmp.visible() then
+          cmp.abort()
+        elseif require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").dismiss()
+        else
+          fallback()
+        end
+      end,
+      {"i", "s"}
+    ),
     ["<Esc>"] = cmp.mapping(
       function(fallback)
         if cmp.visible() then
