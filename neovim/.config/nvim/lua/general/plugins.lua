@@ -247,7 +247,16 @@ return require("packer").startup(
       {
         "jackMort/ChatGPT.nvim",
         config = function()
-          require("chatgpt").setup({})
+          require("chatgpt").setup(
+            {
+              chat_layout = {
+                size = {
+                  height = "90%",
+                  width = "90%"
+                }
+              }
+            }
+          )
         end,
         requires = {
           "MunifTanjim/nui.nvim",
