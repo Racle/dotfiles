@@ -242,7 +242,20 @@ return require("packer").startup(
     use "karb94/neoscroll.nvim"
     -- vscode like minimap/codewindow
     use "gorbit99/codewindow.nvim"
-
+    -- ChatGPT
+    use(
+      {
+        "jackMort/ChatGPT.nvim",
+        config = function()
+          require("chatgpt").setup({})
+        end,
+        requires = {
+          "MunifTanjim/nui.nvim",
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope.nvim"
+        }
+      }
+    )
     if packer_bootstrap then
       require("packer").sync()
     end

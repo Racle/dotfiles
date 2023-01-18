@@ -148,4 +148,7 @@ fi
 # for server
 [[ ! -f ~/.zshrc-server ]] || source ~/.zshrc-server
 
+# for extra stuff
+[[ ! -f ~/.zshrc-extra ]] || source ~/.zshrc-extra
+
 return ok
