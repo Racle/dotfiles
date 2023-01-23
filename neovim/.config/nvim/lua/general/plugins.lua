@@ -273,14 +273,7 @@ return require("packer").startup(
           "neovim/nvim-lspconfig",
           "SmiteshP/nvim-navic",
           "nvim-tree/nvim-web-devicons" -- optional dependency
-        },
-        config = function()
-          require("barbecue").setup(
-            {
-              create_autocmd = false -- prevent barbecue from updating itself automatically
-            }
-          )
-        end
+        }
       }
     )
     if packer_bootstrap then

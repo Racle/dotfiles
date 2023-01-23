@@ -65,7 +65,7 @@ require "lualine".setup {
   sections = {
     lualine_a = {customModes, "mode"},
     lualine_b = {"branch", "diff"},
-    lualine_c = {{treelocation}},
+    -- lualine_c = {{treelocation}},
     --{{"diagnostics", sources = {"vim_lsp"}}, "filename", "b:coc_current_function"},
     lualine_x = {"encoding", "fileformat"},
     lualine_y = {"filetype"},
