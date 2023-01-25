@@ -265,15 +265,11 @@ return require("packer").startup(
         }
       }
     )
+    -- better lsp ui
     use(
       {
-        "utilyre/barbecue.nvim",
-        tag = "*",
-        requires = {
-          "neovim/nvim-lspconfig",
-          "SmiteshP/nvim-navic",
-          "nvim-tree/nvim-web-devicons" -- optional dependency
-        }
+        "glepnir/lspsaga.nvim",
+        branch = "main"
       }
     )
     if packer_bootstrap then

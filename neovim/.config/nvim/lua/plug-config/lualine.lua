@@ -24,22 +24,23 @@ local my_extension = {
   filetypes = {"NvimTree", "neo-tree"}
 }
 
-local treesitter = require("nvim-treesitter")
-local function treelocation()
-  local ret =
-    treesitter.statusline(
-    {
-      indicator_size = 100,
-      type_patterns = {"class", "function", "method"},
-      separator = " -> "
-    }
-  )
-  if ret == nil then
-    return ""
-  else
-    return ret
-  end
-end
+-- changed to lspsaga
+-- local treesitter = require("nvim-treesitter")
+-- local function treelocation()
+--   local ret =
+--     treesitter.statusline(
+--     {
+--       indicator_size = 100,
+--       type_patterns = {"class", "function", "method"},
+--       separator = " -> "
+--     }
+--   )
+--   if ret == nil then
+--     return ""
+--   else
+--     return ret
+--   end
+-- end
 
 require "lualine".setup {
   options = {
