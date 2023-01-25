@@ -19,6 +19,9 @@ require("lspsaga").setup(
     },
     lightbulb = {
       sign = false
+    },
+    rename = {
+      in_select = false
     }
   }
 )

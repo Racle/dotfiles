@@ -32,8 +32,8 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", keys, func, {buffer = bufnr, desc = desc})
   end
 
-  nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename")
-  nmap("<leader>la", vim.lsp.buf.code_action, "Code [A]ction")
+  -- nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename")
+  -- nmap("<leader>la", vim.lsp.buf.code_action, "Code [A]ction")
 
   nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
   nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
@@ -42,13 +42,23 @@ local on_attach = function(_, bufnr)
   nmap("<leader>lds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
   nmap("<leader>lws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
+  -- lspsaga
+  nmap("gh", "<cmd>Lspsaga hover_doc<CR>", "[H]over documentation")
+  nmap("gD", "<cmd>Lspsaga peek_definition<CR>", "Peek [D]efinition")
+  nmap("<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", "[F]ind lsp")
+  nmap("<leader>lr", "<cmd>Lspsaga rename ++project<CR>", "[R]ename")
+  nmap("<leader>la", "<cmd>Lspsaga code_action<CR>", "Code [A]ction")
+  -- € = altgr + e
+  nmap("[€", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+  nmap("]€", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
   -- See `:help K` for why this keymap
   -- nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  nmap("gh", vim.lsp.buf.hover, "Hover Documentation")
+  -- nmap("gh", vim.lsp.buf.hover, "Hover Documentation")
   nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
   -- Lesser used LSP functionality
-  nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+  -- nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
   nmap("<leader>lwa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
   nmap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
   nmap(
