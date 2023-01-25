@@ -35,7 +35,7 @@ cmp.setup {
       function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
+        elseif luasnip.expand_or_jumpable() and not require("copilot.suggestion").is_visible() then
           luasnip.expand_or_jump()
         elseif require("copilot.suggestion").is_visible() then
           require("copilot.suggestion").accept()
