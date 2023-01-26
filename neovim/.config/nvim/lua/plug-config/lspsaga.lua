@@ -1,9 +1,10 @@
 require("lspsaga").setup(
   {
     ui = {
+      border = "rounded",
       colors = {
         --float window normal bakcground color
-        normal_bg = "#313131"
+        normal_bg = "#282828"
         --title background color
         -- title_bg = "#313131"
       }
@@ -25,6 +26,8 @@ require("lspsaga").setup(
     }
   }
 )
+-- custom colors
+vim.cmd [[hi SagaBorder guifg=#665C54]]
 
 -- custom winbar colors
 vim.cmd [[hi WinBar guibg=#313131]]
