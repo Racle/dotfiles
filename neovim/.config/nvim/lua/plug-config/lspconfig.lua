@@ -36,6 +36,7 @@ local on_attach = function(_, bufnr)
   -- nmap("<leader>la", vim.lsp.buf.code_action, "Code [A]ction")
 
   nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+
   nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
   nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
   nmap("<leader>lD", vim.lsp.buf.type_definition, "Type [D]efinition")
@@ -101,7 +102,7 @@ end
 
 local servers = {
   -- clangd = {},
-  gopls = {},
+  gopls = {cmd = {"gopls", "--remote=auto"}},
   -- rust_analyzer = {},
   tsserver = {
     commands = {
@@ -143,15 +144,18 @@ mason_lspconfig.setup_handlers {
   function(server_name)
     local settings = {}
     local commands = {}
+    local cmd = {}
     if servers[server_name] ~= nil then
       settings = servers[server_name]["settings"]
       commands = servers[server_name]["commands"]
+      cmd = servers[server_name]["cmd"]
     end
     require("lspconfig")[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = settings,
-      commands = commands
+      commands = commands,
+      cmd = cmd
     }
   end
 }
