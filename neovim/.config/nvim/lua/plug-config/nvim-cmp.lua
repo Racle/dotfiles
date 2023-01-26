@@ -33,6 +33,9 @@ cmp.setup {
     -- https://github.com/zbirenbaum/copilot.lua/issues/91#issuecomment-1345190310
     ["<Tab>"] = cmp.mapping(
       function(fallback)
+        -- if cmp is visible, select item in list
+        -- if luasnip is expandable but gopilot suggestion is shown, ignore luasnip
+        -- if copilot is visible and cmp is hidden, accept suggestion
         if cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() and not require("copilot.suggestion").is_visible() then

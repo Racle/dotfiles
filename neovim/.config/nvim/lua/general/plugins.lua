@@ -231,7 +231,7 @@ return require("packer").startup(
         "MunifTanjim/nui.nvim"
       }
     }
-    -- file editing. Does not work with vim-go
+    -- support for remote file editing. Does not work with vim-go
     -- use 'miversen33/netman.nvim', { branch= 'v1.1' } "support for remote
 
     -- % matches to functions etc
