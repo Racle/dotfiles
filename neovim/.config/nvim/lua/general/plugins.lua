@@ -45,14 +45,10 @@ return require("packer").startup(
       }
     )
     -- Debug Adapter Protocol UI
-    -- dap-ui is lazy loaded in dap.lua
+    -- filetypes are set in dap.lua
     use {
       "rcarriga/nvim-dap-ui",
-      requires = {"mfussenegger/nvim-dap"},
-      ft = {"go"}, -- also set in dap.lua
-      config = function()
-        require("plug-config/dap")
-      end
+      requires = {"mfussenegger/nvim-dap"}
     }
 
     -- Autocompletion

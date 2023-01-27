@@ -2,6 +2,20 @@ local dap = require "dap"
 local dapui = require("dapui")
 local filetypes = {"go"}
 
+-- setup dapui
+dapui.setup()
+
+-- fixes empty REPL buffer
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = "dap-repl",
+    callback = function(args)
+      vim.api.nvim_buf_set_option(args.buf, "buflisted", false)
+    end
+  }
+)
+
 -- open dap ui on debug start
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open({reset = true})
@@ -68,8 +82,6 @@ vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
 vim.fn.sign_define("DapLogPoint", dap_breakpoint.logpoint)
 vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
 
-local loaded = false
-
 -- debug bindings
 vim.api.nvim_create_autocmd(
   "FileType",
@@ -77,10 +89,6 @@ vim.api.nvim_create_autocmd(
     pattern = filetypes, -- filetypes
     callback = function()
       -- lazy load dapui once
-      if not loaded then
-        require("dapui").setup()
-        loaded = true
-      end
 
       vim.keymap.set(
         "n",
