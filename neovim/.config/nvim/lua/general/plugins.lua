@@ -47,7 +47,6 @@ return require("packer").startup(
     -- Debug Adapter Protocol UI
     -- filetypes are set in dap.lua
     use {
-      ft = {"go"},
       "rcarriga/nvim-dap-ui",
       requires = {"mfussenegger/nvim-dap"},
       config = function()
