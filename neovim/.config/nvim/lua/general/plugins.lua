@@ -11,6 +11,14 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+-- run :PackerCompile whenever plugins.lua is updated with
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 return require("packer").startup(
   function(use)
     use {"wbthomason/packer.nvim"}
@@ -37,11 +45,13 @@ return require("packer").startup(
       }
     )
     -- Debug Adapter Protocol UI
+    -- dap-ui is lazy loaded in dap.lua
     use {
       "rcarriga/nvim-dap-ui",
       requires = {"mfussenegger/nvim-dap"},
+      ft = {"go"}, -- also set in dap.lua
       config = function()
-        require("dapui").setup()
+        require("plug-config/dap")
       end
     }
 
@@ -120,8 +130,14 @@ return require("packer").startup(
     use {"mg979/vim-visual-multi", branch = "master"}
     -- undootree
     use "mbbill/undotree"
+    -- highlight colors
+    use {
+      "NvChad/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup({user_default_options = {mode = "virtualtext", sass = {enable = false}}})
+      end
+    }
     -- colorpicker
-    -- use 'ap/vim-css-color' coc-css does same thing
     use "KabbAmine/vCoolor.vim"
     -- Align (=Tab /<regexp>)
     use "godlygeek/tabular"
