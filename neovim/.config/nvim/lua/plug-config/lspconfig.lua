@@ -47,6 +47,7 @@ local on_attach = function(_, bufnr)
   nmap("gD", "<cmd>Lspsaga peek_definition<CR>", "Peek [D]efinition")
   nmap("<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", "[F]ind lsp")
   nmap("<leader>lr", "<cmd>Lspsaga rename ++project<CR>", "[R]ename")
+  nmap("<leader>lR", vim.lsp.buf.rename, "[R]ename (with lsp)")
   nmap("<leader>la", "<cmd>Lspsaga code_action<CR>", "Code [A]ction")
   -- € = altgr + e
   nmap("[€", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
@@ -55,7 +56,7 @@ local on_attach = function(_, bufnr)
   -- See `:help K` for why this keymap
   -- nmap("K", vim.lsp.buf.hover, "Hover Documentation")
   -- nmap("gh", vim.lsp.buf.hover, "Hover Documentation")
-  nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+  -- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
   -- Lesser used LSP functionality
   -- nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -73,6 +74,7 @@ local on_attach = function(_, bufnr)
   if vim.bo.filetype == "go" then
     nmap("gr", ":GoReferrers<CR>", "[G]oto [R]Eferences")
     nmap("gd", ":GoDef<CR>", "[G]oto [D]efinition")
+    nmap("<leader>lR", ":GoRename<CR>", "Go[R]ename")
   end
 
   -- custom js
@@ -163,3 +165,17 @@ require("fidget").setup()
 
 -- autocmd to setup filetype
 vim.cmd [[autocmd BufNewFile,BufRead *.ans.yml set ft=yaml.ansible]]
+
+-- disable lsp for .env files
+local group = vim.api.nvim_create_augroup("__env", {clear = true})
+vim.api.nvim_create_autocmd(
+  "BufEnter",
+  {
+    pattern = ".env*",
+    group = group,
+    callback = function(args)
+      vim.cmd [[set filetype=sh]] -- set ft to sh to enable syntax highlighting
+      vim.diagnostic.disable(args.buf) --disable for this buffer
+    end
+  }
+)
