@@ -29,48 +29,65 @@ require("lspsaga").setup(
 -- custom colors
 vim.cmd [[hi SagaBorder guifg=#665C54]]
 
+local function set_hl(name)
+  -- get lspsaga highlights to list
+  local highlights = vim.api.nvim_exec("filter " .. name .. " highlight", true)
+
+  -- loop highlight
+  for s in highlights:gmatch("[^\r\n]+") do
+    -- split by first space
+    local space = s:find(" ") or (#s + 1)
+    local string = "hi " .. s:sub(1, space - 1) .. " guisp=#665c54 gui=underline guibg=#313131"
+    vim.cmd(string)
+  end
+end
+
+set_hl("LspSagaWinbar")
+
 -- custom winbar colors
 vim.cmd [[hi WinBar guisp=#665c54 gui=underline guibg=#313131]]
 vim.cmd [[hi WinBarNC guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarObject guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarClass guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarSep guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarKey guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarEnum guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarFile guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarNull guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarText guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarUnit guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarWord guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarArray guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarEvent guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarField guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarMacro guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarValue guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarFolder guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarMethod guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarModule guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarNumber guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarString guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarStruct guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarBoolean guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarPackage guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarSnippet guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarConstant guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarFunction guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarOperator guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarProperty guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarVariable guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarInterface guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarNamespace guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarParameter guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarTypeAlias guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarEnumMember guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarFolderName guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarConstructor guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarStaticMethod guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi LspSagaWinbarTypeParameter guisp=#665c54 gui=underline guibg=#313131]]
 vim.cmd [[hi LspSagaWinbarFileIcon guisp=#665c54 gui=underline guibg=#313131]]
+
+-- vim.cmd [[hi LspSagaWinbarObject guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarClass guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarSep guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarKey guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarEnum guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarFile guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarNull guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarText guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarUnit guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarWord guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarArray guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarEvent guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarField guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarMacro guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarValue guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarFolder guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarMethod guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarModule guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarNumber guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarString guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarStruct guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarBoolean guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarPackage guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarSnippet guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarConstant guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarFunction guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarOperator guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarProperty guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarVariable guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarInterface guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarNamespace guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarParameter guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarTypeAlias guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarEnumMember guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarFolderName guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarConstructor guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarStaticMethod guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarTypeParameter guisp=#665c54 gui=underline guibg=#313131]]
+-- vim.cmd [[hi LspSagaWinbarFileIcon guisp=#665c54 gui=underline guibg=#313131]]
 
 ----TODO fix keymap
 --local keymap = vim.keymap.set
