@@ -42,12 +42,74 @@ local function set_hl(name)
   end
 end
 
-set_hl("LspSagaWinbar")
-
 -- custom winbar colors
 vim.cmd [[hi WinBar guisp=#665c54 gui=underline guibg=#313131]]
 vim.cmd [[hi WinBarNC guisp=#665c54 gui=underline guibg=#313131]]
 vim.cmd [[hi LspSagaWinbarFileIcon guisp=#665c54 gui=underline guibg=#313131]]
+set_hl("LspSagaWinbar")
+
+-- first run hack
+
+-- local timer = vim.loop.new_timer()
+-- timer:start(
+--   600,
+--   0,
+--   vim.schedule_wrap(
+--     function()
+--       vim.cmd [[hi LspSagaWinbarFileIcon guisp=#665c54 gui=underline guibg=#313131]]
+--       timer:close()
+--     end
+--   )
+-- )
+
+-- vim.api.nvim_create_autocmd(
+--   {"BufEnter", "BufRead"},
+--   {
+--     pattern = "*",
+--     group = vim.api.nvim_create_augroup("__Lspsagawinbarfileicon", {clear = true}),
+--     callback = function()
+--       timer:start(
+--         600,
+--         0,
+--         vim.schedule_wrap(
+--           function()
+--             vim.cmd [[hi LspSagaWinbarFileIcon guisp=#665c54 gui=underline guibg=#313131]]
+--           end
+--         )
+--       )
+--     end
+--   }
+-- )
+
+-- local timer = vim.loop.new_timer()
+-- local timer2 = vim.loop.new_timer()
+-- vim.api.nvim_create_autocmd(
+--   {"CmdlineEnter", "CmdlineLeave", "CmdlineChanged", "FileType", "BufEnter", "CursorMoved", "TextChanged", "InsertLeave"},
+--   {
+--     pattern = "*",
+--     group = vim.api.nvim_create_augroup("__Lspsagawinbarfileicon", {clear = true}),
+--     callback = function()
+--       local devicons = require("nvim-web-devicons")
+--       local _, rgb = devicons.get_icon_color_by_filetype(vim.bo.filetype)
+--       vim.api.nvim_set_hl(0, "LspsagaWinbarFIleIcon", {fg = rgb, bg = "#313131", special = "#665c54", underline = true})
+
+--       timer:start(
+--         1,
+--         0,
+--         vim.schedule_wrap(
+--           function()
+--             vim.api.nvim_set_hl(0, "LspsagaWinbarFIleIcon", {fg = rgb, bg = "#313131", special = "#665c54", underline = true})
+--           end
+--         )
+--       )
+--     end
+--   }
+-- )
+
+-- local ok, group = pcall(vim.api.nvim_get_hl_by_name, "LspsagaWinbarFileIcon")
+-- if ok then
+--   vim.api.nvim_set_hl(0, "LspsagaWinbarFIleIcon", {fg = group.fg, bg = "#313131"})
+-- end
 
 -- vim.cmd [[hi LspSagaWinbarObject guisp=#665c54 gui=underline guibg=#313131]]
 -- vim.cmd [[hi LspSagaWinbarClass guisp=#665c54 gui=underline guibg=#313131]]

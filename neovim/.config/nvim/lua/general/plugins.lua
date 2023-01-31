@@ -268,8 +268,10 @@ return require("packer").startup(
             nocombine = true
           }
         )
+
         vim.api.nvim_set_hl(0, "LeapLabelPrimary", {fg = "#fb4934", bold = true, nocombine = true})
         vim.api.nvim_set_hl(0, "LeapLabelSecondary", {fg = "#b8bb26", bold = true, nocombine = true})
+
         -- keep old 'x' behaviour in visual mode
         vim.keymap.del({"x", "o"}, "x")
         vim.keymap.del({"x", "o"}, "X")
@@ -306,7 +308,9 @@ return require("packer").startup(
     -- better lsp ui
     use(
       {
-        "glepnir/lspsaga.nvim",
+        -- "glepnir/lspsaga.nvim",
+        "racle/lspsaga.nvim",
+        -- "/tmp/lspsaga.nvim/",
         branch = "main"
       }
     )
