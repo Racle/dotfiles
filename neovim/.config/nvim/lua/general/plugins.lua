@@ -308,8 +308,8 @@ return require("packer").startup(
     -- better lsp ui
     use(
       {
-        -- "glepnir/lspsaga.nvim",
-        "racle/lspsaga.nvim",
+        "glepnir/lspsaga.nvim",
+        -- "racle/lspsaga.nvim",
         -- "/tmp/lspsaga.nvim/",
         branch = "main"
       }
