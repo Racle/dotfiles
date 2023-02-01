@@ -314,6 +314,25 @@ return require("packer").startup(
         branch = "main"
       }
     )
+    -- better folding
+    use {
+      "kevinhwang91/nvim-ufo",
+      requires = {
+        "kevinhwang91/promise-async",
+        {
+          "luukvbaal/statuscol.nvim",
+          config = function()
+            require("statuscol").setup(
+              {
+                foldfunc = "builtin",
+                setopt = true
+              }
+            )
+          end
+        }
+      }
+    }
+
     if packer_bootstrap then
       require("packer").sync()
     end
