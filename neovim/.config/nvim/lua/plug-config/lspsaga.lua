@@ -29,6 +29,13 @@ require("lspsaga").setup(
 -- custom colors
 vim.cmd [[hi SagaBorder guifg=#665C54]]
 
+-- custom winbar colors start
+
+-- get color by name
+local function get_hl_color(group, attr)
+  return vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID(group)), attr)
+end
+
 local function set_hl(name)
   -- get lspsaga highlights to list
   local highlights = vim.api.nvim_exec("filter " .. name .. " highlight", true)
@@ -36,17 +43,27 @@ local function set_hl(name)
   -- loop highlight
   for s in highlights:gmatch("[^\r\n]+") do
     -- split by first space
-    local space = s:find(" ") or (#s + 1)
-    local string = "hi " .. s:sub(1, space - 1) .. " guisp=#665c54 gui=underline guibg=#313131"
+    local hl = s:find(" ") or (#s + 1)
+    hl = s:sub(1, hl - 1)
+    -- get fg color for highlight
+    local fg = get_hl_color(hl, "fg#")
+
+    local string = ""
+    if fg == "" then
+      string = "hi " .. hl .. " guisp=#665c54 gui=underline guibg=#313131"
+    else
+      string = "hi " .. hl .. " guisp=#665c54 gui=underline guibg=#313131 guifg=" .. fg
+    end
+
     vim.cmd(string)
   end
 end
 
--- custom winbar colors
 vim.cmd [[hi WinBar guisp=#665c54 gui=underline guibg=#313131]]
 vim.cmd [[hi WinBarNC guisp=#665c54 gui=underline guibg=#313131]]
 vim.cmd [[hi LspSagaWinbarFileIcon guisp=#665c54 gui=underline guibg=#313131]]
-set_hl("LspSagaWinbar")
+set_hl("SagaWinbar")
+-- custom winbar colors end
 
 -- alternative way to function, still misses (LspSagaWinbarSep, LspSagaWinbarWord, LspSagaWinbarSFolderName)
 -- local kind = require("lspsaga.lspkind").get_kind()
