@@ -46,8 +46,8 @@ local on_attach = function(_, bufnr)
   nmap("gh", "<cmd>Lspsaga hover_doc<CR>", "[H]over documentation")
   nmap("gD", "<cmd>Lspsaga peek_definition<CR>", "Peek [D]efinition")
   nmap("<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", "[F]ind lsp")
-  nmap("<leader>lr", "<cmd>Lspsaga rename ++project<CR>", "[R]ename")
-  nmap("<leader>lR", vim.lsp.buf.rename, "[R]ename (with lsp)")
+  -- nmap("<leader>lr", "<cmd>Lspsaga rename ++project<CR>", "[R]ename")
+  nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename (with lsp)")
   nmap("<leader>la", "<cmd>Lspsaga code_action<CR>", "Code [A]ction")
   -- € = altgr + e
   nmap("[€", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
@@ -125,7 +125,7 @@ local servers = {
   ansiblels = {},
   diagnosticls = {},
   marksman = {},
-  sumneko_lua = {
+  lua_ls = {
     settings = {
       Lua = {
         workspace = {checkThirdParty = false},
