@@ -14,7 +14,10 @@ wk.register(
     },
     f = {
       name = "[f]ind",
-      g = {name = "[g]it"}
+      g = {
+        name = "[g]it",
+        d = "[d]iff"
+      }
     },
     g = {
       name = "[G]it diff",

@@ -123,6 +123,12 @@ lmapCR("n", "fgB", ":Telescope git_branches", "Search branches")
 lmapCR("n", "fgs", ":Telescope git_status", "Search git status")
 lmapCR("n", "fgS", ":Telescope git_stash", "Search git stash")
 
+lmapCR("n", "fgdb", ":Telescope advanced_git_search diff_branch_file", "Diff branch file")
+lmapCR("n", "fgdl", ":Telescope advanced_git_search diff_commit_line", "Diff commit line ")
+lmapCR("n", "fgdf", ":Telescope advanced_git_search diff_commit_file", "Diff commit file ")
+lmapCR("n", "fgl", ":Telescope advanced_git_search search_log_content", "Search log content")
+lmapCR("n", "fgf", ":Telescope advanced_git_search show_custom_functions", "Show custom functions")
+
 -- <leader>a actions
 lmapCR("n", "ac", ":ColorizerToggle", "colorizer")
 lmapCR("n", "ae", ":CocCommand explorer", "explorer")

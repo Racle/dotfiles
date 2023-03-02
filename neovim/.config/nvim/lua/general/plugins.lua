@@ -204,7 +204,21 @@ return require("packer").startup(
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim",
-      requires = {"nvim-lua/plenary.nvim", {"nvim-telescope/telescope-media-files.nvim", run = "pip3 install --upgrade ueberzug"}}
+      requires = {
+        "nvim-lua/plenary.nvim",
+        {"nvim-telescope/telescope-media-files.nvim", run = "pip3 install --upgrade ueberzug"}
+      }
+    } -- advanced git search to telescope
+    use {
+      "aaronhallaert/ts-advanced-git-search.nvim",
+      config = function()
+        require("telescope").load_extension("advanced_git_search")
+      end,
+      dependencies = {
+        "nvim-telescope/telescope.nvim",
+        -- to show diff splits and open commits in browser
+        "tpope/vim-fugitive"
+      }
     }
     -- use "nvim-lua/popup.nvim"
     -- use 'nvim-telescope/telescope-fzf-native.nvim', { run= 'make' }
