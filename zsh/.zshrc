@@ -7,6 +7,7 @@ export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
 export PATH="$HOME/scripts/:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.dotnet:$PATH"
+export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$HOME/.go/bin:$PATH"
@@ -17,7 +18,6 @@ export ANSIBLE_INVENTORY=~/.ansible-hosts
 # install npm packages globally without sudo
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
-export PATH="$PATH:/home/vvi/.dotnet/tools"
 export JAVA_HOME="/usr/lib/jvm/default-java"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export MANPAGER='nvim +Man!'
