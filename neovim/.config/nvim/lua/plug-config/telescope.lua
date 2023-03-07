@@ -13,6 +13,9 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
   actions.send_selected_to_qflist(prompt_bufnr)
   vim.cmd("cfdo " .. open_cmd)
 
+  -- close empty buffers
+  vim.cmd("call CleanEmptyBuffers()")
+
   -- open the quickfix list if there is more than one opened with enter key
   if open_cmd == "edit" and num_selections > 1 then
     vim.cmd("copen")
