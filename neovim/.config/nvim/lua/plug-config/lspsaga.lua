@@ -19,7 +19,8 @@ require("lspsaga").setup(
       color_mode = true
     },
     lightbulb = {
-      sign = false
+      sign = false,
+      enable_in_insert = false
     },
     rename = {
       in_select = false
