@@ -38,6 +38,7 @@ require("plug-config/lsp_lines")
 require("plug-config/ts-node-action")
 require("plug-config/lspsaga")
 require("plug-config/nvim-ufo")
+require("plug-config/nvim-osc52")
 
 -- source $NVIMPATH/general/plugins.vim
 
@@ -62,7 +63,6 @@ vim.cmd("source" .. nvimrc .. "/plug-config/vista.vim")
 vim.cmd("source" .. nvimrc .. "/plug-config/vcoolor.vim")
 vim.cmd("source" .. nvimrc .. "/plug-config/rooter.vim")
 -- vim.cmd("source" .. nvimrc .. "/plug-config/copilot.vim")
-vim.cmd("source" .. nvimrc .. "/plug-config/vim-oscyank.vim")
 
 print(nvimrc)
 if vim.fn.filereadable(nvimrc .. "/dadbod.vim") == 1 then

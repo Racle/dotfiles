@@ -124,7 +124,7 @@ return require("packer").startup(
     -- floatterm
     use "voldikss/vim-floaterm"
     -- remote yank
-    use {"ojroques/vim-oscyank", branch = "main"}
+    use {"ojroques/nvim-osc52"}
     -- multiple cursor
     use {"mg979/vim-visual-multi", branch = "master"}
     -- undootree
@@ -336,10 +336,15 @@ return require("packer").startup(
         {
           "luukvbaal/statuscol.nvim",
           config = function()
+            local builtin = require("statuscol.builtin")
             require("statuscol").setup(
               {
-                foldfunc = "builtin",
-                setopt = true
+                relculright = true,
+                segments = {
+                  {text = {builtin.foldfunc}, click = "v:lua.ScFa"},
+                  {text = {"%s"}, click = "v:lua.ScSa"},
+                  {text = {builtin.lnumfunc, " "}, click = "v:lua.ScLa"}
+                }
               }
             )
           end

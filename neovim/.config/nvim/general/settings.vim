@@ -73,7 +73,7 @@ set colorcolumn=99999       " https://github.com/lukas-reineke/indent-blankline.
 " set sessionoptions-=buffers " Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=options " Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=blank   " Remove blank buffers/windows in sessions.
-" set sessionoptions-=folds   " Remove folds in sessions.
+set sessionoptions-=folds   " Remove folds in sessions.
 
 
 " trigger `autoread` when files changes on disk
