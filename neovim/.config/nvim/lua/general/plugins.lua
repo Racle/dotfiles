@@ -243,6 +243,17 @@ return require("packer").startup(
               {
                 suggestion = {
                   auto_trigger = true
+                },
+                filetypes = {
+                  yaml = true,
+                  markdown = true,
+                  help = false,
+                  gitcommit = false,
+                  gitrebase = false,
+                  hgcommit = false,
+                  svn = false,
+                  cvs = false,
+                  ["."] = false
                 }
               }
             )
