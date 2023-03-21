@@ -1,6 +1,11 @@
 require("gruvbox").setup(
   {
-    italic = false
+    italic = {
+      strings = false,
+      comments = false,
+      operators = false,
+      folds = true
+    }
   }
 )
 vim.cmd("colorscheme gruvbox")
