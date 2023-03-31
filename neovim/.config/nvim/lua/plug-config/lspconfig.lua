@@ -1,5 +1,3 @@
-require("mason").setup()
-
 local mason_lspconfig = require "mason-lspconfig"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -138,6 +136,7 @@ local servers = {
   }
 }
 
+require("mason").setup()
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers)
 }
