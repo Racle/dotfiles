@@ -108,7 +108,14 @@ return require("packer").startup(
     -- commenting
     use "tpope/vim-commentary"
     -- Gruvbox theme
-    use "ellisonleao/gruvbox.nvim"
+
+    -- if server-init exist then use it, else use the default
+    -- juicessh doesn't support gruvbox.nvim very well
+    if os.getenv("IS_SERVER") == "1" then
+      use "gruvbox-community/gruvbox"
+    else
+      use "ellisonleao/gruvbox.nvim"
+    end
     -- fzf
     use {"junegunn/fzf", run = ":call fzf#install()"}
     use "junegunn/fzf.vim"

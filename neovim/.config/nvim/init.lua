@@ -1,6 +1,7 @@
 -- nvim config path to variable for windows support
 vim.cmd("let $NVIMPATH = fnamemodify($MYVIMRC, ':p:h')")
 local nvimrc = os.getenv("NVIMPATH")
+vim.fn.setenv("IS_SERVER", vim.fn.filereadable(os.getenv("NVIMPATH") .. "/server-init.vim"))
 
 -- lua config
 require("general/mappings")
@@ -64,7 +65,6 @@ vim.cmd("source" .. nvimrc .. "/plug-config/vcoolor.vim")
 vim.cmd("source" .. nvimrc .. "/plug-config/rooter.vim")
 -- vim.cmd("source" .. nvimrc .. "/plug-config/copilot.vim")
 
-print(nvimrc)
 if vim.fn.filereadable(nvimrc .. "/dadbod.vim") == 1 then
   vim.cmd("source" .. nvimrc .. "/dadbod.vim")
 end
