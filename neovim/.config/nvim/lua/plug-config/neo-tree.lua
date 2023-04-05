@@ -3,8 +3,14 @@ require("neo-tree").setup(
   {
     toggle = true,
     sources = {
-      "filesystem" -- Neotree filesystem source
+      "filesystem", -- Neotree filesystem source
+      "buffers",
+      "git_status"
       -- "netman.ui.neo-tree" -- The one you really care about 😉
+    },
+    source_selector = {
+      winbar = true,
+      statusline = false
     },
     window = {
       mappings = {
@@ -27,8 +33,8 @@ require("neo-tree").setup(
         ["Z"] = "expand_all_nodes",
         -- remove keybindings
         ["<space>"] = "",
-        ["<"] = "",
-        [">"] = "",
+        ["<"] = "next_source",
+        [">"] = "prev_source",
         ["H"] = function(state)
           state.commands.toggle_hidden(state)
           print(vim.inspect(state), state.filtered_items.visible)
