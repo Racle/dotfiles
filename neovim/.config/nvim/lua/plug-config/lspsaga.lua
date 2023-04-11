@@ -48,6 +48,10 @@ local function set_hl(name)
     hl = s:sub(1, hl - 1)
     -- get fg color for highlight
     local fg = get_hl_color(hl, "fg#")
+    -- skip empty hl
+    if hl == "" then
+      goto continue
+    end
 
     local string = ""
     if fg == "" then
@@ -57,6 +61,7 @@ local function set_hl(name)
     end
 
     vim.cmd(string)
+    ::continue::
   end
 end
 
