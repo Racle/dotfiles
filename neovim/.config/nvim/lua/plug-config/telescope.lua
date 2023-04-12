@@ -15,6 +15,8 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
 
   -- close empty buffers
   vim.cmd("call CleanEmptyBuffers()")
+  -- disable insert mode after opening file
+  vim.cmd("stopinsert")
 
   -- open the quickfix list if there is more than one opened with enter key
   if open_cmd == "edit" and num_selections > 1 then
