@@ -36,30 +36,39 @@ return require("packer").startup(
       run = "pip install ansible-lint"
     }
     -- sonarlint
-    use {
-      "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
-      config = function()
-        require("sonarlint").setup(
-          {
-            server = {
-              cmd = {
-                "java",
-                "-jar",
-                os.getenv("HOME") .. ".sonarlint/sonarlint-ls.jar",
-                -- Ensure that sonarlint-language-server uses stdio channel
-                "-stdio",
-                "-analyzers",
-                os.getenv("HOME") .. ".sonarlint/analyzer/*.jar"
-              }
-            },
-            filetypes = {
-              "go",
-              "javascript"
-            }
-          }
-        )
-      end
-    }
+    -- use {
+    --   "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
+    --   config = function()
+    --     require("sonarlint").setup(
+    --       {
+    --         server = {
+    --           cmd = {
+    --             "java",
+    --             "-jar",
+    --             os.getenv("HOME") .. ".sonarlint/sonarlint-ls.jar",
+    --             -- Ensure that sonarlint-language-server uses stdio channel
+    --             "-stdio",
+    --             "-analyzers",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarcfamily.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonargo.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarhtml.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarjava.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarjs.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarphp.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarpython.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonartext.jar",
+    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarxml.jar"
+    --           }
+    --         },
+    --         filetypes = {
+    --           "go",
+    --           "javascript",
+    --           "dockerfile"
+    --         }
+    --       }
+    --     )
+    --   end
+    -- }
     -- better lsp errors
     use(
       {
