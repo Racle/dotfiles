@@ -35,6 +35,31 @@ return require("packer").startup(
       },
       run = "pip install ansible-lint"
     }
+    -- sonarlint
+    use {
+      "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
+      config = function()
+        require("sonarlint").setup(
+          {
+            server = {
+              cmd = {
+                "java",
+                "-jar",
+                os.getenv("HOME") .. ".sonarlint/sonarlint-ls.jar",
+                -- Ensure that sonarlint-language-server uses stdio channel
+                "-stdio",
+                "-analyzers",
+                os.getenv("HOME") .. ".sonarlint/analyzer/*.jar"
+              }
+            },
+            filetypes = {
+              "go",
+              "javascript"
+            }
+          }
+        )
+      end
+    }
     -- better lsp errors
     use(
       {
