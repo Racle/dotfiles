@@ -14,6 +14,50 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
+local function import_missing()
+  local params = {
+    command = "TypescriptAddMissingImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
+-- enable sonarlint support
+local function enable_sonarlint()
+  require("sonarlint").setup(
+    {
+      server = {
+        cmd = {
+          "sonarlint-language-server",
+          -- Ensure that sonarlint-language-server uses stdio channel
+          "-stdio",
+          "-analyzers",
+          -- paths to the analyzers you need, using those for python and java in this example
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarcfamily.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonargo.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarhtml.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonariac.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarjava.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarjs.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarphp.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarpython.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonartext.jar"),
+          vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarxml.jar")
+        }
+      },
+      filetypes = {
+        "javascript",
+        "php",
+        "go",
+        "html",
+        "css",
+        "dockerfile"
+      }
+    }
+  )
+end
+
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -78,6 +122,7 @@ local on_attach = function(_, bufnr)
   -- custom js
   if vim.bo.filetype == "javascript" then
     nmap("<leader>lo", ":OrganizeImport<CR>", "Organize imports")
+    nmap("<leader>li", ":ImportMissing<CR>", "Import missing")
   end
 
   -- Create a command `:Format` local to the LSP buffer
@@ -108,6 +153,10 @@ local servers = {
       OrganizeImports = {
         organize_imports,
         description = "Organize Imports"
+      },
+      ImportMissing = {
+        import_missing,
+        description = "Import missing"
       }
     }
   },
@@ -134,14 +183,26 @@ local servers = {
       }
     }
   }
+  -- TODO add back when sonarlint is added to mason-lspconfig
+  -- ["sonarlint-language-server"] = {}
 }
 
 require("mason").setup()
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers)
 }
+
+-- TODO disable this when sonarlint is added to mason-lspconfig
+enable_sonarlint()
+
 mason_lspconfig.setup_handlers {
   function(server_name)
+    -- TODO check if we need this when sonarlint is added to mason-lspconfig
+    -- if server_name == "sonarlint-language-server" then
+    --   enable_sonarlint()
+    --   return
+    -- end
+
     local settings = {}
     local commands = {}
     local cmd = {}
@@ -150,13 +211,25 @@ mason_lspconfig.setup_handlers {
       commands = servers[server_name]["commands"]
       cmd = servers[server_name]["cmd"]
     end
-    require("lspconfig")[server_name].setup {
+    local opts = {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = settings,
       commands = commands,
       cmd = cmd
     }
+
+    if server_name == "tsserver" then
+      require("typescript").setup {server = opts}
+    else
+      require("lspconfig")[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = settings,
+        commands = commands,
+        cmd = cmd
+      }
+    end
   end
 }
 

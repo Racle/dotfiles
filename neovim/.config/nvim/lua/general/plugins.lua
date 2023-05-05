@@ -31,44 +31,14 @@ return require("packer").startup(
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         -- Useful status updates for LSP
-        "j-hui/fidget.nvim"
+        "j-hui/fidget.nvim",
+        -- more typescript commands: https://github.com/jose-elias-alvarez/typescript.nvim
+        "jose-elias-alvarez/typescript.nvim",
+        -- sonarlint (filetypes are set in lspconfig.lua)
+        "https://gitlab.com/schrieveslaach/sonarlint.nvim.git"
       },
       run = "pip install ansible-lint"
     }
-    -- sonarlint
-    -- use {
-    --   "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
-    --   config = function()
-    --     require("sonarlint").setup(
-    --       {
-    --         server = {
-    --           cmd = {
-    --             "java",
-    --             "-jar",
-    --             os.getenv("HOME") .. ".sonarlint/sonarlint-ls.jar",
-    --             -- Ensure that sonarlint-language-server uses stdio channel
-    --             "-stdio",
-    --             "-analyzers",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarcfamily.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonargo.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarhtml.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarjava.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarjs.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarphp.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarpython.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonartext.jar",
-    --             os.getenv("HOME") .. ".sonarlint/analyzer/sonarxml.jar"
-    --           }
-    --         },
-    --         filetypes = {
-    --           "go",
-    --           "javascript",
-    --           "dockerfile"
-    --         }
-    --       }
-    --     )
-    --   end
-    -- }
     -- better lsp errors
     use(
       {
@@ -111,21 +81,7 @@ return require("packer").startup(
 
     -- Show keybindings
     -- use "liuchengxu/vim-which-key"
-    use {
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup(
-          {
-            triggers_blacklist = {
-              -- list of mode / prefixes that should never be hooked by WhichKey
-              -- this is mostly relevant for keymaps that start with a native binding
-              i = {"j", "k"},
-              v = {"j", "k", "c"} -- c for multiple cursors plugin
-            }
-          }
-        )
-      end
-    }
+    use "folke/which-key.nvim"
 
     -- vim-go
     use {"fatih/vim-go", run = ":GoUpdateBinaries", ft = {"go"}}
