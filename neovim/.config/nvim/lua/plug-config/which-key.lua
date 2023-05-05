@@ -1,6 +1,17 @@
 -- used also in lspconfig.lua
 local wk = require("which-key")
 
+wk.setup(
+  {
+    triggers_blacklist = {
+      -- list of mode / prefixes that should never be hooked by WhichKey
+      -- this is mostly relevant for keymaps that start with a native binding
+      i = {"j", "k"},
+      v = {"j", "k", "c"} -- c for multiple cursors plugin
+    }
+  }
+)
+
 -- wk group names
 
 wk.register(
