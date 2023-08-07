@@ -41,6 +41,8 @@ require("plug-config/lspsaga")
 require("plug-config/nvim-ufo")
 require("plug-config/nvim-osc52")
 
+require("plug-config/dropbar")
+
 -- source $NVIMPATH/general/plugins.vim
 
 -- Plugins

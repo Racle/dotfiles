@@ -22,6 +22,7 @@ vim.cmd([[
 return require("packer").startup(
   function(use)
     use {"wbthomason/packer.nvim"}
+    use "Bekaboo/dropbar.nvim"
 
     use {
       -- LSP Configuration & Plugins
@@ -31,7 +32,10 @@ return require("packer").startup(
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         -- Useful status updates for LSP
-        "j-hui/fidget.nvim",
+        {
+          "j-hui/fidget.nvim",
+          tag = "legacy"
+        },
         -- more typescript commands: https://github.com/jose-elias-alvarez/typescript.nvim
         "jose-elias-alvarez/typescript.nvim",
         -- sonarlint (filetypes are set in lspconfig.lua)
