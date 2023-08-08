@@ -126,7 +126,9 @@ return require("packer").startup(
       "mhartington/formatter.nvim",
       run = "npm install -g lua-fmt nginxbeautifier prettier @prettier/plugin-xml @prettier/plugin-php && go install mvdan.cc/sh/v3/cmd/shfmt@latest"
     }
-    use {"prettier/vim-prettier", run = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"}
+    -- use {"prettier/vim-prettier", run = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"}
+    -- https://github.com/prettier/vim-prettier/pull/345
+    use {"Frederick888/vim-prettier", branch = "prettier-3-0", run = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"}
     -- tagalong (tag autochange)
     use "andrewradev/tagalong.vim"
     -- tmux navigator
