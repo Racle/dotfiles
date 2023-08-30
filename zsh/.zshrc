@@ -18,7 +18,9 @@ export ANSIBLE_INVENTORY=~/.ansible-hosts
 # install npm packages globally without sudo
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
-export JAVA_HOME="/usr/lib/jvm/default-java"
+# export JAVA_HOME="/usr/lib/jvm/default-java"
+# https://stackoverflow.com/a/29622512
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export MANPAGER='nvim +Man!'
 export EDITOR="nvim"
