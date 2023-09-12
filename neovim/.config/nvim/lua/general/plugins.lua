@@ -129,8 +129,6 @@ return require("packer").startup(
     -- use {"prettier/vim-prettier", run = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"}
     -- https://github.com/prettier/vim-prettier/pull/345
     use {"Frederick888/vim-prettier", branch = "prettier-3-0", run = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"}
-    -- tagalong (tag autochange)
-    use "andrewradev/tagalong.vim"
     -- tmux navigator
     use "christoomey/vim-tmux-navigator"
     -- floatterm
@@ -190,6 +188,7 @@ return require("packer").startup(
       requires = {
         "nvim-treesitter/nvim-treesitter-textobjects",
         "JoosepAlviste/nvim-ts-context-commentstring", -- javascript context commenting (different commenting to html tags and js parts on same file)
+        "windwp/nvim-ts-autotag",
         {
           "CKolkey/ts-node-action",
           config = function()
