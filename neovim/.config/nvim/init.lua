@@ -41,9 +41,9 @@ require("plug-config/lspsaga")
 require("plug-config/nvim-ufo")
 require("plug-config/nvim-osc52")
 
+-- after installing lazy, you need to load colorscheme here again to make it work for some reason
+vim.cmd("colorscheme gruvbox")
 require("plug-config/dropbar")
-
--- source $NVIMPATH/general/plugins.vim
 
 -- Plugins
 -- vim.cmd("source" .. nvimrc .. "/plug-config/which-key.vim")
