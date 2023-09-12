@@ -71,6 +71,8 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+# https://github.com/lc/gau/issues/8#issuecomment-705351203
+unalias gau
 
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir_writable dir rbenv vcs)
