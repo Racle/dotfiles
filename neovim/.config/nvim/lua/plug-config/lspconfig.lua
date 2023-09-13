@@ -193,6 +193,7 @@ mason_lspconfig.setup {
 }
 
 -- TODO disable this when sonarlint is added to mason-lspconfig
+-- :MasonInstall sonarlint-language-server
 enable_sonarlint()
 
 mason_lspconfig.setup_handlers {

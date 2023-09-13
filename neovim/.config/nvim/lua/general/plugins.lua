@@ -33,7 +33,7 @@ local plugins = {
       -- Useful status updates for LSP
       {
         "j-hui/fidget.nvim",
-        version = "legacy"
+        branch = "legacy"
       },
       -- more typescript commands: https://github.com/jose-elias-alvarez/typescript.nvim
       "jose-elias-alvarez/typescript.nvim",
@@ -84,13 +84,14 @@ local plugins = {
   -- vim-go
   {"fatih/vim-go", build = ":GoUpdateBinaries", ft = {"go"}},
   -- change surrounds
-  ({
+  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({})
     end
-  }),
+  },
   -- commenting
   "tpope/vim-commentary",
   -- fzf
