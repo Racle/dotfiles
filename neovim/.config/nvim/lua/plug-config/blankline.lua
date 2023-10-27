@@ -18,7 +18,7 @@ require("indent_blankline").setup {
     "^import",
     "block",
     "arguments"
-  }
+  },
   -- disabled now for performance hit.
-  -- use_treesitter = true
+  use_treesitter = true
 }

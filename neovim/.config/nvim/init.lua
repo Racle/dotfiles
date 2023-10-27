@@ -45,6 +45,9 @@ require("plug-config/nvim-osc52")
 vim.cmd("colorscheme gruvbox")
 require("plug-config/dropbar")
 
+-- to fix colorscheme issues after lazy
+require("plug-config/leap")
+
 -- Plugins
 -- vim.cmd("source" .. nvimrc .. "/plug-config/which-key.vim")
 vim.cmd("source" .. nvimrc .. "/plug-config/fzf.vim")

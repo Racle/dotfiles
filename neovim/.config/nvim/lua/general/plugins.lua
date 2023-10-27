@@ -153,7 +153,20 @@ local plugins = {
   -- VimWiki
   {
     "vimwiki/vimwiki",
-    dependencies = {"michal-h21/vimwiki-sync"}
+    ft = "vimwiki",
+    lazy = false,
+    dependencies = {"michal-h21/vimwiki-sync"},
+    init = function()
+      vim.g.vimwiki_global_ext = 0 -- make sure vimwiki doesn't own all .md files },
+      vim.g.sync_taskwarrior = 0 -- disable taskwarrior integration
+      vim.g.vimwiki_list = {
+        {
+          path = "~/vimwiki/",
+          syntax = "markdown",
+          ext = ".md"
+        }
+      }
+    end
   },
   -- restore cursor position on file open
   "farmergreg/vim-lastplace",

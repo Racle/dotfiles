@@ -1,5 +1,8 @@
 local mason_lspconfig = require "mason-lspconfig"
 
+-- install snyk-ls
+-- bash  -c "curl https://raw.githubusercontent.com/snyk/snyk-ls/main/getLanguageServer.sh | sudo bash -"
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
