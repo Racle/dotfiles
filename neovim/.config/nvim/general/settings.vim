@@ -95,7 +95,7 @@ autocmd FocusLost * set mouse=
 " autoide fzf and floaterm on lost focus and configs found in functions.vim
 
 " fix for IndentBlankline on golang files
-autocmd FileType go autocmd BufWritePost,TextChanged * exe ":IndentBlanklineRefresh"
+" autocmd FileType go autocmd BufWritePost,TextChanged * exe ":IndentBlanklineRefresh"
 
 " fix vimscript highlighting
 au Syntax vim syn match vimUsrCmd '^\s*\zs\u\%(\w*\)\@>(\@!'
