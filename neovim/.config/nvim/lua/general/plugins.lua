@@ -26,6 +26,7 @@ local plugins = {
   {
     -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
+    lazy = false,
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       "williamboman/mason.nvim",
@@ -314,28 +315,8 @@ local plugins = {
   "karb94/neoscroll.nvim",
   -- vscode like minimap/codewindow
   "gorbit99/codewindow.nvim",
-  -- ChatGPT
-
-  {
-    "jackMort/ChatGPT.nvim",
-    config = function()
-      require("chatgpt").setup(
-        {
-          chat_layout = {
-            size = {
-              height = "90%",
-              width = "90%"
-            }
-          }
-        }
-      )
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  },
+  -- -- Github Copilot chat
+  -- "gptlang/CopilotChat.nvim",
   -- better lsp ui
 
   {
@@ -344,29 +325,6 @@ local plugins = {
     -- "/tmp/lspsaga.nvim/",
     branch = "main"
   },
-  -- better folding
-  {
-    "kevinhwang91/nvim-ufo",
-    dependencies = {
-      "kevinhwang91/promise-async",
-      {
-        "luukvbaal/statuscol.nvim",
-        config = function()
-          local builtin = require("statuscol.builtin")
-          require("statuscol").setup(
-            {
-              relculright = true,
-              segments = {
-                {text = {builtin.foldfunc}, click = "v:lua.ScFa"},
-                {text = {"%s"}, click = "v:lua.ScSa"},
-                {text = {builtin.lnumfunc, " "}, click = "v:lua.ScLa"}
-              }
-            }
-          )
-        end
-      }
-    }
-  }
 }
 
 -- Gruvbox theme
