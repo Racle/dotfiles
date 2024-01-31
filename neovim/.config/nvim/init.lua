@@ -73,5 +73,8 @@ if vim.fn.filereadable(nvimrc .. "/dadbod.vim") == 1 then
   vim.cmd("source" .. nvimrc .. "/dadbod.vim")
 end
 
+-- load certain config after plugins
+require("general/settings-after")
+
 -- server settings
 func.ServerfixCommandIfFileExists()

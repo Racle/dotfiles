@@ -185,6 +185,7 @@ local plugins = {
     build = ":TSUpdate",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "nvim-treesitter/nvim-treesitter-context",
       "JoosepAlviste/nvim-ts-context-commentstring", -- javascript context commenting (different commenting to html tags and js parts on same file)
       "windwp/nvim-ts-autotag",
       {
@@ -324,7 +325,7 @@ local plugins = {
     -- "racle/lspsaga.nvim",
     -- "/tmp/lspsaga.nvim/",
     branch = "main"
-  },
+  }
 }
 
 -- Gruvbox theme
