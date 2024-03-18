@@ -50,7 +50,7 @@ local function enable_sonarlint()
         }
       },
       filetypes = {
-        "javascript",
+        -- "javascript",
         "php",
         "go",
         "html",
