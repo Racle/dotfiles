@@ -68,6 +68,7 @@ plugins=(
   fzf-zsh
   zsh-better-npm-completion
   autoupdate
+  terraform
 )
 
 source $ZSH/oh-my-zsh.sh
