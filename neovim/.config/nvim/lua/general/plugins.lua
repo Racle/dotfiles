@@ -54,7 +54,7 @@ local plugins = {
   -- filetypes are set in dap.lua
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio", "leoluz/nvim-dap-go"},
     config = function()
       require("plug-config/dap")
     end
