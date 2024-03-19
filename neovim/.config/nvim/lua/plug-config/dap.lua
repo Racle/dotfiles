@@ -128,33 +128,4 @@ vim.api.nvim_create_autocmd(
   }
 )
 
--- adpater config
-
--- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
---
-dap.adapters.delve = {
-  type = "server",
-  port = "${port}",
-  executable = {
-    command = "dlv",
-    args = {"dap", "-l", "127.0.0.1:${port}"}
-  }
-}
-
--- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
-dap.configurations.go = {
-  {
-    type = "delve",
-    name = "Debug (go.mod)",
-    request = "launch",
-    program = "./${relativeFileDirname}"
-  }
-  -- works with go.mod packages and sub packages
-  -- {
-  --   type = "delve",
-  --   name = "Debug test (go.mod)",
-  --   request = "launch",
-  --   mode = "test",
-  --   program = "./${relativeFileDirname}"
-  -- }
-}
+require("dap-go").setup()
