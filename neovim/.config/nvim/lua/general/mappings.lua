@@ -320,3 +320,29 @@ vim.cmd.nmenu {"PopUp.Copy\\ around\\ quotes", "yaq"}
 vim.cmd.nmenu {"PopUp.-3-", "<NOP>"}
 vim.cmd.nmenu {"PopUp.Copy\\ inside\\ brackets", "yib"}
 vim.cmd.nmenu {"PopUp.Copy\\ around\\ brackets", "yab"}
+
+-- copilot chat
+lmapCR("n", "co", ":CopilotChatOpen", "Open chat window")
+lmapCR("n", "cq", ":CopilotChatClose", "Close chat window")
+lmapCR("n", "ct", ":CopilotChatToggle", "Toggle chat window")
+lmapCR("n", "cc", ":CopilotChatToggle", "Toggle chat window")
+lmapCR("n", "cr", ":CopilotChatReset", "Reset chat window")
+lmapCR("n", "cs", ":CopilotChatSave", "Save chat history to file")
+lmapCR("n", "cl", ":CopilotChatLoad", "Load chat history from file")
+lmapCR("n", "ce", ":CopilotChatExplain", "Explain how it works")
+lmapCR("n", "ct", ":CopilotChatTests", "Explain and then generate unit tests")
+lmapCR("n", "cf", ":CopilotChatFix", "Fix code")
+lmapCR("n", "co", ":CopilotChatOptimize", "Optimize the selected")
+lmapCR("n", "cd", ":CopilotChatDocs", "Write documentation for the selected code.")
+lmapCR("n", "cD", ":CopilotChatFixDiagnostic", "Diagnose issue in current file")
+lmapCR("n", "cC", ":CopilotChatCommit", "Write commit message")
+
+lmapCR("v", "co", ":CopilotChatOpen", "Open chat window")
+lmapCR("v", "ce", ":CopilotChatExplain", "Explain how it works")
+lmapCR("v", "ct", ":CopilotChatTests", "Explain and then generate unit tests")
+lmapCR("v", "cf", ":CopilotChatFix", "Fix code")
+lmapCR("v", "co", ":CopilotChatOptimize", "Optimize the selected")
+lmapCR("v", "cd", ":CopilotChatDocs", "Write documentation for the selected code.")
+lmapCR("v", "cD", ":CopilotChatFixDiagnostic", "Diagnose issue in current file")
+lmapCR("v", "cc", ":CopilotChatCommit", "Write commit message")
+lmapCR("v", "cC", ":CopilotChatCommitStaged", "Write commit message (staged)")

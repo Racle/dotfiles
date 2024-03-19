@@ -23,6 +23,9 @@ wk.register(
     b = {
       name = "[b]uffers"
     },
+    c = {
+      name = "[C]opilot"
+    },
     f = {
       name = "[f]ind",
       g = {
