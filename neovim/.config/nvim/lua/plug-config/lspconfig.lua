@@ -175,6 +175,7 @@ local servers = {
   ansiblels = {},
   diagnosticls = {},
   marksman = {},
+  terraformls = {},
   lua_ls = {
     settings = {
       Lua = {
