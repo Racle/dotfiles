@@ -105,7 +105,14 @@ local plugins = {
   "tommcdo/vim-fubitive",
   "tpope/vim-rhubarb",
   "junegunn/gv.vim",
-  "lewis6991/gitsigns.nvim",
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      vim.o.termguicolors = true
+      require("gitsigns").setup({max_file_length = 100000})
+      require("scrollbar.handlers.gitsigns").setup()
+    end
+  },
   -- Formatting / prettier
   {
     "mhartington/formatter.nvim",
@@ -178,7 +185,19 @@ local plugins = {
   -- icons
   "nvim-tree/nvim-web-devicons",
   -- Scrollbar
-  "petertriho/nvim-scrollbar",
+  {
+    "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup()
+    end,
+    dependencies = {
+      "kevinhwang91/nvim-hlslens",
+      config = function()
+        -- require('hlslens').setup() is not required
+        require("scrollbar.handlers.search").setup({})
+      end
+    }
+  },
   -- treesitter for highlighting
   {
     "nvim-treesitter/nvim-treesitter",

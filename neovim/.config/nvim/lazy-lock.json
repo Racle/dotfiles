@@ -41,6 +41,7 @@
   "nvim-dap": { "branch": "master", "commit": "c1695e500c7d552a0a19953a9aefcc89178fb1af" },
   "nvim-dap-go": { "branch": "main", "commit": "64f73400761e2d19459e664a52ea478f3a4420e7" },
   "nvim-dap-ui": { "branch": "master", "commit": "13888eb35faaba48efaf49130b83e0d12e042e1b" },
+  "nvim-hlslens": { "branch": "main", "commit": "c42b4526e6d83b904eb5f3d50e68d7c2fc4be4b5" },
   "nvim-lspconfig": { "branch": "master", "commit": "eb012f03bb3b4aca9e875d146008b923d0e07e65" },
   "nvim-miniyank": { "branch": "master", "commit": "f92d8e6d89723e1487561dfe1e630f36e9bc52d0" },
   "nvim-nio": { "branch": "master", "commit": "ed70af8ad9d4dafdb55539ed2b4454aac2a2a0c3" },
