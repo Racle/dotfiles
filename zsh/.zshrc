@@ -132,8 +132,13 @@ alias lg="lazygit"
 alias ssh="TERM=xterm-256color ssh"
 alias zssh="TERM=xterm-256color zssh"
 alias kubectl="sudo kubectl"
-alias ai="gh copilot suggest -t shell"
 alias aie="gh copilot explain"
+# alias ai="gh copilot suggest -t shell"
+ai() {
+  # run copilot and copy the result to clipboard and print it to terminal
+  gh copilot suggest -t shell "$@" && print -z "$(xclip -selection clipboard -o)"
+}
+
 
 # stop screen freezing
 stty stop undef
