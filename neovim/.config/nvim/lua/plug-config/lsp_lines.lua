@@ -24,12 +24,13 @@ vim.api.nvim_create_autocmd(
     end
   }
 )
-vim.api.nvim_create_autocmd(
-  "CursorMoved",
-  {
-    callback = function()
-      timer:stop()
-      vim.diagnostic.config({virtual_lines = false})
-    end
-  }
-)
+-- this makes cursor to stop when holding j/k, disabling this for now
+-- vim.api.nvim_create_autocmd(
+--   "CursorMoved",
+--   {
+--     callback = function()
+--       timer:stop()
+--       vim.diagnostic.config({virtual_lines = false})
+--     end
+--   }
+-- )
