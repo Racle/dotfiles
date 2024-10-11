@@ -139,6 +139,10 @@ ai() {
   gh copilot suggest -t shell "$@" && print -z "$(xclip -selection clipboard -o)"
 }
 
+json_encode() {
+  echo -n "$1" | jq -R '.' | tr -d '\n' | xclip -r -selection clipboard && echo "$(xclip -selection clipboard -o)"
+}
+
 
 # stop screen freezing
 stty stop undef
