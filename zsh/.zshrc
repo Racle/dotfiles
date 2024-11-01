@@ -69,6 +69,7 @@ plugins=(
   zsh-better-npm-completion
   autoupdate
   terraform
+  kubectl-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -131,8 +132,10 @@ alias lg="lazygit"
 # hax fix for https://github.com/kovidgoyal/kitty/issues/1139
 alias ssh="TERM=xterm-256color ssh"
 alias zssh="TERM=xterm-256color zssh"
-alias kubectl="sudo kubectl"
+# alias kubectl="sudo kubectl"
+alias talosctl="TERM=xterm-256color talosctl"
 alias aie="gh copilot explain"
+alias k="kubectl"
 # alias ai="gh copilot suggest -t shell"
 ai() {
   # run copilot and copy the result to clipboard and print it to terminal
