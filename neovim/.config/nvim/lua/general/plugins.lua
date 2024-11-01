@@ -39,7 +39,8 @@ local plugins = {
       -- more typescript commands: https://github.com/jose-elias-alvarez/typescript.nvim
       "jose-elias-alvarez/typescript.nvim",
       -- sonarlint (filetypes are set in lspconfig.lua)
-      "https://gitlab.com/schrieveslaach/sonarlint.nvim.git"
+      "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
+      "towolf/vim-helm"
     },
     build = "pip install ansible-lint"
   },
@@ -303,7 +304,7 @@ local plugins = {
   -- use 'miversen33/netman.nvim', { branch= 'v1.1' } "support for remote
 
   -- % matches to functions etc
-  "andymass/vim-matchup",
+  -- "andymass/vim-matchup",
   -- Quick jumping around
   {
     "ggandor/leap.nvim",
@@ -346,7 +347,11 @@ local plugins = {
     opts = {
       debug = false, -- Enable debugging
       mappings = {
-        reset = "<C-q>" -- default: <C-l>
+        -- reset = "<C-q>" -- default: <C-l>
+        reset = {
+          normal = "<C-q>",
+          insert = "<C-q>"
+        }
       }
     }
     -- See Commands section for default commands if you want to lazy load on them

@@ -176,6 +176,7 @@ local servers = {
   diagnosticls = {},
   marksman = {},
   terraformls = {},
+  helm_ls = {},
   lua_ls = {
     settings = {
       Lua = {
@@ -236,6 +237,15 @@ mason_lspconfig.setup_handlers {
       }
     end
   end
+}
+require("lspconfig").helm_ls.setup {
+  settings = {
+    ["helm-ls"] = {
+      yamlls = {
+        path = "yaml-language-server"
+      }
+    }
+  }
 }
 
 require("fidget").setup()

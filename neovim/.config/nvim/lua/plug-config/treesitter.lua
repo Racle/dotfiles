@@ -105,6 +105,7 @@ require("nvim-treesitter.configs").setup {
   },
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
+    -- enable = false,
     disable = {"c", "ruby"} -- optional, list of language that will be disabled
   }
 }
@@ -133,4 +134,14 @@ vim.keymap.set(
     require("treesitter-context").go_to_context(vim.v.count1)
   end,
   {silent = true}
+)
+vim.api.nvim_create_augroup("cmdwin_treesitter", {clear = true})
+vim.api.nvim_create_autocmd(
+  "CmdwinEnter",
+  {
+    pattern = "*",
+    command = "TSBufDisable incremental_selection",
+    group = "cmdwin_treesitter",
+    desc = "Disable treesitter's incremental selection in Command-line window"
+  }
 )
