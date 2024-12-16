@@ -32,9 +32,17 @@ local get_symbols = function(buf, win, cursor, symbols)
   return symbols
 end
 
-vim.cmd [[hi WinBar guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi WinBarNC guisp=#665c54 gui=underline guibg=#313131]]
-vim.cmd [[hi DropBarIconUISeparator guisp=#665c54 gui=underline guibg=#313131 guifg=#fe8019]]
+local function setHighlight()
+  vim.cmd [[hi WinBar guisp=#665c54 gui=underline guibg=#313131]]
+  vim.cmd [[hi WinBarNC guisp=#665c54 gui=underline guibg=#313131]]
+  vim.cmd [[hi DropBarIconUISeparator guisp=#665c54 gui=underline guibg=#313131 guifg=#fe8019]]
+end
+
+-- set highlight on startup and then after 500ms
+setHighlight()
+
+local timer = vim.loop.new_timer()
+timer:start(500, 0, vim.schedule_wrap(setHighlight))
 
 require("dropbar").setup(
   {

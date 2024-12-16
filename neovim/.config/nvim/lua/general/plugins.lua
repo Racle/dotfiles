@@ -158,7 +158,13 @@ local plugins = {
   -- mini-yank (fixes clipboard=unnamedplus block paste issue)
   "bfredl/nvim-miniyank",
   -- blankline, | between multiline {}
-  "lukas-reineke/indent-blankline.nvim",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {}
+  },
   -- VimWiki
   {
     "vimwiki/vimwiki",
@@ -339,7 +345,6 @@ local plugins = {
   -- -- Github Copilot chat
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     dependencies = {
       {"zbirenbaum/copilot.lua"}, -- or github/copilot.vim
       {"nvim-lua/plenary.nvim"} -- for curl, log wrapper

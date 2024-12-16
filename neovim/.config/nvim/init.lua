@@ -76,3 +76,29 @@ require("general/settings-after")
 
 -- server settings
 func.ServerfixCommandIfFileExists()
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = "fugitiveblame",
+    callback = function()
+      -- Save the current buffer and window
+      local blame_buf = vim.api.nvim_get_current_buf()
+      local original_win = vim.fn.win_getid(vim.fn.winnr("#")) -- Previous window
+
+      -- Ensure original window is valid
+      if original_win ~= 0 and vim.api.nvim_win_is_valid(original_win) then
+        local ok, dropbar = pcall(require, "dropbar")
+
+        -- Check if Dropbar is visible in the original window
+        if ok and dropbar._current_win == original_win and vim.api.nvim_win_is_valid(dropbar._current_win) then
+          local was_modifiable = vim.bo[blame_buf].modifiable
+
+          -- Modify the blame buffer
+          vim.bo[blame_buf].modifiable = true
+          vim.api.nvim_buf_set_lines(blame_buf, 0, 1, false, {"Custom line added to fugitiveblame buffer"})
+          vim.bo[blame_buf].modifiable = was_modifiable
+        end
+      end
+    end
+  }
+)
