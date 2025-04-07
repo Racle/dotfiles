@@ -151,7 +151,7 @@ local servers = {
   -- clangd = {},
   gopls = {cmd = {"gopls", "--remote=auto"}},
   -- rust_analyzer = {},
-  tsserver = {
+  ts_ls = {
     commands = {
       OrganizeImports = {
         organize_imports,

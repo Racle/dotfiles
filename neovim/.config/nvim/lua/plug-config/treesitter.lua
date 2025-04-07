@@ -44,7 +44,9 @@ require("nvim-treesitter.configs").setup {
     "vue",
     "yaml",
     "c",
-    "markdown"
+    "markdown",
+    "xml",
+    "sql"
   },
   highlight = {
     enable = true,
