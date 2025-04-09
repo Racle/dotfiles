@@ -37,7 +37,7 @@ require("neo-tree").setup(
         [">"] = "prev_source",
         ["H"] = function(state)
           state.commands.toggle_hidden(state)
-          print(vim.inspect(state), state.filtered_items.visible)
+          -- print(vim.inspect(state), state.filtered_items.visible)
 
           -- hack to force following current file after unhiding
           if (state.filtered_items.visible) then
