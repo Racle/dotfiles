@@ -11,6 +11,11 @@ local get_symbols = function(buf, win, cursor, symbols)
     path = true
   end
   for _, symbol in ipairs(symbols) do
+    -- check if nil
+    if symbol.icon_hl == nil then
+      return symbols
+    end
+
     -- get correct icon color
     local icon_fg = get_hl_color(symbol.icon_hl, "fg#")
     symbol.icon_hl = "DropbarSymbol" .. symbol.icon_hl
