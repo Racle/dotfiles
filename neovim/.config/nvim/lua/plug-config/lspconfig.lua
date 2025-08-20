@@ -201,43 +201,43 @@ mason_lspconfig.setup {
 -- :MasonInstall sonarlint-language-server
 enable_sonarlint()
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    -- TODO check if we need this when sonarlint is added to mason-lspconfig
-    -- if server_name == "sonarlint-language-server" then
-    --   enable_sonarlint()
-    --   return
-    -- end
+-- mason_lspconfig.setup_handlers {
+--   function(server_name)
+--     -- TODO check if we need this when sonarlint is added to mason-lspconfig
+--     -- if server_name == "sonarlint-language-server" then
+--     --   enable_sonarlint()
+--     --   return
+--     -- end
 
-    local settings = {}
-    local commands = {}
-    local cmd = {}
-    if servers[server_name] ~= nil then
-      settings = servers[server_name]["settings"]
-      commands = servers[server_name]["commands"]
-      cmd = servers[server_name]["cmd"]
-    end
-    local opts = {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = settings,
-      commands = commands,
-      cmd = cmd
-    }
+--     local settings = {}
+--     local commands = {}
+--     local cmd = {}
+--     if servers[server_name] ~= nil then
+--       settings = servers[server_name]["settings"]
+--       commands = servers[server_name]["commands"]
+--       cmd = servers[server_name]["cmd"]
+--     end
+--     local opts = {
+--       capabilities = capabilities,
+--       on_attach = on_attach,
+--       settings = settings,
+--       commands = commands,
+--       cmd = cmd
+--     }
 
-    if server_name == "tsserver" then
-      require("typescript").setup {server = opts}
-    else
-      require("lspconfig")[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = settings,
-        commands = commands,
-        cmd = cmd
-      }
-    end
-  end
-}
+--     if server_name == "tsserver" then
+--       require("typescript").setup {server = opts}
+--     else
+--       require("lspconfig")[server_name].setup {
+--         capabilities = capabilities,
+--         on_attach = on_attach,
+--         settings = settings,
+--         commands = commands,
+--         cmd = cmd
+--       }
+--     end
+--   end
+-- }
 require("lspconfig").helm_ls.setup {
   settings = {
     ["helm-ls"] = {
