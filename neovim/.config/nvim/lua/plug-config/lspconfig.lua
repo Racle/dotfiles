@@ -262,7 +262,7 @@ vim.api.nvim_create_autocmd(
     group = group,
     callback = function(args)
       vim.cmd [[set filetype=sh]] -- set ft to sh to enable syntax highlighting
-      vim.diagnostic.disable(args.buf) --disable for this buffer
+      vim.diagnostic.enable(false, {bufnr = args.buf})
     end
   }
 )
