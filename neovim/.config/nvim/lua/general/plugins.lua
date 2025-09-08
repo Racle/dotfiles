@@ -341,13 +341,14 @@ local plugins = {
   -- smooth scrolling
   "karb94/neoscroll.nvim",
   -- vscode like minimap/codewindow
-  "gorbit99/codewindow.nvim",
+  -- "gorbit99/codewindow.nvim",
   -- -- Github Copilot chat
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     dependencies = {
       {"zbirenbaum/copilot.lua"}, -- or github/copilot.vim
-      {"nvim-lua/plenary.nvim"} -- for curl, log wrapper
+      {"nvim-lua/plenary.nvim"}, -- for curl, log wrapper
+      {"ravitemer/mcphub.nvim"}
     },
     opts = {
       debug = false, -- Enable debugging
@@ -360,6 +361,29 @@ local plugins = {
       }
     }
     -- See Commands section for default commands if you want to lazy load on them
+  },
+  -- mcp support
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "CopilotC-Nvim/CopilotChat.nvim"
+    },
+    build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+    config = function()
+      require("mcphub").setup(
+        {
+          extensions = {
+            copilotchat = {
+              enabled = true,
+              convert_tools_to_functions = true, -- Convert MCP tools to CopilotChat functions
+              convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
+              add_mcp_prefix = false -- Add "mcp_" prefix to function names
+            }
+          }
+        }
+      )
+    end
   },
   -- better lsp ui
 
