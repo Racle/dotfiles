@@ -72,7 +72,7 @@ wk.setup(
 --   {prefix = "<leader>"}
 -- )
 
-wk.register(
+wk.add(
   {
     {"<leader>S", group = "[S]essions"},
     {"<leader>Sd", desc = "[d]elete"},
