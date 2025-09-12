@@ -28,6 +28,29 @@ end
 
 -- enable sonarlint support
 local function enable_sonarlint()
+  local ok_registry, registry = pcall(require, "mason-registry")
+  if not ok_registry then
+    vim.notify("Mason registry is not available", vim.log.levels.ERROR)
+    return
+  end
+
+  local package = registry.get_package("sonarlint-language-server")
+
+  if not package:is_installed() then
+    vim.notify("Installing SonarLint Language Server via Mason...", vim.log.levels.INFO)
+    package:install():once(
+      "closed",
+      function()
+        vim.schedule(
+          function()
+            vim.notify("SonarLint installed! Restart Neovim to activate.", vim.log.levels.INFO)
+          end
+        )
+      end
+    )
+    return
+  end
+
   require("sonarlint").setup(
     {
       server = {
