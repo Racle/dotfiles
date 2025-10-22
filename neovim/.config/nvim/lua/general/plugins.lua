@@ -344,6 +344,7 @@ local plugins = {
   -- "gorbit99/codewindow.nvim",
   {
     "folke/sidekick.nvim",
+    build = "npm i -g @github/copilot opencode-ai@latest",
     opts = {
       -- add any options here
       cli = {
