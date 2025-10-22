@@ -210,7 +210,8 @@ local servers = {
         }
       }
     }
-  }
+  },
+  copilot = {}
   -- TODO add back when sonarlint is added to mason-lspconfig
   -- ["sonarlint-language-server"] = {}
 }
@@ -261,15 +262,16 @@ enable_sonarlint()
 --     end
 --   end
 -- }
-require("lspconfig").helm_ls.setup {
-  settings = {
-    ["helm-ls"] = {
-      yamlls = {
-        path = "yaml-language-server"
-      }
+
+vim.lsp.config(
+  "helm_ls",
+  {
+    yamlls = {
+      path = "yaml-language-server"
     }
   }
-}
+)
+vim.lsp.enable({"helm_ls"})
 
 require("fidget").setup()
 
