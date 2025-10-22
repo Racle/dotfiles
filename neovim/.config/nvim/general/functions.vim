@@ -4,6 +4,10 @@ function! MyVimEnter()
     return
   endif
 
+  if exists('g:skip_my_vim_enter')
+    return
+  endif
+
   if argc() != 0
     return
   endif
@@ -158,6 +162,25 @@ function! KittyBufferHistoryClean()
   cnoremap q q!
 endfunction
 
+" tmux+zsh command output tmp buffer
+function! SetTmpBuffer()
+  let g:skip_my_vim_enter = 1
+  cd /tmp
+  " remove empty spaces from end
+  silent! %s/\s*$//
+  let @/ = ""
+  set rnu
+  " map q to force quit
+  cnoremap q q!
+
+  setlocal nomodifiable
+  setlocal nonumber
+  setlocal nolist
+  setlocal showtabline=0
+  setlocal foldcolumn=0
+endfunction
+
+
 
 function! DisableHighlight()
   TSBufDisable highlight
@@ -216,5 +239,6 @@ nnoremap z= :<c-u>call SpellCheck()<cr>z=
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
+command! SetTmpBuffer call SetTmpBuffer()
 command! MacroModeToggle call MacroModeToggle()
 command! PrettierJSON call PrettierJSON()
