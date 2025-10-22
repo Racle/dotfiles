@@ -350,6 +350,11 @@ local plugins = {
         mux = {
           backend = "tmux",
           enabled = true
+        },
+        prompts = {
+          commit = "Create one line git commit message\nUse conventional commits.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.",
+          commit_staged = "Create one line git commit message for staged files\nUse conventional commits.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.\nIf no changes, reply with 'No changes to commit'.",
+          security = "Review {file} for security vulnerabilities"
         }
       }
     },

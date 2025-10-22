@@ -83,7 +83,6 @@ wk.add(
     {"<leader>c", group = "[c]hat"},
     {"<leader>aL", desc = "Toggle lesscss"},
     {"<leader>b", group = "[b]uffers"},
-    {"<leader>c", group = "[C]opilot"},
     {"<leader>f", group = "[f]ind"},
     {"<leader>fg", group = "[g]it"},
     {"<leader>fgd", desc = "[d]iff"},
