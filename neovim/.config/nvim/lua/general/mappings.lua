@@ -268,7 +268,8 @@ lmapCR("n", "tg", ":FloatermNew lazygit", "git")
 lmapCR("n", "ts", ":call FloatermOpenSo()", "StackOverflow")
 lmapCR("n", "tr", ":FloatermNew ranger", "ranger")
 lmapCR("n", "tt", ":FloatermNew", "terminal")
-lmapCR("n", "tc", ":call FloatermOpenCheat()", "cheat")
+lmapCR("n", "tc", ":FloatermNew copilot", "copilot")
+lmapCR("n", "tC", ":call FloatermOpenCheat()", "cheat")
 lmapCR("n", "tw", ":call FloatermOpenVimwiki()", "vimwiki")
 
 -- <leader>w VimWiki
