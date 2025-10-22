@@ -42,7 +42,7 @@ local plugins = {
       "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
       "towolf/vim-helm"
     },
-    build = "pip install ansible-lint"
+    build = "pipx install ansible-lint"
   },
   -- better lsp errors
   ({
