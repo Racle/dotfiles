@@ -146,6 +146,31 @@ cmp.setup {
   }
 }
 
+-- Override mapping only for CopilotChat buffers
+-- After confirming a completion, send <C-c>o to close completion window and go to new line
+-- cmp.setup.filetype(
+--   "copilot-chat",
+--   {
+--     mapping = {
+--       ["<CR>"] = cmp.mapping(
+--         function(fallback)
+--           if cmp.visible() then
+--             cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true})
+--             vim.schedule(
+--               function()
+--                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>o", true, false, true), "n", true)
+--               end
+--             )
+--           else
+--             fallback()
+--           end
+--         end,
+--         {"i", "s"}
+--       )
+--     }
+--   }
+-- )
+
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(
   {"/", "?"},

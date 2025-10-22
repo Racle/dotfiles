@@ -80,6 +80,7 @@ wk.add(
     {"<leader>Ss", desc = "[s]ave"},
     {"<leader>T", group = "[T]abularize"},
     {"<leader>a", group = "[a]ctions"},
+    {"<leader>c", group = "[c]hat"},
     {"<leader>aL", desc = "Toggle lesscss"},
     {"<leader>b", group = "[b]uffers"},
     {"<leader>c", group = "[C]opilot"},
