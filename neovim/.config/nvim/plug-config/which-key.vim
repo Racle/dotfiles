@@ -5,10 +5,13 @@
 " Map leader to which_key
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-"set timeoutlen=500
+set timeout
+set timeoutlen=500
 
 " Create map to add keys to
 let g:which_key_map =  {}
+" Hide all mappings outside of the description dictionary
+let g:which_key_ignore_outside_mappings = 1
 " Define a separator
 let g:which_key_sep = '→'
 
@@ -58,7 +61,8 @@ function WhichKeyPackageInfo()
         \ 'd' : 'Delete',
         \ 'c' : 'Change version',
         \ }
-  call which_key#register('<Space>', "g:which_key_map")
+  " Register which key map after all mappings are defined
+call which_key#register('<Space>', "g:which_key_map")
 endfunction
 
 nmap <leader>mm :lua require('codewindow').toggle_minimap()<CR>
@@ -82,11 +86,13 @@ function WhichKeyDebug()
         \ 'r' : [':GoDebugRestart', "GoDebugRestart"],
         \ '_' : [':GoDebugStop', "GoDebugStop"],
         \ }
-  call which_key#register('<Space>', "g:which_key_map")
+  " Register which key map after all mappings are defined
+call which_key#register('<Space>', "g:which_key_map")
 endfunction
 
 autocmd FileType go call WhichKeyDebug()
 autocmd FileType json call WhichKeyPackageInfo()
 
 " Register which key map
+" Register which key map after all mappings are defined
 call which_key#register('<Space>', "g:which_key_map")
