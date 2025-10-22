@@ -339,52 +339,158 @@ local plugins = {
     end
   },
   -- smooth scrolling
-  "karb94/neoscroll.nvim",
+  -- "karb94/neoscroll.nvim",
   -- vscode like minimap/codewindow
   -- "gorbit99/codewindow.nvim",
-  -- -- Github Copilot chat
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      {"zbirenbaum/copilot.lua"}, -- or github/copilot.vim
-      {"nvim-lua/plenary.nvim"}, -- for curl, log wrapper
-      {"ravitemer/mcphub.nvim"}
-    },
+    "folke/sidekick.nvim",
     opts = {
-      debug = false, -- Enable debugging
-      mappings = {
-        -- reset = "<C-q>" -- default: <C-l>
-        reset = {
-          normal = "<C-q>",
-          insert = "<C-q>"
+      -- add any options here
+      cli = {
+        mux = {
+          backend = "tmux",
+          enabled = true
         }
       }
-    }
-    -- See Commands section for default commands if you want to lazy load on them
-  },
-  -- mcp support
-  {
-    "ravitemer/mcphub.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "CopilotC-Nvim/CopilotChat.nvim"
     },
-    build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
-    config = function()
-      require("mcphub").setup(
-        {
-          extensions = {
-            copilotchat = {
-              enabled = true,
-              convert_tools_to_functions = true, -- Convert MCP tools to CopilotChat functions
-              convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
-              add_mcp_prefix = false -- Add "mcp_" prefix to function names
-            }
-          }
-        }
-      )
-    end
+    keys = {
+      {
+        "<tab>",
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>" -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = "Goto/Apply Next Edit Suggestion"
+      },
+      {
+        "<c-.>",
+        function()
+          require("sidekick.cli").toggle()
+        end,
+        desc = "Sidekick Toggle",
+        mode = {"n", "t", "i", "x"}
+      },
+      {
+        "<leader>ca",
+        function()
+          require("sidekick.cli").toggle()
+        end,
+        desc = "Sidekick Toggle CLI"
+      },
+      {
+        "<leader>cc",
+        function()
+          require("sidekick.cli").toggle()
+        end,
+        desc = "Sidekick Toggle CLI"
+      },
+      {
+        "<leader>cs",
+        function()
+          require("sidekick.cli").select()
+        end,
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } })
+        desc = "Select CLI"
+      },
+      {
+        "<leader>cd",
+        function()
+          require("sidekick.cli").close()
+        end,
+        desc = "Detach a CLI Session"
+      },
+      {
+        "<leader>ct",
+        function()
+          require("sidekick.cli").send({msg = "{this}"})
+        end,
+        mode = {"x", "n"},
+        desc = "Send This"
+      },
+      {
+        "<leader>cf",
+        function()
+          require("sidekick.cli").send({msg = "{file}"})
+        end,
+        desc = "Send File"
+      },
+      {
+        "<leader>cv",
+        function()
+          require("sidekick.cli").send({msg = "{selection}"})
+        end,
+        mode = {"x"},
+        desc = "Send Visual Selection"
+      },
+      {
+        "<leader>cp",
+        function()
+          require("sidekick.cli").prompt()
+        end,
+        mode = {"n", "x"},
+        desc = "Sidekick Select Prompt"
+      },
+      -- Example of a keybinding to open Claude directly
+      {
+        "<leader>cC",
+        function()
+          require("sidekick.cli").toggle({name = "claude", focus = true})
+        end,
+        desc = "Sidekick Toggle Claude"
+      }
+    }
   },
+  -- -- Github Copilot chat
+  -- {
+  --   "CopilotC-Nvim/CopilotChat.nvim",
+  --   dependencies = {
+  --     {"zbirenbaum/copilot.lua"}, -- or github/copilot.vim
+  --     {"nvim-lua/plenary.nvim"}, -- for curl, log wrapper
+  --     {"ravitemer/mcphub.nvim"}
+  --   },
+  --   opts = {
+  --     debug = false, -- Enable debugging
+  --     mappings = {
+  --       -- reset = "<C-q>" -- default: <C-l>
+  --       reset = {
+  --         normal = "<C-q>",
+  --         insert = "<C-q>"
+  --       },
+  --       show_diff = {
+  --         normal = "gd",
+  --         full_diff = true -- Show full diff instead of unified diff when showing diff window
+  --       }
+  --     }
+  --   }
+  --   -- See Commands section for default commands if you want to lazy load on them
+  -- },
+  -- -- mcp support
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "CopilotC-Nvim/CopilotChat.nvim"
+  --   },
+  --   build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+  --   config = function()
+  --     require("mcphub").setup(
+  --       {
+  --         extensions = {
+  --           copilotchat = {
+  --             enabled = true,
+  --             convert_tools_to_functions = true, -- Convert MCP tools to CopilotChat functions
+  --             convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
+  --             add_mcp_prefix = false -- Add "mcp_" prefix to function names
+  --           }
+  --         }
+  --       }
+  --     )
+  --   end
+  -- },
   -- better lsp ui
 
   {
@@ -392,6 +498,35 @@ local plugins = {
     -- "racle/lspsaga.nvim",
     -- "/tmp/lspsaga.nvim/",
     branch = "main"
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = {enabled = true},
+      dashboard = {enabled = true},
+      explorer = {enabled = false},
+      indent = {enabled = false},
+      input = {enabled = true},
+      git = {enabled = true},
+      picker = {enabled = true},
+      notifier = {enabled = true},
+      quickfile = {enabled = true},
+      scope = {enabled = true},
+      scroll = {
+        enabled = true,
+        animate = {
+          duration = {step = 15, total = 100}
+        }
+      },
+      statuscolumn = {enabled = false},
+      words = {enabled = true}
+    }
   }
 }
 
