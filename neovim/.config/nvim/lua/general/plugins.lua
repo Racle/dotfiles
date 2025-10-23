@@ -362,8 +362,8 @@ local plugins = {
           enabled = true
         },
         prompts = {
-          commit = "Create one line git commit message\nUse conventional commits with scope.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.",
-          commit_staged = "Create one line git commit message for staged files\nUse conventional commits with scope.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.\nIf no changes, reply with 'No changes to commit'.",
+          commit = "Create one line git commit message.\nReview changes and create commit message based on changes.\nUse conventional commits with scope.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.",
+          commit_staged = "Create one line git commit message for staged files.\nReview changes and create commit message based on changes.\nUse conventional commits with scope.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.\nIf no changes, reply with 'No changes to commit'.",
           security = "Review {file} for security vulnerabilities"
         }
       }
