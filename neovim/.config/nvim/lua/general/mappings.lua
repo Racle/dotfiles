@@ -229,7 +229,7 @@ lmapCR("n", "sz", ":FZF", "FZF")
 
 lmapCR("n", "ga", ":Git add .", "add all")
 lmapCR("n", "gA", ":Git add %", "add current")
-lmapCR("n", "gb", ":Git blame", "blame")
+lmapCR("n", "gb", ":BlameToggle", "blame")
 lmapCR("n", "gB", ":GBrowse", "browse")
 lmapCR("n", "gc", ":Git commit", "commit")
 lmapCR("n", "gg", ":GGrep", "git grep")

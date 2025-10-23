@@ -85,8 +85,8 @@ vim.api.nvim_set_keymap("n", "<M-S-L>", [[<Cmd>BufferLineMoveNext<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<M-S-H>", [[<Cmd>BufferLineMovePrev<CR>]], opt)
 
 -- change buffers
-vim.api.nvim_set_keymap("n", "<Tab>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<S-Tab>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+vim.api.nvim_set_keymap("n", "L", [[<Cmd>BufferLineCycleNext<CR>]], opt)
+vim.api.nvim_set_keymap("n", "H", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
 
 -- pick buffer
 vim.api.nvim_set_keymap("n", "gb", [[<Cmd>BufferLinePick<CR>]], opt)

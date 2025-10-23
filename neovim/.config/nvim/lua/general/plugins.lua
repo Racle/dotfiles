@@ -103,6 +103,15 @@ local plugins = {
   "airblade/vim-rooter",
   -- Git plugin
   "tpope/vim-fugitive",
+  {
+    "FabijanZulj/blame.nvim",
+    lazy = false,
+    config = function()
+      require("blame").setup {
+        date_format = "%d.%m.%Y %H:%M:%S"
+      }
+    end
+  },
   "tommcdo/vim-fubitive",
   "tpope/vim-rhubarb",
   "junegunn/gv.vim",
