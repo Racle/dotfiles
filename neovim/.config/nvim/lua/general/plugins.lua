@@ -132,7 +132,49 @@ local plugins = {
   -- https://github.com/prettier/vim-prettier/pull/345
   {"Frederick888/vim-prettier", branch = "prettier-3-0", build = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"},
   -- tmux navigator
-  "christoomey/vim-tmux-navigator",
+  {
+    "christoomey/vim-tmux-navigator",
+    config = function()
+      vim.g.tmux_navigator_no_mappings = 1
+      -- Disable tmux navigator keys in Floaterm
+      local function disable_tmux_keys_in_floaterm()
+        local filetype = vim.api.nvim_get_option_value("filetype", {buf = 0})
+        if filetype == "floaterm" then
+          local keys = {"<C-h>", "<C-j>", "<C-k>", "<C-l>", "<C-\\"}
+
+          for _, key in ipairs(keys) do
+            -- Only remove if they exist, don't throw if missing
+            pcall(vim.keymap.del, "n", key, {buffer = 0})
+          end
+        end
+      end
+
+      -- Trigger on entering Floaterm window or buffer
+      vim.api.nvim_create_autocmd(
+        {"BufEnter", "WinEnter"},
+        {
+          callback = function()
+            vim.schedule(disable_tmux_keys_in_floaterm)
+          end
+        }
+      )
+    end,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList"
+    },
+    keys = {
+      {"<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>"},
+      {"<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>"},
+      {"<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>"},
+      {"<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>"},
+      {"<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>"}
+    }
+  },
   -- floatterm
   "voldikss/vim-floaterm",
   -- remote yank
@@ -324,7 +366,9 @@ local plugins = {
   {
     "ggandor/leap.nvim",
     config = function()
-      require("leap").add_default_mappings()
+      vim.keymap.set({"n", "x", "o"}, "s", "<Plug>(leap-forward)")
+      vim.keymap.set({"n", "x", "o"}, "S", "<Plug>(leap-backward)")
+
       -- The below settings make Leap's highlighting a bit closer to what you've been
       -- used to in Lightspeed.
       vim.api.nvim_set_hl(0, "LeapBackdrop", {link = "Comment"})
@@ -341,9 +385,6 @@ local plugins = {
       vim.api.nvim_set_hl(0, "LeapLabelPrimary", {fg = "#fb4934", bold = true, nocombine = true})
       vim.api.nvim_set_hl(0, "LeapLabelSecondary", {fg = "#b8bb26", bold = true, nocombine = true})
 
-      -- keep old 'x' behaviour in visual mode
-      vim.keymap.del({"x", "o"}, "x")
-      vim.keymap.del({"x", "o"}, "X")
       require("leap").opts.highlight_unlabeled_phase_one_targets = true
     end
   },
