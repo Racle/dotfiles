@@ -135,7 +135,6 @@ local plugins = {
   {
     "christoomey/vim-tmux-navigator",
     config = function()
-      vim.g.tmux_navigator_no_mappings = 1
       -- Disable tmux navigator keys in Floaterm
       local function disable_tmux_keys_in_floaterm()
         local filetype = vim.api.nvim_get_option_value("filetype", {buf = 0})
