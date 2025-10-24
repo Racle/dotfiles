@@ -354,6 +354,27 @@ local plugins = {
   {
     "folke/sidekick.nvim",
     build = "npm i -g @github/copilot opencode-ai@latest",
+    config = {
+      -- disable winbar in terminal buffers like zellij
+      vim.api.nvim_create_autocmd(
+        {"WinEnter", "WinNew"},
+        {
+          pattern = "*",
+          callback = function()
+            vim.defer_fn(
+              function()
+                local name = vim.api.nvim_buf_get_name(0)
+                local bt = vim.bo.buftype
+                if bt == "terminal" or name:match("term://") or name:match("zellij") then
+                  vim.opt_local.winbar = ""
+                end
+              end,
+              0
+            ) -- 0ms delay
+          end
+        }
+      )
+    },
     opts = {
       -- add any options here
       cli = {
