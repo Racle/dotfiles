@@ -19,6 +19,9 @@ let g:floaterm_winblend=5
 let g:floaterm_borderchars='─│─│╭╮╯╰'
 let g:floaterm_title ='─floaterm: $1/$2'
 hi FloatermBorder guibg=bg
+" fun side-effect of setting background transparent in kitty with #262626
+" set little darker here to make floaterm visually distinct
+hi Floaterm guibg=#252525
 
 " fixes neovim floaterm toggle problem with floaterm
 " https://github.com/neovim/neovim/issues/14524
@@ -31,6 +34,9 @@ tmap <silent> <F2> §:call FloatermFix("FloatermPrev")<CR>
 
 map <silent> <F3> §:call FloatermFix("FloatermNext")<CR>
 tmap <silent> <F3> §:call FloatermFix("FloatermNext")<CR>
+
+map <silent> <F4> §:call FloatermFix("FloatermNew")<CR>
+tmap <silent> <F4> §:call FloatermFix("FloatermNew")<CR>
 
 function FloatermFix(func)
   set eventignore=BufWinEnter,BufEnter,BufLeave
