@@ -358,7 +358,7 @@ local plugins = {
       -- add any options here
       cli = {
         mux = {
-          backend = "tmux",
+          backend = "zellij",
           enabled = true
         },
         prompts = {
@@ -532,6 +532,7 @@ local plugins = {
       picker = {enabled = true},
       notifier = {enabled = true},
       quickfile = {enabled = true},
+      lazygit = {enabled = true},
       scope = {enabled = true},
       scroll = {
         enabled = true,
