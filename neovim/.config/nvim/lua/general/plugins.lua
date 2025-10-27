@@ -133,46 +133,21 @@ local plugins = {
   {"Frederick888/vim-prettier", branch = "prettier-3-0", build = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"},
   -- tmux navigator
   {
-    "christoomey/vim-tmux-navigator",
+    "alexghergh/nvim-tmux-navigation",
     config = function()
-      -- Disable tmux navigator keys in Floaterm
-      local function disable_tmux_keys_in_floaterm()
-        local filetype = vim.api.nvim_get_option_value("filetype", {buf = 0})
-        if filetype == "floaterm" then
-          local keys = {"<C-h>", "<C-j>", "<C-k>", "<C-l>", "<C-\\"}
+      local nvim_tmux_nav = require("nvim-tmux-navigation")
 
-          for _, key in ipairs(keys) do
-            -- Only remove if they exist, don't throw if missing
-            pcall(vim.keymap.del, "n", key, {buffer = 0})
-          end
-        end
-      end
+      nvim_tmux_nav.setup {
+        disable_when_zoomed = true -- defaults to false
+      }
 
-      -- Trigger on entering Floaterm window or buffer
-      vim.api.nvim_create_autocmd(
-        {"BufEnter", "WinEnter"},
-        {
-          callback = function()
-            vim.schedule(disable_tmux_keys_in_floaterm)
-          end
-        }
-      )
-    end,
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-      "TmuxNavigatorProcessList"
-    },
-    keys = {
-      {"<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>"},
-      {"<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>"},
-      {"<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>"},
-      {"<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>"},
-      {"<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>"}
-    }
+      vim.keymap.set("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
+      vim.keymap.set("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
+      vim.keymap.set("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
+      vim.keymap.set("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
+      vim.keymap.set("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
+      vim.keymap.set("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+    end
   },
   -- floatterm
   "voldikss/vim-floaterm",
