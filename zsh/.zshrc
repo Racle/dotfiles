@@ -28,6 +28,10 @@ export VISUAL="nvim"
 
 #export TERM="xterm-256color"
 
+# Set npm config 'before' to 3 days ago on every new terminal
+# This helps to avoid security issues with npm packages
+export NPM_BEFORE_DATE=$(date -d "3 days ago" +%Y-%m-%d)
+npm config set before=$NPM_BEFORE_DATE
 
 # Automatically update zsh every 60 days
 DISABLE_UPDATE_PROMPT=true
