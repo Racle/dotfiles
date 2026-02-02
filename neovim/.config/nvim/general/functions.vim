@@ -80,8 +80,7 @@ function! FloatermOpenSo()
 endfunction
 
 function! CleanEmptyBuffers()
-  " let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
-  let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && !getbufvar(v:val, "&mod")')
+  let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
   if !empty(buffers)
     exe 'bw ' . join(buffers, ' ')
   endif
@@ -89,7 +88,22 @@ endfunction
 
 function! CloseThisBuffer()
   exe 'Neotree close'
-  exe 'Bdelete this'
+
+  let l:listed_buffers = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+
+  if len(l:listed_buffers) <= 1
+    silent! lua require("sidekick.cli").close()
+    exe 'Bdelete this'
+  else
+    let l:cur_buf = bufnr('%')
+    bprevious
+    if bufnr('%') != l:cur_buf
+      exe 'bdelete ' . l:cur_buf
+    else
+      exe 'Bdelete this'
+    endif
+  endif
+
   call CleanEmptyBuffers()
 endfunction
 
