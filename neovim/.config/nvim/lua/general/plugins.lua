@@ -413,9 +413,9 @@ local plugins = {
       {
         "<leader>cc",
         function()
-          require("sidekick.cli").toggle()
+          require("sidekick.cli").toggle({name = "opencode", focus = true})
         end,
-        desc = "Sidekick Toggle CLI"
+        desc = "Sidekick Toggle OpenCode"
       },
       {
         "<leader>cs",
@@ -468,9 +468,9 @@ local plugins = {
       {
         "<leader>cC",
         function()
-          require("sidekick.cli").toggle({name = "claude", focus = true})
+          require("sidekick.cli").toggle()
         end,
-        desc = "Sidekick Toggle Claude"
+        desc = "Sidekick Toggle CLI"
       }
     }
   },
