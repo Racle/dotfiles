@@ -1,4 +1,5 @@
 stow:
+	sudo rm -rf ~/.zshrc
 	stow default zsh albert tmux neovim ranger kitty
 
 stow-server:
