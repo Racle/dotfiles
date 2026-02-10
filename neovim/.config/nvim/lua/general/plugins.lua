@@ -233,7 +233,11 @@ local plugins = {
   -- treesitter for highlighting
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate | TSInstall bash c_sharp cmake comment commonlisp cpp css dockerfile glsl go gomod gowork graphql heex hjson html http java javascript jsdoc json json5 jsonc lua make nix perl php python ql query r regex rst ruby rust scala scss tsx typescript vim vue yaml c markdown xml sql",
+    build = {
+      "npm i -g tree-sitter-cli",
+      ":TSUpdate",
+      ":TSInstall bash c_sharp cmake comment commonlisp cpp css dockerfile glsl go gomod gowork graphql heex hjson html http java javascript jsdoc json json5 jsonc lua make nix perl php python ql query r regex rst ruby rust scala scss tsx typescript vim vue yaml c markdown xml sql"
+    },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-context",
