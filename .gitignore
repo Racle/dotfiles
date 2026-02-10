@@ -17,3 +17,4 @@ neovim/.config/nvim/plugin/*
 sumneko-lua*
 lazygit/.config/lazygit/
 !lazygit/.config/lazygit/config.yml
+/albert

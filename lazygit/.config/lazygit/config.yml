@@ -1,9 +1,9 @@
 os:
   editCommand: 'floaterm'
 git:
-  paging:
-    colorArg: never
-    pager: delta --dark --paging=never --syntax-theme=gruvbox-dark
+  pagers:
+    - colorArg: never
+      pager: delta --dark --paging=never --syntax-theme=gruvbox-dark
 customCommands:
   - key: <c-a>
     description: AI-powered conventional commit
