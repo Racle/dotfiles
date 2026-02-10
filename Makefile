@@ -1,4 +1,5 @@
 stow:
+	rm -rf ~/.zshrc
 	stow default zsh lazygit albert tmux neovim ranger kitty
 
 stow-server:
