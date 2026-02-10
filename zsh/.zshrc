@@ -73,7 +73,6 @@ plugins=(
   zsh-better-npm-completion
   autoupdate
   terraform
-  kubectl-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
