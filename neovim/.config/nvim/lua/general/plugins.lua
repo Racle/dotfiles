@@ -233,7 +233,7 @@ local plugins = {
   -- treesitter for highlighting
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    build = ":TSUpdate | TSInstall bash c_sharp cmake comment commonlisp cpp css dockerfile glsl go gomod gowork graphql heex hjson html http java javascript jsdoc json json5 jsonc lua make nix perl php python ql query r regex rst ruby rust scala scss tsx typescript vim vue yaml c markdown xml sql",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/nvim-treesitter-context",
@@ -325,7 +325,7 @@ local plugins = {
   -- use 'kyazdani42/nvim-tree.lua'
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim"
@@ -338,7 +338,7 @@ local plugins = {
   -- "andymass/vim-matchup",
   -- Quick jumping around
   {
-    "ggandor/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim",
     config = function()
       vim.keymap.set({"n", "x", "o"}, "s", "<Plug>(leap-forward)")
       vim.keymap.set({"n", "x", "o"}, "S", "<Plug>(leap-backward)")

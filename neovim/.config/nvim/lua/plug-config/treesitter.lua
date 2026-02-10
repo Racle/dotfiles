@@ -1,119 +1,42 @@
-require("nvim-treesitter.configs").setup {
-  ensure_installed = {
-    "bash",
-    "c_sharp",
-    "cmake",
-    "comment",
-    "commonlisp",
-    "cpp",
-    "css",
-    "dockerfile",
-    "glsl",
-    "go",
-    "gomod",
-    "gowork",
-    "graphql",
-    "heex",
-    "hjson",
-    "html",
-    "http",
-    "java",
-    "javascript",
-    "jsdoc",
-    "json",
-    "json5",
-    "jsonc",
-    "lua",
-    "make",
-    "nix",
-    "perl",
-    "php",
-    "python",
-    "ql",
-    "query",
-    "r",
-    "regex",
-    "rst",
-    "ruby",
-    "rust",
-    "scala",
-    "scss",
-    "tsx",
-    "typescript",
-    "vim",
-    "vue",
-    "yaml",
-    "c",
-    "markdown",
-    "xml",
-    "sql"
-  },
-  highlight = {
-    enable = true,
-    use_languagetree = true,
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-    disable = function(lang, buf)
-      local max_filesize = 200 * 1024 -- 200 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
+-- Treesitter highlight and indent are built into Neovim 0.11+ and enabled by default.
+-- Disable treesitter highlighting for large files.
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local max_filesize = 200 * 1024 -- 200 KB
+    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+    if ok and stats and stats.size > max_filesize then
+      vim.treesitter.stop(args.buf)
     end
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<M-w>",
-      node_incremental = "<M-w>",
-      scope_incremental = "<M-C-w>",
-      node_decremental = "<M-e>"
-    }
-  },
-  indent = {
-    enable = true,
-    disable = {"yaml"}
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner"
-      }
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer"
-      },
-      goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer"
-      },
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer"
-      },
-      goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer"
-      }
-    }
-  },
-  matchup = {
-    enable = true, -- mandatory, false will disable the whole extension
-    -- enable = false,
-    disable = {"c", "ruby"} -- optional, list of language that will be disabled
-  }
-}
+  end,
+})
+
+-- Textobjects (now configured through nvim-treesitter-textobjects directly)
+local select = require("nvim-treesitter-textobjects.select")
+local move = require("nvim-treesitter-textobjects.move")
+
+-- Textobject selection keymaps
+vim.keymap.set({"x", "o"}, "af", function() select.select_textobject("@function.outer") end, {desc = "Select outer function"})
+vim.keymap.set({"x", "o"}, "if", function() select.select_textobject("@function.inner") end, {desc = "Select inner function"})
+vim.keymap.set({"x", "o"}, "ac", function() select.select_textobject("@class.outer") end, {desc = "Select outer class"})
+vim.keymap.set({"x", "o"}, "ic", function() select.select_textobject("@class.inner") end, {desc = "Select inner class"})
+
+-- Textobject move keymaps
+vim.keymap.set({"n", "x", "o"}, "]m", function() move.goto_next_start("@function.outer") end, {desc = "Next function start"})
+vim.keymap.set({"n", "x", "o"}, "]]", function() move.goto_next_start("@class.outer") end, {desc = "Next class start"})
+vim.keymap.set({"n", "x", "o"}, "]M", function() move.goto_next_end("@function.outer") end, {desc = "Next function end"})
+vim.keymap.set({"n", "x", "o"}, "][", function() move.goto_next_end("@class.outer") end, {desc = "Next class end"})
+vim.keymap.set({"n", "x", "o"}, "[m", function() move.goto_previous_start("@function.outer") end, {desc = "Previous function start"})
+vim.keymap.set({"n", "x", "o"}, "[[", function() move.goto_previous_start("@class.outer") end, {desc = "Previous class start"})
+vim.keymap.set({"n", "x", "o"}, "[M", function() move.goto_previous_end("@function.outer") end, {desc = "Previous function end"})
+vim.keymap.set({"n", "x", "o"}, "[]", function() move.goto_previous_end("@class.outer") end, {desc = "Previous class end"})
+
+-- Incremental selection (using Neovim's built-in treesitter)
+vim.keymap.set("n", "<M-w>", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@function.outer")
+end, {desc = "Init treesitter selection"})
 
 -- for sticky scrolling
-require "treesitter-context".setup {
+require("treesitter-context").setup {
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
   max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
   min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
@@ -137,13 +60,4 @@ vim.keymap.set(
   end,
   {silent = true}
 )
-vim.api.nvim_create_augroup("cmdwin_treesitter", {clear = true})
-vim.api.nvim_create_autocmd(
-  "CmdwinEnter",
-  {
-    pattern = "*",
-    command = "TSBufDisable incremental_selection",
-    group = "cmdwin_treesitter",
-    desc = "Disable treesitter's incremental selection in Command-line window"
-  }
-)
+

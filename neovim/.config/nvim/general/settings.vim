@@ -44,7 +44,7 @@ set hidden                  " Required to keep multiple buffers open multiple bu
 set nowrap                  " Display long lines as just one line
 set list                    " Required for listchars
 set encoding=utf-8          " The encoding displayed
-set fileencoding=utf-8      " The encoding written to file
+setglobal fileencoding=utf-8 " The encoding written to file
 set ruler                   " Show the cursor position all the time
 set updatetime=300          " Faster completion
 set timeoutlen=300          " By default timeoutlen is 1000 ms
