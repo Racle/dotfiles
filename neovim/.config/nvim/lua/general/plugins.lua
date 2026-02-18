@@ -376,8 +376,13 @@ local plugins = {
     opts = {
       -- add any options here
       cli = {
+        win = {
+          keys = {
+            prompt = {"<a-p>", "prompt", mode = "t", desc = "insert prompt or context"}
+          }
+        },
         mux = {
-          backend = "zellij",
+          backend = "tmux",
           enabled = true
         },
         prompts = {
