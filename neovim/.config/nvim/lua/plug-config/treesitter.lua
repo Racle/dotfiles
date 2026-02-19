@@ -32,6 +32,9 @@ vim.keymap.set("n", "<M-w>", function()
   require("nvim-treesitter-textobjects.select").select_textobject("@function.outer")
 end, {desc = "Init treesitter selection"})
 
+-- nvim-ts-autotag: auto-close and auto-rename HTML/JSX tags (replaces vim-closetag)
+require("nvim-ts-autotag").setup()
+
 -- for sticky scrolling
 require("treesitter-context").setup {
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)

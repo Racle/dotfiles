@@ -32,12 +32,7 @@ local plugins = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       -- Useful status updates for LSP
-      {
-        "j-hui/fidget.nvim",
-        branch = "legacy"
-      },
-      -- more typescript commands: https://github.com/jose-elias-alvarez/typescript.nvim
-      "jose-elias-alvarez/typescript.nvim",
+      "j-hui/fidget.nvim",
       -- sonarlint (filetypes are set in lspconfig.lua)
       "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
       "towolf/vim-helm"
@@ -151,8 +146,6 @@ local plugins = {
   },
   -- floatterm
   "voldikss/vim-floaterm",
-  -- remote yank
-  {"ojroques/nvim-osc52"},
   -- multiple cursor
   {"mg979/vim-visual-multi", branch = "master"},
   -- undootree
@@ -172,16 +165,12 @@ local plugins = {
   "tpope/vim-repeat",
   -- Quick peek for Ctrl+R and @
   "junegunn/vim-peekaboo",
-  -- closetags
-  "alvan/vim-closetag",
   -- nginx support
   "chr4/nginx.vim",
   -- close-buffers
   "Asheq/close-buffers.vim",
   -- GitMessenger
   "rhysd/git-messenger.vim",
-  -- mini-yank (fixes clipboard=unnamedplus block paste issue)
-  "bfredl/nvim-miniyank",
   -- blankline, | between multiline {}
   {
     "lukas-reineke/indent-blankline.nvim",

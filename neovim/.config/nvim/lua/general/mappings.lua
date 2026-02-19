@@ -72,12 +72,6 @@ vim.api.nvim_create_user_command("Q", "q", {})
 vim.keymap.set("n", ",", ";", {noremap = true})
 vim.keymap.set("n", ";", ",", {noremap = true})
 
--- fixes clipboard=unnamedplus block copy/paste issue
-vim.keymap.set("v", "p", "<Plug>(miniyank-autoput)", {noremap = false})
-vim.keymap.set("v", "P", "<Plug>(miniyank-autoPut)", {noremap = false})
-vim.keymap.set("n", "p", "<Plug>(miniyank-autoput)", {noremap = false})
-vim.keymap.set("n", "P", "<Plug>(miniyank-autoPut)", {noremap = false})
-
 -- map öä {} ÖÄ []
 -- Bug: ubuntu outputs :/' when usint with ctrl
 vim.api.nvim_set_option("langmap", "öäÖÄ;{}[]")
@@ -140,7 +134,6 @@ lmapCR("n", "aM", ":SignatureToggleSigns", "toggle mark sings")
 lmapCR("n", "at", ":FloatermToggle", "terminal")
 lmapCR("n", "au", ":UndotreeToggle | UndotreeFocus", "Undotree")
 lmapCR("n", "av", ":VCoolor", "vcoolor picker")
-lmapCR("n", "ay", ':call SendViaOSC52(getreg("))', "remote yank")
 lmapCR("n", "aw", "<Plug>(coc-codeaction-selected)w", "spell check word")
 
 -- <leader>b buffers
