@@ -101,7 +101,7 @@ lmapCR("n", "e", ":Neotree toggle", "Explorer")
 lmapCR("n", "n", ":Telescope find_files hidden=true", "Search files")
 lmapCR("n", "q", ":call CloseThisBuffer()", "close-buffer")
 lmapCR("n", "Q", ":ccl", "close quickfix")
-lmapCR("n", "p", ":Prettier", "Prettier")
+lmap("n", "p", function() require("conform").format({ bufnr = vim.api.nvim_get_current_buf() }) end, "Format (conform)")
 
 -- <leader>f find
 lmapCR("n", "fo", ":Telescope oldfiles hidden=true", "Search oldfiles")

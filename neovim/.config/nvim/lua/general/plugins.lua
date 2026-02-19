@@ -123,14 +123,14 @@ local plugins = {
       require("scrollbar.handlers.gitsigns").setup()
     end
   },
-  -- Formatting / prettier
+  -- Formatting
   {
-    "mhartington/formatter.nvim",
-    build = "npm install -g lua-fmt nginxbeautifier prettier @prettier/plugin-xml @prettier/plugin-php && go install mvdan.cc/sh/v3/cmd/shfmt@latest"
+    "stevearc/conform.nvim",
+    build = "npm install -g lua-fmt nginxbeautifier prettier @prettier/plugin-xml @prettier/plugin-php && go install mvdan.cc/sh/v3/cmd/shfmt@latest",
+    config = function()
+      require("plug-config/conform")
+    end
   },
-  -- use {"prettier/vim-prettier", build = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"}
-  -- https://github.com/prettier/vim-prettier/pull/345
-  {"Frederick888/vim-prettier", branch = "prettier-3-0", build = "npm install && npm install -g @prettier/plugin-xml @prettier/plugin-php"},
   -- tmux navigator
   {
     "alexghergh/nvim-tmux-navigation",

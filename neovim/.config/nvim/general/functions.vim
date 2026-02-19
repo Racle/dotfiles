@@ -211,7 +211,7 @@ endfunction
 
 function! PrettierJSON()
   set ft=json
-  Prettier
+  lua require("conform").format({ bufnr = vim.api.nvim_get_current_buf() })
 endfunction
 
 function! PlugSnapshotSave()
