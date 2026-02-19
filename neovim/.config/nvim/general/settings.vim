@@ -103,5 +103,3 @@ au Syntax vim syn match vimUsrCmd '^\s*\zs\u\%(\w*\)\@>(\@!'
 " Highlighted yank
 au TextYankPost * silent! lua vim.highlight.on_yank{timeout=250}
 
-
-au BufEnter *.md set filetype=lsp_markdown

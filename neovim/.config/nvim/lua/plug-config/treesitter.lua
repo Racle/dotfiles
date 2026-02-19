@@ -1,11 +1,27 @@
--- Treesitter highlight and indent are built into Neovim 0.11+ and enabled by default.
--- Disable treesitter highlighting for large files.
+-- Neovim 0.11 only auto-enables treesitter highlight for a handful of bundled
+-- filetypes (lua, markdown, help, query). For everything else we start it
+-- explicitly on FileType if an installed parser exists.
+-- js/jsx/ts/tsx all use the tsx parser (superset that understands JSX nodes).
+local js_fts = { javascript = true, javascriptreact = true, typescript = true, typescriptreact = true }
+
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    if ft == "" then return end
+
     local max_filesize = 200 * 1024 -- 200 KB
-    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
-    if ok and stats and stats.size > max_filesize then
-      vim.treesitter.stop(args.buf)
+    local ok_stat, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+    if ok_stat and stats and stats.size > max_filesize then return end
+
+    if js_fts[ft] then
+      -- force tsx parser for all js/jsx/ts/tsx buffers
+      pcall(vim.treesitter.start, args.buf, "tsx")
+    else
+      -- start treesitter only if a parser is available for this filetype
+      local lang = vim.treesitter.language.get_lang(ft)
+      if lang and pcall(vim.treesitter.language.inspect, lang) then
+        pcall(vim.treesitter.start, args.buf)
+      end
     end
   end,
 })
@@ -37,21 +53,19 @@ require("nvim-ts-autotag").setup()
 
 -- for sticky scrolling
 require("treesitter-context").setup {
-  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-  max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-  min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  enable = true,
+  max_lines = 0,
+  min_window_height = 0,
   line_numbers = true,
-  multiline_threshold = 20, -- Maximum number of lines to show for a single context
-  trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-  mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
-  -- Separator between context and content. Should be a single character string, like '-'.
-  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  multiline_threshold = 20,
+  trim_scope = "outer",
+  mode = "cursor",
   separator = nil,
-  zindex = 20, -- The Z-index of the context window
-  on_attach = nil -- (fun(buf: integer): boolean) return false to disable attaching
+  zindex = 20,
+  on_attach = nil
 }
 
--- quickly ; to go to previous context
+-- quickly jump to previous context
 vim.keymap.set(
   "n",
   ";",
@@ -60,4 +74,3 @@ vim.keymap.set(
   end,
   {silent = true}
 )
-

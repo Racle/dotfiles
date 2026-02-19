@@ -239,7 +239,15 @@ local plugins = {
           require("ts-node-action").setup({})
         end
       }
-    }
+    },
+    -- nvim-treesitter's filetypes.lua maps javascriptreact -> javascript parser
+    -- (no JSX support). Override after the plugin loads to use tsx instead,
+    -- which is a strict superset covering JS, JSX, TS and TSX.
+    config = function()
+      vim.treesitter.language.register("tsx", "javascript")
+      vim.treesitter.language.register("tsx", "javascriptreact")
+      require("plug-config/treesitter")
+    end
   },
   -- better text object support while using ex. ci"
   "wellle/targets.vim",

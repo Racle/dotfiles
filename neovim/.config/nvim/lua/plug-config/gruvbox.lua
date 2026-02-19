@@ -15,6 +15,9 @@ if os.getenv("IS_SERVER") ~= "1" then
 end
 vim.cmd("colorscheme gruvbox")
 
+-- markdown heading markers (## / ###) should be muted, not the same as heading text
+vim.api.nvim_set_hl(0, "@punctuation.special.markdown", { fg = "#928374" })
+
 -- lightspeed color fix
 vim.cmd("highlight LightspeedShortcut guibg=#fabd2f guifg=#000000 gui=bold")
 
