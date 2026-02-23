@@ -95,7 +95,14 @@ lmapCR("n", "e", ":Neotree toggle", "Explorer")
 lmapCR("n", "n", ":Telescope find_files hidden=true", "Search files")
 lmapCR("n", "q", ":call CloseThisBuffer()", "close-buffer")
 lmapCR("n", "Q", ":ccl", "close quickfix")
-lmap("n", "p", function() require("conform").format({ bufnr = vim.api.nvim_get_current_buf() }) end, "Format (conform)")
+lmap(
+  "n",
+  "p",
+  function()
+    require("conform").format({bufnr = vim.api.nvim_get_current_buf()})
+  end,
+  "Format (conform)"
+)
 
 -- <leader>f find
 lmapCR("n", "fo", ":Telescope oldfiles hidden=true", "Search oldfiles")
@@ -124,6 +131,7 @@ lmapCR("n", "fgl", ":Telescope advanced_git_search search_log_content", "Search 
 lmapCR("n", "fgf", ":Telescope advanced_git_search show_custom_functions", "Show custom functions")
 
 -- <leader>a actions
+-- code action is mapped in lspconfig.lua as <leader>la (Lspsaga code_action)
 lmapCR("n", "ac", ":ColorizerToggle", "colorizer")
 lmapCR("n", "ae", ":CocCommand explorer", "explorer")
 lmapCR("n", "an", ":set nonumber!", "line-numbers")

@@ -84,83 +84,74 @@ local function enable_sonarlint()
   )
 end
 
-local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = "LSP: " .. desc
+-- LSP keymaps applied to every buffer when an LSP server attaches
+vim.api.nvim_create_autocmd(
+  "LspAttach",
+  {
+    group = vim.api.nvim_create_augroup("UserLspKeymaps", {clear = true}),
+    callback = function(args)
+      local bufnr = args.buf
+
+      local nmap = function(keys, func, desc)
+        if desc then
+          desc = "LSP: " .. desc
+        end
+        vim.keymap.set("n", keys, func, {buffer = bufnr, desc = desc})
+      end
+
+      nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+      nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+      nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+      nmap("<leader>lD", vim.lsp.buf.type_definition, "Type [D]efinition")
+      nmap("<leader>lds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+      nmap("<leader>lws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+      -- lspsaga
+      nmap("gh", "<cmd>Lspsaga hover_doc<CR>", "[H]over documentation")
+      nmap("gD", "<cmd>Lspsaga peek_definition<CR>", "Peek [D]efinition")
+      nmap("<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", "[F]ind lsp")
+      nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename (with lsp)")
+      nmap("<leader>la", "<cmd>Lspsaga code_action<CR>", "Code [A]ction")
+      -- € = altgr + e
+      nmap("[€", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+      nmap("]€", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+
+      -- workspace
+      nmap("<leader>lwa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+      nmap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+      nmap(
+        "<leader>wl",
+        function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end,
+        "[W]orkspace [L]ist Folders"
+      )
+
+      -- custom golang
+      if vim.bo[bufnr].filetype == "go" then
+        nmap("gr", ":GoReferrers<CR>", "[G]oto [R]Eferences")
+        nmap("gd", ":GoDef<CR>", "[G]oto [D]efinition")
+        nmap("<leader>lR", ":GoRename<CR>", "Go[R]ename")
+      end
+
+      -- custom js
+      if vim.bo[bufnr].filetype == "javascript" then
+        nmap("<leader>lo", ":OrganizeImport<CR>", "Organize imports")
+        nmap("<leader>li", ":ImportMissing<CR>", "Import missing")
+      end
+
+      -- Create a command `:Format` local to the LSP buffer
+      vim.api.nvim_buf_create_user_command(
+        bufnr,
+        "Format",
+        function(_)
+          vim.lsp.buf.format()
+        end,
+        {desc = "Format current buffer with LSP"}
+      )
     end
-
-    vim.keymap.set("n", keys, func, {buffer = bufnr, desc = desc})
-  end
-
-  -- nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename")
-  -- nmap("<leader>la", vim.lsp.buf.code_action, "Code [A]ction")
-
-  nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-
-  nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-  nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-  nmap("<leader>lD", vim.lsp.buf.type_definition, "Type [D]efinition")
-  nmap("<leader>lds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-  nmap("<leader>lws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-
-  -- lspsaga
-  nmap("gh", "<cmd>Lspsaga hover_doc<CR>", "[H]over documentation")
-  nmap("gD", "<cmd>Lspsaga peek_definition<CR>", "Peek [D]efinition")
-  nmap("<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", "[F]ind lsp")
-  -- nmap("<leader>lr", "<cmd>Lspsaga rename ++project<CR>", "[R]ename")
-  nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename (with lsp)")
-  nmap("<leader>la", "<cmd>Lspsaga code_action<CR>", "Code [A]ction")
-  -- € = altgr + e
-  nmap("[€", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-  nmap("]€", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-
-  -- See `:help K` for why this keymap
-  -- nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  -- nmap("gh", vim.lsp.buf.hover, "Hover Documentation")
-  -- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-
-  -- Lesser used LSP functionality
-  -- nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-  nmap("<leader>lwa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-  nmap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-  nmap(
-    "<leader>wl",
-    function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end,
-    "[W]orkspace [L]ist Folders"
-  )
-
-  -- custom golang
-  if vim.bo.filetype == "go" then
-    nmap("gr", ":GoReferrers<CR>", "[G]oto [R]Eferences")
-    nmap("gd", ":GoDef<CR>", "[G]oto [D]efinition")
-    nmap("<leader>lR", ":GoRename<CR>", "Go[R]ename")
-  end
-
-  -- custom js
-  if vim.bo.filetype == "javascript" then
-    nmap("<leader>lo", ":OrganizeImport<CR>", "Organize imports")
-    nmap("<leader>li", ":ImportMissing<CR>", "Import missing")
-  end
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(
-    bufnr,
-    "Format",
-    function(_)
-      vim.lsp.buf.format()
-    end,
-    {desc = "Format current buffer with LSP"}
-  )
-end
+  }
+)
 
 -- setup
 
@@ -199,7 +190,11 @@ local servers = {
   diagnosticls = {},
   marksman = {},
   terraformls = {},
-  helm_ls = {},
+  helm_ls = {
+    yamlls = {
+      path = "yaml-language-server"
+    }
+  },
   lua_ls = {
     settings = {
       Lua = {
@@ -225,53 +220,23 @@ mason_lspconfig.setup {
 -- :MasonInstall sonarlint-language-server
 enable_sonarlint()
 
--- mason_lspconfig.setup_handlers {
---   function(server_name)
---     -- TODO check if we need this when sonarlint is added to mason-lspconfig
---     -- if server_name == "sonarlint-language-server" then
---     --   enable_sonarlint()
---     --   return
---     -- end
-
---     local settings = {}
---     local commands = {}
---     local cmd = {}
---     if servers[server_name] ~= nil then
---       settings = servers[server_name]["settings"]
---       commands = servers[server_name]["commands"]
---       cmd = servers[server_name]["cmd"]
---     end
---     local opts = {
---       capabilities = capabilities,
---       on_attach = on_attach,
---       settings = settings,
---       commands = commands,
---       cmd = cmd
---     }
-
---     if server_name == "tsserver" then
---       require("typescript").setup {server = opts}
---     else
---       require("lspconfig")[server_name].setup {
---         capabilities = capabilities,
---         on_attach = on_attach,
---         settings = settings,
---         commands = commands,
---         cmd = cmd
---       }
---     end
---   end
--- }
-
+-- apply capabilities to all servers
 vim.lsp.config(
-  "helm_ls",
+  "*",
   {
-    yamlls = {
-      path = "yaml-language-server"
-    }
+    capabilities = capabilities
   }
 )
-vim.lsp.enable({"helm_ls"})
+
+-- apply per-server config
+for server_name, server_opts in pairs(servers) do
+  if next(server_opts) then
+    vim.lsp.config(server_name, server_opts)
+  end
+end
+
+-- enable all servers
+vim.lsp.enable(vim.tbl_keys(servers))
 
 require("fidget").setup()
 
