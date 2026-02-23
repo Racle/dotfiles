@@ -144,6 +144,7 @@ alias talosctl="TERM=xterm-256color talosctl"
 alias aie="gh copilot explain"
 alias k="kubectl"
 alias cdir='cd "${_%/*}"'
+alias -g C="| xclip -selection clipboard"
 # alias ai="gh copilot suggest -t shell"
 ai() {
   # run copilot and copy the result to clipboard and print it to terminal
