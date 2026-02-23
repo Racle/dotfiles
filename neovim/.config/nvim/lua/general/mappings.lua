@@ -53,7 +53,7 @@ vim.keymap.set("n", "Q", ':echo "Use gQ to enter Ex mode."<CR>', {noremap = true
 vim.keymap.set("n", "<F9>", ":set invpaste paste?<CR>", {noremap = true})
 
 -- Toggle custom MacroMode
-vim.keymap.set("n", "<F10>", ":MacroMode<CR>", {noremap = true})
+vim.keymap.set("n", "<F10>", ":MacroModeToggle<CR>", {noremap = true})
 
 -- keep in visual mode after shifting
 vim.keymap.set("v", "<", "<gv", {noremap = true})
@@ -131,16 +131,13 @@ lmapCR("n", "fgf", ":Telescope advanced_git_search show_custom_functions", "Show
 
 -- <leader>a actions
 lmapCR("n", "ac", ":ColorizerToggle", "colorizer")
-lmapCR("n", "ae", ":CocCommand explorer", "explorer")
 lmapCR("n", "an", ":set nonumber!", "line-numbers")
 lmapCR("n", "ar", ":set norelativenumber!", "relative line nums")
 lmapCR("n", "as", ':let @/ = ""', "remove search highlight")
-lmapCR("n", "aS", ":CocCommand cSpell.toggleEnableSpellChecker", "toggle spellchecking")
-lmapCR("n", "aM", ":SignatureToggleSigns", "toggle mark sings")
+lmapCR("n", "aS", ":set spell!", "toggle spellchecking")
 lmapCR("n", "at", ":FloatermToggle", "terminal")
 lmapCR("n", "au", ":UndotreeToggle | UndotreeFocus", "Undotree")
 lmapCR("n", "av", ":VCoolor", "vcoolor picker")
-lmapCR("n", "aw", "<Plug>(coc-codeaction-selected)w", "spell check word")
 
 -- <leader>b buffers
 lmapCR("n", "b1", "b1", "buffer 1")
@@ -233,15 +230,15 @@ lmapCR("n", "gB", ":GBrowse", "browse")
 lmapCR("n", "gc", ":Git commit", "commit")
 lmapCR("n", "gg", ":GGrep", "git grep")
 lmapCR("n", "gG", ":Gstatus", "status")
-lmapCR("n", "gh", ":GitGutterLineHighlightsToggle", "highlight hunks")
-lmapCR("n", "gH", "<Plug>(GitGutterPreviewHunk)", "preview hunk")
+lmapCR("n", "gh", ":Gitsigns toggle_linehl", "highlight hunks")
+lmapCR("n", "gH", ":Gitsigns preview_hunk", "preview hunk")
 lmapCR("n", "gl", ":Git log", "log")
 lmapCR("n", "gM", ":!meld . &", "open meld mergetool")
 lmapCR("n", "gP", ":Git push", "push")
 lmapCR("n", "gp", ":Git pull", "pull")
-lmapCR("n", "gs", "<Plug>(GitGutterStageHunk)", "stage hunk")
+lmapCR("n", "gs", ":Gitsigns stage_hunk", "stage hunk")
 lmapCR("n", "gt", ":Gitsigns toggle_current_line_blame", "toggle inline blame")
-lmapCR("n", "gu", "<Plug>(GitGutterUndoHunk)", "undo hunk")
+lmapCR("n", "gu", ":Gitsigns reset_hunk", "undo hunk")
 lmapCR("n", "gv", ":GV", "view commits")
 lmapCR("n", "gV", ":GV!", "view buffer commits")
 lmapCR("n", "g>", ":diffget //2", "diffget from left")
@@ -276,7 +273,7 @@ lmapCR("n", "ws", ':call jobstart(\'sh -c "cd ~/vimwiki && git push"\')', "Save 
 
 -- <leader>l LSP (keymaps defined in lspconfig.lua via LspAttach autocommand)
 
--- right click men
+-- right click menu
 vim.cmd.aunmenu {"PopUp.How-to\\ disable\\ mouse"}
 -- vim.cmd.aunmenu {"PopUp.-1-"}
 
@@ -287,29 +284,3 @@ vim.cmd.nmenu {"PopUp.Copy\\ around\\ quotes", "yaq"}
 vim.cmd.nmenu {"PopUp.-3-", "<NOP>"}
 vim.cmd.nmenu {"PopUp.Copy\\ inside\\ brackets", "yib"}
 vim.cmd.nmenu {"PopUp.Copy\\ around\\ brackets", "yab"}
-
--- copilot chat
-lmapCR("n", "co", ":CopilotChatOpen", "Open chat window")
-lmapCR("n", "cq", ":CopilotChatClose", "Close chat window")
-lmapCR("n", "ct", ":CopilotChatToggle", "Toggle chat window")
-lmapCR("n", "cc", ":CopilotChatToggle", "Toggle chat window")
-lmapCR("n", "cr", ":CopilotChatReset", "Reset chat window")
-lmapCR("n", "cs", ":CopilotChatSave", "Save chat history to file")
-lmapCR("n", "cl", ":CopilotChatLoad", "Load chat history from file")
-lmapCR("n", "ce", ":CopilotChatExplain", "Explain how it works")
-lmapCR("n", "ct", ":CopilotChatTests", "Explain and then generate unit tests")
-lmapCR("n", "cf", ":CopilotChatFix", "Fix code")
-lmapCR("n", "co", ":CopilotChatOptimize", "Optimize the selected")
-lmapCR("n", "cd", ":CopilotChatDocs", "Write documentation for the selected code.")
-lmapCR("n", "cD", ":CopilotChatFixDiagnostic", "Diagnose issue in current file")
-lmapCR("n", "cC", ":CopilotChatCommit", "Write commit message")
-
-lmapCR("v", "co", ":CopilotChatOpen", "Open chat window")
-lmapCR("v", "ce", ":CopilotChatExplain", "Explain how it works")
-lmapCR("v", "ct", ":CopilotChatTests", "Explain and then generate unit tests")
-lmapCR("v", "cf", ":CopilotChatFix", "Fix code")
-lmapCR("v", "co", ":CopilotChatOptimize", "Optimize the selected")
-lmapCR("v", "cd", ":CopilotChatDocs", "Write documentation for the selected code.")
-lmapCR("v", "cD", ":CopilotChatFixDiagnostic", "Diagnose issue in current file")
-lmapCR("v", "cc", ":CopilotChatCommit", "Write commit message")
-lmapCR("v", "cC", ":CopilotChatCommitStaged", "Write commit message (staged)")
