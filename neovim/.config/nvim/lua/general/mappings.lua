@@ -44,8 +44,7 @@ vim.keymap.set("t", "§", "<C-\\><C-n>", {noremap = true})
 -- for some reason must be upper case P
 vim.keymap.set("n", "<C-P>", "<Tab>", {noremap = true})
 
--- disable digraph hotkey
-vim.keymap.set("i", "<C-k>", "<NOP>")
+-- digraph hotkey (<C-k>) remapped to LSP signature help in lspconfig.lua
 
 -- Unbind some useless/annoying default key bindings.
 vim.keymap.set("n", "Q", ':echo "Use gQ to enter Ex mode."<CR>', {noremap = true})
@@ -97,7 +96,7 @@ lmapCR("n", "q", ":call CloseThisBuffer()", "close-buffer")
 lmapCR("n", "Q", ":ccl", "close quickfix")
 lmap(
   "n",
-  "p",
+  "af",
   function()
     require("conform").format({bufnr = vim.api.nvim_get_current_buf()})
   end,
@@ -131,7 +130,6 @@ lmapCR("n", "fgl", ":Telescope advanced_git_search search_log_content", "Search 
 lmapCR("n", "fgf", ":Telescope advanced_git_search show_custom_functions", "Show custom functions")
 
 -- <leader>a actions
--- code action is mapped in lspconfig.lua as <leader>la (Lspsaga code_action)
 lmapCR("n", "ac", ":ColorizerToggle", "colorizer")
 lmapCR("n", "ae", ":CocCommand explorer", "explorer")
 lmapCR("n", "an", ":set nonumber!", "line-numbers")
@@ -276,40 +274,7 @@ lmapCR("n", "tw", ":call FloatermOpenVimwiki()", "vimwiki")
 -- <leader>w VimWiki
 lmapCR("n", "ws", ':call jobstart(\'sh -c "cd ~/vimwiki && git push"\')', "Save wiki", false, true)
 
--- <leader>l LSP
---      \ 'name' : '+lsp',
-lmapCR("n", "lf", ":Format", "Format")
-lmapCR("n", "lv", ":Vista!!", "tag viewer")
-
--- lmapCR("n", "la", "<Plug>(coc-codeaction-line)", "line action")
--- lmapCR("n", "lA", "<Plug>(coc-codeaction)", "code action")
--- lmapCR("n", "lb", ":CocNext", "next action")
--- lmapCR("n", "lB", ":CocPrev", "prev action")
--- lmapCR("n", "lc", ":CocList commands", "commands")
--- lmapCR("n", "ld", "<Plug>(coc-definition)", "definition")
--- lmapCR("n", "lD", "<Plug>(coc-declaration)", "declaration")
--- lmapCR("n", "le", ":CocList extensions", "extensions")
--- lmapCR("n", "lf", "<Plug>(coc-format-selected)", "format selected")
--- lmapCR("n", "lF", "<Plug>(coc-format)", "format")
--- lmapCR("n", "lh", "<Plug>(coc-float-hide)", "hide")
--- lmapCR("n", "li", "<Plug>(coc-implementation)", "implementation")
--- lmapCR("n", "lI", ":CocList diagnostics", "diagnostics")
--- lmapCR("n", "lj", "<Plug>(coc-float-jump)", "float jump")
--- lmapCR("n", "ll", "<Plug>(coc-codelens-action)", "code lens")
--- lmapCR("n", "ln", "<Plug>(coc-diagnostic-next)", "next diagnostic")
--- lmapCR("n", "lN", "<Plug>(coc-diagnostic-next-error)", "next error")
--- lmapCR("n", "lo", ':call CocAction("runCommand",        "editor.action.organizeImport")', "organize imports")
--- lmapCR("n", "lO", ":CocList outline", "outline")
--- lmapCR("n", "lp", "<Plug>(coc-diagnostic-prev)", "prev diagnostic")
--- lmapCR("n", "lP", "<Plug>(coc-diagnostic-prev-error)", "prev error")
--- lmapCR("n", "lq", "<Plug>(coc-fix-current)", "quickfix")
--- lmapCR("n", "lr", "<Plug>(coc-rename)", "rename")
--- lmapCR("n", "lR", "<Plug>(coc-references)", "references")
--- lmapCR("n", "lt", "<Plug>(coc-type-definition)", "type definition")
--- lmapCR("n", "lu", ":CocListResume", "resume list")
--- lmapCR("n", "lU", ":CocUpdate", "update CoC")
--- lmapCR("n", "lz", ":CocDisable", "disable CoC")
--- lmapCR("n", "lZ", ":CocEnable", "enable CoC")
+-- <leader>l LSP (keymaps defined in lspconfig.lua via LspAttach autocommand)
 
 -- right click men
 vim.cmd.aunmenu {"PopUp.How-to\\ disable\\ mouse"}

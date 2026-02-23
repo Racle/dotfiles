@@ -31,7 +31,7 @@ require("plug-config/telescope")
 require("plug-config/which-key")
 require("plug-config/lsp_lines")
 require("plug-config/ts-node-action")
-require("plug-config/lspsaga")
+-- require("plug-config/lspsaga") -- replaced by native LSP + snacks.nvim
 
 -- after installing lazy, you need to load colorscheme here again to make it work for some reason
 vim.cmd("colorscheme gruvbox")

@@ -92,35 +92,97 @@ vim.api.nvim_create_autocmd(
     callback = function(args)
       local bufnr = args.buf
 
-      local nmap = function(keys, func, desc)
+      local map = function(mode, keys, func, desc)
         if desc then
           desc = "LSP: " .. desc
         end
-        vim.keymap.set("n", keys, func, {buffer = bufnr, desc = desc})
+        vim.keymap.set(mode, keys, func, {buffer = bufnr, desc = desc})
       end
 
+      local nmap = function(keys, func, desc)
+        map("n", keys, func, desc)
+      end
+
+      -- navigation
       nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
       nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+      nmap("gD", require("telescope.builtin").lsp_definitions, "Peek [D]efinition")
       nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+      nmap("gh", vim.lsp.buf.hover, "[H]over documentation")
+      nmap("gK", vim.lsp.buf.signature_help, "Signature Help")
+      map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
+
+      -- <leader>l LSP
+      nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename")
+      map({"n", "x"}, "<leader>la", vim.lsp.buf.code_action, "Code [A]ction")
       nmap("<leader>lD", vim.lsp.buf.type_definition, "Type [D]efinition")
       nmap("<leader>lds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
       nmap("<leader>lws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+      map({"n", "x"}, "<leader>ll", vim.lsp.codelens.run, "Run Code[l]ens")
+      nmap("<leader>lL", vim.lsp.codelens.refresh, "Refresh Code[L]ens")
+      nmap(
+        "<leader>lA",
+        function()
+          vim.lsp.buf.code_action({context = {only = {"source"}, diagnostics = {}}})
+        end,
+        "Source [A]ction"
+      )
+      nmap("<leader>li", "<cmd>LspInfo<CR>", "LSP [I]nfo")
+      nmap(
+        "<leader>lF",
+        function()
+          Snacks.rename.rename_file()
+        end,
+        "Rename [F]ile"
+      )
 
-      -- lspsaga
-      nmap("gh", "<cmd>Lspsaga hover_doc<CR>", "[H]over documentation")
-      nmap("gD", "<cmd>Lspsaga peek_definition<CR>", "Peek [D]efinition")
-      nmap("<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", "[F]ind lsp")
-      nmap("<leader>lr", vim.lsp.buf.rename, "[R]ename (with lsp)")
-      nmap("<leader>la", "<cmd>Lspsaga code_action<CR>", "Code [A]ction")
-      -- € = altgr + e
-      nmap("[€", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-      nmap("]€", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+      -- diagnostics (€ = altgr + e)
+      nmap(
+        "[€",
+        function()
+          vim.diagnostic.jump({count = -1})
+        end,
+        "Prev diagnostic"
+      )
+      nmap(
+        "]€",
+        function()
+          vim.diagnostic.jump({count = 1})
+        end,
+        "Next diagnostic"
+      )
+
+      -- reference navigation (only active when LSP references are highlighted)
+      nmap(
+        "]]",
+        function()
+          if Snacks.words.is_enabled() then
+            Snacks.words.jump(vim.v.count1)
+          else
+            -- fallback to default ]] behavior
+            vim.cmd("normal! ]]")
+          end
+        end,
+        "Next Reference"
+      )
+      nmap(
+        "[[",
+        function()
+          if Snacks.words.is_enabled() then
+            Snacks.words.jump(-vim.v.count1)
+          else
+            -- fallback to default [[ behavior
+            vim.cmd("normal! [[")
+          end
+        end,
+        "Prev Reference"
+      )
 
       -- workspace
       nmap("<leader>lwa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
       nmap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
       nmap(
-        "<leader>wl",
+        "<leader>lwl",
         function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end,
@@ -137,7 +199,7 @@ vim.api.nvim_create_autocmd(
       -- custom js
       if vim.bo[bufnr].filetype == "javascript" then
         nmap("<leader>lo", ":OrganizeImport<CR>", "Organize imports")
-        nmap("<leader>li", ":ImportMissing<CR>", "Import missing")
+        nmap("<leader>lI", ":ImportMissing<CR>", "Import missing")
       end
 
       -- Create a command `:Format` local to the LSP buffer

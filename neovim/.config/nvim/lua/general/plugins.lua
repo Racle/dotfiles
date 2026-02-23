@@ -529,12 +529,10 @@ local plugins = {
   -- },
   -- better lsp ui
 
-  {
-    "glepnir/lspsaga.nvim",
-    -- "racle/lspsaga.nvim",
-    -- "/tmp/lspsaga.nvim/",
-    branch = "main"
-  },
+  -- {
+  --   "glepnir/lspsaga.nvim",
+  --   branch = "main"
+  -- },
   {
     "folke/snacks.nvim",
     priority = 1000,
@@ -549,6 +547,7 @@ local plugins = {
       explorer = {enabled = false},
       indent = {enabled = false},
       input = {enabled = true},
+      select = {enabled = true},
       git = {enabled = true},
       picker = {enabled = true},
       notifier = {enabled = true},
