@@ -385,7 +385,8 @@ local plugins = {
         prompts = {
           commit = "Create one line git commit message.\nReview changes and create commit message based on changes.\nUse conventional commits with scope.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.",
           commit_staged = "Create one line git commit message for staged files.\nReview changes and create commit message based on changes.\nUse conventional commits with scope.\nCopy it to clipboard.\nUse printf instead of echo.\nUse xsel.\nIf no changes, reply with 'No changes to commit'.",
-          security = "Review {file} for security vulnerabilities"
+          security = "Review {file} for security vulnerabilities",
+          document = "Reassess code and update @AGENT_FILES/PROJECT_ARCHITECTURE.md and all FEATURE_DOC.md if needed and create missing ones"
         }
       }
     },
