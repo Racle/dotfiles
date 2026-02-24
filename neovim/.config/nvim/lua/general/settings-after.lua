@@ -6,3 +6,7 @@ vim.cmd [[ hi TreesitterContextLineNumberBottom gui=underline guisp=#665c54 ]]
 
 -- Dropbar highlights
 vim.cmd [[hi WinBar guisp=#665c54 gui=underline guibg=#313131]]
+
+-- Wire Snacks UI for input and select dialogs (fixes checkhealth warnings)
+vim.ui.input = require("snacks.input").input
+vim.ui.select = require("snacks.picker").select

@@ -1,4 +1,5 @@
 -- require("netman")
+-- NOTE: if checkhealth warns about changed options, run :Neotree migrations
 require("neo-tree").setup(
   {
     toggle = true,
@@ -59,7 +60,7 @@ require("neo-tree").setup(
       }
     },
     filesystem = {
-      follow_current_file = true,
+      follow_current_file = { enabled = true },
       filtered_items = {
         visible = false,
         hide_dotfiles = true,
@@ -72,7 +73,7 @@ require("neo-tree").setup(
       }
     },
     buffers = {
-      follow_current_file = true, -- This will find and focus the file in the active buffer every
+      follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every
       group_empty_dirs = true, -- when true, empty folders will be grouped together
       show_unloaded = true
     }
