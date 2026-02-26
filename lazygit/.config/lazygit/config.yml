@@ -7,7 +7,7 @@ git:
 customCommands:
   - key: <c-a>
     description: AI-powered conventional commit
-    context: global
+    context: files
     prompts:
       - type: "menu"
         key: "Type"
@@ -16,42 +16,57 @@ customCommands:
           - name: "AI defined"
             description: "Let AI analyze and determine the best commit type"
             value: "ai-defined"
+            key: "a"
           - name: "build"
             description: "Changes that affect the build system or external dependencies"
             value: "build"
+            key: "b"
           - name: "feat"
             description: "A new feature"
             value: "feat"
+            key: "f"
           - name: "fix"
             description: "A bug fix"
             value: "fix"
+            key: "x"
           - name: "chore"
             description: "Other changes that don't modify src or test files"
             value: "chore"
+            key: "h"
           - name: "ci"
             description: "Changes to CI configuration files and scripts"
             value: "ci"
+            key: "i"
           - name: "docs"
             description: "Documentation only changes"
             value: "docs"
+            key: "d"
           - name: "perf"
             description: "A code change that improves performance"
             value: "perf"
+            key: "p"
           - name: "refactor"
             description: "A code change that neither fixes a bug nor adds a feature"
             value: "refactor"
+            key: "r"
           - name: "revert"
             description: "Reverts a previous commit"
             value: "revert"
+            key: "v"
           - name: "style"
             description: "Changes that do not affect the meaning of the code"
             value: "style"
+            key: "s"
           - name: "test"
             description: "Adding missing tests or correcting existing tests"
             value: "test"
+            key: "t"
       - type: menuFromCommand
         title: "AI Generated Commit Messages"
         key: CommitMsg
+        filter: '^(?P<title>(?:feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\(.+?\))?!?: .+?) \| (?P<desc>.+)$'
+        valueFormat: '{{ .title }}|||{{ .desc }}'
+        labelFormat: '{{ .title | green }}'
         command: |
           bash -c "
           # Check for staged changes
@@ -74,7 +89,7 @@ customCommands:
           2. Determine the most appropriate commit type (if user selected 'ai-defined')
           3. Determine an appropriate scope (component/area affected)
           4. Decide if this is a breaking change
-          5. Write clear, concise commit messages
+          5. Write clear, concise commit messages with a short title AND a longer description
 
           Available commit types:
           - feat: A new feature
@@ -89,7 +104,7 @@ customCommands:
           - chore: Other changes that don't modify src or test files
           - revert: Reverts a previous commit
 
-          Follow these guidelines:
+          Follow these guidelines for the TITLE (before the |):
           - Structure: <type>(<scope>): <description>
           - If user selected 'ai-defined', analyze the changes and pick the most suitable type
           - If user selected a specific type, use that type: \$SELECTED_TYPE
@@ -100,25 +115,30 @@ customCommands:
           - Keep description under 50 characters when possible
           - No period at the end of subject line
 
+          Follow these guidelines for the DESCRIPTION (after the |):
+          - Explain what was changed and why in 1-2 sentences
+          - Provide context that the title alone cannot convey
+          - Mention side effects or important implementation details if relevant
+
+          OUTPUT FORMAT: Each line must be exactly: title | description
+          The pipe character (|) separates the short title from the longer description.
+
           Examples:
-          - feat(auth): add OAuth login support
-          - fix(api): handle null response in user endpoint
-          - docs(readme): update installation instructions
-          - style(ui): improve button spacing consistency
-          - refactor(database): simplify query builder logic
-          - test(auth): add unit tests for login flow
-          - build(deps): upgrade React to version 18
-          - ci(github): fix deployment workflow
-          - chore(config): update ESLint rules
-          - perf(api)!: optimize database queries
+          - feat(auth): add OAuth login support | implement OAuth2 flow with Google and GitHub providers, add token refresh logic
+          - fix(api): handle null response in user endpoint | add null checks to prevent crashes when upstream service returns empty response bodies
+          - docs(readme): update installation instructions | rewrite setup guide to cover Docker-based workflow and remove outdated manual steps
+          - refactor(database): simplify query builder logic | replace nested conditionals with a composable pipeline pattern for better maintainability
+          - build(deps): upgrade React to version 18 | migrate from legacy ReactDOM.render to createRoot API as required by React 18
+          - perf(api)!: optimize database queries | replace N+1 queries with batch loading, breaking change in the query builder interface
 
           IMPORTANT:
           - Generate exactly \$COMMITS_TO_SUGGEST different commit message options
           - If user selected 'ai-defined', you can use different types for different options
           - If user selected a specific type, all messages must use that type
-          - Only return commit messages, no explanations
+          - Only return commit messages in the format: title | description
           - Do not use markdown code blocks or any formatting
           - One message per line
+          - Each line MUST contain exactly one pipe character (|) separating title and description
           - Do NOT use any tools. Only respond with text.
 
           Previous commits for context:
@@ -130,5 +150,5 @@ customCommands:
           The full diff is attached as a file.
           \" -f - -m github-copilot/claude-sonnet-4.6 2>&1 | tail -n +4
           "
-    command: "git commit -m \"{{.Form.CommitMsg}}\""
+    command: "bash -c 'MSG=\"{{.Form.CommitMsg}}\"; git commit -m \"${MSG%%|||*}\" -m \"${MSG#*|||}\"'"
     loadingText: "Generating commit messages..."
