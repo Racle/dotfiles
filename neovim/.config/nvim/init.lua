@@ -3,6 +3,9 @@ vim.cmd("let $NVIMPATH = fnamemodify($MYVIMRC, ':p:h')")
 local nvimrc = os.getenv("NVIMPATH")
 vim.fn.setenv("IS_SERVER", vim.fn.filereadable(os.getenv("NVIMPATH") .. "/server-init.vim"))
 
+-- settings
+vim.cmd("source" .. nvimrc .. "/general/settings.vim")
+
 -- lua config
 require("general/mappings")
 require("general/plugins")
@@ -14,7 +17,6 @@ require("plug-config/gruvbox")
 -- vim general config
 vim.cmd("source" .. nvimrc .. "/general/functions.vim")
 -- vim.cmd("source" .. nvimrc .. "/general/mappings.vim")
-vim.cmd("source" .. nvimrc .. "/general/settings.vim")
 
 -- lsp
 require("plug-config/lspconfig")
