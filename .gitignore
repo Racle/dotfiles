@@ -15,7 +15,7 @@ neovim/.config/nvim/coc-settings.json
 neovim/.config/nvim/dadbod.vim
 neovim/.config/nvim/plugin/*
 sumneko-lua*
-lazygit/.config/lazygit/
+lazygit/.config/lazygit/*
 !lazygit/.config/lazygit/config.yml
 /albert
 /default/.npmrc

@@ -64,14 +64,13 @@ customCommands:
           SELECTED_TYPE=\"{{.Form.Type}}\"
           COMMITS_TO_SUGGEST=8
 
-          aichat \"
-
+          git diff --cached | opencode run \"
           You are an expert at writing Git commits. Your job is to write commit messages that follow the Conventional Commits format.
 
           The user has selected: \$SELECTED_TYPE
 
           Your task is to:
-          1. Analyze the code changes
+          1. Analyze the code changes provided via the attached file
           2. Determine the most appropriate commit type (if user selected 'ai-defined')
           3. Determine an appropriate scope (component/area affected)
           4. Decide if this is a breaking change
@@ -118,16 +117,18 @@ customCommands:
           - If user selected 'ai-defined', you can use different types for different options
           - If user selected a specific type, all messages must use that type
           - Only return commit messages, no explanations
-          - Do not use markdown code blocks
+          - Do not use markdown code blocks or any formatting
           - One message per line
+          - Do NOT use any tools. Only respond with text.
 
           Previous commits for context:
           \$(git log --oneline -10)
 
-          Changes to analyze:
+          Changes summary:
           \$(git diff --cached --stat)
-          \$(git diff --cached)
-          \"
+
+          The full diff is attached as a file.
+          \" -f - -m github-copilot/claude-sonnet-4.6 2>&1 | tail -n +4
           "
     command: "git commit -m \"{{.Form.CommitMsg}}\""
     loadingText: "Generating commit messages..."
