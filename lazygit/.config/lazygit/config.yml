@@ -9,64 +9,64 @@ customCommands:
     description: AI-powered conventional commit
     context: files
     prompts:
-      - type: "menu"
-        key: "Type"
-        title: "Type of change"
+      - type: 'menu'
+        key: 'Type'
+        title: 'Type of change'
         options:
-          - name: "AI defined"
-            description: "Let AI analyze and determine the best commit type"
-            value: "ai-defined"
-            key: "a"
-          - name: "build"
-            description: "Changes that affect the build system or external dependencies"
-            value: "build"
-            key: "b"
-          - name: "feat"
-            description: "A new feature"
-            value: "feat"
-            key: "f"
-          - name: "fix"
-            description: "A bug fix"
-            value: "fix"
-            key: "x"
-          - name: "chore"
+          - name: 'AI defined'
+            description: 'Let AI analyze and determine the best commit type'
+            value: 'ai-defined'
+            key: 'a'
+          - name: 'build'
+            description: 'Changes that affect the build system or external dependencies'
+            value: 'build'
+            key: 'b'
+          - name: 'feat'
+            description: 'A new feature'
+            value: 'feat'
+            key: 'f'
+          - name: 'fix'
+            description: 'A bug fix'
+            value: 'fix'
+            key: 'x'
+          - name: 'chore'
             description: "Other changes that don't modify src or test files"
-            value: "chore"
-            key: "h"
-          - name: "ci"
-            description: "Changes to CI configuration files and scripts"
-            value: "ci"
-            key: "i"
-          - name: "docs"
-            description: "Documentation only changes"
-            value: "docs"
-            key: "d"
-          - name: "perf"
-            description: "A code change that improves performance"
-            value: "perf"
-            key: "p"
-          - name: "refactor"
-            description: "A code change that neither fixes a bug nor adds a feature"
-            value: "refactor"
-            key: "r"
-          - name: "revert"
-            description: "Reverts a previous commit"
-            value: "revert"
-            key: "v"
-          - name: "style"
-            description: "Changes that do not affect the meaning of the code"
-            value: "style"
-            key: "s"
-          - name: "test"
-            description: "Adding missing tests or correcting existing tests"
-            value: "test"
-            key: "t"
+            value: 'chore'
+            key: 'h'
+          - name: 'ci'
+            description: 'Changes to CI configuration files and scripts'
+            value: 'ci'
+            key: 'i'
+          - name: 'docs'
+            description: 'Documentation only changes'
+            value: 'docs'
+            key: 'd'
+          - name: 'perf'
+            description: 'A code change that improves performance'
+            value: 'perf'
+            key: 'p'
+          - name: 'refactor'
+            description: 'A code change that neither fixes a bug nor adds a feature'
+            value: 'refactor'
+            key: 'r'
+          - name: 'revert'
+            description: 'Reverts a previous commit'
+            value: 'revert'
+            key: 'v'
+          - name: 'style'
+            description: 'Changes that do not affect the meaning of the code'
+            value: 'style'
+            key: 's'
+          - name: 'test'
+            description: 'Adding missing tests or correcting existing tests'
+            value: 'test'
+            key: 't'
       - type: menuFromCommand
-        title: "AI Generated Commit Messages"
+        title: 'AI Generated Commit Messages'
         key: CommitMsg
         filter: '^(?P<title>(?:feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\(.+?\))?!?: .+?) \| (?P<desc>.+)$'
         valueFormat: '{{ .title }}|||{{ .desc }}'
-        labelFormat: '{{ .title | green }}'
+        labelFormat: '{{ .title | green }} ── {{ .desc | yellow }}'
         command: |
           bash -c "
           # Check for staged changes
@@ -150,5 +150,6 @@ customCommands:
           The full diff is attached as a file.
           \" -f - -m github-copilot/claude-sonnet-4.6 2>&1 | tail -n +4
           "
-    command: "bash -c 'MSG=\"{{.Form.CommitMsg}}\"; git commit -m \"${MSG%%|||*}\" -m \"${MSG#*|||}\"'"
-    loadingText: "Generating commit messages..."
+    command: 'bash -c ''MSG="{{.Form.CommitMsg}}"; git commit --edit -m "${MSG%%|||*}" -m "${MSG#*|||}"'''
+    output: terminal
+    loadingText: 'Generating commit messages...'
