@@ -150,6 +150,6 @@ customCommands:
           The full diff is attached as a file.
           \" -f - -m github-copilot/claude-sonnet-4.6 2>&1 | tail -n +4
           "
-    command: 'bash -c ''MSG="{{.Form.CommitMsg}}"; git commit --edit -m "${MSG%%|||*}" -m "${MSG#*|||}"'''
+    command: 'bash -c ''MSG={{.Form.CommitMsg | quote}}; git commit --edit -m "${MSG%%|||*}" -m "${MSG#*|||}"'''
     output: terminal
     loadingText: 'Generating commit messages...'
