@@ -33,6 +33,7 @@ export VISUAL="nvim"
 export NPM_BEFORE_DATE=$(date -d "3 days ago" +%Y-%m-%d)
 npm config set before=$NPM_BEFORE_DATE
 npm config set prefix=\${HOME}/.npm-packages
+alias NPM="npm set before && npm"
 
 
 # Automatically update zsh every 60 days
