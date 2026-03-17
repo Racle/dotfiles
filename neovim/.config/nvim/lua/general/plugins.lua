@@ -420,6 +420,34 @@ local plugins = {
       {
         "<leader>cc",
         function()
+          -- Kill stale opencode tmux sessions where opencode is no longer running.
+          -- This prevents `tmux new -A` from reattaching to a dead session (blank tmux pane).
+          local sessions = vim.fn.systemlist("tmux list-sessions -F '#{session_name}' 2>/dev/null")
+          for _, session in ipairs(sessions) do
+            if session:match("^opencode") then
+              local has_opencode = false
+              local panes =
+                vim.fn.systemlist(string.format("tmux list-panes -s -t '%s' -F '#{pane_pid}' 2>/dev/null", session))
+              for _, pid_str in ipairs(panes) do
+                local pid = tonumber(pid_str)
+                if pid then
+                  local children = vim.fn.systemlist(string.format("pgrep -P %d -a 2>/dev/null", pid))
+                  for _, child in ipairs(children) do
+                    if child:match("opencode") then
+                      has_opencode = true
+                      break
+                    end
+                  end
+                end
+                if has_opencode then
+                  break
+                end
+              end
+              if not has_opencode then
+                vim.fn.system(string.format("tmux kill-session -t '%s' 2>/dev/null", session))
+              end
+            end
+          end
           require("sidekick.cli").toggle({name = "opencode", focus = true})
         end,
         desc = "Sidekick Toggle OpenCode"
