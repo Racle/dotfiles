@@ -268,8 +268,24 @@ local plugins = {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      {"nvim-telescope/telescope-media-files.nvim", build = "pip3 install --upgrade ueberzug"}
     }
+  },
+  -- image support (kitty graphics protocol, works with Ghostty)
+  {
+    "3rd/image.nvim",
+    build = false,
+    opts = {
+      backend = "kitty",
+      processor = "magick_cli",
+      integrations = {
+        markdown = {
+          enabled = true,
+          filetypes = {"markdown", "vimwiki"},
+        },
+      },
+      window_overlap_clear_enabled = true,
+      hijack_file_patterns = {"*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif"},
+    },
   }, -- advanced git search to telescope
   {
     "aaronhallaert/ts-advanced-git-search.nvim",

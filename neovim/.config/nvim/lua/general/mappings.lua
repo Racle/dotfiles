@@ -112,7 +112,39 @@ lmapCR("n", "fb", ":Telescope buffers", "Search buffers")
 lmapCR("n", "fq", ":Telescope quickfix", "Search quickfix")
 lmapCR("n", "fh", ":Telescope help_tags", "Search help")
 lmapCR("n", "fn", ":Telescope find_files hidden=true", "Search files")
-lmapCR("n", "fm", ":Telescope media_files", "Search media files")
+lmap(
+  "n",
+  "fm",
+  function()
+    local previewers = require("telescope.previewers")
+    local finders = require("telescope.finders")
+    local pickers = require("telescope.pickers")
+    local conf = require("telescope.config").values
+
+    pickers.new({}, {
+      prompt_title = "Media Files",
+      finder = finders.new_oneshot_job(
+        {"rg", "--files", "--glob", "*.{png,jpg,jpeg,webp,gif,avif}", "."},
+        {}
+      ),
+      previewer = previewers.new_termopen_previewer({
+        get_command = function(entry)
+          local cwd = vim.loop.cwd()
+          local filepath = string.format("%s/%s", cwd, entry.value)
+          return {
+            "bash", "-c",
+            string.format(
+              "chafa --format=symbols --animate=off --center=on --clear %s; read",
+              vim.fn.shellescape(filepath)
+            ),
+          }
+        end,
+      }),
+      sorter = conf.file_sorter({}),
+    }):find()
+  end,
+  "Search media files"
+)
 lmapCR("n", "fv", ":Vista finder", "Search functions")
 lmapCR("n", "f_", ":RooterToggle", "Toggle vim-rooter")
 
@@ -138,6 +170,14 @@ lmapCR("n", "aS", ":set spell!", "toggle spellchecking")
 lmapCR("n", "at", ":FloatermToggle", "terminal")
 lmapCR("n", "au", ":UndotreeToggle | UndotreeFocus", "Undotree")
 lmapCR("n", "av", ":VCoolor", "vcoolor picker")
+lmap("n", "ao", function()
+  local dir = vim.fn.expand("%:p:h")
+  vim.fn.jobstart({"xdg-open", dir}, {detach = true})
+end, "Open folder in explorer")
+lmap("n", "aO", function()
+  local file = vim.fn.expand("%:p")
+  vim.fn.jobstart({"xdg-open", file}, {detach = true})
+end, "Open file in default app")
 
 -- <leader>b buffers
 lmapCR("n", "b1", "b1", "buffer 1")
