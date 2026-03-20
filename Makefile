@@ -1,6 +1,6 @@
 stow:
 	rm -rf ~/.zshrc
-	stow default zsh lazygit albert tmux neovim ranger kitty
+	stow default zsh lazygit albert tmux neovim ranger kitty ghostty
 
 stow-server:
 	stow default zsh-server lazygit albert tmux neovim ranger

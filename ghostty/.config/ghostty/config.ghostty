@@ -1,0 +1,67 @@
+# Font
+font-family = Hack Nerd Font Mono
+font-size = 10
+
+# Force checkmark (U+2714) to use text font instead of color emoji
+font-codepoint-map = U+2714=DejaVu Sans Mono
+
+# Window
+background-opacity = 1
+window-padding-x = 1
+window-padding-y = 1
+window-decoration = server
+
+# Disable clipboard copy toast
+app-notifications = no-clipboard-copy
+
+# Disable default tab switching on ctrl+shift+arrow
+keybind = ctrl+shift+arrow_left=unbind
+keybind = ctrl+shift+arrow_right=unbind
+
+# Send C-F9 through C-F12 sequences for tmux session switching
+keybind = ctrl+shift+1=text:\x1b[20;5~
+keybind = ctrl+shift+2=text:\x1b[21;5~
+keybind = ctrl+shift+3=text:\x1b[23;5~
+keybind = ctrl+shift+4=text:\x1b[24;5~
+
+# Screen dump pager (use ctrl+shift+j then ctrl+o to open in nvim)
+keybind = ctrl+shift+j=write_screen_file:paste
+
+# Custom theme (based on tilix linux theme)
+foreground = #D3D3D3
+background = #262626
+
+selection-foreground = #202020
+selection-background = #D3D7CF
+
+# black / bright black
+palette = 0=#000000
+palette = 8=#545454
+
+# red / bright red
+palette = 1=#AA0000
+palette = 9=#FF5454
+
+# green / bright green
+palette = 2=#00AA00
+palette = 10=#54FF45
+
+# yellow / bright yellow
+palette = 3=#AA5400
+palette = 11=#FFFF54
+
+# blue / bright blue
+palette = 4=#487CF4
+palette = 12=#A9BBEB
+
+# magenta / bright magenta
+palette = 5=#AA00AA
+palette = 13=#FF54FF
+
+# cyan / bright cyan
+palette = 6=#00AAAA
+palette = 14=#54FFFF
+
+# white / bright white
+palette = 7=#AAAAAA
+palette = 15=#FFFFFF

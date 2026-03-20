@@ -160,8 +160,8 @@ function! MacroModeToggle()
   endif
 endfunction
 
-" kitty+zsh cleaning buffferhistory
-function! KittyBufferHistoryClean()
+" terminal+zsh cleaning buffer history
+function! TerminalBufferClean()
   set modifiable
   set noconfirm
   " clean ascii/ansi code  (starts with ^[)
@@ -252,7 +252,7 @@ inoremap <expr> <c-x><c-s> SpellCheck("\<c-x>\<c-s>")
 nnoremap z= :<c-u>call SpellCheck()<cr>z=
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
-command! KittyBufferHistoryClean call KittyBufferHistoryClean()
+command! TerminalBufferClean call TerminalBufferClean()
 command! SetTmpBuffer call SetTmpBuffer()
 command! MacroModeToggle call MacroModeToggle()
 command! PrettierJSON call PrettierJSON()

@@ -6,6 +6,7 @@ export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/isl@0.18/include"
 export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
 export PATH="$HOME/scripts/:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$HOME/.dotnet:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -180,5 +181,26 @@ fi
 
 # for extra stuff
 [[ ! -f ~/.zshrc-extra ]] || source ~/.zshrc-extra
+
+# Screen dump pager: ctrl+shift+j (Ghostty pastes temp file path) then ctrl+o opens it in nvim
+_clean_and_open() {
+  local filepath="${BUFFER}"
+  filepath="${filepath## }"  # trim leading spaces
+  filepath="${filepath%% }"  # trim trailing spaces
+  if [[ -z "$filepath" || ! -f "$filepath" ]]; then
+    zle -M "No valid file path in buffer"
+    return 1
+  fi
+  BUFFER=""
+  zle accept-line
+  # Clean: strip trailing whitespace, leading/trailing blank lines
+  sed -i -e 's/\s*$//' -e '/./,$!d' -e ':a' -e '/^\n*$/{$d;N;ba' -e '}' "$filepath"
+  nvim -c 'setlocal nomodifiable ft=man nonumber nolist showtabline=0 foldcolumn=0' \
+       -c 'autocmd VimEnter * normal G' \
+       +TerminalBufferClean "$filepath"
+  rm -f "$filepath"
+}
+zle -N _clean_and_open
+bindkey '^O' _clean_and_open
 
 return ok
