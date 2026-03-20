@@ -30,6 +30,11 @@ function M.FormatStagedFiles()
   vim.cmd("cfdo update")
 end
 
+function M.Messages()
+  vim.cmd("lua Snacks.notifier.show_history()")
+end
+
 vim.api.nvim_create_user_command("FormatStagedFiles", M.FormatStagedFiles, {})
+vim.api.nvim_create_user_command("Messages", M.Messages, {})
 
 return M
