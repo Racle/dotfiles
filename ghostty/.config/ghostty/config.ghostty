@@ -18,6 +18,10 @@ app-notifications = no-clipboard-copy
 keybind = ctrl+shift+arrow_left=unbind
 keybind = ctrl+shift+arrow_right=unbind
 
+# Disable default split views
+keybind = ctrl+shift+e=unbind
+keybind = ctrl+shift+o=unbind
+
 # Send C-F9 through C-F12 sequences for tmux session switching
 keybind = ctrl+shift+1=text:\x1b[20;5~
 keybind = ctrl+shift+2=text:\x1b[21;5~
