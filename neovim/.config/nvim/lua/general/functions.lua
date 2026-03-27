@@ -19,15 +19,26 @@ function M.FormatStagedFiles()
     return
   end
 
-  local qf_entries = {}
+  local formatted = 0
   for _, file in ipairs(staged) do
-    table.insert(qf_entries, {filename = git_root .. "/" .. file})
+    local filepath = git_root .. "/" .. file
+    local bufnr = vim.fn.bufadd(filepath)
+    vim.fn.bufload(bufnr)
+    local ok, err = require("conform").format({bufnr = bufnr, async = false, timeout_ms = 5000})
+    if ok then
+      vim.api.nvim_buf_call(
+        bufnr,
+        function()
+          vim.cmd("silent update")
+        end
+      )
+      formatted = formatted + 1
+    else
+      vim.notify("Failed to format " .. file .. ": " .. tostring(err), vim.log.levels.WARN)
+    end
   end
 
-  vim.fn.setqflist(qf_entries)
-  vim.cmd("copen")
-  vim.cmd("cfdo lua require('conform').format({ bufnr = vim.api.nvim_get_current_buf() })")
-  vim.cmd("cfdo update")
+  vim.notify("Formatted " .. formatted .. "/" .. #staged .. " staged files", vim.log.levels.INFO)
 end
 
 function M.Messages()
