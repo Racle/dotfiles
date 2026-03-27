@@ -267,7 +267,7 @@ local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      "nvim-lua/plenary.nvim"
     }
   },
   -- image support (kitty graphics protocol, works with Ghostty)
@@ -280,12 +280,12 @@ local plugins = {
       integrations = {
         markdown = {
           enabled = true,
-          filetypes = {"markdown", "vimwiki"},
-        },
+          filetypes = {"markdown", "vimwiki"}
+        }
       },
       window_overlap_clear_enabled = true,
-      hijack_file_patterns = {"*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif"},
-    },
+      hijack_file_patterns = {"*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif"}
+    }
   }, -- advanced git search to telescope
   {
     "aaronhallaert/ts-advanced-git-search.nvim",
@@ -390,6 +390,9 @@ local plugins = {
       -- add any options here
       cli = {
         win = {
+          split = {
+            width = 160
+          },
           keys = {
             prompt = {"<a-p>", "prompt", mode = "t", desc = "insert prompt or context"}
           }
@@ -442,8 +445,7 @@ local plugins = {
           for _, session in ipairs(sessions) do
             if session:match("^opencode") then
               local has_opencode = false
-              local panes =
-                vim.fn.systemlist(string.format("tmux list-panes -s -t '%s' -F '#{pane_pid}' 2>/dev/null", session))
+              local panes = vim.fn.systemlist(string.format("tmux list-panes -s -t '%s' -F '#{pane_pid}' 2>/dev/null", session))
               for _, pid_str in ipairs(panes) do
                 local pid = tonumber(pid_str)
                 if pid then
