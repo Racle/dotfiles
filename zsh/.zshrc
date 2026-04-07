@@ -29,12 +29,15 @@ export VISUAL="nvim"
 
 #export TERM="xterm-256color"
 
+
+npm config set prefix=\${HOME}/.npm-packages
+
 # Set npm config 'before' to 3 days ago on every new terminal
 # This helps to avoid security issues with npm packages
-export NPM_BEFORE_DATE=$(date -d "3 days ago" +%Y-%m-%d)
-npm config set before=$NPM_BEFORE_DATE
-npm config set prefix=\${HOME}/.npm-packages
-alias NPM="npm set before && npm"
+# export NPM_BEFORE_DATE=$(date -d "3 days ago" +%Y-%m-%d)
+# npm config set before=$NPM_BEFORE_DATE
+alias NPM="SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS=0 npm"
+
 
 
 # Automatically update zsh every 60 days
@@ -203,4 +206,5 @@ _clean_and_open() {
 zle -N _clean_and_open
 bindkey '^O' _clean_and_open
 
-return ok
+# Aikido  safe-chain https://github.com/AikidoSec/safe-chain
+source ~/.safe-chain/scripts/init-posix.sh 2> /dev/null || echo "Aikido Safe-chain not installed"
