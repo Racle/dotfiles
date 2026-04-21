@@ -3,6 +3,7 @@
 require("neo-tree").setup(
   {
     toggle = true,
+    use_popups_for_input = false,
     sources = {
       "filesystem", -- Neotree filesystem source
       "buffers",
@@ -60,7 +61,7 @@ require("neo-tree").setup(
       }
     },
     filesystem = {
-      follow_current_file = { enabled = true },
+      follow_current_file = {enabled = true},
       filtered_items = {
         visible = false,
         hide_dotfiles = true,
@@ -73,7 +74,7 @@ require("neo-tree").setup(
       }
     },
     buffers = {
-      follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every
+      follow_current_file = {enabled = true}, -- This will find and focus the file in the active buffer every
       group_empty_dirs = true, -- when true, empty folders will be grouped together
       show_unloaded = true
     }

@@ -593,7 +593,14 @@ local plugins = {
       dashboard = {enabled = false},
       explorer = {enabled = false},
       indent = {enabled = false},
-      input = {enabled = true},
+      input = {
+        enabled = true,
+        win = {
+          relative = "cursor",
+          row = -3,
+          col = 0
+        }
+      },
       select = {enabled = true},
       git = {enabled = true},
       picker = {enabled = true},
