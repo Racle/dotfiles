@@ -497,6 +497,19 @@ local plugins = {
       {
         "<leader>cf",
         function()
+          -- Find a proper file window, skipping neo-tree and other special buffers
+          local target_win
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            if vim.bo[buf].buflisted and vim.bo[buf].buftype == "" then
+              target_win = win
+              break
+            end
+          end
+          if target_win then
+            vim.api.nvim_set_current_win(target_win)
+            vim.w[target_win].sidekick_visit = vim.uv.hrtime()
+          end
           require("sidekick.cli").send({msg = "{file}"})
         end,
         desc = "Send File"
