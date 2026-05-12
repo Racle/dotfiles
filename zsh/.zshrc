@@ -29,7 +29,6 @@ export VISUAL="nvim"
 
 #export TERM="xterm-256color"
 
-
 npm config set prefix=\${HOME}/.npm-packages
 
 # Set npm config 'before' to 3 days ago on every new terminal
@@ -37,8 +36,6 @@ npm config set prefix=\${HOME}/.npm-packages
 # export NPM_BEFORE_DATE=$(date -d "3 days ago" +%Y-%m-%d)
 # npm config set before=$NPM_BEFORE_DATE
 alias NPM="SAFE_CHAIN_MINIMUM_PACKAGE_AGE_HOURS=0 npm"
-
-
 
 # Automatically update zsh every 60 days
 DISABLE_UPDATE_PROMPT=true
@@ -80,9 +77,12 @@ plugins=(
   zsh-better-npm-completion
   autoupdate
   terraform
+  ssh
 )
 
 source $ZSH/oh-my-zsh.sh
+
+
 # https://github.com/lc/gau/issues/8#issuecomment-705351203
 unalias gau
 
@@ -101,7 +101,6 @@ POWERLEVEL9K_STATUS_CROSS=true
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte-*.sh
 fi
-
 
 # vi mode
   # bindkey -v
@@ -141,8 +140,37 @@ alias calc="="
 alias gp="git pull"
 alias gP="git push"
 alias lg="lazygit"
-# hax fix for https://github.com/kovidgoyal/kitty/issues/1139
-alias ssh="TERM=xterm-256color ssh"
+# SSH/SFTP wrappers: learn hosts for tab completion
+ssh() {
+  local _host="" _skip_next=false
+  for arg in "$@"; do
+    if $_skip_next; then _skip_next=false; continue; fi
+    case "$arg" in
+      -[46AaCfGgKkMNnqsTtVvXxYy]) ;;
+      -*) _skip_next=true ;;
+      *)  _host="$arg"; break ;;
+    esac
+  done
+  _host="${_host#*@}"
+  [ -n "$_host" ] && "$HOME/scripts/_ssh-learn-host" "$_host"
+  TERM=xterm-256color command ssh "$@"
+}
+
+sftp() {
+  local _host="" _skip_next=false
+  for arg in "$@"; do
+    if $_skip_next; then _skip_next=false; continue; fi
+    case "$arg" in
+      -[46AaCfGgKkMNnqsTtVvXxYy]) ;;
+      -*) _skip_next=true ;;
+      *)  _host="$arg"; break ;;
+    esac
+  done
+  _host="${_host#*@}"
+  [ -n "$_host" ] && "$HOME/scripts/_ssh-learn-host" "$_host"
+  TERM=xterm-256color command sftp "$@"
+}
+
 alias zssh="TERM=xterm-256color zssh"
 # alias kubectl="sudo kubectl"
 alias talosctl="TERM=xterm-256color talosctl"
@@ -159,7 +187,6 @@ ai() {
 json_encode() {
   echo -n "$1" | jq -R '.' | tr -d '\n' | xclip -r -selection clipboard && echo "$(xclip -selection clipboard -o)"
 }
-
 
 # stop screen freezing
 stty stop undef
