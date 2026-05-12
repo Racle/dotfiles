@@ -140,37 +140,6 @@ alias calc="="
 alias gp="git pull"
 alias gP="git push"
 alias lg="lazygit"
-# SSH/SFTP wrappers: learn hosts for tab completion
-ssh() {
-  local _host="" _skip_next=false
-  for arg in "$@"; do
-    if $_skip_next; then _skip_next=false; continue; fi
-    case "$arg" in
-      -[46AaCfGgKkMNnqsTtVvXxYy]) ;;
-      -*) _skip_next=true ;;
-      *)  _host="$arg"; break ;;
-    esac
-  done
-  _host="${_host#*@}"
-  [ -n "$_host" ] && "$HOME/scripts/_ssh-learn-host" "$_host"
-  TERM=xterm-256color command ssh "$@"
-}
-
-sftp() {
-  local _host="" _skip_next=false
-  for arg in "$@"; do
-    if $_skip_next; then _skip_next=false; continue; fi
-    case "$arg" in
-      -[46AaCfGgKkMNnqsTtVvXxYy]) ;;
-      -*) _skip_next=true ;;
-      *)  _host="$arg"; break ;;
-    esac
-  done
-  _host="${_host#*@}"
-  [ -n "$_host" ] && "$HOME/scripts/_ssh-learn-host" "$_host"
-  TERM=xterm-256color command sftp "$@"
-}
-
 alias zssh="TERM=xterm-256color zssh"
 # alias kubectl="sudo kubectl"
 alias talosctl="TERM=xterm-256color talosctl"
