@@ -510,7 +510,7 @@ local plugins = {
             vim.api.nvim_set_current_win(target_win)
             vim.w[target_win].sidekick_visit = vim.uv.hrtime()
           end
-          require("sidekick.cli").send({msg = "{file}"})
+          require("sidekick.cli").send({msg = "{file}", name = "opencode"})
         end,
         desc = "Send File"
       },
