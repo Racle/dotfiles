@@ -1,35 +1,44 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+# --- PATH ---
+path=(
+  $HOME/.local/bin
+  $HOME/scripts
+  $HOME/.cargo/bin
+  $HOME/.dotnet/tools
+  $HOME/.dotnet
+  $HOME/.go/bin
+  /usr/local/go/bin
+  $HOME/go/bin
+  $HOME/.npm-packages/bin
+  /home/linuxbrew/.linuxbrew/bin
+  $path
+)
+
+# --- Environment ---
 export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib"
 export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/isl@0.18/include"
 export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib/pkgconfig"
-export PATH="$HOME/scripts/:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
 export DOTNET_ROOT="$HOME/.dotnet"
-export PATH="$HOME/.dotnet:$PATH"
-export PATH="$HOME/.dotnet/tools:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$HOME/.go/bin:$PATH"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH:$GOBIN
 export ANSIBLE_INVENTORY=~/.ansible-hosts
+
 # install npm packages globally without sudo
 NPM_PACKAGES="${HOME}/.npm-packages"
-export PATH="$PATH:$NPM_PACKAGES/bin"
-# export JAVA_HOME="/usr/lib/jvm/default-java"
-# https://stackoverflow.com/a/29622512
-export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+
+# Lazy-load JAVA_HOME on first use
+java_home_init() {
+  unset -f java javac jar
+  export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+  export PATH="$JAVA_HOME/bin:$PATH"
+}
+java()  { java_home_init && command java "$@"; }
+javac() { java_home_init && command javac "$@"; }
+jar()   { java_home_init && command jar "$@"; }
+
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export MANPAGER='nvim +Man!'
 export EDITOR="nvim"
 export VISUAL="nvim"
-
-#export TERM="xterm-256color"
-
-npm config set prefix=\${HOME}/.npm-packages
 
 # Set npm config 'before' to 3 days ago on every new terminal
 # This helps to avoid security issues with npm packages
@@ -51,17 +60,7 @@ DISABLE_MAGIC_FUNCTIONS=true
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# POWERLEVEL9K_MODE='awesome-patched'
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -84,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # https://github.com/lc/gau/issues/8#issuecomment-705351203
-unalias gau
+(( $+aliases[gau] )) && unalias gau
 
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir_writable dir rbenv vcs)
@@ -93,25 +92,11 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY=None
 POWERLEVEL9K_STATUS_CROSS=true
 
-#Disable bracketed paste (ctrl+v => ctrl+shift+v = \e[200~
-# unset zle_bracketed_paste
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+if [ "$TILIX_ID" ] || [ "$VTE_VERSION" ]; then
         source /etc/profile.d/vte-*.sh
 fi
-
-# vi mode
-  # bindkey -v
-  # source "$HOME/.fzf.zsh"
-  # export KEYTIMEOUT=1
-  # # add ctrl+p/n support
-  # bindkey "^P" up-line-or-history
-  # bindkey "^N" down-line-or-history
-  # # fix home/end keys
-  # bindkey "^[[H" beginning-of-line
-  # bindkey "^[[F" end-of-line
 
 alias o=xdg-open
 alias set_xterm_color="export TERM=\"xterm-256color\""
@@ -146,15 +131,26 @@ alias talosctl="TERM=xterm-256color talosctl"
 alias aie="gh copilot explain"
 alias k="kubectl"
 alias cdir='cd "${_%/*}"'
-alias -g C="| xclip -selection clipboard"
+# Clipboard: auto-detect Wayland vs X11
+if (( $+commands[wl-copy] )) && [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+  alias -g C="| wl-copy"
+  _clip_paste() { wl-paste }
+else
+  alias -g C="| xclip -selection clipboard"
+  _clip_paste() { xclip -selection clipboard -o }
+fi
 # alias ai="gh copilot suggest -t shell"
 ai() {
   # run copilot and copy the result to clipboard and print it to terminal
-  gh copilot suggest -t shell "$@" && print -z "$(xclip -selection clipboard -o)"
+  gh copilot suggest -t shell "$@" && print -z "$(_clip_paste)"
 }
 
 json_encode() {
-  echo -n "$1" | jq -R '.' | tr -d '\n' | xclip -r -selection clipboard && echo "$(xclip -selection clipboard -o)"
+  if (( $+commands[wl-copy] )) && [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    echo -n "$1" | jq -R '.' | tr -d '\n' | wl-copy && echo "$(_clip_paste)"
+  else
+    echo -n "$1" | jq -R '.' | tr -d '\n' | xclip -r -selection clipboard && echo "$(_clip_paste)"
+  fi
 }
 
 # stop screen freezing
