@@ -398,7 +398,7 @@ local plugins = {
           }
         },
         mux = {
-          backend = "tmux",
+          backend = "zellij",
           enabled = true
         },
         prompts = {
