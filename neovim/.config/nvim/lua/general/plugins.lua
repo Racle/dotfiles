@@ -376,9 +376,15 @@ local plugins = {
   {
     "folke/sidekick.nvim",
     build = "npm i -g @github/copilot opencode-ai@latest",
+    init = function()
+      require("general.sidekick_guard").setup()
+    end,
     opts = {
       -- add any options here
       cli = {
+        tools = {
+          opencode = {native_scroll = true}
+        },
         win = {
           split = {
             width = 160
