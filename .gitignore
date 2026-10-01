@@ -20,3 +20,4 @@ lazygit/.config/lazygit/*
 !lazygit/.config/lazygit/ai-commit.sh
 /albert
 /default/.npmrc
+.opencode/

@@ -21,8 +21,6 @@ vim.cmd("source" .. nvimrc .. "/general/functions.vim")
 -- lsp
 require("plug-config/lspconfig")
 
-require("plug-config/luasnip")
-require("plug-config/nvim-cmp")
 require("plug-config/blankline")
 require("plug-config/bufferline")
 require("plug-config/conform")

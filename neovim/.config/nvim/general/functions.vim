@@ -116,6 +116,8 @@ endfunction
 " https://github.com/wookayin/dotfiles/blob/master/vim/vimrc
 function! s:floaterm_hide(bufnr)
   "return floaterm#window#hide_floaterm(a:bufnr)   " API removed (d7196ee0)
+  " skip if floaterm already closed/wiped the buffer (e.g. autoclose on exit)
+  if !bufexists(a:bufnr) || index(floaterm#buflist#gather(), a:bufnr) == -1 | return | endif
   execute a:bufnr . 'FloatermHide'
 endfunction
 function! s:autohide_floaterm() abort

@@ -3,27 +3,28 @@ local mason_lspconfig = require "mason-lspconfig"
 -- install snyk-ls
 -- bash  -c "curl https://raw.githubusercontent.com/snyk/snyk-ls/main/getLanguageServer.sh | sudo bash -"
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- helper functions
 
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
-    title = ""
-  }
-  vim.lsp.buf.execute_command(params)
+local function organize_imports(client, bufnr)
+  client:exec_cmd(
+    {
+      title = "Organize Imports",
+      command = "_typescript.organizeImports",
+      arguments = {vim.api.nvim_buf_get_name(bufnr)}
+    },
+    {bufnr = bufnr}
+  )
 end
 
 local function import_missing()
-  local params = {
-    command = "TypescriptAddMissingImports",
-    arguments = {vim.api.nvim_buf_get_name(0)},
-    title = ""
-  }
-  vim.lsp.buf.execute_command(params)
+  vim.lsp.buf.code_action(
+    {
+      context = {only = {"source.addMissingImports.ts"}, diagnostics = {}},
+      apply = true
+    }
+  )
 end
 
 -- enable sonarlint support
@@ -198,7 +199,6 @@ vim.api.nvim_create_autocmd(
 
       -- custom js
       if vim.bo[bufnr].filetype == "javascript" then
-        nmap("<leader>lo", ":OrganizeImport<CR>", "Organize imports")
         nmap("<leader>lI", ":ImportMissing<CR>", "Import missing")
       end
 
@@ -211,6 +211,21 @@ vim.api.nvim_create_autocmd(
         end,
         {desc = "Format current buffer with LSP"}
       )
+
+      -- ts_ls: buffer-local commands (vim.lsp.config ignores legacy `commands`)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if client and client.name == "ts_ls" then
+        vim.api.nvim_buf_create_user_command(
+          bufnr,
+          "OrganizeImports",
+          function()
+            organize_imports(client, bufnr)
+          end,
+          {desc = "Organize Imports"}
+        )
+        vim.api.nvim_buf_create_user_command(bufnr, "ImportMissing", import_missing, {desc = "Import missing"})
+        nmap("<leader>lo", ":OrganizeImports<CR>", "Organize imports")
+      end
     end
   }
 )
@@ -227,18 +242,7 @@ local servers = {
   -- clangd = {},
   gopls = {cmd = {"gopls", "--remote=auto"}},
   -- rust_analyzer = {},
-  ts_ls = {
-    commands = {
-      OrganizeImports = {
-        organize_imports,
-        description = "Organize Imports"
-      },
-      ImportMissing = {
-        import_missing,
-        description = "Import missing"
-      }
-    }
-  },
+  ts_ls = {},
   intelephense = {}, -- licence in ~/intelephense/licence.txt
   jsonls = {},
   cssls = {},
@@ -267,8 +271,7 @@ local servers = {
         }
       }
     }
-  },
-  copilot = {}
+  }
   -- TODO add back when sonarlint is added to mason-lspconfig
   -- ["sonarlint-language-server"] = {}
 }

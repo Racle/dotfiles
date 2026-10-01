@@ -35,7 +35,8 @@ local plugins = {
       "j-hui/fidget.nvim",
       -- sonarlint (filetypes are set in lspconfig.lua)
       "https://gitlab.com/schrieveslaach/sonarlint.nvim.git",
-      "towolf/vim-helm"
+      "towolf/vim-helm",
+      "saghen/blink.cmp"
     },
     build = "pipx install ansible-lint"
   },
@@ -57,24 +58,26 @@ local plugins = {
   },
   -- Autocompletion
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    version = "1.*",
+    event = {"InsertEnter", "CmdlineEnter"},
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-calc",
       {
         "L3MON4D3/LuaSnip",
-        dependencies = {"friendly-snippets", "vim-snippets"}
+        version = "v2.*",
+        dependencies = {"rafamadriz/friendly-snippets", "honza/vim-snippets"},
+        config = function()
+          require("plug-config/luasnip")
+        end
       },
-      "rafamadriz/friendly-snippets",
-      "honza/vim-snippets"
-    }
+      "zbirenbaum/copilot.lua",
+      "fang2hou/blink-copilot",
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = function()
+      require("plug-config/blink")
+    end
   },
-  -- icons
-  "onsails/lspkind.nvim",
   -- Show keybindings
   -- use "liuchengxu/vim-which-key"
   "folke/which-key.nvim",
@@ -304,38 +307,25 @@ local plugins = {
   -- use "github/copilot.vim"
   {
     "zbirenbaum/copilot.lua",
-    event = "VimEnter",
+    event = "InsertEnter",
     config = function()
-      vim.defer_fn(
-        function()
-          require("copilot").setup(
-            {
-              suggestion = {
-                auto_trigger = true
-              },
-              filetypes = {
-                yaml = true,
-                markdown = true,
-                help = false,
-                gitcommit = false,
-                gitrebase = false,
-                hgcommit = false,
-                svn = false,
-                cvs = false,
-                ["."] = false
-              }
-            }
-          )
-        end,
-        100
+      require("copilot").setup(
+        {
+          suggestion = {enabled = false},
+          panel = {enabled = false},
+          filetypes = {
+            yaml = true,
+            markdown = true,
+            help = false,
+            gitcommit = false,
+            gitrebase = false,
+            hgcommit = false,
+            svn = false,
+            cvs = false,
+            ["."] = false
+          }
+        }
       )
-    end
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = {"copilot.lua"},
-    config = function()
-      require("copilot_cmp").setup()
     end
   },
   -- File explorer
