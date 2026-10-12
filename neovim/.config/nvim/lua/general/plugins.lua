@@ -366,7 +366,14 @@ local plugins = {
       vim.api.nvim_set_hl(0, "LeapLabelPrimary", {fg = "#fb4934", bold = true, nocombine = true})
       vim.api.nvim_set_hl(0, "LeapLabelSecondary", {fg = "#b8bb26", bold = true, nocombine = true})
 
-      require("leap").opts.highlight_unlabeled_phase_one_targets = true
+      -- Replacement for the removed `highlight_unlabeled_phase_one_targets` option
+      require("leap").opts.on_beacons = function(targets)
+        for _, t in ipairs(targets) do
+          if not t.label and not t.beacon and t.chars and t.is_previewable ~= false then
+            t.beacon = {0, {virt_text = {{table.concat(t.chars), "LeapMatch"}}}}
+          end
+        end
+      end
     end
   },
   -- smooth scrolling
