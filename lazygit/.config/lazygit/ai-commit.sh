@@ -19,7 +19,7 @@ You are an expert at writing Git commits. Your job is to write commit messages t
 The user has selected: $SELECTED_TYPE
 
 Your task is to:
-1. Analyze the code changes provided via the attached file
+1. Analyze the code changes provided via stdin
 2. Determine the most appropriate commit type (if user selected 'ai-defined')
 3. Determine an appropriate scope (component/area affected)
 4. Decide if this is a breaking change
@@ -81,5 +81,5 @@ $log_context
 Changes summary:
 $stat_context
 
-The full diff is attached as a file.
-" -f - -m github-copilot/claude-haiku-4.5 2>&1 | sed 's/^[[:space:]]*[-*]*[[:space:]]*//' | grep -E '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.*\))?!?: .+ \| .+' || true
+The full diff is provided via stdin.
+" -m github-copilot/claude-haiku-5.5 2>&1 | sed 's/^[[:space:]]*[-*]*[[:space:]]*//' | grep -E '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.*\))?!?: .+ \| .+' || true
