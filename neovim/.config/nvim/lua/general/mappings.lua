@@ -300,7 +300,7 @@ lmapCR("n", "T,", ":Tabularize /,\zs", ",")
 lmapCR("n", "T ", ":Tabularize / \zs", ",")
 
 -- <leader>t terminal
-lmapCR("n", "tg", ":FloatermNew lazygit", "git")
+lmapCR("n", "tg", ":FloatermNew --autoinsert=always lazygit", "git")
 lmapCR("n", "ts", ":call FloatermOpenSo()", "StackOverflow")
 lmapCR("n", "tr", ":FloatermNew ranger", "ranger")
 lmapCR("n", "tt", ":FloatermNew", "terminal")
