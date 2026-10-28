@@ -386,8 +386,11 @@ local plugins = {
     init = function()
       require("general.sidekick_guard").setup()
     end,
+    -- load eagerly so Next Edit Suggestions run without first pressing a sidekick key
+    -- (NES uses the copilot LSP client started by copilot.lua)
+    event = "VeryLazy",
     opts = {
-      -- add any options here
+      nes = {enabled = true},
       cli = {
         tools = {
           opencode = {native_scroll = true}
