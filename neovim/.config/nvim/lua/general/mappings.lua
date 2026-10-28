@@ -35,6 +35,17 @@ vim.api.nvim_set_keymap("n", [[<A-k>]], "<cmd>lua require('utils').resize(false,
 vim.api.nvim_set_keymap("n", [[<A-j>]], "<cmd>lua require('utils').resize(false, 2)<CR>", {silent = true, noremap = true})
 
 -- Map § to Esc
+-- 1<C-g> shows full path and also yanks it to the clipboard and unnamed register
+vim.keymap.set("n", "<C-g>", function()
+  local count = vim.v.count
+  if count == 1 then
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    vim.fn.setreg('"', path)
+  end
+  vim.cmd("normal! " .. (count > 0 and count or "") .. "\7")
+end, {noremap = true, desc = "File info (1<C-g> yanks full path)"})
+
 vim.keymap.set("i", "§", "<Esc>", {noremap = true})
 vim.keymap.set("n", "§", "<Esc>", {noremap = true})
 vim.keymap.set("x", "§", "<Esc>", {noremap = true})
