@@ -198,5 +198,9 @@ _clean_and_open() {
 zle -N _clean_and_open
 bindkey '^O' _clean_and_open
 
+# Alt+Left/Right jump words (Ctrl+arrows are used by tmux for pane navigation)
+bindkey '^[[1;3D' backward-word
+bindkey '^[[1;3C' forward-word
+
 # Aikido  safe-chain https://github.com/AikidoSec/safe-chain
 source ~/.safe-chain/scripts/init-posix.sh 2> /dev/null || echo "Aikido Safe-chain not installed"
