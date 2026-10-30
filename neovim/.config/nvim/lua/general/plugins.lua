@@ -110,7 +110,7 @@ local plugins = {
       }
     end
   },
-  "tommcdo/vim-fubitive",
+  { "Racle/vim-fubitive", branch = "support-ssh-bitbucket-org" },
   "tpope/vim-rhubarb",
   "junegunn/gv.vim",
   {
@@ -118,7 +118,6 @@ local plugins = {
     config = function()
       vim.o.termguicolors = true
       require("gitsigns").setup({max_file_length = 100000})
-      require("scrollbar.handlers.gitsigns").setup()
     end
   },
   -- Formatting
@@ -211,16 +210,10 @@ local plugins = {
   -- Scrollbar
   {
     "petertriho/nvim-scrollbar",
-    config = function()
-      require("scrollbar").setup()
-    end,
-    dependencies = {
-      "kevinhwang91/nvim-hlslens",
-      config = function()
-        -- require('hlslens').setup() is not required
-        require("scrollbar.handlers.search").setup({})
-      end
-    }
+    -- TODO: remove the branch line after 2026-11-16, when v2 lands on main
+    branch = "refactor/v2",
+    -- search marks are built in to v2 (no nvim-hlslens needed)
+    opts = {providers = {gitsigns = true}}
   },
   -- treesitter for highlighting
   {
