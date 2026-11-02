@@ -81,7 +81,11 @@ require("blink.cmp").setup(
     cmdline = {
       enabled = true,
       keymap = {preset = "cmdline"},
-      completion = {menu = {auto_show = true}}
+      completion = {
+        menu = {auto_show = true},
+        -- Nothing preselected, so the first <Tab> selects the first item
+        list = {selection = {preselect = false, auto_insert = true}}
+      }
     },
     signature = {enabled = true}
   }
