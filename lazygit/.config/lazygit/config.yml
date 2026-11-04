@@ -68,6 +68,6 @@ customCommands:
         valueFormat: '{{ .title }}|||{{ .desc }}'
         labelFormat: '{{ .title | green }} ── {{ .desc | yellow }}'
         command: 'bash -c "$HOME/.config/lazygit/ai-commit.sh ''{{.Form.Type}}''"'
-    command: 'bash -c ''MSG={{.Form.CommitMsg | quote}}; git commit --edit -m "${MSG%%|||*}" -m "${MSG#*|||}"'''
+    command: 'bash -c ''MSG="$1"; git commit --edit -m "${MSG%%|||*}" -m "${MSG#*|||}"'' _ {{.Form.CommitMsg | quote}}'
     output: terminal
     loadingText: 'Generating commit messages...'

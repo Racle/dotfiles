@@ -1,0 +1,4 @@
+
+# Always open new windows in home instead of the last focused terminal's cwd
+window-inherit-working-directory = false
+working-directory = home
