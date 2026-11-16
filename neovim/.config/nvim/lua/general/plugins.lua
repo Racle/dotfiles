@@ -442,6 +442,16 @@ local plugins = {
       {
         "<leader>cc",
         function()
+          -- no opencode attached and none running in this cwd: start one without the picker
+          local State = require("sidekick.cli.state")
+          if #State.get({name = "opencode", attached = true}) == 0 and #State.get({name = "opencode", cwd = true}) == 0 then
+            for _, state in ipairs(State.get({name = "opencode", installed = true})) do
+              if not state.session then
+                State.attach(state, {show = true, focus = true})
+                return
+              end
+            end
+          end
           require("sidekick.cli").toggle({name = "opencode", focus = true})
         end,
         desc = "Sidekick Toggle OpenCode"
