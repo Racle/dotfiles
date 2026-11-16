@@ -97,8 +97,6 @@ local plugins = {
   -- fzf
   {"junegunn/fzf", build = ":call fzf#install()"},
   "junegunn/fzf.vim",
-  -- set root folder automatically
-  "airblade/vim-rooter",
   -- Git plugin
   "tpope/vim-fugitive",
   {

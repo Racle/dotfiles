@@ -55,7 +55,7 @@ vim.cmd("source" .. nvimrc .. "/plug-config/vimwiki.vim")
 vim.cmd("source" .. nvimrc .. "/plug-config/suda.vim")
 vim.cmd("source" .. nvimrc .. "/plug-config/vista.vim")
 vim.cmd("source" .. nvimrc .. "/plug-config/vcoolor.vim")
-vim.cmd("source" .. nvimrc .. "/plug-config/rooter.vim")
+require("plug-config/rooter")
 -- vim.cmd("source" .. nvimrc .. "/plug-config/copilot.vim")
 
 if vim.fn.filereadable(nvimrc .. "/dadbod.vim") == 1 then

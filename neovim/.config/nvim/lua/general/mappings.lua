@@ -157,7 +157,7 @@ lmap(
   "Search media files"
 )
 lmapCR("n", "fv", ":Vista finder", "Search functions")
-lmapCR("n", "f_", ":RooterToggle", "Toggle vim-rooter")
+lmapCR("n", "f_", ":RooterToggle", "Toggle auto root")
 
 -- <leader>fg find git
 lmapCR("n", "fgc", ":Telescope git_commits", "Search commits")
