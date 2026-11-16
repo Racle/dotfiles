@@ -391,7 +391,13 @@ local plugins = {
             width = 160
           },
           keys = {
-            prompt = {"<a-p>", "prompt", mode = "t", desc = "insert prompt or context"}
+            prompt = {"<a-p>", "prompt", mode = "t", desc = "insert prompt or context"},
+            -- navigate nvim windows / tmux panes; sidekick's default sends the key to the
+            -- CLI at the edge, and opencode treats <c-j> (newline) as submit
+            nav_left = {"<c-h>", function() require("nvim-tmux-navigation").NvimTmuxNavigateLeft() end, mode = "t", expr = false, desc = "navigate window/tmux pane"},
+            nav_down = {"<c-j>", function() require("nvim-tmux-navigation").NvimTmuxNavigateDown() end, mode = "t", expr = false, desc = "navigate window/tmux pane"},
+            nav_up = {"<c-k>", function() require("nvim-tmux-navigation").NvimTmuxNavigateUp() end, mode = "t", expr = false, desc = "navigate window/tmux pane"},
+            nav_right = {"<c-l>", function() require("nvim-tmux-navigation").NvimTmuxNavigateRight() end, mode = "t", expr = false, desc = "navigate window/tmux pane"}
           }
         },
         mux = {
