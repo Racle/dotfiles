@@ -1,7 +1,8 @@
 --- Guards for sidekick.nvim agent windows:
 --- 1. keep non-agent buffers (e.g. `gd` jumps) out of the agent window
 --- Note: the floating sidekick layout is skipped (only split windows are guarded).
---- 2. make mouse selection/copy inside the agent terminal work (OSC52 forward)
+--- 2. make mouse selection/copy inside the agent terminal work (full multi-line OSC52 copy)
+--- 3. keep the agent window in terminal mode when entered
 local M = {}
 
 local FT = "sidekick_terminal"
@@ -39,19 +40,24 @@ end
 
 local MAX_PAYLOAD = 1024 * 1024 -- base64 chars
 
-local function forward_osc52(seq)
+--- Write OSC 52 clipboard text from the agent to the system clipboard.
+--- Nvim 0.12-dev handles terminal OSC 52 itself but writes only the first line,
+--- so overwrite "+" with the full text after that write (scheduled to run last).
+local function write_osc52(seq)
   -- only clipboard writes; ignore queries ('?') and empty payloads
   local payload = seq:match("^\27%]52;[^;]*;(.*)$")
   if not payload or payload == "" or payload == "?" or #payload > MAX_PAYLOAD then
     return
   end
-  local out = seq:gsub("[\7\27\\]+$", "") .. "\7"
-  if vim.api.nvim_ui_send then
-    vim.api.nvim_ui_send(out)
-  else
-    io.stdout:write(out)
-    io.stdout:flush()
+  local ok, text = pcall(vim.base64.decode, (payload:gsub("[\7\27\\]+$", "")))
+  if not ok or text == "" then
+    return
   end
+  vim.schedule(
+    function()
+      vim.fn.setreg("+", text)
+    end
+  )
 end
 
 function M.setup()
@@ -160,7 +166,28 @@ function M.setup()
     }
   )
 
-  -- forward OSC 52 clipboard writes from the agent to the outer terminal
+  -- keep the agent terminal in terminal mode: entering its window always resumes it
+  -- (<C-\><C-n> still leaves terminal mode until the window is re-entered)
+  vim.api.nvim_create_autocmd(
+    {"WinEnter", "BufEnter", "TermOpen"},
+    {
+      group = group,
+      callback = function(ev)
+        if vim.bo[ev.buf].buftype ~= "terminal" or vim.b[ev.buf].sidekick_cli == nil then
+          return
+        end
+        vim.schedule(
+          function()
+            if vim.api.nvim_get_current_buf() == ev.buf and vim.api.nvim_get_mode().mode ~= "t" then
+              vim.cmd.startinsert()
+            end
+          end
+        )
+      end
+    }
+  )
+
+  -- write OSC 52 clipboard text from the agent in full (works around Nvim's first-line-only write)
   vim.api.nvim_create_autocmd(
     "TermRequest",
     {
@@ -171,7 +198,7 @@ function M.setup()
         end
         local seq = type(ev.data) == "table" and ev.data.sequence or nil
         if type(seq) == "string" then
-          forward_osc52(seq)
+          write_osc52(seq)
         end
       end
     }
